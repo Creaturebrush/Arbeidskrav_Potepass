@@ -1,13 +1,26 @@
-<!doctype html>
+<!Doctype html>
 <html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Page</title>
-  </head>
-  <body>
-    <h1>Profile Page</h1>
-    <p>Her kan du se din profil.</p>
+    <link rel="stylesheet" href="/src/Pages/profile/profile.css" />
     <script type="module" src="/src/Pages/profile/profile.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+
+  <body>
+    <div class="page">
+
+      <site-header></site-header>
+
+      <main class="main">
+        <h1>Profile Page</h1>
+        <p>Her kan du se din profil.</p>
+      </main>
+
+      <site-footer></site-footer>
+
+    </div>
   </body>
 </html>

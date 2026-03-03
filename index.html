@@ -1,17 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>arbeidskrav-potepass</title>
+    <title>PØTEPASS</title>
+    <link rel="stylesheet" href="/src/Pages/Homepage/index.css" />
+    <script type="module" src="/src/main.ts"></script>
   </head>
+
   <body>
-    <div id="app"> 
+    <div class="page">
+
+      <site-header></site-header>
+
+      <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-label="Intro">
+          <div class="hero-left">
+            <h1>
+              Trygg hundepass, <br />
+              når du trenger det
+            </h1>
+
+            <p class="hero-sub">
+              Finn og book pålitelige hundepassere i ditt nærområde – enkelt og
+              oversiktlig.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-info" href="./src/Pages/sitters/sitters.html">FINN HUNDEPASSER</a>
+              <a class="btn btn-success" href="./src/Pages/registration/registration.html">OPPRETT BRUKER</a>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <img
+              src="/Images/hero.jpg"
+              alt="Hund som ligger med leker"
+            />
+          </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="how" aria-labelledby="how-title">
+          <div class="container">
+            <h2 class="how-title">Slik fungerer det</h2>
+
+            <div class="how-grid">
+              <article class="how-card">
+                <div class="how-icon" aria-hidden="true"> <img src="/Images/pawprint(2).png" alt="Pawprint icon"></div>
+                <p class="how-step" aria-hidden="true">1.</p>
+                <h4>Opprett bruker</h4>
+                <p>Registrer og legg inn informasjon om hunden(e) din(e).</p>
+              </article>
+
+              <article class="how-card">
+                <div class="how-icon" aria-hidden="true"><img src="/Images/search.png" alt="Search icon"></div>
+                <p class="how-step" aria-hidden="true">2.</p>
+                <h4>Finn hundepasser</h4>
+                <p>
+                  Filtrer på sted, pris og tilgjengelighet, og se detaljer om
+                  hundepassere.
+                </p>
+              </article>
+
+              <article class="how-card">
+                
+                <div class="how-icon" aria-hidden="true"><img src="/Images/send.png" alt="Send icon"></div>
+                <p class="how-step" aria-hidden="true">3.</p>
+                <h4>Send bookingforespørsel</h4>
+                <p>Velg datoene og få statusen på forespørselen din.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Safety message -->
+        <section class="safety" aria-labelledby="safety-title">
+          <div class="container safety-inner">
+            <h2>Trygghet for både deg og hunden din</h2>
+            <p>
+              Hos Pøtepass står oversikt og kontroll i fokus. Du velger selv hvem
+              du vil sende forespørsel til, og kan følge hele prosessen fra
+              forespørsel til avtale.
+            </p>
+          </div>
+        </section>
+
+        <!-- CTA split -->
+        <section class="cta">
+          <div class="cta-inner">
+            <div class="cta-box">
+              <h2>
+                Klar for å finne <br />
+                riktig hundepasser?
+              </h2>
+              <a class="btn btn-success" href="./src/Pages/sitters/sitters.html">FINN HUNDEPASSER NÅ</a>
+            </div>
+
+            <div class="cta-box">
+              <h2>
+                Eller klar for å bli <br />
+                hundepasser?
+              </h2>
+              <a class="btn btn-success" href="./src/Pages/registration/registration.html">BLI HUNDEPASSER</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <site-footer></site-footer>
+    </div>
+    <!-- To make it easy to access dev pages/we delete later -->
+    <div class="dev-links"> 
       <a class="btn" href="/src/Pages/profile/profile.html">FREDRIK</a>
       <a class="btn" href="/src/Pages/sitters/sitters.html">STINE</a>
       <a class="btn" href="/src/Pages/booking/booking.html">ANETTE</a>
       <a class="btn" href="/src/Pages/status/status.html">KARLLA</a>
     </div>
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

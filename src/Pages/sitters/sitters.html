@@ -1,13 +1,25 @@
-<!doctype html>
+<!Doctype html>
 <html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sitters Page</title>
+    <link rel="stylesheet" href="/src/Pages/sitters/sitters.css" />
+    <script type="module" src="/src/Pages/sitters/sitters.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <h1>Sitters Page</h1>
-    <p>Her kan du se alle hundepassere.</p>
-    <script type="module" src="/src/Pages/sitters/sitters.ts"></script>
+    <div class="page">
+
+      <site-header></site-header>
+
+      <main class="main">
+        <h1>Sitters Page</h1>
+        <p>Her kan du se alle hundepassere.</p>
+      </main>
+
+      <site-footer></site-footer>
+
+    </div>
   </body>
 </html>
