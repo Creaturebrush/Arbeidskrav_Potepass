@@ -1,2 +1,4 @@
 import "./style.css";
-export {};
+import "./Components/header";
+import "./Components/footer";
+import "./Components/login-overlay";
