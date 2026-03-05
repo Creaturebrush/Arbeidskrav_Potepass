@@ -6,8 +6,35 @@
     <title>Profile Page</title>
   </head>
   <body>
-    <h1>Profile Page</h1>
-    <p>Her kan du se din profil.</p>
+    <header></header>
+
+    <main>
+      <h1>PROFIL</h1>
+      <img
+        class="paw-prints"
+        src="./pawprints.png"
+        alt="Bilde av en vannrett linje, laget av potetrykk"
+      />
+
+      <section class="user-section">
+        <h2>Hei, navn!</h2>
+        <div class="user-btns">
+          <button class="edit-btn">REDIGER PROFIL</button>
+          <button class="remove-btn">SLETT PROFIL</button>
+        </div>
+      </section>
+
+      <section class="dog-section">
+        <h2>Mine hunder</h2>
+        <div class="dog-btns">
+          <button class="add-btn">LEGG TIL HUND</button>
+          <button class="remove-btn">FJERN HUND</button>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+
     <script type="module" src="/src/Pages/profile/profile.ts"></script>
   </body>
 </html>

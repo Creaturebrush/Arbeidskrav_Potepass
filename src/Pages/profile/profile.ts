@@ -1,0 +1,2 @@
+import "./profile.css";
+export {};
