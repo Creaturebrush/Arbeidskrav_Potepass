@@ -1,3 +1,175 @@
-body{
-    background-color: blue; 
+@font-face {
+  font-family: "itim-regular";
+  src: url(/public/fonts/Itim-Regular.ttf);
+}
+@font-face {
+  font-family: "nunito-regular";
+  src: url(/public/fonts/Nunito-Regular.ttf);
+}
+@font-face {
+  font-family: "nunito-semibold";
+  src: url(/public/fonts/Nunito-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "nunito-bold";
+  src: url(/public/fonts/Nunito-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #7e9376;
+  --primary-color-shade1: #65785e;
+  --primary-color-shade2: #405e3e;
+  --primary-color-card: #99aa93;
+  --primary-color-light1: #b4c0af;
+  --secondary-color: #e2ded2;
+  --information-color: #2196f3;
+  --warning-color: #d9534f;
+  --CTA-color: #e8a04a;
+  --accept-color: #4caf50;
+  /* endre størrelse til rem */
+  --h1-font: "itim-regular";
+  --h1-font-size: 61px;
+
+  --h2-font: "itim-regular";
+  --h2-font-size: 49px;
+
+  --h3-font: "itim-regular";
+  --h3-font-size: 39px;
+
+  --h4-font: "itim-regular";
+  --h4-font-size: 31px;
+
+  --h5-font: "nunito-semibold";
+  --h5-font-size: 25px;
+
+  --body-font: "nunito-regular";
+  --body-font-size: 16px;
+
+  --body-bold-font: "nunito-bold";
+  --body-bold-font-size: 16px;
+
+  --input-field-font: "nunito-semibold";
+  --input-field-font-size: 16px;
+
+  --button-font: "nunito-semibold";
+  --button-font-size: 16px;
+
+  --label-font: "nunito-semibold";
+  --label-font-size: 14px;
+
+  --meta-data-font: "nunito-semibold";
+  --meta-data-font-size: 14px;
+}
+
+body {
+  background-color: var(--secondary-color);
+  font-family: var(--body-font);
+  font-size: var(--body-font);
+}
+
+h1,
+.profile-img,
+.dog-sitter-card,
+h4,
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dog-sitter-card {
+  max-width: 30%;
+  margin: auto;
+  border-radius: 30px;
+  border: solid 4px var(--primary-color-shade2);
+  padding: 1rem;
+}
+
+.allergy-info-container {
+  background-color: var(--primary-color-card);
+  border: solid red 2px;
+}
+
+.checkmark-img,
+.warning-img {
+  padding: 1rem;
+}
+
+.dog-allergy-container {
+  display: flex;
+  padding: 2rem;
+}
+
+.allergy-info-txt {
+  display: flex;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.dog-allergy-info {
+  align-self: center;
+}
+
+form {
+  background-color: var(--primary-color-light1);
+  max-width: 80%;
+  display: block;
+  margin: auto;
+  border-radius: 24px;
+  contain: paint;
+  border: solid 4px var(--primary-color-shade2);
+}
+
+.form-container {
+  padding: 2rem;
+  max-width: 80%;
+  margin: auto;
+}
+
+.pawprint-line {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+}
+
+h1 {
+  font-family: var(--h1-font);
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-family: var(--h2-font);
+  font-size: var(--h2-font-size);
+}
+
+h3 {
+  font-family: var(--h3-font);
+  font-size: var(--h3-font-size);
+}
+
+h4 {
+  font-family: var(--h4-font);
+  font-size: var(--h4-font-size);
+  background-color: var(--primary-color);
+  padding: 2rem;
+}
+
+h5 {
+  font-family: var(--h5-font);
+  font-size: var(--h5-font-size);
+}
+
+#message-txt {
+  width: 1153px;
+  height: 136px;
+}
+
+.dog-sitter-card {
+  background-color: var(--primary-color);
 }

@@ -1,13 +1,98 @@
 <!doctype html>
 <html lang="no">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Booking Page</title>
-  </head>
-  <body>
-    <h1>Booking Page</h1>
-    <p>Her kan du booke en time for hundepass.</p>
-    <script type="module" src="/src/Pages/booking/booking.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Page</title>
+  <link rel="stylesheet" href="booking.css">
+</head>
+
+<body>
+  <header>
+    <!-- header here -->
+  </header>
+  <main>
+    <h1>BOOK HUNDEPASSER</h1>
+    <img src="/public/images/PawPrint_line.png" alt="images of paws undelining the heading" class="pawprint-line">
+    <!-- Trenger kanskje ikke alt tekst - siden det er dekorativ -->
+    <p>Du har valgt (bruker) som hundepasser. </p>
+    <div class="dog-sitter-card">
+      <div>
+        <img src="/public/images/dog1.png" alt="hundepassers profil bilde">
+        <div class="star-rating">
+          <img src="/public/images/star-filled.png" alt="star-1">
+          <img src="/public/images/star-filled.png" alt="star-2">
+          <img src="/public/images/star-filled.png" alt="star-3">
+          <img src="/public/images/star-filled.png" alt="star-4">
+          <img src="/public/images/star-unfilled.png" alt="star-5">
+        </div>
+      </div>
+      <div>
+        <h2 class="dog-sitter-name">KARLLA</h2>
+        <p class="dog-sitter-description-txt">Hei! Jeg heter Karlla og har flere års erfaring med hundepass. Jeg liker å
+          tilpasse hverdagen etter hundens behov og
+          tilbyr trygge rammer, faste rutiner og gode turer. Jeg har erfaring med både små og mellomstore hunder, og tar
+          gjerne
+          hensyn til allergier og individuelle behov.</p>
+      </div>
+    </div>
+    <p>Velg hund(er) og send forspørselen.</p>
+    <form action="">
+      <h4>BOOK HUNDEPASSER</h4>
+      <div class="form-container">
+        <label for="dog-checkbox">VELG HUNDER: </label>
+        <div class="dogs-container">
+          <div class="dog-container">
+            <input type="checkbox" name="" id="dog-checkbox">
+            <label for="dog-checkbox">Napoleon (Chihuahua)</label>
+          </div>
+          <div class="dog-container">
+            <input type="checkbox" name="" id="dog-checkbox">
+            <label for="dog-checkbox">Buddy(Golden Retriever)</label>
+          </div>
+        </div>
+
+
+        <div class="allergy-info-container">
+          <p class="allergy-info">Viktig informasjon om valgt(e) hund(er):</p>
+          <div class="dog-allergy-container">
+            <img src="/public/images/allergy-checkmark.png" alt="" class="checkmark-img">
+            <div class="dog-allergy-info">
+              <p>Napoleon - <span>Allergier: Kylling, lopper og Soya</span></p>
+              <p>Buddy - <span>Ingen Allergier</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="allergy-info-txt">
+          <p>Allergiinformasjon</p>
+          <div>
+            <img src="/public/images/allergy-warning.png" alt="" class="warning-img">
+            <p>Denne informasjonen sendes til hundepasseren slik at de kan vurdere om de kan ta oppdraget.</p>
+          </div>
+        </div>
+
+        <label for="from-date">FRA-DATO: </label>
+        <input type="date" name="" id="from-date">
+        <label for="to-date">TIL-DATO: </label>
+        <input type="date" name="" id="to-date">
+
+        <label for="message-input">MELDING(VALGFRITT): </label>
+        <input type="textarea" name="message" id="message-input"
+          placeholder="F.eks. rutiner, turvaner, medisiner, hvordan hunden er med andre hunder og mennesker, eller annet hundepasseren bør vite.">
+        <button>AVBRYT BOOKING</button>
+        <input type="submit" value="SEND FORSPØRSEL">
+
+      </div>
+
+    </form>
+  </main>
+  <footer>
+    <!-- footer here -->
+  </footer>
+
+  <script type="module" src="/src/Pages/booking/booking.ts"></script>
+</body>
+
 </html>
