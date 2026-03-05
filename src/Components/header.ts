@@ -14,7 +14,7 @@ class SiteHeader extends HTMLElement {
           <nav class="site-header-nav" aria-label="Hovedmeny">
             <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
             <a href="/src/Pages/registration/registration.html">BLI HUNDEPASSER</a>
-            <a href="/src/Pages/login/login.html">LOG INN</a>
+            <a href="#" data-open-login>LOGG INN</a>
             <a href="/src/Pages/registration/registration.html">REGISTRER DEG</a>
           </nav>
         </div>
