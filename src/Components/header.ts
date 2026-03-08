@@ -6,7 +6,7 @@ class SiteHeader extends HTMLElement {
           <a class="site-header-brand" href="/index.html" aria-label="PØTEPASS hjem">
             <h1 class="logo">
               <span class="logo-text">P</span>
-              <img class="logo-paw" src="/Images/pawprint.png" alt="" />
+              <img class="logo-paw" src="/images/pawprint.png" alt="" />
               <span class="logo-text">TEPASS</span>
             </h1>
         	</a>

@@ -5,17 +5,17 @@ class SiteFooter extends HTMLElement {
         <div class="site-footer-inner">
           <div class="site-footer-social">
             <a href="#" class="site-footer-link">
-              <img src="/Images/facebook.png" alt="" />
+              <img src="/images/facebook.png" alt="" />
               <span>FACEBOOK</span>
             </a>
 
             <a href="#" class="site-footer-link">
-              <img src="/Images/twitter.png" alt="" />
+              <img src="/images/twitter.png" alt="" />
               <span>TWITTER</span>
             </a>
 
             <a href="#" class="site-footer-link">
-              <img src="/Images/instagram.png" alt="" />
+              <img src="/images/instagram.png" alt="" />
               <span>INSTAGRAM</span>
             </a>
           </div>
@@ -23,7 +23,7 @@ class SiteFooter extends HTMLElement {
           <div class="site-footer-brand" aria-label="PØTEPASS logo">
             <div class="logo logo-footer">
               <span class="logo-text">P</span>
-              <img class="logo-paw" src="/Images/pawprint.png" alt="" />
+              <img class="logo-paw" src="/images/pawprint.png" alt="" />
               <span class="logo-text">TEPASS</span>
             </div>
           </div>
