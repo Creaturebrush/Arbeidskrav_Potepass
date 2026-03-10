@@ -257,9 +257,29 @@ p {
   box-shadow: 0 0 0 3px rgba(126, 147, 118, 0.25);
 }
 
-/* Cards - we need a blueprint to all pages that will use it */
+/* Page Header */
 
-/* Header */
+.header-page {
+  padding: 2rem 1rem 4rem;
+}
+
+/* Title */
+.header-top {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.header-title {
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.header-paws {
+  display: flex;
+  justify-content: center;
+}
+
+/* SiteHeader */
 .site-header {
   background: var(--primary);
   display: flex;
