@@ -1,0 +1,262 @@
+
+/* Shell width */
+.status-shell {
+  width: min(72rem, 100%);
+  margin: 0 auto;
+}
+
+/* Tabs row + new booking */
+.status-toprow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* Tabs */
+.status-tabs {
+  display: inline-flex;
+}
+
+.status-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 1rem 0 0;
+  background: var(--primary-card);
+  border-bottom: 0;
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  position: relative;
+  top: 3px;
+}
+
+.status-tab.is-active {
+  background: var(--primary);
+}
+
+.btn.status-new {
+	border-radius: 8px;
+	border: 1px solid var(--primary-shade-2);
+  margin: 0 0 5rem; /* separate from box, can tweak more here */
+  padding: 0.45rem 0.9rem;
+}
+
+/* Main green container */
+.status-box {
+  background: var(--primary);
+  border-radius: 0 1rem 1rem 1rem;
+  padding: 0.9rem;
+  position: relative;
+}
+
+/* Tools top-right */
+.status-tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+	gap: 45px;
+}
+
+/* JS dependent */
+.status-tools--requests {
+  display: none;
+}
+
+.status-pill {
+	margin: 0;
+  border: 0;
+  cursor: pointer;
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-body);
+	font-size: var(--body);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.status-pill.is-active {
+  background: var(--primary);
+  color: var(--text);
+}
+
+.caret {
+	border-radius:50%;
+	width: 20px;
+	height: 20px;
+	background: var(--primary-shade-2);
+	align-items: center;
+}
+
+/*Dropdown*/
+.status-dd {
+  position: relative;
+}
+
+.status-dd > summary {
+  list-style: none;
+}
+
+.status-dd > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Menu */
+.status-dd--menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 190px;
+  background: var(--primary);
+  border-radius: 0 0 1rem 1rem;
+  padding: 6px;
+  z-index: 20;
+  box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.18);
+}
+
+/* Menu items */
+.status-dd--item {
+  width: 100%;
+  text-align: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: var(--meta);
+  font-weight: var(--fw-semibold);
+  color: var(--white);
+}
+
+.status-dd--item:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* Panels */
+.status-panel {
+  display: none;
+}
+
+.status-panel.is-active {
+  display: block;
+}
+
+.status-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* Booking row */
+.status-row {
+  background: var(--primary-card);
+  border: 2px solid var(--primary-shade-2);
+  border-radius: 0.85rem;
+  padding: 0.85rem;
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--primary-shade-2);
+  background: var(--white);
+}
+
+.status-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-name {
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.2rem;
+}
+
+.status-date {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-bottom: 0.25rem;
+}
+
+.status-city {
+  font-size: 0.8rem;
+  opacity: 0.95;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pin {
+  width: 14px;
+	height: 14px;
+  font-size: 0.95rem;
+}
+
+/* Middle status/rating column */
+.status-mid {
+  display: inline-flex;
+  align-items: left;
+  gap: 0.5rem;
+  justify-content: left;
+  font-size: 0.7rem;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-mid-rating { /*fix better*/
+  justify-content: left;
+}
+
+.dot { /*to be improved*/
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-yellow { background: #f2c94c; }
+.dot-green { background: #27ae60; }
+.dot-red { background: #eb5757; }
+
+/* Actions */
+.status-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* Make smaller*/
+.btn.status-btn {
+  font-size: 0.65rem;
+  padding: 0.35rem 0.75rem;
+}
+
+/*.status-btn:hover {
+  box-shadow: none;
+  transform: none;
+  opacity: 0.95;
+}*/
+
+/* Stars - we should have this on style.css as well */
+.stars {
+  letter-spacing: 0.15rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.stars-rated {
+  color: #f2c94c;
+}

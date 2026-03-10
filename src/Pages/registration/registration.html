@@ -14,36 +14,24 @@
 
       <site-header></site-header>
 
-      <main class="main reg">
-        <header class="reg-top" aria-labelledby="reg-title">
-          <h1 class="reg-title">REGISTRER DEG</h1>
+      <main class="main header-page">
+        <header class="header-top" aria-labelledby="header-title">
+          <h1 class="header-title">REGISTRER DEG</h1>
 
-					<div class="reg-paws" aria-hidden="true">
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-						<img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
+					<div class="header-paws" aria-hidden="true">
+						<img src="/images/PawPrint_line.png" alt="" />
 					</div>
 
-          <p class="reg-subtitle">Fyll ut registreringsskjema så er du i gang!</p>
+          <p>Fyll ut registreringsskjema så er du i gang!</p>
         </header>
-
+  
         <section class="reg-card" aria-label="Registrer deg skjema">
-          <h4 class="reg-card-head">Registreringsskjema</h4>
+          <h4 class="reg-card--head">Registreringsskjema</h4>
 
-          <div class="reg-card-body">
+          <div class="reg-card--body">
             <!-- Left -->
             <section class="reg-panel" aria-label="Introduser deg selv">
-              <h2 class="reg-panel-title">INTRODUSER DEG SELV:</h2>
+              <h2 class="reg-panel--title">INTRODUSER DEG SELV:</h2>
 
               <form class="form" action="#" method="post">
                 <div class="form-field">
@@ -77,9 +65,9 @@
                 </div>
 
                 <div class="reg-upload">
-                  <div class="reg-avatar" aria-hidden="true"><img src="/Images/useravatar.png" alt="Profilbilde" /></div>
+                  <div class="reg-avatar" aria-hidden="true"><img src="/images/useravatar.png" alt="Profilbilde" /></div>
 
-                  <label class="btn btn-success reg-upload-btn">
+                  <label class="btn btn-success reg-upload--btn">
                     LAST OPP BILDE
                     <input type="file" hidden />
                   </label>
@@ -89,7 +77,7 @@
 
             <!-- Right -->
             <section class="reg-panel" aria-label="Legg til hund">
-              <h2 class="reg-panel-title">LEGG TIL HUND(ER):</h2>
+              <h2 class="reg-panel--title">LEGG TIL HUND(ER):</h2>
 
               <form class="form" action="#" method="post">
                 <div class="form-field">
@@ -113,15 +101,15 @@
                 </div>
 
                 <div class="reg-upload">
-                  <div class="reg-avatar reg-avatar--dog" aria-hidden="true"><img src="/Images/dogicon.png" alt="Hundens avatar" /></div>
+                  <div class="reg-avatar reg-avatar--dog" aria-hidden="true"><img src="/images/dogicon.png" alt="Hundens avatar" /></div>
 
-                  <label class="btn btn-success reg-upload-btn">
+                  <label class="btn btn-success reg-upload--btn">
                     LAST OPP BILDE
                     <input type="file" hidden />
                   </label>
                 </div>
 
-                <button class="reg-add-dog" type="button">
+                <button class="reg-add--dog" type="button">
                   <span class="reg-plus" aria-hidden="true">+</span>
                   Legg til en hund til
                 </button>
@@ -137,7 +125,6 @@
       </main>
 
       <site-footer></site-footer>
-
       <login-overlay></login-overlay>
 
     </div>
