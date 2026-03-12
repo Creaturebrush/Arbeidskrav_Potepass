@@ -3,15 +3,134 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PØTEPASS | Finn hundepassere</title>
+    <title>Hundepassere</title>
     <link rel="stylesheet" href="/src/Pages/sitters/sitters.css" />
-    <script type="module" src="/src/Pages/sitters/sitters.ts"></script>
-    <script type="module" src="/src/main.ts"></script>
+   
+  
   </head>
   <body>
-    
-    <h1>Sitters Page</h1>
-    <p>Her kan du se alle hundepassere.</p>
+
+     <div class="page">
+       <site-header></site-header>
+        <main class="main header-page">
+       
+          <header class="header-top">
+            <h1 class="header-title">HUNDEPASSERE</h1>
+             <div class="header-paws">
+               <img src="/images/PawPrint_line.png" alt=""/>
+             </div>
+
+             <div class="sitters-filters">
+                <details class="filter-dd">
+                  <summary class="filter-pill">
+                    <span class="filter-icon">
+                      <img src="/images/pin.png"/>
+                    </span>STED
+                 
+                </summary>
+
+                <div class="filter-menu">
+                  <button class="filter-item" type="button">Porsgrunn</button>
+                  <button class="filter-item" type="button">Skien</button>
+                  <button class="filter-item" type="button">Oslo</button>
+                  <button class="filter-item" type="button">Bergen</button>
+
+                </div>
+
+              </details>
+                 <details class="filter-dd">
+                  <summary class="filter-pill">
+                    <span class="filter-icon" aria-hidden="true">
+                      <img src="/images/price-tag.png" alt="" />
+                    </span>PRIS
+                 </summary>
+ 
+                <div class="filter-menu" >
+                  <div class="filter-form">
+                    <label class="filter-label" for="priceMin">Fra kr</label>
+                    <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
+  
+                    <label class="filter-label" for="priceMax">Til kr</label>
+                    <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
+  
+                    <button class="btn btn-success filter-apply" type="button">SØK</button>
+                  </div>
+              </div>
+              </details>
+              <details class="filter-dd">
+                <summary class="filter-pill">
+                  <span class="filter-icon" >
+                    <img src="/images/calendar.png" alt="" />
+                  </span>TILGJENGELIGHET
+                  
+                </summary>
+  
+                <div class="filter-menu">
+                  <div class="filter-form">
+                    <label class="filter-label" for="dateFrom">Fra</label>
+                    <input class="filter-input" id="dateFrom" type="date" />
+  
+                    <label class="filter-label" for="dateTo">Til</label>
+                    <input class="filter-input" id="dateTo" type="date" />
+  
+                    <button class="btn btn-success filter-apply" type="button">SØK</button>
+                  </div>
+                </div>
+            </details>
+          </div>
+
+              
+              <!--  
+
+                </button>
+                <button class="" type="button">
+                  <img src="/images/price-tag.png" alt="">
+                  <span>PRIS</span>
+                </button>
+                <button class="" type="button">
+                  <img src="/images/calendar.png" alt="">
+                  <span>TILGJENGELIGHET</span>
+                </button>
+              </div>
+-->
+               <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
+          </header>
+
+          <section>
+            <div>
+              <section class="sitters-shell" aria-label="Hundepassere og tidligere passere">
+                <div class="sitters-toprow">
+                  <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
+                  <a class="sitters-tab is-active" href="#" role="tab" aria-selected="true" data-tab="current">
+                  Hundepassere
+                  </a>
+                  <a class="sitters-tab" href="#" role="tab" aria-selected="false" data-tab="previous">
+                  Tidligere passere
+                  </a>
+            </div>
+
+              <a class="btn btn-success sitters-cta" href="/src/Pages/registration/registration.html">
+              BLI HUNDEPASSER I DAG!
+              </a>
+            </div>
+
+               <div class="sitters-box">
+
+               </div>
+
+          </section>
+
+          
+
+
+
+      </main>
+      <site-footer></site-footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/Pages/sitters/sitters.ts"></script>
+    
+
   </body>
+
 </html>
