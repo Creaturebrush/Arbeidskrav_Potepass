@@ -1,10 +1,10 @@
-<!Doctype html>
+<!doctype html>
 <html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Page</title>
-    <link rel="stylesheet" href="/src/Pages/profile/profile.css">
+    <link rel="stylesheet" href="/src/Pages/profile/profile.css" />
     <script type="module" src="/src/Pages/profile/profile.ts" defer></script>
     <script type="module" src="/src/main.ts" defer></script>
   </head>
@@ -13,33 +13,69 @@
     <site-header></site-header>
 
     <main class="main">
-      <div class="page">
-      <h1>PROFIL</h1>
+      <h1 class="">PROFIL</h1>
       <img
-        class="paw-prints"
-        src="./pawprints.png"
-        alt="Bilde av en vannrett linje, laget av potetrykk"
+        src="/images/PawPrint_line.png"
+        alt="Bilde av potetrykk"
+        class="pawprint-line"
       />
 
-      <section class="user-section">
+      <section class="user-container">
         <h2>Hei, navn!</h2>
-        <div class="user-btns">
-          <button class="edit-btn">REDIGER PROFIL</button>
-          <button class="remove-btn">SLETT PROFIL</button>
+        <div class="info-container">
+          <img src="/images/useravatar.png" alt="Profile picture" />
+          <div class="user-info">
+            <p>Fornavn:</p>
+            <p>Etternavn:</p>
+            <p>Telefon:</p>
+            <p>E-post:</p>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button class="btn btn-warning">REDIGER PROFIL</button>
+          <button class="btn btn-danger">SLETT PROFIL</button>
         </div>
       </section>
 
-      <section class="dog-section">
+      <section class="dog-container">
         <h2>Mine hunder</h2>
-        <div class="dog-btns">
-          <button class="add-btn">LEGG TIL HUND</button>
-          <button class="remove-btn">FJERN HUND</button>
+        <div class="dog-card-container">
+          <div class="dog-card">
+            <div class="dog-card-info">
+              <img src="/images/dog1.png" alt="" />
+              <div class="dog-info">
+                <p>Navn:</p>
+                <p>Rase:</p>
+                <p>Alder:</p>
+                <p>Allergier:</p>
+              </div>
+            </div>
+            <div class="btn-container">
+              <button class="btn btn-warning">REDIGER</button>
+            </div>
+          </div>
+          <div class="dog-card">
+            <div class="dog-card-info">
+              <img src="/images/dog1.png" alt="" />
+              <div class="dog-info">
+                <p>Navn:</p>
+                <p>Rase:</p>
+                <p>Alder:</p>
+                <p>Allergier:</p>
+              </div>
+            </div>
+            <div class="btn-container">
+              <button class="btn btn-warning">REDIGER</button>
+            </div>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button class="btn btn-success">LEGG TIL HUND</button>
+          <button class="btn btn-danger">FJERN HUND</button>
         </div>
       </section>
     </main>
 
     <site-footer></site-footer>
-
-    </div>
   </body>
 </html>
