@@ -12,24 +12,35 @@
   margin: auto auto 2rem auto;
 }
 
-.btn-container,
-h1,
-h2 {
+.btn-container {
   display: flex;
   justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin: auto;
 }
 
 .btn-container {
   padding: 10px;
-  margin-bottom: 50px;
   gap: 5rem;
 }
 
+/* PROFIL INFO */
 .info-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
+  justify-content: left;
+  max-width: 50%;
+  gap: 1rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .info-container img {
@@ -42,15 +53,21 @@ h2 {
   font-weight: var(--fw-bold);
 }
 
+/* DOG CARD */
 .dog-card {
   background-color: var(--primary-card);
   border-radius: 2rem;
+  width: 30%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .dog-card-info {
   display: flex;
   align-items: center;
+  justify-content: left;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .dog-card-container {
@@ -60,6 +77,32 @@ h2 {
   gap: 10px;
 }
 
-.dog-card-info .btn-container {
-  padding: 0;
+/* BOOKING AND REQUEST*/
+.booking-request-section {
+  border: 2px solid var(--primary-shade-2);
+  border-radius: 2rem;
+  max-width: 50%;
+  margin: auto;
+  margin-bottom: 2rem;
 }
+.booking-request-section .btn-container {
+  gap: 1rem;
+}
+.booking-request-section .btn {
+  height: 4rem;
+  width: 20rem;
+  margin: 1rem;
+  position: relative;
+}
+
+/* OVERLAYS */
+
+/* ADD DOG */
+/* ERROR ADD/EDIT */
+/* SUCCESS ADD/EDIT */
+/* EDIT DOG */
+/* REMOVE DOG */
+/* ACCEPT REMOVE */
+/* REMOVE MSG */
+/* EDIT PROFILE */
+/* DELETE PROFILE */
