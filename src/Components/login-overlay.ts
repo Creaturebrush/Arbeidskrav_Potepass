@@ -41,13 +41,19 @@ class LoginOverlay extends HTMLElement {
           <h4 id="loginTitle" class="modal-title">LOGG INN</h4>
 
           <div class="modal-decor" aria-hidden="true">
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
-            <img src="/Images/filledpawprint.png" alt="poteavtrykk-ikon" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
+            <img src="/images/filledpawprint.png" alt="" />
           </div>
 
           <p class="modal-subtitle">Velkommen tilbake! Logg inn for å fortsette.</p>

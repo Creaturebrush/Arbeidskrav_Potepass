@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PØTEPASS | Mine bookinger</title>
+    <title>PØTEPASS | Mine Avtaler</title>
     <link rel="stylesheet" href="/src/Pages/status/status.css" />
     <script type="module" src="/src/Pages/status/status.ts"></script>
     <script type="module" src="/src/main.ts"></script>
@@ -21,7 +21,7 @@
 
           <div class="header-paws" aria-hidden="true">
            
-            <img src="/Images/filledpawprint.png" alt="" />
+            <img src="/images/Pawprint_line.png" alt="" />
           </div>
         </header>
 
@@ -38,38 +38,38 @@
 
           <!-- Green container -->
           <div class="status-box">
-            <!-- Top right tools (bookings view) -->
+            <!-- Top right tools -->
             <div class="status-tools status-tools--bookings">
               <!-- Sort dropdown -->
               <details class="status-dd">
                 <summary class="status-pill">
-                  <span class="status-dd-label">NYESTE FØRST</span>
-                  <span class="caret" aria-hidden="true"><img src="/Images/arrow-down.png" alt="" /></span>
+                  <span class="status-dd--label">NYESTE FØRST</span>
+                  <span class="caret" aria-hidden="true"><img src="/images/arrow-down.png" alt="" /></span>
                 </summary>
 
-                <div class="status-dd-menu" role="menu">
-                  <button class="status-dd-item" type="button" data-sort="newest">Nyeste først</button>
-                  <button class="status-dd-item" type="button" data-sort="oldest">Eldste først</button>
+                <div class="status-dd--menu" role="menu">
+                  <button class="status-dd--item" type="button" data-sort="newest">Nyeste først</button>
+                  <button class="status-dd--item" type="button" data-sort="oldest">Eldste først</button>
                 </div>
               </details>
 
               <!-- Status dropdown -->
               <details class="status-dd">
                 <summary class="status-pill">
-                  <span class="status-dd-label">STATUS: ALLE</span>
-                  <span class="caret" aria-hidden="true"><img src="/Images/arrow-down.png" alt="" /></span>
+                  <span class="status-dd--label">STATUS: ALLE</span>
+                  <span class="caret" aria-hidden="true"><img src="/images/arrow-down.png" alt="" /></span>
                 </summary>
 
-    <div class="status-dd-menu" role="menu">
-      <button class="status-dd-item" type="button" data-status="all">Alle</button>
-      <button class="status-dd-item" type="button" data-status="pending">Under behandling</button>
-      <button class="status-dd-item" type="button" data-status="accepted">Akseptert</button>
-      <button class="status-dd-item" type="button" data-status="rejected">Avvist</button>
-    </div>
-  </details>
-</div>
+                <div class="status-dd--menu" role="menu">
+                  <button class="status-dd--item" type="button" data-status="all">Alle</button>
+                  <button class="status-dd--item" type="button" data-status="pending">Under behandling</button>
+                  <button class="status-dd--item" type="button" data-status="accepted">Akseptert</button>
+                  <button class="status-dd--item" type="button" data-status="rejected">Avvist</button>
+                </div>
+              </details>
+            </div>
 
-            <!-- Top right filters (requests view) -->
+            <!-- Top right filters -->
             <div class="status-tools status-tools--requests" aria-label="Filter forespørsler">
               <button class="status-pill is-active" type="button" data-filter="all">ALLE</button>
               <button class="status-pill" type="button" data-filter="pending">UNDER BEHANDLING</button>
@@ -80,97 +80,97 @@
             <!-- Lists -->
             <section class="status-panel is-active" data-panel="bookings" aria-label="Dine bookinger">
               <div class="status-list" id="bookingsList">
-                <!-- Example rows (delete when JS renders dynamically) -->
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <!-- Example rows (to be deleted when JS renders dynamically) -->
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Anne Lunde</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true"><img src="/Images/pin.png" alt="" /></span> Porsgrunn</div>
+                  <div class="status-info">
+                    <div class="status-name">Anne Lunde</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
                   </div>
 
-                  <div class="booking-mid">
+                  <div class="status-mid">
                     <span class="dot dot-yellow" aria-hidden="true"></span>
-                    <span class="booking-state">UNDER BEHANDLING</span>
+                    <span class="status-state">UNDER BEHANDLING</span>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-warning status-btn" type="button">REDIGER BOOKING</button>
-                    <button class="btn btn-danger status-btn" type="button">KANSERLER BOOKING</button>
+                    <button class="btn btn-danger status-btn" type="button">KANSELLER BOOKING</button>
                   </div>
                 </article>
 
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Anne Lunde</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true">📍</span> Porsgrunn</div>
+                  <div class="status-info">
+                    <div class="status-name">Anne Lunde</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
                   </div>
 
-                  <div class="booking-mid">
+                  <div class="status-mid">
                     <span class="dot dot-green" aria-hidden="true"></span>
-                    <span class="booking-state">AKSEPTERT</span>
+                    <span class="status-state">AKSEPTERT</span>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-info status-btn" type="button">KONTAKT HUNDEEIER</button>
                   </div>
                 </article>
 
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Anne Lunde</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true">📍</span> Porsgrunn</div>
+                  <div class="status-info">
+                    <div class="status-name">Anne Lunde</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
                   </div>
 
-                  <div class="booking-mid">
+                  <div class="status-mid">
                     <span class="dot dot-red" aria-hidden="true"></span>
-                    <span class="booking-state">AVVIST</span>
+                    <span class="status-state">AVVIST</span>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-info status-btn" type="button">SE DETALJER</button>
                   </div>
                 </article>
 
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Anne Lunde</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true">📍</span> Porsgrunn</div>
+                  <div class="status-info">
+                    <div class="status-name">Anne Lunde</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
                   </div>
 
-                  <div class="booking-mid booking-mid--rating">
+                  <div class="status-mid status-mid--rating">
                     <div class="stars" aria-label="Ingen vurdering">☆☆☆☆☆</div>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-warning status-btn" type="button">SKRIV ANMELDELSE</button>
                   </div>
                 </article>
 
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Anne Lunde</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true">📍</span> Porsgrunn</div>
+                  <div class="status-info">
+                    <div class="status-name">Anne Lunde</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
                   </div>
 
-                  <div class="booking-mid booking-mid--rating">
-                    <div class="stars stars--rated" aria-label="Vurdering 4 av 5">★★★★☆</div>
+                  <div class="status-mid status-mid--rating">
+                    <div class="stars stars-rated" aria-label="Vurdering 4 av 5">★★★★☆</div>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-success status-btn" type="button">BOOK IGJEN</button>
                   </div>
                 </article>
@@ -179,40 +179,40 @@
 
             <section class="status-panel" data-panel="requests" aria-label="Forespørsler">
               <div class="status-list" id="requestsList">
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Jack</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true">📍</span> Oslo</div>
+                  <div class="status-info">
+                    <div class="status-name">Jack</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Oslo</div>
                   </div>
 
-                  <div class="booking-mid">
+                  <div class="status-mid">
                     <span class="dot dot-yellow" aria-hidden="true"></span>
-                    <span class="booking-state">UNDER BEHANDLING</span>
+                    <span class="status-state">UNDER BEHANDLING</span>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-info status-btn" type="button">SE DETALJER</button>
                   </div>
                 </article>
 
-                <article class="booking-row">
-                  <div class="booking-avatar"><img src="/Images/hero.jpg" alt="" /></div>
+                <article class="status-row">
+                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
 
-                  <div class="booking-info">
-                    <div class="booking-name">Rover</div>
-                    <div class="booking-date">12 Feb - 15 Feb</div>
-                    <div class="booking-city"><span class="pin" aria-hidden="true">📍</span> Bergen</div>
+                  <div class="status-info">
+                    <div class="status-name">Rover</div>
+                    <div class="status-date">12 Feb - 15 Feb</div>
+                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Bergen</div>
                   </div>
 
-                  <div class="booking-mid">
+                  <div class="status-mid">
                     <span class="dot dot-green" aria-hidden="true"></span>
-                    <span class="booking-state">AKSEPTERT</span>
+                    <span class="status-state">AKSEPTERT</span>
                   </div>
 
-                  <div class="booking-actions">
+                  <div class="status-actions">
                     <button class="btn btn-info status-btn" type="button">SE DETALJER</button>
                   </div>
                 </article>
