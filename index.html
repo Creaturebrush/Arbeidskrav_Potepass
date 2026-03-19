@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="no">
   <head>
     <meta charset="UTF-8" />
@@ -10,59 +10,50 @@
 
   <body>
     <div class="page">
+
       <site-header></site-header>
 
       <main class="main">
         <!-- Hero Section -->
-        <section class="hero" aria-label="Intro">
-          <div class="hero-left">
+        <section class="home-hero" aria-label="Intro">
+          <div class="home-hero--left">
             <h1>
               Trygg hundepass, <br />
               når du trenger det
             </h1>
 
-            <p class="hero-sub">
+            <p class="home-hero--sub">
               Finn og book pålitelige hundepassere i ditt nærområde – enkelt og
               oversiktlig.
             </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-info" href="./src/Pages/sitters/sitters.html"
-                >FINN HUNDEPASSER</a
-              >
-              <a
-                class="btn btn-success"
-                href="./src/Pages/registration/registration.html"
-                >OPPRETT BRUKER</a
-              >
+            <div class="home-hero--actions">
+              <a class="btn btn-info" href="#" data-open-login>FINN HUNDEPASSER</a>
+              <a class="btn btn-success" href="./src/Pages/registration/registration.html">OPPRETT BRUKER</a>
             </div>
           </div>
 
-          <div class="hero-right">
-            <img src="/images/hero.jpg" alt="Hund som ligger med leker" />
+          <div class="home-hero--right">
+            <img src="/images/hero.jpg" alt="Hund som ligger med leker"/>
           </div>
         </section>
 
         <!-- How it works -->
-        <section class="how" aria-labelledby="how-title">
-          <div class="container">
-            <h2 class="how-title">Slik fungerer det</h2>
+        <section class="home-how" aria-labelledby="home-how--title">
+          <div>
+            <h2 class="home-how--title">Slik fungerer det</h2>
 
-            <div class="how-grid">
-              <article class="how-card">
-                <div class="how-icon" aria-hidden="true">
-                  <img src="/images/pawprint(2).png" alt="poteavtrykk-ikon" />
-                </div>
-                <p class="how-step" aria-hidden="true">1.</p>
+            <div class="home-how--grid">
+              <article class="home-how--card">
+                <div class="home-how--icon" aria-hidden="true"> <img src="/images/pawprint(2).png" alt=""></div>
+                <p class="home-how--step" aria-hidden="true">1.</p>
                 <h4>Opprett bruker</h4>
                 <p>Registrer og legg inn informasjon om hunden(e) din(e).</p>
               </article>
 
-              <article class="how-card">
-                <div class="how-icon" aria-hidden="true">
-                  <img src="/images/search.png" alt="søkeikon" />
-                </div>
-                <p class="how-step" aria-hidden="true">2.</p>
+              <article class="home-how--card">
+                <div class="home-how--icon" aria-hidden="true"><img src="/images/search.png" alt=""></div>
+                <p class="home-how--step" aria-hidden="true">2.</p>
                 <h4>Finn hundepasser</h4>
                 <p>
                   Filtrer på sted, pris og tilgjengelighet, og se detaljer om
@@ -70,11 +61,10 @@
                 </p>
               </article>
 
-              <article class="how-card">
-                <div class="how-icon" aria-hidden="true">
-                  <img src="/images/send.png" alt="send-ikon" />
-                </div>
-                <p class="how-step" aria-hidden="true">3.</p>
+              <article class="home-how--card">
+                
+                <div class="home-how--icon" aria-hidden="true"><img src="/images/send.png" alt=""></div>
+                <p class="home-how--step" aria-hidden="true">3.</p>
                 <h4>Send bookingforespørsel</h4>
                 <p>Velg datoene og få statusen på forespørselen din.</p>
               </article>
@@ -83,55 +73,50 @@
         </section>
 
         <!-- Safety message -->
-        <section class="safety" aria-labelledby="safety-title">
-          <div class="safety-inner">
-            <h2 id="safety-title">Trygghet for både deg og hunden din</h2>
+        <section class="home-message" aria-labelledby="home-message--title">
+          <div class="home-message--inner">
+            <h2 id="home-message--title">Trygghet for både deg og hunden din</h2>
             <p>
-              Hos Pøtepass står oversikt og kontroll i fokus. Du velger selv
-              hvem du vil sende forespørsel til, og kan følge hele prosessen fra
+              Hos Pøtepass står oversikt og kontroll i fokus. Du velger selv hvem
+              du vil sende forespørsel til, og kan følge hele prosessen fra
               forespørsel til avtale.
             </p>
           </div>
         </section>
 
         <!-- CTA split -->
-        <section class="cta">
-          <div class="cta-inner">
-            <div class="cta-box">
+        <section class="home-cta">
+          <div class="home-cta--inner">
+            <div class="home-cta--box">
               <h2>
                 Klar for å finne <br />
                 riktig hundepasser?
               </h2>
-              <a class="btn btn-success" href="./src/Pages/sitters/sitters.html"
-                >FINN HUNDEPASSER NÅ</a
-              >
+              <a class="btn btn-success" href="./src/Pages/sitters/sitters.html">FINN HUNDEPASSER NÅ</a>
             </div>
 
-            <div class="cta-box">
+            <div class="home-cta--box">
               <h2>
                 Eller klar for å bli <br />
                 hundepasser?
               </h2>
-              <a
-                class="btn btn-success"
-                href="./src/Pages/registration/registration.html"
-                >BLI HUNDEPASSER</a
-              >
+              <a class="btn btn-success" href="#" data-open-login>BLI HUNDEPASSER</a>
             </div>
           </div>
         </section>
       </main>
-
+      
       <site-footer></site-footer>
-
       <login-overlay></login-overlay>
+
     </div>
     <!-- To make it easy to access dev pages/temporary -->
-    <div class="dev-links">
+    <div class="dev-links"> 
       <a class="btn" href="/src/Pages/profile/profile.html">FREDRIK</a>
       <a class="btn" href="/src/Pages/sitters/sitters.html">STINE</a>
       <a class="btn" href="/src/Pages/booking/booking.html">ANETTE</a>
       <a class="btn" href="/src/Pages/status/status.html">KARLLA</a>
     </div>
+
   </body>
 </html>
