@@ -1,55 +1,171 @@
-* {
-  padding: 0;
-  margin: 0;
+.pawprint-line {
+  display: block;
+  margin: auto;
+  max-width: 90%;
 }
 
-body {
-  background-color: #e2ded2;
+.user-container,
+.dog-container {
+  background-color: var(--primary);
+  border-radius: 2rem;
+  max-width: 80%;
+  margin: auto auto 2rem auto;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
   text-align: center;
-  margin-top: 25px;
-}
-
-.paw-prints {
-  display: block;
-  margin: auto;
-  margin-bottom: 25px;
-}
-
-section {
-  background-color: #7e9376;
-  padding: 25px;
-  width: 80%;
-  border-radius: 25px;
-  display: block;
-  margin: auto;
-  margin-bottom: 25px;
 }
 
 h2 {
   text-align: center;
+  margin: auto;
 }
 
-button {
-  border-radius: 25px;
-  padding: 8px;
+.btn-container {
+  padding: 10px;
+  gap: 5rem;
 }
 
-.user-btns,
-.dog-btns {
+/* PROFIL INFO */
+.info-container {
   display: flex;
+  align-items: center;
+  justify-content: left;
+  max-width: 50%;
+  gap: 1rem;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.add-btn {
-  background-color: #4caf50;
+.info-container img {
+  max-width: 20rem;
+  border: solid 2px var(--text);
+  border-radius: 100%;
 }
 
-.edit-btn {
-  background-color: #e8a04a;
+.user-info p {
+  font-weight: var(--fw-bold);
 }
 
-.remove-btn {
-  background-color: #d9534f;
+/* DOG CARD */
+.dog-card {
+  background-color: var(--primary-card);
+  border-radius: 2rem;
+  width: 30%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.dog-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.dog-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BOOKING AND REQUEST*/
+.booking-request-section {
+  border: 2px solid var(--primary-shade-2);
+  border-radius: 2rem;
+  max-width: 50%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+.booking-request-section .btn-container {
+  gap: 1rem;
+}
+.booking-request-section .btn {
+  height: 4rem;
+  width: 20rem;
+  margin: 1rem;
+  position: relative;
+}
+
+/* MODALS */
+.MODAL-PLACEHOLDER {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.profile-modal {
+  height: fit-content;
+  width: min(42rem, calc(100% - 2rem));
+  background-color: var(--primary);
+  border-radius: 2rem;
+  margin: 2rem;
+}
+/* ADD/EDIT MODAL */
+.add-edit-modal-card {
+  background-color: var(--primary-card);
+  border: 2px solid var(--primary-shade-2);
+  border-radius: 2rem;
+  margin: auto 2rem auto 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.add-edit-img-container {
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-edit-img-container img {
+  width: 10rem;
+  border: 2px solid black;
+  border-radius: 100%;
+}
+
+.add-edit-btn-container, .add-edit-info, .add-edit-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-edit-btn-container {
+  gap: 1rem;
+}
+
+/* REMOVE DOG MODAL */
+.remove-dog-container {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 80%;
+  
+}
+
+.remove-dog-card {
+  background-color: var(--primary-card);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0 1rem 0;
+}
+
+.remove-dog-card:hover {
+  outline: 2px solid var(--primary-shade-2);
+  cursor: pointer;
+}
+
+.remove-dog-card:active {
+  outline: 2px solid var(--primary-shade-2);
 }
