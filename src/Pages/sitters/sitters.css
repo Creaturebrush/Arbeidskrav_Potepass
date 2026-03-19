@@ -1,5 +1,5 @@
 
-
+/* sitters page header*/
 .sitters-filters {
   width: 52rem;
   height: 4,5rem;
@@ -83,40 +83,7 @@ margin-top: 0.4rem;
 
 }
 
-.sitters-shell {
-  width: min(72rem, 100%);
-  margin: 0 auto;
-}
-
-.sitters-toprow {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.sitters-tabs {
-  display: inline-flex;
-}
-
-.sitters-tab {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0 1rem 0 0;
-  background: var(--primary-card);
-  border-bottom: 0;
-  font-family: var(--font-body);
-  font-weight: var(--fw-semibold);
-  text-decoration: none;
-  position: relative;
-  top: 3px;
-}
-
-.sitters-tab.is-active {
-  background: var(--primary);
-}
-
-/* Form layout inside menu (price/date) */
+/* Drop down filter menu*/
 .filter-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -149,4 +116,57 @@ margin-top: 0.4rem;
 .btn.filter-apply { /*smaller button*/
   font-size: 0.65rem;
 }
+
+/*become a petsitter today*/
+.btn.sitters-cta {
+  width: 247px;
+  height: 65px;
+ 	border-radius: 25px;
  
+  margin: 0 0 1rem; 
+  padding: 0.45rem 0.9rem;
+}
+
+/* dogsitters and previous sitters */
+
+.sitters-shell {
+  width: min(85rem, 100%);
+  margin: 0 auto;
+}
+
+.sitters-toprow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.sitters-tabs {
+  display: inline-flex;
+}
+
+.sitters-tab {
+  width: 404px; 
+  height: 94px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 50px 0 0;
+  background: var(--primary-card);
+  font-family: var(--font-heading);
+  font-size: var(--h3); 
+  text-decoration: none;
+  position: relative;
+  
+}
+
+.sitters-tab.is-active {
+  background: var(--primary);
+}
+
+ /* Main list container */
+.sitters-box {
+   background: var(--primary);
+  border-radius: 0 1rem 1rem 1rem;
+  padding: 0.9rem;
+  position: relative;
+}

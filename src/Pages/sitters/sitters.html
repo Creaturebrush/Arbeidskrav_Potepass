@@ -27,96 +27,123 @@
                       <img src="/images/pin.png"/>
                     </span>STED
                  
-                </summary>
+                  </summary>
 
-                <div class="filter-menu">
-                  <button class="filter-item" type="button">Porsgrunn</button>
-                  <button class="filter-item" type="button">Skien</button>
-                  <button class="filter-item" type="button">Oslo</button>
-                  <button class="filter-item" type="button">Bergen</button>
+                  <div class="filter-menu">
+                    <button class="filter-item" type="button">Porsgrunn</button>
+                    <button class="filter-item" type="button">Skien</button>
+                    <button class="filter-item" type="button">Oslo</button>
+                    <button class="filter-item" type="button">Bergen</button>
 
-                </div>
+                  </div>
 
-              </details>
+                </details>
                  <details class="filter-dd">
-                  <summary class="filter-pill">
-                    <span class="filter-icon" aria-hidden="true">
-                      <img src="/images/price-tag.png" alt="" />
-                    </span>PRIS
-                 </summary>
+                    <summary class="filter-pill">
+                      <span class="filter-icon" aria-hidden="true">
+                        <img src="/images/price-tag.png" alt="" />
+                      </span>PRIS
+                    </summary>
  
-                <div class="filter-menu" >
-                  <div class="filter-form">
-                    <label class="filter-label" for="priceMin">Fra kr</label>
-                    <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
+                    <div class="filter-menu" >
+                      <div class="filter-form">
+                        <label class="filter-label" for="priceMin">Fra kr</label>
+                        <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
   
-                    <label class="filter-label" for="priceMax">Til kr</label>
-                    <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
+                        <label class="filter-label" for="priceMax">Til kr</label>
+                        <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
   
-                    <button class="btn btn-success filter-apply" type="button">SØK</button>
-                  </div>
+                        <button class="btn btn-success filter-apply" type="button">SØK</button>
+                      </div>
+                    </div>
+                  </details>
+                   <details class="filter-dd">
+                      <summary class="filter-pill">
+                          <span class="filter-icon" >
+                            <img src="/images/calendar.png" alt="" />
+                          </span>TILGJENGELIGHET
+                    
+                      </summary>
+  
+                      <div class="filter-menu">
+                        <div class="filter-form">
+                          <label class="filter-label" for="dateFrom">Fra</label>
+                          <input class="filter-input" id="dateFrom" type="date" />
+    
+                          <label class="filter-label" for="dateTo">Til</label>
+                          <input class="filter-input" id="dateTo" type="date" />
+    
+                          <button class="btn btn-success filter-apply" type="button">SØK</button>
+                        </div>
+                      </div>
+                    </details>
               </div>
-              </details>
-              <details class="filter-dd">
-                <summary class="filter-pill">
-                  <span class="filter-icon" >
-                    <img src="/images/calendar.png" alt="" />
-                  </span>TILGJENGELIGHET
-                  
-                </summary>
-  
-                <div class="filter-menu">
-                  <div class="filter-form">
-                    <label class="filter-label" for="dateFrom">Fra</label>
-                    <input class="filter-input" id="dateFrom" type="date" />
-  
-                    <label class="filter-label" for="dateTo">Til</label>
-                    <input class="filter-input" id="dateTo" type="date" />
-  
-                    <button class="btn btn-success filter-apply" type="button">SØK</button>
-                  </div>
-                </div>
-            </details>
-          </div>
-
-              
-              <!--  
-
-                </button>
-                <button class="" type="button">
-                  <img src="/images/price-tag.png" alt="">
-                  <span>PRIS</span>
-                </button>
-                <button class="" type="button">
-                  <img src="/images/calendar.png" alt="">
-                  <span>TILGJENGELIGHET</span>
-                </button>
-              </div>
--->
-               <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
+              <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
           </header>
 
+<!-- dogsitters and previous sitters-->
           <section>
             <div>
               <section class="sitters-shell" aria-label="Hundepassere og tidligere passere">
-                <div class="sitters-toprow">
-                  <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
-                  <a class="sitters-tab is-active" href="#" role="tab" aria-selected="true" data-tab="current">
-                  Hundepassere
-                  </a>
-                  <a class="sitters-tab" href="#" role="tab" aria-selected="false" data-tab="previous">
-                  Tidligere passere
-                  </a>
+                 <div class="sitters-toprow">
+                    <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
+
+                      <!-- kan jeg endre a til h3??-->
+                       <a class="sitters-tab is-active" href="#" role="tab" aria-selected="true" data-tab="current">
+                       Hundepassere
+                       </a>
+                      <a class="sitters-tab" href="#" role="tab" aria-selected="false" data-tab="previous">
+                        Tidligere passere
+                      </a>
+                    </div>
+
+                    <!--CHANGE TO FORM-->
+
+                    <button class="btn btn-success sitters-cta" href="">
+                      BLI HUNDEPASSER I DAG!
+                    </button>
+                  </div>
+
+              <div class="sitters-box">
+              <section class="sitters-panel is-active">
+                <div class="sitters-list" id="sittersCurrentList">
+                  
+                <!-- as javaskript/ts -->
+                <article class="sitter-row" data-expanded="false">
+                  <div class="sitter-avatar">
+                    <img src="/Images/hero.jpg" alt="" />
+                    <span class="" aria-hidden="true"></span>
+                  </div>
+
+                  <div class="sitter-main">
+                    <div class="sitter-name">Tina</div>
+                    <div class="sitter-city">
+                      <span class="pin" aria-hidden="true"><img src="/Images/pin.png" alt="" /></span> Porsgrunn
+                    </div>
+                    <div class="sitter-rating" aria-label="Vurdering 4 av 5">
+                      <span class="stars stars--rated">★★★★☆</span>
+                    </div>
+                  </div>
+
+                  <div class="sitter-about">
+                    <div class="sitter-about-title">Litt om meg:</div>
+                    <div class="sitter-about-text">
+                      Jeg elsker å gå tur og tar gjerne med en firbeint venn! :D
+                    </div>
+                  </div>
+
+                  <button class="sitter-toggle" type="button" >
+                    <span class="chev" aria-hidden="true">⌄</span>
+                  </button>
+
+                  
+                </article>
+              </div>
+
+              </section>
+
+
             </div>
-
-              <a class="btn btn-success sitters-cta" href="/src/Pages/registration/registration.html">
-              BLI HUNDEPASSER I DAG!
-              </a>
-            </div>
-
-               <div class="sitters-box">
-
-               </div>
 
           </section>
 
@@ -124,7 +151,7 @@
 
 
 
-      </main>
+        </main>
       <site-footer></site-footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
