@@ -43,10 +43,25 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.user-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 .info-container img {
   max-width: 20rem;
   border: solid 2px var(--text);
   border-radius: 100%;
+}
+
+.star-container {
+  display: flex;
+}
+
+.star-container img {
+  border: none;
 }
 
 .user-info p {
@@ -109,6 +124,10 @@ h2 {
   border-radius: 2rem;
   margin: 2rem;
 }
+
+.profile-modal img {
+  margin: auto;
+}
 /* ADD/EDIT MODAL */
 .add-edit-modal-card {
   background-color: var(--primary-card);
@@ -133,7 +152,9 @@ h2 {
   border-radius: 100%;
 }
 
-.add-edit-btn-container, .add-edit-info, .add-edit-user-info {
+.add-edit-btn-container,
+.add-edit-info,
+.add-edit-user-info {
   display: flex;
   flex-direction: column;
 }
@@ -148,7 +169,6 @@ h2 {
   justify-content: space-around;
   margin: auto;
   max-width: 80%;
-  
 }
 
 .remove-dog-card {
