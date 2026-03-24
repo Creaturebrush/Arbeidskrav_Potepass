@@ -116,6 +116,7 @@ h2 {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  visibility: hidden;
 }
 .profile-modal {
   height: fit-content;
@@ -123,6 +124,9 @@ h2 {
   background-color: var(--primary);
   border-radius: 2rem;
   margin: 2rem;
+
+  position: fixed;
+  
 }
 
 .profile-modal img {
@@ -188,4 +192,14 @@ h2 {
 
 .remove-dog-card:active {
   outline: 2px solid var(--primary-shade-2);
+}
+
+/* MODAL TEST */
+
+.modal-wrapper:not(.open) {
+  visibility: hidden;
+}
+
+.modal-wrapper.open {
+  visibility: visible;
 }
