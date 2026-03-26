@@ -5,7 +5,6 @@ const modal = document.querySelector(".modal-wrapper") as HTMLTemplateElement;
 function open() {
     modal.classList.add("open");
     
-    if (modal.classList = "open" + )
     modal.innerHTML = `
     <div class="profile-modal">
           <h2>Er du sikker på at du ønsker å slette profilen din?</h2>
