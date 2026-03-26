@@ -5,96 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hundepassere</title>
     <link rel="stylesheet" href="/src/Pages/sitters/become-a-sitter/become-a-sitter.css" />
-    <link rel="stylesheet" href="/src/style.css">
     <meta name="author" content="Stine Hartvigsen">
   </head>
   
   
-  <body>
+ <body>
     <div class="page">
       <main class="main header-page">
-        <header class="header-top">
-          <h1 class="header-title">BLI HUNDEPASSER</h1>   
-            <div class="header-paws">
-              <img src="/images/PawPrint_line.png" alt=""/>
-            </div>
-            <h3>Så flott at du ønsker å bli hundepasser!</h3>
-            <p>Fyll ut registreingsskjema så er du i gang</p>
+        <header class="header-top" aria-labelledby="headerTitle">
+          <h1 id="headerTitle" class="header-title">BLI HUNDEPASSER</h1>
+
+          <div class="header-paws" aria-hidden="true">
+            <img src="/images/PawPrint_line.png" alt="" />
+          </div>
+
+          <h3 class="become-intro-title">Så flott at du ønsker å bli hundepasser!</h3> <!-- take out but opinion-->
+          <p class="become-intro-text">Fyll ut registreringsskjemaet så er du i gang.</p>
         </header>
-        <!--FORM-->
 
-        <div class="sitter-form-container">
-          <form action="">
-            <div class="Sitter-form-title">
-              <h3>BLI HUNDEPASSER</h3>
+        <section class="become-shell" aria-label="Registreringsskjema hundepasser">
+          <div class="become-card">
+            <div class="become-card-head">
+              <h4 class="become-card-title">BLI HUNDEPASSER</h4>
             </div>
+            
+            <!-- FORM -->
 
-            <div class="sitters-input-form">
-         
-              <label for="name">FORNAVN</label>
-              <input type="text" name="name" placeholder="frank" required /> 
-              <label for="name">ETTERNAVN</label>
-              <input type="text" name="last-name">
-              <label class="" for="textarea">INTRODUSER DEG SELV</label>
-              <textarea
-                type="textarea" 
-                class=""
-                rows="10" 
-                placeholder="Introduser deg selv. F.eks. kan du fortelle hvor lenge du har vært hundepasser og hvilken erfaring du har.">
-              </textarea>
-              <div>
-                <label class="sitter-experience" for="">ÅRS ERFARING</label>
-                <input class="sitter-experience-input" id="sitterExperience" type="number" min="0" placeholder="0" />
-              </div>
-              <div>
-                <label class="sitter-experience" for="">PRICE</label>
-                <input class="sitter-experience-input" id="sitterExperience" type="number" min="0" step="50" placeholder="0" />
-              </div>
-              <div>
-                <label class="sitter-experience" for="">MAX ANTALL HUNDER</label>
-                <input class="sitter-experience-input" id="sitterExperience" type="number" min="0" placeholder="0" />
-              </div>
-               <!-- boks alternativer-->
-              <div>
-                <label class="sitter-experience" for="">VALPER</label>
-                <input class="sitter-experience-input" id="sitterExperience" type="number" min="0"  placeholder="0" />
-              </div>
+            <form class="become-form" id="becomeSitterForm">
+              <p class="become-form-title"> Fornavn, etternavn og profilbilde vil bli hentet fra profilen din.</p>
               
-              <div>
-                <label class="sitter-experience" for="">ERFARING MED HUNDER</label>
-                <input class="sitter-experience-input" id="sitterExperience" type="number" min="0" step="10" placeholder="0" />
+
+              <div class="become-block">
+                <label class="become-label" for="experienceDescription">INTRODUSER DEG SELV</label>      
+                <textarea
+                  id="experienceDescription"
+                  name="experienceDescription"
+                  class="become-textarea"
+                  rows="6"
+                  maxlength="200"
+                  placeholder="Introduser deg selv. F.eks. kan du fortelle hvor lenge du har vært hundepasser og hvilken erfaring du har."
+                  required
+                ></textarea>
+              </div>
+   
+              <div class="become-grid-3">
+                <div class="become-field">
+                  <label class="become-label" for="yearsOfExperience">ÅRS ERFARING</label>
+                  <input
+                    class="become-input become-input--small"
+                    id="yearsOfExperience"
+                    name="yearsOfExperience"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="0"
+                  />
+                </div>
+
+                <div class="become-field">
+                  <label class="become-label" for="pricePerDay">PRIS (NOK/DAG)</label>
+                  <input
+                    class="become-input become-input--small"
+                    id="pricePerDay"
+                    name="pricePerDay"
+                    type="number"
+                    min="0"
+                    step="50"
+                    placeholder="400"
+                    required
+                  />
+                </div>
+
+                <div class="become-field">
+                  <label class="become-label" for="maxDogs">MAKS ANTALL HUNDER</label>
+                  <input
+                    class="become-input become-input--small"
+                    id="maxDogs"
+                    name="maxDogs"
+                    type="number"
+                    min="1"
+                    step="1"
+                    placeholder="2"
+                    required
+                  />
+                </div>
               </div>
 
+              <!-- Experience -->
+              <div class="become-grid-2">               
+                <fieldset class="become-checkgroup">
+                  <legend class="become-legend">ERFARING MED:</legend>
 
+                  <label class="become-check">
+                    <input type="checkbox" name="experiencePuppies" />
+                    Hundevalper
+                  </label>
 
-              <div class="sitter-availability">
-                <label for="">TILGJENGELIGHET</label>
-                <label class="sitter-availability-label" for="dateFrom">Fra</label>
-                <input class="sitter-availability-input" id="dateFrom" type="date" />
+                  <label class="become-check">
+                    <input type="checkbox" name="experienceAdultDogs" />
+                    Voksne hunder
+                  </label>
 
-                <label class="sitter-availability-label" for="dateTo">Til</label>
-                <input class="sitter-availability-input" id="dateTo" type="date" />
+                  <label class="become-check">
+                    <input type="checkbox" name="experienceSeniorDogs" />
+                    Senior hunder
+                  </label>
+                </fieldset>
+
+                <!-- Sizes -->
+                <fieldset class="become-checkgroup">
+                  <legend class="become-legend">PASSER PÅ:</legend>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="sizeSmallDogs" />
+                    Små hunder
+                  </label>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="sizeMediumDogs" />
+                    Mellomstore hunder
+                  </label>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="sizeLargeDogs" />
+                    Store hunder
+                  </label>
+                </fieldset>
               </div>
-              <div class="sitter-availability">
-                <label class="sitter-availability-label" for="dateFrom">Fra</label>
-                <input class="sitter-availability-input" id="dateFrom" type="date" />
 
-                <label class="sitter-availability-label" for="dateTo">Til</label>
-                <input class="sitter-availability-input" id="dateTo" type="date" />
+              <!-- AVAILABILITY -->
+              <div class="become-block">
+                <div class="become-legend">TILGJENGELIGHET</div>
+                <div class="availability-row">
+                  <div class="availability-grid">
+                    <div class="become-field">
+                      <label class="become-label" for="fromDate-1">FRA</label>
+                      <input class="become-input" id="fromDate-1" name="fromDate[]" type="date" />
+                    </div>
+
+                    <div class="become-field">
+                      <label class="become-label" for="toDate-1">TIL</label>
+                      <input class="become-input" id="toDate-1" name="toDate[]" type="date" />
+                    </div>
+
+                    <div class="become-field">
+                      <label class="become-label" for="fromTime-1">FRA KL</label>
+                      <input class="become-input" id="fromTime-1" name="fromTime[]" type="time" />
+                    </div>
+
+                    <div class="become-field">
+                      <label class="become-label" for="toTime-1">TIL KL</label>
+                      <input class="become-input" id="toTime-1" name="toTime[]" type="time" />
+                    </div>
+                  </div>
+
+                  <button class="availability-add" type="button" aria-label="Legg til flere datoer">
+                    +
+                  </button>
+                </div>
+                <p class="availability-hint">Trykk + for å legge til flere perioder.</p>
               </div>
 
-              <div class="become-sitter-buttons">
-                <button class=" btn btn-danger cancel-btn"> </button>
-                <button class="btn btn-success accept-btn"></button>
+              <!-- BUTTONS -->
+              <div class="become-actions">
+                <a class="btn btn-danger" href="/index.html">AVBRYT</a>
+                <button class="btn btn-success" type="submit">REGISTRER DEG SOM HUNDEPASSER</button>
               </div>
-
-              
-             </div> 
-      
-
-          </form>
-        </div>
+            </form>
+          </div>
+        </section>  
       </main>
     </div>
-    <script></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
+</html>
