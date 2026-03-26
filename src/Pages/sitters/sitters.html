@@ -5,159 +5,275 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hundepassere</title>
     <link rel="stylesheet" href="/src/Pages/sitters/sitters.css" />
-   
-  
+    <link rel="stylesheet" href="/src/style.css">
+    <meta name="author" content="Stine Hartvigsen">
   </head>
+
   <body>
+    <div class="page">
+      <site-header></site-header>
 
-     <div class="page">
-       <site-header></site-header>
-        <main class="main header-page">
-       
-          <header class="header-top">
-            <h1 class="header-title">HUNDEPASSERE</h1>
-             <div class="header-paws">
-               <img src="/images/PawPrint_line.png" alt=""/>
-             </div>
+      <main class="main header-page">
+        <!--Sitters header-->
+        <header class="header-top">
+          <h1 class="header-title">HUNDEPASSERE</h1>
 
-             <div class="sitters-filters">
-                <details class="filter-dd">
-                  <summary class="filter-pill">
-                    <span class="filter-icon">
-                      <img src="/images/pin.png"/>
-                    </span>STED
-                 
-                  </summary>
-
-                  <div class="filter-menu">
-                    <button class="filter-item" type="button">Porsgrunn</button>
-                    <button class="filter-item" type="button">Skien</button>
-                    <button class="filter-item" type="button">Oslo</button>
-                    <button class="filter-item" type="button">Bergen</button>
-
-                  </div>
-
-                </details>
-                 <details class="filter-dd">
-                    <summary class="filter-pill">
-                      <span class="filter-icon" aria-hidden="true">
-                        <img src="/images/price-tag.png" alt="" />
-                      </span>PRIS
-                    </summary>
- 
-                    <div class="filter-menu" >
-                      <div class="filter-form">
-                        <label class="filter-label" for="priceMin">Fra kr</label>
-                        <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
-  
-                        <label class="filter-label" for="priceMax">Til kr</label>
-                        <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
-  
-                        <button class="btn btn-success filter-apply" type="button">SØK</button>
-                      </div>
-                    </div>
-                  </details>
-                   <details class="filter-dd">
-                      <summary class="filter-pill">
-                          <span class="filter-icon" >
-                            <img src="/images/calendar.png" alt="" />
-                          </span>TILGJENGELIGHET
-                    
-                      </summary>
-  
-                      <div class="filter-menu">
-                        <div class="filter-form">
-                          <label class="filter-label" for="dateFrom">Fra</label>
-                          <input class="filter-input" id="dateFrom" type="date" />
-    
-                          <label class="filter-label" for="dateTo">Til</label>
-                          <input class="filter-input" id="dateTo" type="date" />
-    
-                          <button class="btn btn-success filter-apply" type="button">SØK</button>
-                        </div>
-                      </div>
-                    </details>
-              </div>
-              <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
-          </header>
-
-<!-- dogsitters and previous sitters-->
-          <section>
-            <div>
-              <section class="sitters-shell" aria-label="Hundepassere og tidligere passere">
-                 <div class="sitters-toprow">
-                    <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
-
-                      <!-- kan jeg endre a til h3??-->
-                       <a class="sitters-tab is-active" href="#" role="tab" aria-selected="true" data-tab="current">
-                       Hundepassere
-                       </a>
-                      <a class="sitters-tab" href="#" role="tab" aria-selected="false" data-tab="previous">
-                        Tidligere passere
-                      </a>
-                    </div>
-
-                    <!--CHANGE TO FORM-->
-
-                    <button class="btn btn-success sitters-cta" href="">
-                      BLI HUNDEPASSER I DAG!
-                    </button>
-                  </div>
-
-              <div class="sitters-box">
-              <section class="sitters-panel is-active">
-                <div class="sitters-list" id="sittersCurrentList">
-                  
-                <!-- as javaskript/ts -->
-                <article class="sitter-row" data-expanded="false">
-                  <div class="sitter-avatar">
-                    <img src="/Images/hero.jpg" alt="" />
-                    <span class="" aria-hidden="true"></span>
-                  </div>
-
-                  <div class="sitter-main">
-                    <div class="sitter-name">Tina</div>
-                    <div class="sitter-city">
-                      <span class="pin" aria-hidden="true"><img src="/Images/pin.png" alt="" /></span> Porsgrunn
-                    </div>
-                    <div class="sitter-rating" aria-label="Vurdering 4 av 5">
-                      <span class="stars stars--rated">★★★★☆</span>
-                    </div>
-                  </div>
-
-                  <div class="sitter-about">
-                    <div class="sitter-about-title">Litt om meg:</div>
-                    <div class="sitter-about-text">
-                      Jeg elsker å gå tur og tar gjerne med en firbeint venn! :D
-                    </div>
-                  </div>
-
-                  <button class="sitter-toggle" type="button" >
-                    <span class="chev" aria-hidden="true">⌄</span>
-                  </button>
-
-                  
-                </article>
-              </div>
-
-              </section>
-
-
+            <div class="header-paws">
+              <img src="/images/PawPrint_line.png" alt=""/>
             </div>
 
-          </section>
+            <!--Filter-->
+            <div class="sitters-filters">
+              <!--Location-->
+              <details class="filter-dd">
+                <summary class="filter-pill">
+                  <span class="filter-icon">
+                    <img src="/images/pin.png"/>
+                  </span>STED
+                </summary>
+
+                <div class="filter-menu">
+                  <button class="filter-item" type="button">Porsgrunn</button>
+                  <button class="filter-item" type="button">Tønsberg</button>
+                  <button class="filter-item" type="button">Oslo</button>
+                  <button class="filter-item" type="button">Bergen</button>
+                </div>
+              </details>
+              <!--Price-->
+              <details class="filter-dd">
+                <summary class="filter-pill">
+                  <span class="filter-icon" aria-hidden="true">
+                    <img src="/images/price-tag.png" alt="" />
+                  </span>PRIS
+                </summary>
+
+                <div class="filter-menu" >
+                  <div class="filter-form">
+                    <label class="filter-label" for="priceMin">Fra kr</label>
+                    <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
+
+                    <label class="filter-label" for="priceMax">Til kr</label>
+                    <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
+
+                    <button class="btn btn-success filter-apply" type="button">SØK</button>
+                  </div>
+                </div>
+              </details>
+
+              <!-- Availability-->
+              <details class="filter-dd">
+                <summary class="filter-pill">
+                  <span class="filter-icon" >
+                    <img src="/images/calendar.png" alt="" />
+                  </span>TILGJENGELIGHET           
+                </summary>
+
+                <div class="filter-menu">
+                  <div class="filter-form">
+                    <label class="filter-label" for="dateFrom">Fra</label>
+                    <input class="filter-input" id="dateFrom" type="date" />
+
+                    <label class="filter-label" for="dateTo">Til</label>
+                    <input class="filter-input" id="dateTo" type="date" />
+
+                    <button class="btn btn-success filter-apply" type="button">SØK</button>
+                  </div>
+                </div>
+              </details>
+            </div>
+            <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
+        </header>
+
+        <!-- Dogsitters and previous sitters-->
 
           
+        <section class="sitters-shell" aria-label="Hundepassere og tidligere passere">
+          <div class="sitters-toprow">
+            <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
+              <a class="sitters-tab is-active" href="#" role="tab" aria-selected="true" data-tab="current">
+              Hundepassere
+              </a>
+              <a class="sitters-tab" href="#" role="tab" aria-selected="false" data-tab="previous">
+                Tidligere passere
+              </a>
+            </div>
 
+                  <!--CHANGES THE WHOLE PAGE TO A FORM WHEN PRESSING THE BUTTON-->
 
+              <a class="btn btn-success sitters-cta" href="become-a-sitter/become-a-sitter.html">
+                BLI HUNDEPASSER I DAG!
+              </a>
+          </div>
 
-        </main>
+          <div class="sitters-box">
+            <section class="sitters-panel is-active" data-panel="current">
+              <div class="sitters-list" id="sittersCurrentList">
+                <article class="sitter-card" data-sitter-card>
+                 
+                  <!-- as javaskript/ts COMPACT-->
+                  <div class="sitters-compact">
+                    <div class="sitter-profil">
+                      <img src="/images/hero.jpg" alt="" />
+                      <span class="" aria-hidden="true"></span>
+                    </div>
+                        
+                    <div class="sitter-compact-info">
+                      <div class="sitter-name">Tina</div>
+
+                      <div class="sitter-city">
+                        <span class="sitter-pin" aria-hidden="true">
+                          <img src="/images/pin.png" alt="" /></span> Porsgrunn
+                      </div>
+                      <div class="sitter-rating" aria-label="Vurdering 4 av 5">
+                        <span class="stars stars--rated">★★★★☆</span>
+                      </div>
+                    </div>
+
+                    
+                    <div class="sitter-compact-about">
+                      <div class="sitter-about-title">Litt om meg:</div>
+                      <div class="sitter-about-text">Jeg elsker å gå tur og tar gjerne med en firbeint venn! :D</div>
+                    </div>
+                    <!--DD-->
+                    <button class="sitter-toggle" type="button" aria-label="Vis mer om hundepasseren" aria-expanded="false" aria-controls="sitter-detail-1">
+                      <img class="sitter-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true" />
+                    </button> 
+                  </div>
+                          
+                  <!-- Details (replaced in js/ts)-->
+                  <div class="sitter-details" id="sitter-detail-1">
+                    <div class="sitter-detail-top">
+                      <div class="sitter-photo">
+                        <img src="/images/hero.jpg" alt="">
+                        <!--<span class="sitter-favorite"></span>-->
+                      </div>
+                          
+                      <div class="sitter-detail-content">
+                        <div class="sitter-detail-head">
+                          <h3 class="sitter-detail-name">Tina </h3>    
+                          <button class="sitter-toggle sitter-toggle-close" type="button" aria-lable="lukk detaljer for hundepassere"
+                            aria-expanded="true" aria-controls="sitter-detail-1" data-sitter-toggle>
+                            <img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
+                          </button>
+                        </div>
+
+                        <div class="sitter-detail-colums">
+                          <div class="sitter-detail-block">
+                            <div class="sitter-city">
+                             <span class="sitter-pin" aria-hidden="true">
+                                <img src="/images/pin.png" alt="" /></span> Porsgrunn
+                            </div>
+                            <div class="sitter-detail-title">Om meg</div>
+                            <p class="sitter-detail-text">
+                            her skal det stå litt info
+                            </p>
+                          </div>
+                          <div class="sitter-detail-block">
+                            <div class="sitter-detail-title">Detaljer</div>
+                                <p class="sitter-detail-text">
+                                  her kommer det enda mer info :D om priser ogsånn
+                                  <br/>
+                                  Tilgjengelig: Helger • Pris: 250kr/dag
+                                </p>
+                          </div>
+                          </div>
+
+                            
+                          <div class="sitter-detail-bottom">
+                            <div class="sitter-detail-rating">
+                              <span class="stars stars--rated" aria-label="vurdering 4 av 5">★★★★☆</span>
+                              <button class="sitter-reviews-toggle" type="button" aria-controls="sitter-reviews-1" data-reviews-toggle>
+                                <span class="sitters-review-count">3 Omtaler</span>
+                                <img class="sitter-mini-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true">
+                              </button>
+                            </div>
+                            
+                            <a class="btn btn-success sitter-book" href="/src/Pages/booking/booking.html">BOOK NÅ</a>
+                          </div>
+                      </div>
+                    </div>
+
+                    <!--REVIEWS-->
+                    <div class="sitter-reviews" id="sitter-reviews-2">
+                      <article class="review-row">
+                        <div class="review-avatar" aria-hidden="true">
+                          <img src="/images/useravatar.png" alt="" />     
+                        </div>
+                        <div class="review-info">
+                          <div class="review-name">Anette</div>
+                          <div class="sitter-city">
+                            <span class="sitter-pin" aria-hidden="true">
+                            <img src="/images/pin.png" alt="" /></span>Bergen 
+                          </div>
+                        </div>
+                        <div class="stars stars--rated" aria-label="Vurdering 5 av 5">★★★★★</div>  
+                       
+                        <div class="review-comment">
+                          <p class="review-title">Fantastisk!</p>
+                          <p class="review-text">Han kan fint passe meg neste gang!</p>
+                        </div>     
+                         <button class="sitter-toggle sitter-toggle-close" type="button" aria-lable="lukk detaljer for hundepassere"
+                            aria-expanded="true" aria-controls="sitter-detail-1" data-sitter-toggle>
+                            <img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
+                          </button>
+                      </article>
+
+                      <article class="review-row">
+                        <div class="review-avatar" aria-hidden="true">
+                          <img src="/images/useravatar.png" alt="" />     
+                        </div>
+                        <div class="review-info">
+                          <div class="review-name">Fredrik</div>
+                          <div class="sitter-city">
+                            <span class="sitter-pin" aria-hidden="true">
+                            <img src="/images/pin.png" alt="" /></span>Tønsberg 
+                          </div>
+                        </div>
+                        <div class="stars stars--rated" aria-label="Vurdering 5 av 5">★☆☆☆☆</div> 
+                        
+                        <div class="review-comment">
+                          <p class="review-title">Hvorfor kan jeg ikke legge til 10 stjerner?!</p>
+                          <p class="review-text">1 stjerne fordi jeg ikke har muligheten til å legge inn 10 stjerner. Veldig flink hundepasser!</p>
+                        </div>
+                       
+                         <button class="sitter-toggle sitter-toggle-close" type="button" aria-lable="lukk detaljer for hundepassere"
+                            aria-expanded="true" aria-controls="sitter-detail-1" data-sitter-toggle>
+                            <img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
+                          </button>
+                      </article>
+                      
+                      <article class="review-row">
+                        <div class="review-avatar" aria-hidden="true">
+                          <img src="/images/useravatar.png" alt="" />     
+                        </div>
+                        <div class="review-info">
+                          <div class="review-name">Karlla</div>
+                          <div class="sitter-city">
+                            <span class="sitter-pin" aria-hidden="true">
+                            <img src="/images/pin.png" alt="" /></span>Oslo
+                          </div>
+                        </div>
+                        <div class="stars stars--rated" aria-label="Vurdering 5 av 5">★★★★★</div>  
+                        <div class="review-comment">
+                          <p class="review-title">FREDRIK FOR PRESIDENT!</p>
+                          <p class="review-text">Ja!</p>
+                        </div>  
+                         <button class="sitter-toggle sitter-toggle-close" type="button" aria-lable="lukk detaljer for hundepassere"
+                            aria-expanded="true" aria-controls="sitter-detail-1" data-sitter-toggle>
+                            <img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
+                          </button>
+                      </article>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
       <site-footer></site-footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/Pages/sitters/sitters.ts"></script>
-    
-
   </body>
-
 </html>
