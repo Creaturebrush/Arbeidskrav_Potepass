@@ -1,0 +1,25 @@
+.sitter-form-container {
+  border: solid 4px var(--primary-shade-2);
+  border-radius: 2rem;
+  width: min(85rem, 100%);
+  margin:  auto;
+  background-color: var(--primary-light);
+  overflow: hidden;
+}
+
+.Sitter-form-title{
+display: flex;
+justify-content: center;
+background-color: var(--primary-shade-1);
+
+
+}
+
+.sitters-input-form{
+    display:grid;
+    padding:2rem;
+}
+
+.cancel-btn{
+    
+}
