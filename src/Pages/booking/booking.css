@@ -16,7 +16,6 @@
 .star-rating,
 .btn-container,
 h1,
-p,
 h4 {
   display: flex;
   justify-content: center;
@@ -41,7 +40,8 @@ p {
 }
 
 .profile-img {
-  width: 1000px;
+  max-width: 500px;
+  /* width: 90%;  */
 }
 
 .rating-container {
@@ -54,7 +54,7 @@ p {
 
 h4 {
   background-color: var(--primary);
-  padding: 1rem; 
+  padding: 1rem;
 }
 
 .choose-dog-container {
@@ -100,8 +100,8 @@ h4 {
 form {
   border: solid 4px var(--primary-shade-2);
   border-radius: 2rem;
-  max-width: 80%;
-  margin:  auto auto 2rem auto;
+  max-width: 90%;
+  margin: auto auto 2rem auto;
   background-color: var(--primary-light);
   overflow: hidden;
 }
@@ -116,10 +116,10 @@ form {
   padding: 1rem 0rem;
 }
 
-.calender{
-  padding: 1rem; 
+.calender {
+  padding: 1rem;
   border-radius: 1rem;
-  border: none; 
+  border: none;
   font-family: var(--font-body);
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
@@ -127,7 +127,7 @@ form {
 }
 
 .btn-container {
-  gap: 4rem; 
+  gap: 4rem;
 }
 
 .pawprint-line {
@@ -140,6 +140,107 @@ form {
   width: 100%;
   height: 100px;
   resize: vertical;
-  padding: 1rem; 
-  border: none; 
+  padding: 1rem;
+  border: none;
+}
+
+.error-msg p {
+  color: red;
+}
+
+.date-container span,
+.choose-dog-container span {
+  color: red;
+}
+
+.form-input:focus-visible,
+.form-group:focus-within {
+  outline: #ffffff solid 2px;
+  outline-offset: 0.15rem;
+}
+
+/* Modals */
+.booking-modal {
+  background-color: var(--primary);
+  border: var(--bg) solid 1rem;
+  border-radius: 24px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 80%;
+}
+
+.modal-changes-available,
+.changes-not-available {
+  display: flex;
+}
+
+.modal-changes-available img,
+.changes-not-available img,
+.booking-modal-changed img {
+  max-width: 100%;
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.booking-modal-changed {
+  background-color: var(--bg);
+}
+
+.booking-modal-changed div {
+  display: flex;
+}
+
+.booking-modal-changed span {
+  color: var(--primary-shade-2);
+  display: inline;
+}
+
+.booking-modal h5 {
+  color: var(--primary-shade-2);
+}
+
+/* Desktop breakpoint */
+@media (max-width: 1440px) {
+}
+/* Tablet Breakpoint */
+@media (max-width: 1024px) {
+}
+/* Phone breakpoint around 600px*/
+@media (max-width: 700px) {
+  .choose-dog-container,
+  .date-container,
+  .btn-container {
+    flex-direction: column;
+    display: flex;
+  }
+
+  .btn-container {
+    gap: 1rem;
+  }
+
+  button,
+  .btn {
+    width: 282px;
+    height: 68px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .dog-sitter-card {
+    flex-direction: column;
+    display: flex;
+    max-width: 80%;
+  }
+
+  .dog-sitter-name {
+    justify-self: center;
+  }
 }

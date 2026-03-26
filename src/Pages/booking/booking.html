@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Booking Page</title>
+    <title>Book Hundepasser</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="booking.css" />
     <script type="module" src="/src/main.ts"></script>
@@ -15,10 +15,11 @@
       <h1>BOOK HUNDEPASSER</h1>
       <img
         src="/images/PawPrint_line.png"
-        alt="images of paws undelining the heading"
+        alt=""
         class="pawprint-line"
+        aria-hidden="true"
       />
-      <!-- Trenger kanskje ikke alt tekst - siden det er dekorativ -->
+
       <p>Du har valgt (bruker) som hundepasser.</p>
       <div class="dog-sitter-card">
         <div class="rating-container">
@@ -27,7 +28,7 @@
             src="/images/dog1.png"
             alt="hundepassers profil bilde"
           />
-          <div class="star-rating">
+          <div class="star-rating" aria-label="Vurdering 4 av 5 stjerner">
             <img src="/images/star-filled.png" alt="star-1" />
             <img src="/images/star-filled.png" alt="star-2" />
             <img src="/images/star-filled.png" alt="star-3" />
@@ -51,15 +52,17 @@
         <h4 class="">BOOK HUNDEPASSER</h4>
         <div class="form-container">
           <div class="choose-dog-container">
-            <label for="dog-checkbox form-label">VELG HUNDER: </label>
+            <label for="dog-checkbox form-label"
+              ><span aria-hidden="true">*</span>VELG HUNDER:
+            </label>
             <div class="dogs-container">
-              <div class="dog-container">
+              <div class="dog-container form-group">
                 <input type="checkbox" name="" id="dog-checkbox" />
                 <label class="fw-bold" for="dog-checkbox"
                   >Napoleon (Chihuahua)</label
                 >
               </div>
-              <div class="dog-container">
+              <div class="dog-container form-group">
                 <input type="checkbox" name="" id="dog-checkbox" />
                 <label class="fw-bold" for="dog-checkbox"
                   >Buddy(Golden Retriever)</label
@@ -105,10 +108,24 @@
           </div>
 
           <div class="date-container">
-            <label class="form-label" for="from-date">FRA-DATO: </label>
-            <input type="date" name="" id="from-date" class="calender" />
-            <label class="form-label" for="to-date">TIL-DATO: </label>
-            <input type="date" name="" id="to-date" class="calender" />
+            <label class="form-label" for="from-date"
+              ><span aria-hidden="true">*</span>FRA-DATO:
+            </label>
+            <input
+              type="date"
+              name=""
+              id="from-date"
+              class="calender form-input"
+            />
+            <label class="form-label" for="to-date"
+              ><span aria-hidden="true">*</span>TIL-DATO:
+            </label>
+            <input
+              type="date"
+              name=""
+              id="to-date"
+              class="calender form-input"
+            />
           </div>
 
           <div class="message-container">
@@ -116,6 +133,7 @@
               >MELDING(VALGFRITT):
             </label>
             <textarea
+              class="form-input"
               name="message"
               id="message-input"
               rows="4"
@@ -134,7 +152,95 @@
           </div>
         </div>
       </form>
+      <div class="error-msg">
+        <p>Fyll inn alle felter</p>
+      </div>
+
+      <!-- Modals -->
+      <div class="booking-modal all-fields-filled">
+        <h2>OBS! Alle feltene må være fylt ut!</h2>
+        <img src="/images/unsucessful.png" alt="" />
+        <button class="btn btn-success">FORTSETT</button>
+      </div>
+
+      <div class="booking-modal confirm-send-request">
+        <h2>Er du sikker på at du ønsker å sende forespørselen?</h2>
+        <div class="btn-container">
+          <button class="btn btn-success">JA, SEND FORESPØRSEL</button>
+          <button class="btn btn-danger">NEI, IKKE SEND FORESPØRSELEN</button>
+        </div>
+      </div>
+
+      <div class="booking-modal confirm-cancel-request">
+        <h2>Er du sikker på at du vil kansellere bookingen?</h2>
+        <img src="/images/unsucessful.png" alt="" />
+        <div class="btn-container">
+          <button class="btn btn-success">JA, SLETT BOOKINGEN</button>
+          <button class="btn btn-danger">NEI, IKKE SLETT BOOKINGEN</button>
+        </div>
+      </div>
+
+      <div class="booking-modal booking-cancelled">
+        <h2>Bookingen har blitt kansellert.</h2>
+        <img src="/images/sucessful.png" alt="" />
+        <button class="btn btn-success">GÅ TILBAKE</button>
+      </div>
+
+      <div class="booking-modal changes-available">
+        <div class="modal-changes-available">
+          <img src="/images/sucessful.png" alt="" />
+          <h2>Booking er ikke bekreftet enda. Du kan gjøre endringer.</h2>
+        </div>
+        <button class="btn btn-warning">ENDRE BOOKING</button>
+      </div>
+
+      <!-- Make this a toast -->
+      <div class="booking-modal checking-booking-confirmed" aria-busy="true">
+        <h2>Sjekker at booking ikke allerede er bekreftet.</h2>
+        <div class="spinner" aria-hidden="true"></div>
+      </div>
+
+      <div class="booking-modal changes-not-available">
+        <div class="modal-changes-available">
+          <img src="/images/unsucessful.png" alt="" />
+          <h2>
+            Booking er allerede bekreftet. Du kan ikke gjøre endringer. Ta
+            kontakt med hundepasser under "Mine bookinger" for å avtale
+            endringer.
+          </h2>
+        </div>
+        <button class="btn btn-success">GÅ TIL MINE BOOKINGER</button>
+      </div>
+
+      <div class="booking-modal booking-modal-changed">
+        <h5>BOOKINGFORESPØRSEL SENDT!</h5>
+        <div>
+          <img src="/images/sucess-checkmark.png" alt="" />
+          <p>
+            DIN FORESPØRSEL ER SENDT TIL HUNDEPASSEREN. DU FINNER DETALJENE OG
+            STATUS PÅ BOOKINGEN UNDER <span>MINE BOOKINGER</span>.
+          </p>
+        </div>
+        <div class="btn-container">
+          <button class="btn btn-warning">ENDRE BOOKING</button>
+          <button class="btn btn-danger">SLETT BOOKING</button>
+          <button class="btn btn-success">FULLFØR</button>
+        </div>
+      </div>
+
+      <div class="booking-modal booking-modal-changed">
+        <h5>BOOKINGFORESPØRSEL OPPDATERT!</h5>
+        <div>
+          <img src="/images/sucess-checkmark.png" alt="" />
+          <p>
+            DIN FORESPØRSEL ER SENDT TIL HUNDEPASSEREN. DU FINNER DETALJENE OG
+            STATUS PÅ BOOKINGEN UNDER <span>MINE BOOKINGER</span>.
+          </p>
+        </div>
+        <button class="btn btn-success">SE MINE BOOKINGER</button>
+      </div>
     </main>
+
     <site-footer>
       <!-- footer here -->
     </site-footer>
