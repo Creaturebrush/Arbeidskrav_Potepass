@@ -21,7 +21,16 @@
       <section class="user-container">
         <h2>Hei, navn!</h2>
         <div class="info-container">
-          <img src="/images/useravatar.png" alt="Profile picture" />
+          <div class="user-img-container">
+            <img src="/images/useravatar.png" alt="Profile picture" />
+            <div class="star-container">
+              <img src="/images/star-filled.png" alt="Fylt stjerne" />
+              <img src="/images/star-filled.png" alt="Fylt stjerne" />
+              <img src="/images/star-filled.png" alt="Fylt stjerne" />
+              <img src="/images/star-filled.png" alt="Fylt stjerne" />
+              <img src="/images/star-filled.png" alt="Fylt stjerne" />
+            </div>
+          </div>
           <div class="user-info">
             <p>Fornavn:</p>
             <p>Etternavn:</p>
@@ -31,9 +40,11 @@
         </div>
         <div class="btn-container">
           <button class="btn btn-warning">REDIGER PROFIL</button>
-          <button class="btn btn-danger">SLETT PROFIL</button>
+          <button class="btn btn-danger" id="delete-profile-btn">SLETT PROFIL</button>
         </div>
       </section>
+
+      <div class="modal-wrapper"></div>
 
       <section class="dog-container">
         <h2>Mine hunder</h2>
@@ -80,151 +91,189 @@
         </div>
       </section>
 
-    <!-- Placeholder for modals til profil -->
+      <!-- Placeholder for modals til profil -->
 
-    <div class="MODAL-PLACEHOLDER">
+      <div class="MODAL-PLACEHOLDER">
+        <!-- legg til hund -->
+        <div class="profile-modal">
+          <h2>Legg til hund</h2>
+          <div class="add-edit-modal-card">
+            <div class="add-edit-img-container">
+              <img src="/images/dogicon.png" alt="Bilde av hund" />
+              <button class="btn btn-success">LAST OPP BILDE</button>
+            </div>
+            <div class="add-edit-info">
+              <p>Navn:</p>
+              <p>Rase:</p>
+              <p>Alder:</p>
+              <p>Allergier:</p>
+            </div>
+            <div class="add-edit-user-info">
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+            </div>
+            <div class="add-edit-btn-container">
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success">LEGG TIL HUND</button>
+            <button class="btn btn-danger">AVBRYT</button>
+          </div>
+        </div>
 
-      <!-- legg til hund -->
-      <div class="profile-modal">
-        <h2>Legg til hund</h2>
-        <div class="add-edit-modal-card">
-          <div class="add-edit-img-container">
-            <img src="/images/dogicon.png" alt="Bilde av hund">
-            <button class="btn btn-success">LAST OPP BILDE</button>
+        <!-- rediger hund -->
+        <div class="profile-modal">
+          <h2>Hva ønsker du å redigere?</h2>
+          <div class="add-edit-modal-card">
+            <div class="add-edit-img-container">
+              <img src="/images/dogicon.png" alt="Bilde av hund" />
+              <button class="btn btn-success">LAST OPP BILDE</button>
+            </div>
+            <div class="add-edit-info">
+              <p>Navn:</p>
+              <p>Rase:</p>
+              <p>Alder:</p>
+              <p>Allergier:</p>
+            </div>
+            <div class="add-edit-user-info">
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+            </div>
+            <div class="add-edit-btn-container">
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+            </div>
           </div>
-          <div class="add-edit-info">
-            <p>Navn:</p>
-            <p>Rase:</p>
-            <p>Alder:</p>
-            <p>Allergier:</p>
-          </div>
-          <div class="add-edit-user-info">
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-          </div>
-          <div class="add-edit-btn-container">
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
+          <div class="btn-container">
+            <button class="btn btn-success">BEKREFT ENDRINGER</button>
+            <button class="btn btn-danger">AVBRYT ENDRINGER</button>
           </div>
         </div>
-        <div class="btn-container">
-        <button class="btn btn-success">LEGG TIL HUND</button>
-        <button class="btn btn-danger">AVBRYT</button>
-        </div>
-      </div>
 
-      <!-- rediger hund -->
-      <div class="profile-modal">
-        <h2>Hva ønsker du å redigere?</h2>
-        <div class="add-edit-modal-card">
-          <div class="add-edit-img-container">
-            <img src="/images/dogicon.png" alt="Bilde av hund">
-            <button class="btn btn-success">LAST OPP BILDE</button>
+        <!-- rediger profil -->
+        <div class="profile-modal">
+          <h2>Hva ønsker du å redigere?</h2>
+          <div class="add-edit-modal-card">
+            <div class="add-edit-img-container">
+              <img src="/images/useravatar.png" alt="Bilde av person" />
+              <button class="btn btn-success">LAST OPP BILDE</button>
+            </div>
+            <div class="add-edit-info">
+              <p>Fornavn:</p>
+              <p>Etternav:</p>
+              <p>Telefon:</p>
+              <p>E-post:</p>
+            </div>
+            <div class="add-edit-user-info">
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+            </div>
+            <div class="add-edit-btn-container">
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+            </div>
           </div>
-          <div class="add-edit-info">
-            <p>Navn:</p>
-            <p>Rase:</p>
-            <p>Alder:</p>
-            <p>Allergier:</p>
-          </div>
-          <div class="add-edit-user-info">
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-          </div>
-          <div class="add-edit-btn-container">
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
+          <div class="btn-container">
+            <button class="btn btn-success">BEKREFT ENDRINGER</button>
+            <button class="btn btn-danger">AVBRYT ENDRINGER</button>
           </div>
         </div>
-        <div class="btn-container">
-        <button class="btn btn-success">BEKREFT ENDRINGER</button>
-        <button class="btn btn-danger">AVBRYT ENDRINGER</button>
-        </div>
-      </div>
 
-      <!-- rediger profil -->
-      <div class="profile-modal">
-        <h2>Hva ønsker du å redigere?</h2>
-        <div class="add-edit-modal-card">
-          <div class="add-edit-img-container">
-            <img src="/images/useravatar.png" alt="Bilde av person">
-            <button class="btn btn-success">LAST OPP BILDE</button>
-          </div>
-          <div class="add-edit-info">
-            <p>Fornavn:</p>
-            <p>Etternav:</p>
-            <p>Telefon:</p>
-            <p>E-post:</p>
-          </div>
-          <div class="add-edit-user-info">
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-            <p>tomt felt</p>
-          </div>
-          <div class="add-edit-btn-container">
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-            <button class="btn btn-warning">REDIGER</button>
-          </div>
-        </div>
-        <div class="btn-container">
-        <button class="btn btn-success">BEKREFT ENDRINGER</button>
-        <button class="btn btn-danger">AVBRYT ENDRINGER</button>
-        </div>
-      </div>
-
-      <!-- Fjern hund -->
-       <div class="profile-modal">
-        <h2>Hvilken hund ønsker du å fjerne?</h2>
-        <div class="remove-dog-container">
+        <!-- Fjern hund -->
+        <div class="profile-modal">
+          <h2>Hvilken hund ønsker du å fjerne?</h2>
+          <div class="remove-dog-container">
             <div class="remove-dog-card">
-              <img src="/images/dog1.png" alt="Bilde av hund">
+              <img src="/images/dog1.png" alt="Bilde av hund" />
               <p>NAVN</p>
             </div>
             <div class="remove-dog-card">
-              <img src="/images/dog1.png" alt="Bilde av hund">
+              <img src="/images/dog1.png" alt="Bilde av hund" />
               <p>NAVN</p>
             </div>
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success">AVBRYT</button>
+            <button class="btn btn-danger">FJERN VALGT HUND</button>
+          </div>
         </div>
-        <div class="btn-container">
-        <button class="btn btn-success">AVBRYT</button>
-        <button class="btn btn-danger">FJERN VALGT HUND</button>
-        </div>
-       </div>
 
-       <!-- Fjern hund advarsel -->
-       <div class="profile-modal">
-        <h2>Er du sikker på at du ønsker å fjerne NAVN?</h2>
-        <div class="remove-dog-container">
-              <img src="/images/dog1.png" alt="Bilde av hund">
+        <!-- Fjern hund advarsel -->
+        <div class="profile-modal">
+          <h2>Er du sikker på at du ønsker å fjerne NAVN?</h2>
+          <div class="remove-dog-container">
+            <img src="/images/dog1.png" alt="Bilde av hund" />
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success">AVBRYT</button>
+            <button class="btn btn-danger">JA, FJERN HUND</button>
+          </div>
         </div>
-        <div class="btn-container">
-        <button class="btn btn-success">AVBRYT</button>
-        <button class="btn btn-danger">JA, FJERN HUND</button>
-        </div>
-       </div>
 
-       <!-- Fjern hund bekreftelse -->
-       <div class="profile-modal">
-        <h2>NAVN er fjernet fra "mine hunder"</h2>
-        <div class="remove-dog-container">
-              <img src="/images/dog1.png" alt="Bilde av hund">
+        <!-- Fjern hund bekreftelse -->
+        <div class="profile-modal">
+          <h2>NAVN er fjernet fra "mine hunder"</h2>
+          <div class="remove-dog-container">
+            <img src="/images/dog1.png" alt="Bilde av hund" />
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success">GÅ TILBAKE</button>
+          </div>
         </div>
-        <div class="btn-container">
-        <button class="btn btn-success">GÅ TILBAKE</button>
-        </div>
-       </div>
 
+        <!-- Bekreftelses modaler -->
+        <div class="profile-modal">
+          <h2>Er du sikker på at du ønsker å slette profilen din?</h2>
+          <div class="btn-container">
+            <button class="btn btn-success">NEI, GÅ TILBAKE</button>
+            <button class="btn btn-danger">JA, SLETT PROFIL</button>
+          </div>
+        </div>
+
+        <div class="profile-modal">
+          <h2>Profilen din ble slettet!</h2>
+          <div class="btn-container">
+            <button class="btn btn-success">AVSLUTT</button>
+          </div>
+        </div>
+
+        <div class="profile-modal">
+          <h2>"NAVN" ble lagt til i dine hunder!</h2>
+          <img src="/images/success.png" alt="success" />
+          <div class="btn-container">
+            <button class="btn btn-success">FORTSETT</button>
+          </div>
+        </div>
+
+        <div class="profile-modal">
+          <h2>OBS! Alle feltene må være fylt ut!</h2>
+          <img src="/images/fail.png" alt="fail" />
+          <div class="btn-container">
+            <button class="btn btn-success">FORTSETT</button>
+          </div>
+        </div>
+
+        <div class="profile-modal">
+          <h2>Endringene ble lagret!</h2>
+          <img src="/images/success.png" alt="success" />
+          <div class="btn-container">
+            <button class="btn btn-success">FORTSETT</button>
+          </div>
+        </div>
       </div>
     </main>
 
