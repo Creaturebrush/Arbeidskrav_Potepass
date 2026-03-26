@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hundepassere</title>
     <link rel="stylesheet" href="/src/Pages/sitters/sitters.css" />
-    <link rel="stylesheet" href="/src/style.css">
+    
     <meta name="author" content="Stine Hartvigsen">
   </head>
 
@@ -158,7 +158,7 @@
                               </div>
                           </div>
                           <button class="sitter-toggle sitter-toggle-close" type="button" aria-lable="lukk detaljer for hundepassere"
-                            aria-expanded="true" aria-controls="sitter-detail-1" data-sitter-toggle>
+                            aria-expanded="true" aria-controls="sitter-detail-1">
                             <img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
                           </button>
                         </div>
@@ -266,6 +266,149 @@
             </section>
           </div>
         </section>
+
+        <!-- My sitter profile (shows after user registers as sitter) -->
+        <section class="my-sitter" aria-labelledby="">
+          <h4 class="my-sitter-title" id="">Din hundepasserprofil</h4>
+ 
+          <article class="sitter-card my-sitter-card">
+            <div class="sitter-detail my-sitter-detail">
+              <div class="sitter-detail-top">
+                <div class="sitter-photo">
+                  <img src="/images/hero.jpg" alt="Profilbilde av deg som hundepasser" />
+                </div>
+ 
+                <div class="sitter-detail-content">
+                  <div class="sitter-detail-head">
+                    <h3 class="sitter-detail-name">Kari Hansen</h3>
+                  </div>
+ 
+                  <div class="sitter-detail-columns">
+                    <div class="sitter-detail-block">
+                      <div class="sitter-detail-title">Litt om meg</div>
+                      <p class="sitter-detail-text">
+                        Jeg er en rolig og erfaren hundepasser som liker turer og lek. Jeg sender gjerne oppdateringer underveis.
+                      </p>
+                    </div>
+ 
+                    <div class="sitter-detail-block">
+                      <div class="sitter-detail-title">Detaljer</div>
+                      <p class="sitter-detail-text">
+                        Årserfraing: 3 <br/>
+                        Passer: små og mellomstore hundepasser<br/>
+                        Erfaring: <br/>
+                        Max anntall hunder samtidig: <br/>
+                        Pris:<br/>
+                      </p>
+                    </div>
+                  </div>
+ 
+                  <!-- bottom row -->
+                  <div class="my-sitter-bottom">
+                    <div class="my-sitter-bottom-left">
+                      <div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
+                        <span class="stars stars--rated">★★★★☆</span>
+                        <span class="my-sitter-reviews">(12 omtaler)</span>
+                      </div>
+                    </div>
+ 
+                    <div class="my-sitter-actions">
+                      <button class="btn btn-warning status-btn" type="button">
+                        REDIGER
+                      </button>
+                      <button class="btn btn-danger status-btn" type="button">
+                        SLETT
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!--MODALS -->
+        <section class="confirm-card" aria-labelledby="">
+          <div class="confirm-card-inner">
+            <h3 class="confirm-title" id="">
+              Er du sikker på at du vil fjerne registreringen din som hundpasser?
+            </h3>
+ 
+            <div class="confirm-icon" aria-hidden="true">
+              <img src="/images/delete-button.png" alt="" />
+            </div>
+ 
+            <div class="confirm-actions">
+              <button class="btn btn-success" type="button">JA, SLETT REGISTRERING</button>
+              <button class="btn btn-danger" type="button">NEI, GÅ TILBAKE</button>
+            </div>
+          </div>
+        </section>
+        
+        <section class="confirm-card" aria-labelledby="">
+          <div class="confirm-card-inner">
+            <h3 id="" class="confirm-title">
+              Registreringen din som hundepasser er slettet.
+            </h3>
+ 
+            <div class="confirm-icon" aria-hidden="true">
+              <img src="/images/check.png" alt="" />
+            </div>
+ 
+            <div class="confirm-actions">
+              <button class="btn btn-success" type="button">GÅ TILBAKE</button>
+            </div>
+          </div>
+        </section>
+  
+        <section class="confirm-card" aria-labelledby="">
+          <div class="confirm-card-inner">
+            <h3 id="" class="confirm-title">
+              Du er nå nesten registrert som hundepasser!
+            </h3>
+ 
+            <p class="confirm-subtitle">Takk for at du er med på laget!</p>
+ 
+            <div class="confirm-actions">
+              <button class="btn btn-danger" type="button">ANGRE REGISTRERING</button>
+              <button class="btn btn-success" type="button">FULLFØR</button>
+            </div>
+          </div>
+        </section> 
+ 
+        <section class="confirm-card" aria-labelledby="">
+          <div class="confirm-card-inner">
+            <h3 id="" class="confirm-title">
+              Er du sikker på at du vil oppdatere profilen din?
+            </h3>
+            <div class="confirm-icon" aria-hidden="true">
+              <img src="/images/delete-button.png" alt="" />
+            </div>
+ 
+            <div class="confirm-actions">
+              <button class="btn btn-success" type="button">JA, OPPDATER</button>
+              <button class="btn btn-danger" type="button">NEI, GÅ TILBAKE</button>
+            </div>
+          </div>
+        </section>
+ 
+        <section class="confirm-card" aria-labelledby="">
+          <div class="confirm-card-inner">
+            <h3 id="" class="confirm-title">
+              Registreringen din er oppdadert.
+            </h3>
+ 
+            <div class="confirm-icon" aria-hidden="true">
+              <img src="/images/check.png" alt="" />
+            </div>
+ 
+            <div class="confirm-actions">
+              <button class="btn btn-success" type="button">GÅ TILBAKE</button>
+            </div>
+          </div>
+        </section>
+
+        
       </main>
       <site-footer></site-footer>
     </div>
