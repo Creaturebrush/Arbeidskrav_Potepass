@@ -1,18 +1,15 @@
-
-<!doctype html>
+<!Doctype html>
 <html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PØTEPASS | Mine Avtaler</title>
     <link rel="stylesheet" href="/src/Pages/status/status.css" />
-    <script type="module" src="/src/Pages/status/status.ts"></script>
-    <script type="module" src="/src/main.ts"></script>
+    <meta name="author" content="Karlla Hammerstad">
   </head>
 
   <body>
     <div class="page">
-
       <site-header></site-header>
 
       <main class="main header-page">
@@ -20,31 +17,36 @@
           <h1 id="headerTitle" class="header-title">MINE BOOKINGER</h1>
 
           <div class="header-paws" aria-hidden="true">
-           
-            <img src="/images/Pawprint_line.png" alt="" />
+            <img src="/images/PawPrint_line.png" alt="" />
           </div>
         </header>
 
         <section class="status-shell" aria-label="Bookinger og forespørsler">
-          <!-- Tabs + "Ny booking" -->
+          <!-- Tabs + "Ny booking button" -->
           <div class="status-toprow">
             <div class="status-tabs" role="tablist" aria-label="Velg visning">
-              <a class="status-tab is-active" href="#" role="tab" aria-selected="true" data-tab="bookings">Dine bookinger</a>
-              <a class="status-tab" href="#" role="tab" aria-selected="false" data-tab="requests">Forespørsler</a>
+              <a class="status-tab is-active" href="#" role="tab"
+                aria-selected="true" data-tab="bookings">
+                Dine bookinger
+              </a>
+              
+              <a class="status-tab" href="#" role="tab" aria-selected="false" data-tab="requests">
+                Forespørsler
+              </a>
             </div>
 
             <a class="btn btn-success status-new" href="/src/Pages/booking/booking.html">NY BOOKING</a>
           </div>
 
-          <!-- Green container -->
+          <!-- Container -->
           <div class="status-box">
-            <!-- Top right tools -->
+            <!-- Top right tab 1-->
             <div class="status-tools status-tools--bookings">
               <!-- Sort dropdown -->
               <details class="status-dd">
                 <summary class="status-pill">
                   <span class="status-dd--label">NYESTE FØRST</span>
-                  <span class="caret" aria-hidden="true"><img src="/images/arrow-down.png" alt="" /></span>
+                  <span class="caret" aria-hidden="true"><img src="/images/arrow-down.png" alt=""/></span>
                 </summary>
 
                 <div class="status-dd--menu" role="menu">
@@ -56,8 +58,8 @@
               <!-- Status dropdown -->
               <details class="status-dd">
                 <summary class="status-pill">
-                  <span class="status-dd--label">STATUS: ALLE</span>
-                  <span class="caret" aria-hidden="true"><img src="/images/arrow-down.png" alt="" /></span>
+                  <span class="status-dd--label">STATUS</span>
+                  <span class="caret" aria-hidden="true"><img src="/images/arrow-down.png" alt=""/></span>
                 </summary>
 
                 <div class="status-dd--menu" role="menu">
@@ -69,7 +71,7 @@
               </details>
             </div>
 
-            <!-- Top right filters -->
+            <!-- Top right tab 2 -->
             <div class="status-tools status-tools--requests" aria-label="Filter forespørsler">
               <button class="status-pill is-active" type="button" data-filter="all">ALLE</button>
               <button class="status-pill" type="button" data-filter="pending">UNDER BEHANDLING</button>
@@ -80,14 +82,19 @@
             <!-- Lists -->
             <section class="status-panel is-active" data-panel="bookings" aria-label="Dine bookinger">
               <div class="status-list" id="bookingsList">
-                <!-- Example rows (to be deleted when JS renders dynamically) -->
+                <!-- 1/ Example rows (to be deleted when JS renders dynamically) -->
                 <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
+                  <div class="status-avatar">
+                    <img src="/images/hero.jpg" alt="" />
+                  </div>
 
                   <div class="status-info">
                     <div class="status-name">Anne Lunde</div>
                     <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
+                    <div class="status-city">
+                      <span class="pin" aria-hidden="true"><img src="/images/pin.png" alt=""/></span>
+                      Porsgrunn
+                    </div>
                   </div>
 
                   <div class="status-mid">
@@ -101,13 +108,19 @@
                   </div>
                 </article>
 
+                <!-- 2 -->
                 <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
+                  <div class="status-avatar">
+                    <img src="/images/hero.jpg" alt="" />
+                  </div>
 
                   <div class="status-info">
                     <div class="status-name">Anne Lunde</div>
                     <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
+                    <div class="status-city">
+                      <span class="pin" aria-hidden="true"><img src="/images/pin.png" alt=""/></span>
+                      Porsgrunn
+                    </div>
                   </div>
 
                   <div class="status-mid">
@@ -120,13 +133,19 @@
                   </div>
                 </article>
 
+                <!-- 3 -->
                 <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
+                  <div class="status-avatar">
+                    <img src="/images/hero.jpg" alt="" />
+                  </div>
 
                   <div class="status-info">
                     <div class="status-name">Anne Lunde</div>
                     <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
+                    <div class="status-city">
+                      <span class="pin" aria-hidden="true"><img src="/images/pin.png" alt=""/></span>
+                      Porsgrunn
+                    </div>
                   </div>
 
                   <div class="status-mid">
@@ -138,14 +157,20 @@
                     <button class="btn btn-info status-btn" type="button">SE DETALJER</button>
                   </div>
                 </article>
-
+                
+                <!-- 4 -->
                 <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
+                  <div class="status-avatar">
+                    <img src="/images/hero.jpg" alt="" />
+                  </div>
 
                   <div class="status-info">
                     <div class="status-name">Anne Lunde</div>
                     <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
+                    <div class="status-city">
+                      <span class="pin" aria-hidden="true"><img src="/images/pin.png" alt=""/></span>
+                      Porsgrunn
+                    </div>
                   </div>
 
                   <div class="status-mid status-mid--rating">
@@ -157,13 +182,19 @@
                   </div>
                 </article>
 
+                <!-- 5 -->
                 <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
+                  <div class="status-avatar">
+                    <img src="/images/hero.jpg" alt="" />
+                  </div>
 
                   <div class="status-info">
                     <div class="status-name">Anne Lunde</div>
                     <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Porsgrunn</div>
+                    <div class="status-city">
+                      <span class="pin" aria-hidden="true"><img src="/images/pin.png" alt=""/></span>
+                      Porsgrunn
+                    </div>
                   </div>
 
                   <div class="status-mid status-mid--rating">
@@ -177,53 +208,418 @@
               </div>
             </section>
 
-            <section class="status-panel" data-panel="requests" aria-label="Forespørsler">
+            <section
+              class="status-panel" data-panel="requests" aria-label="Forespørsler">
               <div class="status-list" id="requestsList">
-                <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
-
-                  <div class="status-info">
-                    <div class="status-name">Jack</div>
-                    <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Oslo</div>
-                  </div>
-
-                  <div class="status-mid">
-                    <span class="dot dot-yellow" aria-hidden="true"></span>
-                    <span class="status-state">UNDER BEHANDLING</span>
-                  </div>
-
-                  <div class="status-actions">
-                    <button class="btn btn-info status-btn" type="button">SE DETALJER</button>
-                  </div>
-                </article>
-
-                <article class="status-row">
-                  <div class="status-avatar"><img src="/images/hero.jpg" alt="" /></div>
-
-                  <div class="status-info">
-                    <div class="status-name">Rover</div>
-                    <div class="status-date">12 Feb - 15 Feb</div>
-                    <div class="status-city"><span class="pin" aria-hidden="true"><img src="/images/pin.png" alt="" /></span> Bergen</div>
-                  </div>
-
-                  <div class="status-mid">
-                    <span class="dot dot-green" aria-hidden="true"></span>
-                    <span class="status-state">AKSEPTERT</span>
-                  </div>
-
-                  <div class="status-actions">
-                    <button class="btn btn-info status-btn" type="button">SE DETALJER</button>
-                  </div>
-                </article>
+                <!-- Forespørsler (JS renders dynamically)/ same blueprint as tab 1 -->
               </div>
             </section>
           </div>
         </section>
+
+        <!-- for now to check how the modals look like just add is-open to the first div class -->
+        <!-- Modal/ cancel button (step 1) -->
+        <div class="modal" id="cancel-details-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-cancel-details-close></div>
+
+          <div class="modal-panel cancel-details-panel" role="dialog" aria-modal="true" aria-labelledby="cancel-details-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-cancel-details-close>✕</button>
+
+            <h3 class="modal-title" id="cancel-details-title">Avbryt booking</h3>
+
+            <!-- Top -->
+            <div class="cancel-details-top">
+              <div class="cd-block">
+                <div class="cd-label">Hundeeier</div>
+                <div class="cd-person">
+                  <div class="cd-avatar">
+                    <img id="cd-owner-img" src="/images/hero.jpg" alt="Profilbilde av hundeeier" />
+                  </div>
+                  <div class="cd-meta">
+                    <div id="cd-owner-name" class="cd-name">Fredrik Teien</div>
+                    <div id="cd-owner-price" class="cd-small">Pris: 600 NOK/dag</div>
+                    <div id="cd-owner-phone" class="cd-small">+47 98332217</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cd-block">
+                <div class="cd-label">Hund(er)</div>
+                <div class="cd-person">
+                  <div class="cd-avatar">
+                    <img id="cd-dog-img" src="/images/hero.jpg" alt="Profilbilde av hund" />
+                  </div>
+                  <div class="cd-meta">
+                    <div id="cd-dog-name" class="cd-name">Mio</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Booking details -->
+            <div class="cd-section">
+              <div class="cd-section-title">Bookingsdetaljer:</div>
+              <div class="cd-lines">
+                <div id="cd-pickup" class="cd-line">Hentetid: 12 Feb kl 12:00</div>
+                <div id="cd-dropoff" class="cd-line">Avleveringstid: 20 Feb kl 17:00</div>
+              </div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Message -->
+            <div class="cd-section">
+              <div class="cd-section-title">Beskjed:</div>
+              <div id="cd-message" class="cd-line">ingen beskjed</div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Price -->
+            <div class="cd-section">
+              <div class="cd-section-title">Pris:</div>
+              <div class="cd-lines">
+                <div id="cd-daily" class="cd-line">600 NOK/dag</div>
+                <div id="cd-total" class="cd-line">Total: 8 dager = 4800 NOK</div>
+              </div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Question -->
+            <h5 class="cd-question">Er du sikker på at du vil kansellere denne bookingen?</h5>
+
+            <!-- Actions -->
+            <div class="cd-actions">
+              <button class="btn btn-success" type="button" data-cancel-details-close>NEI, BEHOLD BOOKING</button>
+              <button class="btn btn-danger" type="button" data-cancel-details-next>JA, KANSELLER BOOKING</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ cancel button (step 2) -->
+        <div class="modal" id="cancel-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-cancel-close></div>
+
+          <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="cancel-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-cancel-close>✕</button>
+
+            <h3 class="modal-title" id="cancel-title">Er du sikker på at du vil kansellere bookingen?</h3>
+
+            <!-- icon -->
+            <div class="cancel-icon" aria-hidden="true"><img src="/images/delete-button.png" /></div>
+
+            <div class="modal-actions">
+              <button class="btn btn-success" type="button" id="cancel-confirm">JA, SLETT BOOKINGEN</button>
+              <button class="btn btn-danger" type="button" data-cancel-close>NEI, IKKE SLETT BOOKINGEN</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ cancel button (step 3) -->
+        <div class="modal" id="cancel-success-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-success-close></div>
+
+          <div class="modal-panel cancel-success-panel" role="dialog" aria-modal="true" aria-labelledby="success-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-success-close>✕</button>
+
+            <h3 class="modal-title" id="success-title">Bookingen har blitt kansellert.</h3>
+            <!-- icon -->
+            <div class="success-icon" aria-hidden="true">
+              <img src="/images/check.png" alt="" />
+            </div>
+
+            <div class="success-actions">
+              <button class="btn btn-success" type="button" data-success-close>GÅ TILBAKE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ contact sitter (step 1)-->
+        <div class="modal" id="contact-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-contact-close></div>
+
+          <div class="modal-panel contact-panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-contact-close>✕</button>
+
+            <h3 class="modal-title" id="contact-title">Kontakt hunpasseren</h3>
+
+            <!-- Top -->
+            <div class="contact-top">
+              <div class="cd-block">
+                <div class="cd-label">Hundeeier</div>
+
+                <div class="cd-person">
+                  <div class="cd-avatar">
+                    <img id="co-owner-img" src="/images/hero.jpg" alt="Profilbilde av hundeeier" />
+                  </div>
+
+                  <div class="cd-meta">
+                    <div id="co-owner-name" class="cd-name">Fredrik Teien</div>
+                    <div id="co-owner-price" class="cd-small">Pris: 600 NOK/dag</div>
+                    <div id="co-owner-phone" class="cd-small">+47 98332217</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cd-block">
+                <div class="cd-label">Hund(er)</div>
+
+                <div class="cd-person">
+                  <div class="cd-avatar">
+                    <img id="co-dog-img" src="/images/hero.jpg" alt="Profilbilde av hund" />
+                  </div>
+
+                  <div class="cd-meta">
+                    <div id="co-dog-name" class="cd-name">Mio</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Booking details -->
+            <div class="cd-section">
+              <div class="cd-section-title">Bookingsdetaljer:</div>
+              <div class="cd-lines">
+                <div id="co-pickup" class="cd-line">Hentetid: 12 Feb kl 12:00</div>
+                <div id="co-dropoff" class="cd-line">Avleveringstid: 20 Feb kl 17:00</div>
+              </div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Message -->
+            <div class="cd-section">
+              <div class="cd-section-title">Beskjed:</div>
+              <p class="contact-hint">Ingen beskjed</p>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Price -->
+            <div class="cd-section">
+              <div class="cd-section-title">Pris:</div>
+              <div class="cd-lines">
+                <div id="co-daily" class="cd-line">600 NOK/dag</div>
+                <div id="co-total" class="cd-line">Total: 8 dager = 4800 NOK</div>
+              </div>
+            </div>
+
+            <hr class="cd-divider" />
+
+            <!-- Buttons -->
+            <div class="contact-actions">
+              <button class="btn btn-warning" type="button" data-contact-edit>REDIGER BOOKING</button>
+              <button class="btn btn-danger" type="button" data-contact-cancel>KANSELLER BOOKING</button>
+            </div>
+
+            <!-- Text area -->
+            <h5 class="cd-question">
+              Bookingen er akseptert. Send hundepasseren en melding hvis du trenger å avklare flere detaljer.
+            </h5>
+
+            <label class="contact-label" for="co-message">Melding</label>
+            <textarea class="contact-textarea" id="co-message" maxlength="200" placeholder="Skriv melding til hundeier her.">
+            </textarea>
+
+            <div class="contact-meta">
+              <span id="co-counter">max 200 tegn</span>
+            </div>
+
+            <div class="contact-send">
+              <button class="btn btn-success" type="button" data-contact-send>SEND</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ contact sitter (step 2)-->
+        <div class="modal" id="message-sent-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-message-sent-close></div>
+
+          <div class="modal-panel message-sent-panel" role="dialog" aria-modal="true" aria-labelledby="message-sent-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-message-sent-close>✕</button>
+
+            <h3 class="modal-title" id="message-sent-title">Melding sendt!</h3>
+
+            <div class="success-icon" aria-hidden="true">
+              <img src="/images/check.png" alt="" />
+            </div>
+
+            <div class="success-actions">
+              <button class="btn btn-success" type="button" data-message-sent-close>GÅ TIL INNBOKS</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ See details when avvist -->
+         <div class="modal" id="rejected-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-rejected-close></div>
+
+          <div class="modal-panel rejected-panel" role="dialog" aria-modal="true" aria-labelledby="rejected-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-rejected-close>✕</button>
+
+            <h3 class="modal-title" id="rejected-title">Booking avvist</h3>
+
+            <!-- Top -->
+            <div class="rejected-top">
+              <div class="rd-block">
+                <div class="rd-label">Hundeeier</div>
+                <div class="rd-person">
+                  <div class="rd-avatar">
+                    <img id="rd-owner-img" src="/images/hero.jpg" alt="Profilbilde av hundeeier" />
+                  </div>
+                  <div class="rd-meta">
+                    <div id="rd-owner-name" class="rd-name">Fredrik Teien</div>
+                    <div id="rd-owner-price" class="rd-small">Pris: 600 NOK/dag</div>
+                    <div id="rd-owner-phone" class="rd-small">+47 98332217</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rd-block">
+                <div class="rd-label">Hund(er)</div>
+                <div class="rd-person">
+                  <div class="rd-avatar">
+                    <img id="rd-dog-img" src="/images/hero.jpg" alt="Profilbilde av hund" />
+                  </div>
+                  <div class="rd-meta">
+                    <div id="rd-dog-name" class="rd-name">Mio</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="rd-divider" />
+
+            <!-- Booking details -->
+            <div class="rd-section">
+              <div class="rd-section-title">Bookingsdetaljer:</div>
+              <div class="rd-lines">
+                <div id="rd-pickup" class="rd-line">Hentetid: 12 Feb kl 12:00</div>
+                <div id="rd-dropoff" class="rd-line">Avleveringstid: 20 Feb kl 17:00</div>
+              </div>
+            </div>
+
+            <hr class="rd-divider" />
+
+            <!-- Message -->
+            <div class="rd-section">
+              <div class="rd-section-title">Beskjed:</div>
+              <div id="rd-message" class="rd-line">ingen beskjed</div>
+            </div>
+
+            <hr class="rd-divider" />
+
+            <!-- Price -->
+            <div class="rd-section">
+              <div class="rd-section-title">Pris:</div>
+              <div class="rd-lines">
+                <div id="rd-daily" class="rd-line">600 NOK/dag</div>
+                <div id="rd-total" class="rd-line">Total: 8 dager = 4800 NOK</div>
+              </div>
+            </div>
+
+            <hr class="rd-divider" />
+
+            <!-- Rejection message -->
+            <h5 class="rd-reason">
+              Bookingen din ble avvist fordi hundepasseren ikke var tilgjengelig på den valgte datoen.
+            </h5>
+
+            <div class="rd-actions">
+              <a class="btn btn-info" href="/src/Pages/booking/booking.html">NY BOOKING</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ Review (step 1) -->
+        <div class="modal" id="review-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-review-close></div>
+
+          <div class="modal-panel review-panel" role="dialog" aria-modal="true" aria-labelledby="review-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-review-close>✕</button>
+
+            <h5 class="modal-title" id="review-title">
+              Fortell oss om erfaringen din med Silje Andersen.
+            </h5>
+
+            <!-- Rating -->
+            <fieldset class="review-rating" aria-label="Gi en vurdering">
+              <legend></legend>
+
+              <div class="rating">
+                <!-- Note: reversed order makes hover-fill work cuter :) -->
+                <input type="radio" name="rating" id="rate-5" value="5" />
+                <label for="rate-5" aria-label="5 av 5">★</label>
+
+                <input type="radio" name="rating" id="rate-4" value="4" />
+                <label for="rate-4" aria-label="4 av 5">★</label>
+
+                <input type="radio" name="rating" id="rate-3" value="3" />
+                <label for="rate-3" aria-label="3 av 5">★</label>
+
+                <input type="radio" name="rating" id="rate-2" value="2" />
+                <label for="rate-2" aria-label="2 av 5">★</label>
+
+                <input type="radio" name="rating" id="rate-1" value="1" />
+                <label for="rate-1" aria-label="1 av 5">★</label>
+              </div>
+            </fieldset>
+
+            <!-- Text area -->
+            <label class="review-label" for="rv-message">Anmeldelse</label>
+            <textarea class="review-textarea" id="rv-message" maxlength="200"
+              placeholder="Skriv anmeldelsen din her...">
+            </textarea>
+
+            <div class="review-meta">
+              <span id="rv-counter">max 200 tegn</span>
+            </div>
+
+            <div class="review-actions">
+              <button class="btn btn-success" type="button" data-review-send>SEND</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal/ Review (step 2) -->
+        <div class="modal" id="review-success-modal" aria-hidden="true">
+          <div class="modal-backdrop" data-review-success-close></div>
+
+          <div class="modal-panel review-success-panel" role="dialog" aria-modal="true" aria-labelledby="review-success-title">
+            <button class="modal-close" type="button" aria-label="Lukk" data-review-success-close>✕</button>
+
+            <h3 class="modal-title" id="review-success-title">Anmeldelse sendt!</h3>
+
+            <div class="success-icon" aria-hidden="true">
+              <img src="/images/check.png" alt="" />
+            </div>
+
+            <div class="review-success-actions">
+              <button class="btn btn-info" type="button" data-review-success-close>TILBAKE TIL HUNDEPASSERLISTE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TODO: Modals/Status for forespørsler:
+        - accept/reject request(step 1)
+        - accept button/ are you sure you want to accept the request? (step 2.1)
+        - yes - accepted request message
+        - no - back to step 1
+        - reject button/ checkboxes (step 2.2)
+        - avbryt - back to step 1
+        - avvis - avvist message box -->
+    
+
       </main>
 
       <site-footer></site-footer>
-
     </div>
+
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

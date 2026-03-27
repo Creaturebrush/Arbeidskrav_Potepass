@@ -1,11 +1,11 @@
 /* Hero Section */
 .home-hero {
   display: grid;
-  grid-template-columns: 1fr 801px;
+  grid-template-columns: 1fr 50rem;
   width: 100%;
 }
 
-.home-hero--left {
+.home-hero-left {
   height: 33.375rem;
   gap: 3rem;
   display: flex;
@@ -15,35 +15,34 @@
   text-align: center;
 }
 
-.home-hero--left h1 {
+.home-hero-left h1 {
   margin: 0 0 1.125rem;
 }
 
-.home-hero--sub {
+.home-hero-sub {
   margin: 0 0 1.625rem;
   max-width: 46ch;
 }
 
 /* Buttons */
-.home-hero--actions {
+.home-hero-actions {
   display: flex;
   gap: 3.125rem;
-  flex-wrap: wrap;
   align-items: center;
 }
 
-.home-hero--actions .btn {
+.home-hero-actions .btn {
   padding: 0.75rem 1.375rem;
 }
 
-.home-hero--right {
+.home-hero-right {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
 
-.home-hero--right img {
+.home-hero-right img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -56,13 +55,13 @@
   padding: 3.375rem 0 4.375rem;
 }
 
-.home-how--title {
+.home-how-title {
   text-align: center;
   color: var(--white);
   margin: 0 0 2.625rem;
 }
 
-.home-how--grid {
+.home-how-grid {
   display: grid;
   grid-template-columns: repeat(3, 20.75rem);
   gap: 3rem;
@@ -71,7 +70,7 @@
   padding: 0 1rem;
 }
 
-.home-how--card {
+.home-how-card {
   width: 20.75rem;
   height: 19.563rem;
   border-radius: 2.875rem;
@@ -85,7 +84,7 @@
   align-items: center;
 }
 
-.home-how--icon {
+.home-how-icon {
   width: 4.375rem;
   height: 4.375rem;
   border-radius: 50%;
@@ -96,24 +95,24 @@
   overflow: hidden;
 }
 
-.home-how--icon img {
+.home-how-icon img {
   width: 2.25rem;
   height: 2.25rem;
   object-fit: contain;
 }
 
-.home-how--step {
+.home-how-step {
   margin: 0 0 0.625rem;
 }
 
-.home-how--card h4 {
+.home-how-card h4 {
   margin: 0 0 0.625rem;
-  line-height: 1.15; /* re-check later */
+  line-height: 1.15;
   text-align: center;
   max-width: 18ch;
 }
 
-.home-how--card p {
+.home-how-card p {
   margin: 0;
   max-width: 28ch;
 }
@@ -124,27 +123,27 @@
   padding: 5rem;
 }
 
-.home-message--inner {
+.home-message-inner {
   text-align: center;
 }
 
-.home-message--inner h2 {
+.home-message-inner h2 {
   margin: 0 0 1.375rem;
 }
 
-.home-message--inner p {
+.home-message-inner p {
   margin: 0 auto;
   max-width: 80ch;
 }
 
 /* CTA split */
-.home-cta--inner {
+.home-cta-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 3px solid var(--primary-shade-2);
 }
 
-.home-cta--box {
+.home-cta-box {
   min-height: 17.813rem;
   padding: 2.375rem 1.125rem;
   text-align: center;
@@ -155,17 +154,19 @@
   gap: 1.125rem;
 }
 
-.home-cta--box:first-child {
+.home-cta-box:first-child {
   border-right: 3px solid var(--primary-shade-2);
 }
 
-.home-cta--box h2 {
+.home-cta-box h2 {
   margin: 0;
   max-width: 22ch;
 }
 
-.home-cta--box .btn {
+.home-cta-box .btn {
   width: 13.7520rem;
   height: 2.375rem;
   padding: 0;
 }
+
+/*TODO: RESPONSIVENESS*/
