@@ -1,8 +1,8 @@
 
 /* Shell width */
 .status-shell {
-  width: min(72rem, 100%);
-  margin: 0 auto;
+  width: min(85rem, 100%);
+  margin: 3.125rem auto;
 }
 
 /* Tabs row + new booking */
@@ -21,11 +21,11 @@
   display: inline-flex;
   align-items: center;
   padding: 0.75rem 1.25rem;
-  border-radius: 0 1rem 0 0;
+  border-radius: 0 50px 0 0;
   background: var(--primary-card);
   border-bottom: 0;
-  font-family: var(--font-body);
-  font-weight: var(--fw-semibold);
+  font-family: var(--font-heading);
+  font-size: var(--h3);
   text-decoration: none;
   position: relative;
   top: 3px;
@@ -36,26 +36,31 @@
 }
 
 .btn.status-new {
-	border-radius: 8px;
-	border: 1px solid var(--primary-shade-2);
-  margin: 0 0 5rem; /* separate from box, can tweak more here */
+  width: 15.44rem;
+  height: 4.06rem;
+ 	border-radius: 25px;
+  margin: 0 0 1rem; 
+	/* should be the same format as in sitter/previous:
+  border-radius: 8px;
+  margin: 0 0 5rem; */
+  border: 1px solid var(--primary-shade-2);
   padding: 0.45rem 0.9rem;
 }
 
 /* Main green container */
 .status-box {
   background: var(--primary);
-  border-radius: 0 1rem 1rem 1rem;
+  border-radius: 0 1.5rem 1rem 1rem;
   padding: 0.9rem;
   position: relative;
 }
 
-/* Tools top-right */
+/* top-right tab 1*/
 .status-tools {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 0.75rem;
-	gap: 45px;
+	gap: 2.8rem;
 }
 
 /* JS dependent */
@@ -86,8 +91,8 @@
 
 .caret {
 	border-radius:50%;
-	width: 20px;
-	height: 20px;
+	width: 1.25rem;
+	height: 1.25rem;
 	background: var(--primary-shade-2);
 	align-items: center;
 }
@@ -101,16 +106,11 @@
   list-style: none;
 }
 
-.status-dd > summary::-webkit-details-marker {
-  display: none;
-}
-
 /* Menu */
-.status-dd--menu {
+.status-dd--menu { /*need to tweak that better*/
   position: absolute;
   right: 0;
-  top: calc(100% + 8px);
-  min-width: 190px;
+  width: 11.8rem;
   background: var(--primary);
   border-radius: 0 0 1rem 1rem;
   padding: 6px;
@@ -158,14 +158,14 @@
   border-radius: 0.85rem;
   padding: 0.85rem;
   display: grid;
-  grid-template-columns: 100px 1fr 1fr 1fr;
+  grid-template-columns: 6.25rem 1fr 1fr 31.25rem;
   align-items: center;
   gap: 1rem;
 }
 
 .status-avatar {
-  width: 95px;
-  height: 95px;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--primary-shade-2);
@@ -179,28 +179,26 @@
 }
 
 .status-name {
+  font-size: var(--h5);
   font-weight: var(--fw-semibold);
   margin-bottom: 0.2rem;
 }
 
 .status-date {
-  font-size: 0.8rem;
-  opacity: 0.9;
+  font-size: var(--meta);
   margin-bottom: 0.25rem;
 }
 
 .status-city {
-  font-size: 0.8rem;
-  opacity: 0.95;
+  font-size: var(--meta);
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
 .pin {
-  width: 14px;
-	height: 14px;
-  font-size: 0.95rem;
+  width: 0.875rem;
+	height: 0.875rem;
 }
 
 /* Middle status/rating column */
@@ -209,26 +207,27 @@
   align-items: left;
   gap: 0.5rem;
   justify-content: left;
-  font-size: 0.7rem;
+  font-size: var(--meta);
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.status-mid-rating { /*fix better*/
+.status-mid-rating {
   justify-content: left;
 }
 
-.dot { /*to be improved*/
-  width: 20px;
-  height: 20px;
+.dot {
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   display: inline-block;
+  /*box-shadow?*/
 }
 
-.dot-yellow { background: #f2c94c; }
-.dot-green { background: #27ae60; }
-.dot-red { background: #eb5757; }
+.dot-yellow { background: var(--warning); }
+.dot-green { background: var(--success); }
+.dot-red { background: var(--danger); }
 
 /* Actions */
 .status-actions {
@@ -238,25 +237,457 @@
   flex-wrap: wrap;
 }
 
-/* Make smaller*/
+/* Make smaller???
 .btn.status-btn {
   font-size: 0.65rem;
   padding: 0.35rem 0.75rem;
-}
-
-/*.status-btn:hover {
-  box-shadow: none;
-  transform: none;
-  opacity: 0.95;
 }*/
 
 /* Stars - we should have this on style.css as well */
 .stars {
   letter-spacing: 0.15rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #222;
 }
 
 .stars-rated {
-  color: #f2c94c;
+  color: var(--warning);
 }
+
+/*Note to self: 
+make modal reusable later
+gather all ids and classes with
+duplicated css in shrink the code
+*/
+
+/* Modal/ cancel button (step 1) */
+#cancel-details-modal .cancel-details-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 1.75rem 2rem 1.6rem;
+  width: 40rem; /* keep/change/can tweak/??? */
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+.cancel-details-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.cd-label {
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.5rem;
+}
+
+.cd-person {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.cd-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 2px solid var(--primary-shade-2);
+  background: var(--white);
+}
+
+.cd-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cd-name {
+  font-weight: var(--fw-semibold);
+}
+
+.cd-small {
+  font-size: var(--meta);
+}
+
+.cd-divider {
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,0.25);
+  margin: 1rem 0;
+}
+
+.cd-section-title {
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.35rem;
+}
+
+.cd-lines {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.cd-line {
+  font-size: var(--meta);
+  opacity: 0.95;
+}
+
+.cd-question {
+  text-align: center;
+  margin: 1.2rem 0 1rem;
+}
+
+.cd-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+/* Modal/ cancel button (step 2) */
+#cancel-modal .modal-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 3rem 2.5rem 2.5rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+#cancel-modal .modal-title {
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.cancel-icon {
+  width: 64px;
+  height: 64px;
+  margin: 1.5rem auto 1.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow:
+    0 0.35rem 0 rgba(0, 0, 0, 0.18),
+    0 0.6rem 1.2rem rgba(0, 0, 0, 0.12);
+}
+
+.cancel-icon img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  display: block;
+}
+
+/* Modal/ cancel button (step 3) */
+#cancel-success-modal .modal-panel.cancel-success-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 3rem 2.5rem 2.5rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+#cancel-success-modal .modal-title {
+  text-align: center;
+  margin: 0 0 1.75rem;
+}
+
+.success-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow:
+    0 0.35rem 0 rgba(0, 0, 0, 0.18),
+    0 0.6rem 1.2rem rgba(0, 0, 0, 0.12);
+}
+
+.success-icon img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  display: block;
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal/ contact sitter (step 1) */
+#contact-modal .modal-panel.contact-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 2rem 2.2rem 2.2rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  /*just to be able to see the whole content now
+    added max-height + overflow
+    scroll won't show when modal working*/
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+.contact-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.contact-hint {
+  margin: 0.5rem 0 0;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.contact-label {
+  display: block;
+  font-weight: var(--fw-semibold);
+  margin: 0.8rem 0 0.35rem;
+}
+
+.contact-textarea {
+  width: 100%;
+  min-height: 9rem;
+  resize: none;
+  padding: 0.9rem;
+  border-radius: 18px;
+  border: 0;
+  outline: none;
+  background: var(--white);
+  font: inherit;
+}
+
+.contact-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(64, 94, 62, 0.25);
+}
+
+.contact-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.contact-send {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+/* Modal/ contact sitter (step 2) */
+#message-sent-modal .modal-panel.message-sent-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 3rem 2.5rem 2.5rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+#message-sent-modal .modal-title {
+  text-align: center;
+  margin: 0 0 1.75rem;
+}
+
+/* Modal/ See details when avvist */
+#rejected-modal .modal-panel.rejected-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 1.75rem 2rem 2rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+.rejected-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 0.75rem;
+}
+
+
+.rd-label {
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.5rem;
+}
+
+.rd-person {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.rd-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 2px solid var(--primary-shade-2);
+  background: var(--white);
+}
+
+.rd-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rd-name {
+  font-weight: var(--fw-semibold);
+}
+
+.rd-small {
+  font-size: var(--meta);
+}
+
+.rd-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.25);
+  margin: 1rem 0;
+}
+
+.rd-section-title {
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.35rem;
+}
+
+.rd-lines {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.rd-line {
+  font-size: var(--meta);
+  opacity: 0.95;
+}
+
+.rd-reason {
+  text-align: center;
+  margin: 1.25rem auto 1.25rem;
+  max-width: 34ch;
+}
+
+.rd-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal/ Review (step 1) */
+#review-modal .modal-panel.review-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 2rem 2.2rem 2.2rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+#review-modal .modal-title {
+  text-align: center;
+  margin: 0 1rem 1rem;
+}
+
+/* Rating stars */
+.review-rating {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.rating {
+  display: inline-flex;
+  flex-direction: row-reverse;/* for hover-fill */
+  gap: 0.25rem;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.rating input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rating label {
+  cursor: pointer;
+  color: rgba(0,0,0,0.35);
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+  color: var(--warning);
+}
+
+.rating input:checked + label,
+.rating input:checked + label ~ label {
+  color: var(--warning);
+}
+
+.review-label {
+  display: block;
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.35rem;
+}
+
+.review-textarea {
+  width: 100%;
+  min-height: 8rem;
+  resize: none;
+  padding: 0.9rem;
+  border-radius: 18px;
+  border: 0;
+  outline: none;
+  background: var(--white);
+  font: inherit;
+}
+
+.review-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(64, 94, 62, 0.25);
+}
+
+.review-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Modal/ Review (step 2)*/
+#review-success-modal .modal-panel.review-success-panel {
+  background: var(--primary);
+  border: 12px solid var(--bg);
+  border-radius: 30px;
+  padding: 2.4rem 2.2rem 2.2rem;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+#review-success-modal .modal-title {
+  text-align: center;
+  margin: 0 0 1.25rem;
+}
+
+.review-success-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/*TODO: CLEANER MODAL CSS
+  TRY TO BE CONSISTENT AT LEAST WITH SITTER PAGE STYLE
+  RESPONSIVENESS*/

@@ -115,3 +115,5 @@ class LoginOverlay extends HTMLElement {
 if (!customElements.get("login-overlay")) {
   customElements.define("login-overlay", LoginOverlay);
 }
+
+//TODO: REWRITE WITH TYPESCRIPT SYNTAX
