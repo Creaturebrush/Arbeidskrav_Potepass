@@ -72,7 +72,7 @@ h2 {
 .dog-card {
   background-color: var(--primary-card);
   border-radius: 2rem;
-  width: 30%;
+  max-width: fit-content;
   margin-top: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
@@ -86,11 +86,19 @@ h2 {
   padding: 1rem;
 }
 
+.dog-info p {
+  font-weight: var(--fw-bold);
+}
+
 .dog-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.info-container, .dog-container p {
+  white-space: nowrap;
 }
 
 /* BOOKING AND REQUEST*/
@@ -126,11 +134,28 @@ h2 {
   margin: 2rem;
 
   position: fixed;
+  z-index: 200;
   
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
 .profile-modal img {
   margin: auto;
+}
+
+.profile-modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+      height: 100%;
+      position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      width: 100%;
+  z-index: 100;
 }
 /* ADD/EDIT MODAL */
 .add-edit-modal-card {
@@ -196,10 +221,12 @@ h2 {
 
 /* MODAL TEST */
 
-.modal-wrapper:not(.open) {
+.profile-modal:not(.open) {
   visibility: hidden;
+  opacity: 0;
 }
 
-.modal-wrapper.open {
+.profile-modal.open {
   visibility: visible;
+  opacity: 1;
 }
