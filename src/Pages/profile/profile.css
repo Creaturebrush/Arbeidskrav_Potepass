@@ -121,12 +121,6 @@ h2 {
 }
 
 /* MODALS */
-.MODAL-PLACEHOLDER {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  visibility: hidden;
-}
 .profile-modal {
   height: fit-content;
   width: min(42rem, calc(100% - 2rem));

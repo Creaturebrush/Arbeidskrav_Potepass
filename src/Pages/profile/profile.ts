@@ -16,13 +16,6 @@ class Modal {
     this.modalBackdrop.classList.add("profile-modal-backdrop");
     this.modal.innerHTML = dynamicContent;
     this.modal.classList.add("open");
-
-    const closeBtn = this.modal.querySelector(
-      "#close-btn",
-    ) as HTMLButtonElement;
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => this.closeModal());
-    }
   }
 
   closeModal() {
@@ -34,25 +27,13 @@ class Modal {
 
 const modal = new Modal();
 
-const deleteProfileBtn = document.getElementById(
-  "delete-profile-btn",
-) as HTMLButtonElement;
-deleteProfileBtn.addEventListener("click", () => {
-  const dynamicContent = `
-          <h2>Er du sikker på at du ønsker å slette profilen din?</h2>
-          <div class="btn-container">
-            <button class="btn btn-success" id="close-btn">NEI, GÅ TILBAKE</button>
-            <button class="btn btn-danger">JA, SLETT PROFIL</button>
-          </div>
-  `;
-  modal.openModal(dynamicContent);
-});
+//EVENTLISTENERS FOR PROFILE PAGE
+document.addEventListener("click", (e) => {
+  const target = e.target as HTMLElement;
 
-const editProfileBtn = document.getElementById(
-  "edit-profile-btn",
-) as HTMLButtonElement;
-editProfileBtn.addEventListener("click", () => {
-  const dynamicContent = `
+  //EDIT PROFILE MODAL
+  if (target.id === "edit-profile-btn") {
+    const dynamicContent = `
       <h2>Hva ønsker du å redigere?</h2>
           <div class="add-edit-modal-card">
             <div class="add-edit-img-container">
@@ -79,16 +60,28 @@ editProfileBtn.addEventListener("click", () => {
             </div>
           </div>
           <div class="btn-container">
-            <button class="btn btn-success">BEKREFT ENDRINGER</button>
+            <button class="btn btn-success" id="confirm-edit-btn">BEKREFT ENDRINGER</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
           </div>
   `;
-  modal.openModal(dynamicContent);
-});
+    modal.openModal(dynamicContent);
+  }
 
-const addDogBtn = document.getElementById("add-dog-btn") as HTMLButtonElement;
-addDogBtn.addEventListener("click", () => {
-  const dynamicContent = `
+  //DELETE PROFILE MODAL
+  if (target.id === "delete-profile-btn") {
+    const dynamicContent = `
+          <h2>Er du sikker på at du ønsker å slette profilen din?</h2>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-btn">NEI, GÅ TILBAKE</button>
+            <button class="btn btn-danger" id="confirm-delete-btn">JA, SLETT PROFIL</button>
+          </div>
+  `;
+    modal.openModal(dynamicContent);
+  }
+
+  //ADD DOG MODAL
+  if (target.id === "add-dog-btn") {
+    const dynamicContent = `
           <h2>Legg til hund</h2>
           <div class="add-edit-modal-card">
             <div class="add-edit-img-container">
@@ -115,18 +108,16 @@ addDogBtn.addEventListener("click", () => {
             </div>
           </div>
           <div class="btn-container">
-            <button class="btn btn-success">LEGG TIL HUND</button>
+            <button class="btn btn-success TEST" id="confirm-add-dog-btn">LEGG TIL HUND</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT</button>
           </div>
   `;
-  modal.openModal(dynamicContent);
-});
+    modal.openModal(dynamicContent);
+  }
 
-const removeDogBtn = document.getElementById(
-  "remove-dog-btn",
-) as HTMLButtonElement;
-removeDogBtn.addEventListener("click", () => {
-  const dynamicContent = `
+  //REMOVE DOG MODAL
+  if (target.id === "remove-dog-btn") {
+    const dynamicContent = `
           <h2>Hvilken hund ønsker du å fjerne?</h2>
           <div class="remove-dog-container">
             <div class="remove-dog-card">
@@ -140,15 +131,170 @@ removeDogBtn.addEventListener("click", () => {
           </div>
           <div class="btn-container">
             <button class="btn btn-success" id="close-btn">AVBRYT</button>
-            <button class="btn btn-danger">FJERN VALGT HUND</button>
+            <button class="btn btn-danger" id="warning-remove-dog-btn">FJERN VALGT HUND</button>
           </div>
   `;
   modal.openModal(dynamicContent);
+  }
 });
 
-const editDogBtn = document.getElementById("edit-dog-btn") as HTMLButtonElement;
-editDogBtn.addEventListener("click", () => {
-  const dynamicContent = `
+// EVENTLISTENERS FOR MODALS!
+modal.modal.addEventListener("click", (e) => {
+  const target = e.target as HTMLElement;
+
+  //CONFIRM PROFILE EDITS
+  if (target.id === "confirm-edit-btn") {
+    const dynamicContent = `
+      <h2>Endringene ble lagret!</h2>
+          <img src="/images/success.png" alt="success" />
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-btn">FORTSETT</button>
+          </div>
+      `;
+    modal.openModal(dynamicContent);
+  }
+
+  //CONFIRM ADDED DOG
+  if (target.id === "confirm-add-dog-btn") {
+    const dynamicContent = `
+      <h2>"NAVN" ble lagt til i dine hunder!</h2>
+          <img src="/images/success.png" alt="success" />
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-btn">FORTSETT</button>
+          </div>
+      `;
+    modal.openModal(dynamicContent);
+  }
+
+  //CONFIRM PROFILE DELETION
+  if (target.id === "confirm-delete-btn") {
+    const dynamicContent = `
+      <h2>Profilen din ble slettet!</h2>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-btn">AVSLUTT</button>
+          </div>
+      `;
+    modal.openModal(dynamicContent);
+  }
+
+  if (target.id === "warning-remove-dog-btn") {
+    const dynamicContent = `
+    <h2>Er du sikker på at du ønsker å fjerne NAVN?</h2>
+          <div class="remove-dog-container">
+            <img src="/images/dog1.png" alt="Bilde av hund" />
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success" id="remove-dog-btn">AVBRYT</button>
+            <button class="btn btn-danger" id="confirm-remove-dog-btn">JA, FJERN HUND</button>
+          </div>
+    `;
+    modal.openModal(dynamicContent);
+  }
+
+
+  if (target.id === "confirm-remove-dog-btn") {
+    const dynamicContent = `
+    <h2>NAVN er fjernet fra "mine hunder"</h2>
+          <div class="remove-dog-container">
+            <img src="/images/dog1.png" alt="Bilde av hund" />
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-btn">GÅ TILBAKE</button>
+          </div>
+    `;
+    modal.openModal(dynamicContent);
+  }
+
+    if (target.id === "close-btn") {
+      modal.closeModal();
+    }
+
+    // HER HAR JEG CLASS="TEST" PÅ KNAPPEN I _ADD DOG_, KUN FOR Å VISE!!!!
+    if (target.id === "confirm-add-dog-btn" && target.classList.contains("TEST")) {
+      const dynamicContent = `
+    <h2>OBS! Alle feltene må være fylt ut!</h2>
+          <img src="/images/fail.png" alt="fail" />
+          <div class="btn-container">
+            <button class="btn btn-success" id="add-dog-btn">FORTSETT</button>
+          </div>
+    `;
+      modal.openModal(dynamicContent);
+    }
+});
+
+
+
+// HUNDEKORT
+const dogContainer = document.querySelector(".dog-card-container") as HTMLDivElement;
+
+class DogCard {
+  dogCard: HTMLDivElement;
+  dogCardInfo: HTMLDivElement;
+  dogInfo: HTMLDivElement;
+  dogImg: HTMLImageElement;
+  dogUserInfo: HTMLDivElement;
+  btnContainer: HTMLDivElement;
+  editDogBtn: HTMLButtonElement;
+
+  constructor() {
+    console.log("LAGER KORT");
+
+    this.dogCard = document.createElement("div");
+    this.dogCard.classList.add("dog-card")
+
+    this.dogCardInfo = document.createElement("div");
+    this.dogCardInfo.classList.add("dog-card-info");
+
+    this.dogImg = document.createElement("img");
+    
+    this.dogInfo = document.createElement("div");
+    this.dogInfo.classList.add("dog-info")
+    this.dogInfo.innerHTML = `
+      <p>Navn:</p>
+      <p>Rase:</p>
+      <p>Alder:</p>
+      <p>Allergier:</p>
+    `;
+
+    this.dogUserInfo = document.createElement("div");
+    this.dogUserInfo.classList.add("dog-user-info");
+
+    this.btnContainer = document.createElement("div");
+    this.btnContainer.classList.add("btn-container");
+
+    this.editDogBtn = document.createElement("button");
+    this.editDogBtn.textContent = "REDIGER";
+    this.editDogBtn.classList.add("btn", "btn-warning");
+    this.editDogBtn.id = "edit-dog-btn";
+
+    this.dogCardInfo.appendChild(this.dogImg);
+    this.dogCardInfo.appendChild(this.dogInfo);
+    this.dogCardInfo.appendChild(this.dogUserInfo);
+
+    this.btnContainer.appendChild(this.editDogBtn);
+
+    
+    this.dogCard.appendChild(this.dogCardInfo)
+    this.dogCard.appendChild(this.btnContainer)
+
+    dogContainer.appendChild(this.dogCard);
+  }
+}
+
+function createDogCard() {
+  const dogCard = new DogCard();
+
+  dogCard.dogImg.src = "/images/dog1.png";
+
+  dogCard.dogUserInfo.innerHTML = `
+    <p>tomt felt</p>
+    <p>tomt felt</p>
+    <p>tomt felt</p>
+    <p>tomt felt</p>
+  `;
+
+  dogCard.editDogBtn.addEventListener("click", () => {
+    const dynamicContent = `
           <h2>Hva ønsker du å redigere?</h2>
           <div class="add-edit-modal-card">
             <div class="add-edit-img-container">
@@ -179,78 +325,48 @@ editDogBtn.addEventListener("click", () => {
             <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
           </div>
   `;
-  modal.openModal(dynamicContent);
-});
+    modal.openModal(dynamicContent);
+  });
 
-// HUNDEKORT
-const dogContainer = document.querySelector(".dog-card-container") as HTMLDivElement;
-
-class DogCard {
-  dogCard: HTMLDivElement;
-  dogCardInfo: HTMLDivElement;
-  dogInfo: HTMLDivElement;
-  dogImg: HTMLImageElement;
-  dogUserInfo: HTMLDivElement;
-  btnContainer: HTMLDivElement;
-  editDogBtn: HTMLButtonElement;
-
-  constructor() {
-
-    this.dogCard = document.createElement("div");
-    this.dogCard.classList.add("dog-card")
-
-    this.dogCardInfo = document.createElement("div");
-    this.dogCardInfo.classList.add("dog-card-info");
-
-    this.dogImg = document.createElement("img");
-    
-    this.dogInfo = document.createElement("div");
-    this.dogInfo.classList.add("dog-info")
-    this.dogInfo.innerHTML = `
-      <p>Navn:</p>
-      <p>Rase:</p>
-      <p>Alder:</p>
-      <p>Allergier:</p>
-    `;
-
-    this.dogUserInfo = document.createElement("div");
-    this.dogUserInfo.classList.add("dog-user-info");
-
-    this.btnContainer = document.createElement("div");
-    this.btnContainer.classList.add("btn-container");
-
-    this.editDogBtn = document.createElement("button");
-    this.editDogBtn.textContent = "REDIGER";
-    this.editDogBtn.classList.add("btn", "btn-warning");
-    this.editDogBtn.id = "edit-dog-btn"
-
-    this.dogCardInfo.appendChild(this.dogImg);
-    this.dogCardInfo.appendChild(this.dogInfo);
-    this.dogCardInfo.appendChild(this.dogUserInfo);
-
-    this.btnContainer.appendChild(this.editDogBtn);
-
-    
-    this.dogCard.appendChild(this.dogCardInfo)
-    this.dogCard.appendChild(this.btnContainer)
-
-    dogContainer.appendChild(this.dogCard);
-  }
-}
-
-function createDogCard() {
-  const dogCard = new DogCard();
-
-  dogCard.dogImg.src = "/images/dog1.png";
-
-  dogCard.dogUserInfo.innerHTML = `
-    <p>tomt felt</p>
-    <p>tomt felt</p>
-    <p>tomt felt</p>
-    <p>tomt felt</p>
+  if (dogCard.editDogBtn) {
+    dogCard.editDogBtn.addEventListener("click", () => {
+      const dynamicContent = `
+          <h2>Hva ønsker du å redigere?</h2>
+          <div class="add-edit-modal-card">
+            <div class="add-edit-img-container">
+              <img src="/images/dogicon.png" alt="Bilde av hund" />
+              <button class="btn btn-success">LAST OPP BILDE</button>
+            </div>
+            <div class="add-edit-info">
+              <p>Navn:</p>
+              <p>Rase:</p>
+              <p>Alder:</p>
+              <p>Allergier:</p>
+            </div>
+            <div class="add-edit-user-info">
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+              <p>tomt felt</p>
+            </div>
+            <div class="add-edit-btn-container">
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+              <button class="btn btn-warning">REDIGER</button>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success" id="confirm-edit-btn">BEKREFT ENDRINGER</button>
+            <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
+          </div>
   `;
-}
+      modal.openModal(dynamicContent);
+    });
+  }
+  }
 
+createDogCard();
 createDogCard();
 
 
