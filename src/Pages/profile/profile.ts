@@ -61,7 +61,7 @@ editProfileBtn.addEventListener("click", () => {
             </div>
             <div class="add-edit-info">
               <p>Fornavn:</p>
-              <p>Etternav:</p>
+              <p>Etternavn:</p>
               <p>Telefon:</p>
               <p>E-post:</p>
             </div>
@@ -181,3 +181,76 @@ editDogBtn.addEventListener("click", () => {
   `;
   modal.openModal(dynamicContent);
 });
+
+// HUNDEKORT
+const dogContainer = document.querySelector(".dog-card-container") as HTMLDivElement;
+
+class DogCard {
+  dogCard: HTMLDivElement;
+  dogCardInfo: HTMLDivElement;
+  dogInfo: HTMLDivElement;
+  dogImg: HTMLImageElement;
+  dogUserInfo: HTMLDivElement;
+  btnContainer: HTMLDivElement;
+  editDogBtn: HTMLButtonElement;
+
+  constructor() {
+
+    this.dogCard = document.createElement("div");
+    this.dogCard.classList.add("dog-card")
+
+    this.dogCardInfo = document.createElement("div");
+    this.dogCardInfo.classList.add("dog-card-info");
+
+    this.dogImg = document.createElement("img");
+    
+    this.dogInfo = document.createElement("div");
+    this.dogInfo.classList.add("dog-info")
+    this.dogInfo.innerHTML = `
+      <p>Navn:</p>
+      <p>Rase:</p>
+      <p>Alder:</p>
+      <p>Allergier:</p>
+    `;
+
+    this.dogUserInfo = document.createElement("div");
+    this.dogUserInfo.classList.add("dog-user-info");
+
+    this.btnContainer = document.createElement("div");
+    this.btnContainer.classList.add("btn-container");
+
+    this.editDogBtn = document.createElement("button");
+    this.editDogBtn.textContent = "REDIGER";
+    this.editDogBtn.classList.add("btn", "btn-warning");
+    this.editDogBtn.id = "edit-dog-btn"
+
+    this.dogCardInfo.appendChild(this.dogImg);
+    this.dogCardInfo.appendChild(this.dogInfo);
+    this.dogCardInfo.appendChild(this.dogUserInfo);
+
+    this.btnContainer.appendChild(this.editDogBtn);
+
+    
+    this.dogCard.appendChild(this.dogCardInfo)
+    this.dogCard.appendChild(this.btnContainer)
+
+    dogContainer.appendChild(this.dogCard);
+  }
+}
+
+function createDogCard() {
+  const dogCard = new DogCard();
+
+  dogCard.dogImg.src = "/images/dog1.png";
+
+  dogCard.dogUserInfo.innerHTML = `
+    <p>tomt felt</p>
+    <p>tomt felt</p>
+    <p>tomt felt</p>
+    <p>tomt felt</p>
+  `;
+}
+
+createDogCard();
+
+

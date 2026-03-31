@@ -28,7 +28,7 @@ h2 {
 }
 
 .btn-container {
-  padding: 10px;
+  padding: 1rem;
   gap: 5rem;
 }
 
@@ -214,7 +214,7 @@ h2 {
 }
 
 .remove-dog-card:hover {
-  outline: 2px solid var(--primary-shade-2);
+  outline: 0.3rem solid var(--primary-shade-2);
   cursor: pointer;
 }
 
