@@ -378,13 +378,13 @@ function createDogCard() {
               <img src="${dog.img}" alt="Bilde av hund" />
               <button class="btn btn-success">LAST OPP BILDE</button>
             </div>
-            <div class="user-input-form"">
+            <div class="user-input-form">
               <label for="dog-name">Navn:</label>
               <input type="text" name="dog-name"value="${dog.name}"></input>
               <label for="dog-breed">Rase:</label>
               <input type="text" name="dog-breed"value="${dog.breed}"></input>
               <label for="dog-age">Alder:</label>
-              <input type="text" name="dog-age "value="${dog.age}"></input>
+              <input type="text" name="dog-age" value="${dog.age}"></input>
               <label for="dog-allergy">Allergi:</label>
               <input type="text" name="dog-allergy" value="${dog.allergy}"></input>
             </div>
