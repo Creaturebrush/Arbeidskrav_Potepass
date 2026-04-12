@@ -19,6 +19,7 @@
 
 h1 {
   text-align: center;
+  margin: 0;
 }
 
 h2 {
@@ -27,7 +28,7 @@ h2 {
 }
 
 .btn-container {
-  padding: 10px;
+  padding: 1rem;
   gap: 5rem;
 }
 
@@ -72,7 +73,7 @@ h2 {
 .dog-card {
   background-color: var(--primary-card);
   border-radius: 2rem;
-  width: 30%;
+  max-width: fit-content;
   margin-top: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
@@ -86,11 +87,20 @@ h2 {
   padding: 1rem;
 }
 
+.dog-info p {
+  font-weight: var(--fw-bold);
+}
+
 .dog-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 2rem;
+}
+
+.info-container,
+.dog-container p {
+  white-space: nowrap;
 }
 
 /* BOOKING AND REQUEST*/
@@ -112,26 +122,49 @@ h2 {
 }
 
 /* MODALS */
-.MODAL-PLACEHOLDER {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  visibility: hidden;
-}
 .profile-modal {
   height: fit-content;
   width: min(42rem, calc(100% - 2rem));
   background-color: var(--primary);
   border-radius: 2rem;
   margin: 2rem;
+  padding: 2rem;
+  border: 12px solid var(--bg);
 
   position: fixed;
-  
+  z-index: 200;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .profile-modal img {
   margin: auto;
 }
+
+.profile-modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.profile-modal:not(.open) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.profile-modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* ADD/EDIT MODAL */
 .add-edit-modal-card {
   background-color: var(--primary-card);
@@ -139,8 +172,9 @@ h2 {
   border-radius: 2rem;
   margin: auto 2rem auto 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .add-edit-img-container {
@@ -156,15 +190,22 @@ h2 {
   border-radius: 100%;
 }
 
-.add-edit-btn-container,
-.add-edit-info,
-.add-edit-user-info {
+.user-input-form {
   display: flex;
   flex-direction: column;
 }
 
-.add-edit-btn-container {
-  gap: 1rem;
+label {
+  font-weight: var(--fw-bold);
+  font-size: 1.3rem;
+}
+
+input {
+  padding: 0.3rem;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  border: none;
+  width: 15rem;
 }
 
 /* REMOVE DOG MODAL */
@@ -186,20 +227,10 @@ h2 {
 }
 
 .remove-dog-card:hover {
-  outline: 2px solid var(--primary-shade-2);
+  outline: 0.3rem solid var(--primary-shade-2);
   cursor: pointer;
 }
 
 .remove-dog-card:active {
   outline: 2px solid var(--primary-shade-2);
-}
-
-/* MODAL TEST */
-
-.modal-wrapper:not(.open) {
-  visibility: hidden;
-}
-
-.modal-wrapper.open {
-  visibility: visible;
 }
