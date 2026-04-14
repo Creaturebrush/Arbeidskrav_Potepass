@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "Ola Nordmann",
+      "password": "abc123",
+      "email": "ola@example.com",
+      "description": "Trenger hundepass i helger og ferier",
+      "dogs": [
+        {
+          "id": 1,
+          "name": "Bella",
+          "breed": "Golden Retriever",
+          "age": 4,
+          "allergies": [
+            "kylling"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Max",
+          "breed": "Labrador",
+          "age": 2,
+          "allergies": []
+        }
+      ],
+      "created": "2025-09-01T10:30:00",
+      "updated": "2025-09-10T14:20:00"
+    }
+  ],
+  "petSitters": [
+    {
+      "id": 1,
+      "name": "Kari Hansen",
+      "location": "Oslo",
+      "pricePerDay": 400,
+      "rating": 4.6,
+      "reviewCount": 12,
+      "maxDogs": 2,
+      "acceptsPuppies": true,
+      "acceptsLargeDogs": false,
+      "yearsOfExperience": 5,
+      "experienceDescription": "Erfaring med valper, seniorhunder og lange turer",
+      "available": true,
+      "created": "2025-09-02T09:00:00",
+      "updated": "2025-09-12T16:45:00"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 101,
+      "userId": 1,
+      "userDogId": 1,
+      "petSitterId": 1,
+      "fromDate": "2026-01-10",
+      "toDate": "2026-01-12",
+      "status": "pending",
+      "message": "Hei! Max er snill og vant til andre hunder. Ingen allergier.",
+      "created": "2025-12-30T12:15:00",
+      "updated": "2025-12-30T12:15:00"
+    }
+  ]
+}
