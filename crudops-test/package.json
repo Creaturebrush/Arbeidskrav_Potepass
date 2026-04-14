@@ -1,0 +1,24 @@
+{
+  "name": "crudops",
+  "version": "1.1.0",
+  "description": "API til bruk i Operasjonell frontendutvikling ved Gokstad Akademiet",
+  "homepage": "https://github.com/vegarcodes/crudops#readme",
+  "bugs": {
+    "url": "https://github.com/vegarcodes/crudops/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vegarcodes/crudops.git"
+  },
+  "license": "ISC",
+  "author": "Vegar Norman <vegar.norman@gokstadakademiet.no>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "json-server": "^0.17.4"
+  }
+}

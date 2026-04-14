@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "Ola Nordmann",
+      "description": "Frontend-utvikler som liker tech-meetups",
+      "created": "2025-09-01T10:30:00",
+      "updated": "2025-09-10T14:20:00"
+    }
+  ],
+  "meetups": [
+    {
+      "id": 1,
+      "name": "Frontend Meetup Oslo",
+      "description": "Uformell meetup for frontend-utviklere",
+      "location": "Oslo",
+      "date": "2026-02-15",
+      "tags": [
+        "frontend",
+        "nybegynner",
+        "student",
+        "universell utforming",
+        "gratis"
+      ],
+      "created": "2025-12-01T09:00:00",
+      "updated": "2025-12-01T09:00:00"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "meetupId": 1,
+      "userId": 1,
+      "postName": "Gleder meg til meetupen!",
+      "text": "På torsdag skal jeg på Frontend Meetup Oslo for å høre på Vegar Norman snakke om frontend. Jeg gleder meg veldig, siden han er mitt store idol. Håper vi sees!",
+      "likes": 5,
+      "dislikes": 0,
+      "comments": [
+        {
+          "id": 1,
+          "userId": 1,
+          "comment": "Dette blir bra!",
+          "created": "2026-01-10T12:00:00"
+        },
+        {
+          "id": 2,
+          "userId": 2,
+          "comment": "Ååå jeg vil også dra dit, Vegar er veldig dyktig!!",
+          "created": "2026-01-10T12:00:00"
+        }
+      ],
+      "created": "2026-01-10T11:45:00",
+      "updated": "2026-01-10T11:45:00"
+    }
+  ]
+}

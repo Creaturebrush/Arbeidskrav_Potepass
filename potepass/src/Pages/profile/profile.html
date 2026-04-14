@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/src/Pages/profile/profile.css" />
+  </head>
+
+  <body>
+    <site-header></site-header>
+
+    <main class="main">
+      <h1 class="">PROFIL</h1>
+      <img
+        src="/images/PawPrint_line.png"
+        alt="Bilde av potetrykk"
+        class="pawprint-line"
+      />
+
+      <section class="user-container"></section>
+
+      <section class="dog-container">
+        <h2>Mine hunder</h2>
+        <div class="dog-card-container"></div>
+        <div class="btn-container">
+          <button class="btn btn-success" id="add-dog-btn">
+            LEGG TIL HUND
+          </button>
+          <button class="btn btn-danger" id="remove-dog-btn">FJERN HUND</button>
+        </div>
+      </section>
+
+      <section class="booking-request-section">
+        <div class="btn-container">
+          <button class="btn">MINE BOOKINGER</button>
+          <button class="btn">MINE FORESPØRSELER</button>
+        </div>
+      </section>
+    </main>
+
+    <site-footer></site-footer>
+    <script type="module" src="/src/Pages/profile/profile.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
