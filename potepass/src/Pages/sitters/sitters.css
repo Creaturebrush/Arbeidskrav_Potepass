@@ -545,3 +545,17 @@ color: #f2c94c;
   margin: 0 0 2rem;
   text-align: center;
  }
+/* Responsiveness */
+
+/* desktop*/
+ @media(max-width: 1440px) {
+
+ }
+
+/* tablet*/
+
+
+/* mobile */
+ @media (max-width: 600px){
+
+ }
