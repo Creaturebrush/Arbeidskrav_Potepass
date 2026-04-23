@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <site-header></site-header>
+    <header id="site-header"></header>
 
     <main class="main">
       <h1 class="">PROFIL</h1>
@@ -16,6 +16,7 @@
         src="/images/PawPrint_line.png"
         alt="Bilde av potetrykk"
         class="pawprint-line"
+        draggable="false"
       />
 
       <section class="user-container"></section>
@@ -31,15 +32,21 @@
         </div>
       </section>
 
+      <!--
+
       <section class="booking-request-section">
         <div class="btn-container">
           <button class="btn">MINE BOOKINGER</button>
           <button class="btn">MINE FORESPØRSELER</button>
         </div>
       </section>
+
+      -->
+
+
     </main>
 
-    <site-footer></site-footer>
+    <footer id="site-footer"></footer>
     <script type="module" src="/src/Pages/profile/profile.ts"></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
