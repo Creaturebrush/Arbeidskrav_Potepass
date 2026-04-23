@@ -1,5 +1,10 @@
-import { type User } from "../../types/user.type";
-import { getAllUsers } from "../../requests/users-api";
+import { type Dog, type User } from "../../types/user.type";
+
+import { getAllUsers } from "../../requests/getAllUsers";
+import { deleteUser } from "../../requests/deleteUser";
+import { editUser } from "../../requests/editUser";
+import { editDog } from "../../requests/editDog";
+import { addDog } from "../../requests/addDog";
 
 let currentUser: User | null = null;
 
@@ -82,9 +87,11 @@ function createModal(dynamicContent: string) {
 }
 
 function closeModal() {
-  currentModal?.remove();
-  currentModal = null;
-
+  if (currentModal) {
+      currentModal.remove();
+      currentModal = null;
+  }
+  
   document.body.style.overflow = "";
 }
 
@@ -102,16 +109,16 @@ document.addEventListener("click", (e) => {
               <button class="btn btn-success">LAST OPP BILDE</button>
             </div>
             <form class="user-input-form">
-            <label for="username">Brukernavn:</label>
-            <input type="text" name="username" value="${currentUser.userName}"></input>
-            <label for="email">E-post:</label>
-            <input type="text" name="email" value="${currentUser.email}"></input>
-            <label for="phone">Telefon:</label>
-            <input type="text" name="phone" value="${currentUser.phone}"></input>
-            <label for="location">Bosted:</label>
-            <input type="text" name="location" value="${currentUser.location}"></input>
-            <label for="bio">Bio:</label>
-            <textarea name="bio">${currentUser.description}</textarea>
+            <label for="username-input">Brukernavn:</label>
+            <input type="text" name="username" value="${currentUser.userName}" id="username-input"></input>
+            <label for="email-input">E-post:</label>
+            <input type="text" name="email" value="${currentUser.email}" id="email-input"></input>
+            <label for="phone-input">Telefon:</label>
+            <input type="text" name="phone" value="${currentUser.phone}" id="phone-input"></input>
+            <label for="location-input">Bosted:</label>
+            <input type="text" name="location" value="${currentUser.location}" id="location-input"></input>
+            <label for="bio-input">Bio:</label>
+            <textarea name="bio" id="bio-input">${currentUser.description}</textarea>
             </form>
           </div>
           <div class="btn-container">
@@ -142,14 +149,14 @@ document.addEventListener("click", (e) => {
               <button class="btn btn-success">LAST OPP BILDE</button>
             </div>
            <div class="user-input-form">
-              <label for="dog-name">Navn:</label>
-              <input type="text" name="dog-name"value=""></input>
-              <label for="dog-breed">Rase:</label>
-              <input type="text" name="dog-breed"value=""></input>
-              <label for="dog-age">Alder:</label>
-              <input type="text" name="dog-age "value=""></input>
-              <label for="dog-allergy">Allergier:</label>
-              <input type="text" name="dog-allergy" value=""></input>
+              <label for="dog-name-input">Navn:</label>
+              <input type="text" name="dog-name" value="" id="dog-name-input"></input>
+              <label for="dog-breed-input">Rase:</label>
+              <input type="text" name="dog-breed" value="" id="dog-breed-input"></input>
+              <label for="dog-age-input">Alder:</label>
+              <input type="text" name="dog-age" value="" id="dog-age-input"></input>
+              <label for="dog-allergies-input">Allergier:</label>
+              <input type="text" name="dog-allergies" value="" id="dog-allergies-input"></input>
             </div>
           </div>
           <div class="btn-container">
@@ -198,19 +205,51 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "confirm-edit-btn": {
+      if (!currentUser) return;
+      const updatedUser = getUserEdits();
+      editUser(currentUser.id, updatedUser);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+
       const dynamicContent = `
       <h2>Endringene ble lagret!</h2>
           <img src="/images/success.png" alt="success" draggable="false"/>
-          <div class="btn-container">
-            <button class="btn btn-success" id="close-btn">FORTSETT</button>
-          </div>
+      `;
+      createModal(dynamicContent);
+      break;
+    }
+    case "confirm-edit-dog-btn": {
+      if (!currentUser) return;
+
+      const dogId = Number((target as HTMLElement).dataset.id);
+      const dog = currentUser.dogs.find((d) => d.id === dogId);
+
+      if (!dog) return;
+
+      const updatedDog = getDogEdits();
+      editDog(currentUser.id, dog.id, updatedDog);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+
+      const dynamicContent = `
+      <h2>Endringene ble lagret!</h2>
+          <img src="/images/success.png" alt="success" draggable="false"/>
       `;
       createModal(dynamicContent);
       break;
     }
     case "confirm-add-dog-btn": {
+      if (!currentUser) return;
+
+      const newDog = getNewDog();
+      addDog(currentUser.id, newDog);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
       const dynamicContent = `
-      <h2>"NAVN" ble lagt til i dine hunder!</h2>
+      <h2>${newDog.name} ble lagt til i dine hunder!</h2>
           <img src="/images/success.png" alt="success" draggable="false"/>
           <div class="btn-container">
             <button class="btn btn-success" id="close-btn">FORTSETT</button>
@@ -220,11 +259,13 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "confirm-delete-btn": {
+      if (!currentUser) return;
+      deleteUser(currentUser.id);
+      setTimeout(() => {
+        window.location.replace("./index.html");
+      }, 2000);
       const dynamicContent = `
       <h2>Profilen din ble slettet!</h2>
-          <div class="btn-container">
-            <button class="btn btn-success" id="close-btn">AVSLUTT</button>
-          </div>
       `;
       createModal(dynamicContent);
       break;
@@ -272,18 +313,18 @@ document.addEventListener("click", (e) => {
               <button class="btn btn-success">LAST OPP BILDE</button>
             </div>
             <div class="user-input-form">
-              <label for="dog-name">Navn:</label>
-              <input type="text" name="dog-name"value="${dog.name}"></input>
-              <label for="dog-breed">Rase:</label>
-              <input type="text" name="dog-breed"value="${dog.breed}"></input>
-              <label for="dog-age">Alder:</label>
-              <input type="text" name="dog-age" value="${dog.age}"></input>
-              <label for="dog-allergy">Allergi:</label>
-              <input type="text" name="dog-allergy" value="${dog.allergies.length ? dog.allergies.join(", ") : ""}"></input>
+              <label for="dog-name-input">Navn:</label>
+              <input type="text" name="dog-name"value="${dog.name}" id="dog-name-input"></input>
+              <label for="dog-breed-input">Rase:</label>
+              <input type="text" name="dog-breed"value="${dog.breed}" id="dog-breed-input"></input>
+              <label for="dog-age-input">Alder:</label>
+              <input type="text" name="dog-age" value="${dog.age}" id="dog-age-input"></input>
+              <label for="dog-allergies-input">Allergi:</label>
+              <input type="text" name="dog-allergy" value="${dog.allergies.length ? dog.allergies.join(", ") : ""}" id="dog-allergies-input"></input>
             </div>
           </div>
           <div class="btn-container">
-            <button class="btn btn-success" id="confirm-edit-btn">BEKREFT ENDRINGER</button>
+            <button class="btn btn-success" id="confirm-edit-dog-btn" data-id="${dog.id.toString()}">BEKREFT ENDRINGER</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
           </div>
   `;
@@ -374,4 +415,69 @@ function createDogCard() {
     <p>${dog.allergies.length ? dog.allergies.join(", ") : "Ingen"}</p>
   `;
   });
+}
+
+function getUserEdits(): Partial<User> {
+  const username = (
+    document.getElementById("username-input") as HTMLInputElement
+  ).value;
+  const email = (document.getElementById("email-input") as HTMLInputElement)
+    .value;
+  const phone = (document.getElementById("phone-input") as HTMLInputElement)
+    .value;
+  const location = (
+    document.getElementById("location-input") as HTMLInputElement
+  ).value;
+  const description = (document.getElementById("bio-input") as HTMLInputElement)
+    .value;
+
+  return {
+    userName: username,
+    email: email,
+    phone: Number(phone),
+    location: location,
+    description: description,
+  };
+}
+
+function getDogEdits(): Partial<Dog> {
+  const dogName = (
+    document.getElementById("dog-name-input") as HTMLInputElement
+  ).value;
+  const dogBreed = (
+    document.getElementById("dog-breed-input") as HTMLInputElement
+  ).value;
+  const dogAge = (document.getElementById("dog-age-input") as HTMLInputElement)
+    .value;
+  const dogAllergies = (
+    document.getElementById("dog-allergies-input") as HTMLInputElement
+  ).value;
+
+  return {
+    name: dogName,
+    breed: dogBreed,
+    age: Number(dogAge),
+    allergies: [dogAllergies],
+  };
+}
+
+function getNewDog(): Partial<Dog> {
+  const dogName = (
+    document.getElementById("dog-name-input") as HTMLInputElement
+  ).value;
+  const dogBreed = (
+    document.getElementById("dog-breed-input") as HTMLInputElement
+  ).value;
+  const dogAge = (document.getElementById("dog-age-input") as HTMLInputElement)
+    .value;
+  const dogAllergies = (
+    document.getElementById("dog-allergies-input") as HTMLInputElement
+  ).value;
+
+  return {
+    name: dogName,
+    breed: dogBreed,
+    age: Number(dogAge),
+    allergies: [dogAllergies],
+  };
 }

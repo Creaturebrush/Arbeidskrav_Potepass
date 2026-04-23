@@ -1,5 +1,5 @@
 import { type User } from "../../types/user.type";
-import { getAllUsers } from "../../requests/users-api";
+import { getAllUsers } from "../../requests/getAllUsers";
 
 async function getUsers() {
   const users: User[] = await getAllUsers();
