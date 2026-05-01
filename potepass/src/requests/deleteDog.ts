@@ -1,26 +1,24 @@
-import type { Dog } from "../types/dog.type";
+// FREDRIK
 
 const APIKey: string = "dreamTeam";
 
-export async function editDog(dogId: number, editedDog: Partial<Dog>) {
+export async function deleteDog(dogId: number) {
   try {
     const response: Response = await fetch(
       `http://localhost:3000/api/dogs/${dogId}`,
       {
-        method: "PATCH",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${APIKey}`,
         },
-        body: JSON.stringify(editedDog),
       },
     );
 
     if (!response.ok) {
       throw new Error(`En feil har oppstått. Feilkode: ${response.status}`);
     } else {
-      const data: Dog = await response.json();
-      return data;
+      return;
     }
   } catch (error) {
     throw error;

@@ -1,21 +1,27 @@
-import { type Dog, type User } from "../../types/user.type";
+// FREDRIK
 
+import { type User } from "../../types/user.type";
+import { type Dog } from "../../types/dog.type";
 import { getAllUsers } from "../../requests/getAllUsers";
 import { deleteUser } from "../../requests/deleteUser";
+import { deleteDog } from "../../requests/deleteDog";
 import { editUser } from "../../requests/editUser";
 import { editDog } from "../../requests/editDog";
 import { addDog } from "../../requests/addDog";
+import { getAllDogs } from "../../requests/getAllDogs";
 
 let currentUser: User | null = null;
+let userDog: Dog[] = [];
 
 async function init() {
   const users: User[] = await getAllUsers();
   currentUser = users[0];
+  userDog = await getAllDogs();
 
   if (!currentUser) return;
 
   showUser(currentUser);
-  createDogCard();
+  createDogCard(userDog);
 }
 
 init();
@@ -32,27 +38,13 @@ async function showUser(currentUser: User) {
         <div class="info-container">
           <div class="user-img-container">
             <img src="${currentUser.image || "/images/useravatar.png"}" alt="Profile picture" draggable="false"/>
-            <div class="star-container">
-              <img src="/images/star-filled.png" alt="Fylt stjerne" draggable="false"/>
-              <img src="/images/star-filled.png" alt="Fylt stjerne" draggable="false"/>
-              <img src="/images/star-filled.png" alt="Fylt stjerne" draggable="false"/>
-              <img src="/images/star-filled.png" alt="Fylt stjerne" draggable="false"/>
-              <img src="/images/star-filled.png" alt="Fylt stjerne" draggable="false"/>
-            </div>
           </div>
           <div class="user-info">
-            <p>Navn:</p>
-            <p>E-post:</p>
-            <p>Telefon:</p>
-            <p>Bosted:</p>
-            <p>Bio:</p>
-          </div>
-          <div>
-            <p>${currentUser.userName}</p>
-            <p>${currentUser.email}</p>
-            <p>${currentUser.phone}</p>
-            <p>${currentUser.location}</p>
-            <p>${currentUser.description}</p>
+          <span><p class="info-txt-bold">Navn:</p><p>${currentUser.userName}</p></span>
+          <span><p class="info-txt-bold">E-post:</p><p>${currentUser.email}</p></span>
+          <span><p class="info-txt-bold">Mobil:</p><p>${currentUser.phone}</p></span>
+          <span><p class="info-txt-bold">Bosted:</p><p>${currentUser.location}</p></span>
+          <span><p class="info-txt-bold">Informasjon:</p><p>${currentUser.description}</p></span>
           </div>
         </div>
         <div class="btn-container">
@@ -106,7 +98,9 @@ document.addEventListener("click", (e) => {
           <div class="add-edit-modal-card">
             <div class="add-edit-img-container">
               <img src="/images/useravatar.png" alt="Bilde av person" draggable="false"/>
+              <input type="file" id="fileInput" accept="image/*" />
               <button class="btn btn-success">LAST OPP BILDE</button>
+              <button class="btn btn-warning">ENDRE PASSORD</button>
             </div>
             <form class="user-input-form">
             <label for="username-input">Brukernavn:</label>
@@ -117,8 +111,8 @@ document.addEventListener("click", (e) => {
             <input type="text" name="phone" value="${currentUser.phone}" id="phone-input"></input>
             <label for="location-input">Bosted:</label>
             <input type="text" name="location" value="${currentUser.location}" id="location-input"></input>
-            <label for="bio-input">Bio:</label>
-            <textarea name="bio" id="bio-input">${currentUser.description}</textarea>
+            <label for="info-input">Informasjon:</label>
+            <textarea name="info" id="info-input">${currentUser.description}</textarea>
             </form>
           </div>
           <div class="btn-container">
@@ -146,6 +140,7 @@ document.addEventListener("click", (e) => {
           <div class="add-edit-modal-card">
             <div class="add-edit-img-container">
               <img src="/images/dogicon.png" alt="Bilde av hund" draggable="false"/>
+              <input type="file" id="fileInput" accept="image/*" />
               <button class="btn btn-success">LAST OPP BILDE</button>
             </div>
            <div class="user-input-form">
@@ -172,6 +167,11 @@ document.addEventListener("click", (e) => {
 
       const dynamicContent = `
           <h2>Hvilken hund ønsker du å fjerne?</h2>
+          <div id="profile-checkbox-container" class="profile-checkbox-container"> 
+            <form id="remove-dog-checkboxes">
+
+            </form>
+          </div>
           <div class="remove-dog-container">
           </div>
           <div class="btn-container">
@@ -185,77 +185,129 @@ document.addEventListener("click", (e) => {
         ".remove-dog-container",
       ) as HTMLDivElement;
 
-      currentUser.dogs.forEach((dog) => {
+      const checkboxes = document.getElementById(
+        "remove-dog-checkboxes",
+      ) as HTMLDivElement;
+
+      const userDogs = userDog.filter(
+        (dog) => dog.petOwnerId === currentUser?.id,
+      );
+
+      for (const dog of userDogs) {
         const removeDogCard = document.createElement("div") as HTMLDivElement;
         removeDogCard.classList.add("remove-dog-card");
-        removeDogCard.dataset.id = dog.id.toString();
+        removeDogCard.dataset.id = String(dog.id);
         const removeDogImg = document.createElement("img") as HTMLImageElement;
         removeDogImg.src = dog.image || "/images/dogicon.png";
         removeDogImg.draggable = false;
         const removeDogName = document.createElement(
-          "p",
-        ) as HTMLParagraphElement;
+          "h2",
+        ) as HTMLHeadingElement;
         removeDogName.innerText = dog.name;
 
-        removeDogCard.appendChild(removeDogImg);
+        const dogLabel = document.createElement("label") as HTMLLabelElement;
+        dogLabel.htmlFor = "for" + String(dog.id);
+        const dogCheckbox = document.createElement("input") as HTMLInputElement;
+        dogCheckbox.id = "for" + String(dog.id);
+        dogCheckbox.dataset.id = String(dog.id);
+        dogCheckbox.type = "radio";
+        dogCheckbox.name = "choice";
+        dogCheckbox.value = dog.name;
+
+        dogLabel.appendChild(dogCheckbox);
+        checkboxes.appendChild(dogLabel);
+
         removeDogCard.appendChild(removeDogName);
+        removeDogCard.appendChild(removeDogImg);
 
         removeDogContainer.appendChild(removeDogCard);
-      });
+
+        removeDogCard.addEventListener("click", () => {
+          const allCards = document.querySelectorAll(".remove-dog-card");
+          for (const pressed of allCards) {
+            pressed.classList.remove("pressed");
+          }
+          removeDogCard.classList.add("pressed");
+          dogCheckbox.checked = true;
+        });
+      }
       break;
     }
     case "confirm-edit-btn": {
       if (!currentUser) return;
       const updatedUser = getUserEdits();
       editUser(currentUser.id, updatedUser);
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
 
       const dynamicContent = `
-      <h2>Endringene ble lagret!</h2>
-          <img src="/images/success.png" alt="success" draggable="false"/>
+      <h2>Lagrer endringer...</h2>
+          <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
       `;
       createModal(dynamicContent);
+
+      setTimeout(() => {
+        const dynamicContent = `
+      <h2>Endringene ble lagret!</h2>
+          <img src="/images/success.png" alt="success" draggable="false"/>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-and-update-btn">FORTSETT</button>
+          </div>
+      `;
+        createModal(dynamicContent);
+      }, 2000);
       break;
     }
     case "confirm-edit-dog-btn": {
       if (!currentUser) return;
 
       const dogId = Number((target as HTMLElement).dataset.id);
-      const dog = currentUser.dogs.find((d) => d.id === dogId);
+      const dog: Dog | undefined = userDog.find((dog) => dog.id === dogId);
 
       if (!dog) return;
 
       const updatedDog = getDogEdits();
-      editDog(currentUser.id, dog.id, updatedDog);
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+      editDog(dog.id, updatedDog);
 
       const dynamicContent = `
-      <h2>Endringene ble lagret!</h2>
-          <img src="/images/success.png" alt="success" draggable="false"/>
+      <h2>Lagrer endringer...</h2>
+          <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
       `;
       createModal(dynamicContent);
+
+      setTimeout(() => {
+        const dynamicContent = `
+      <h2>Endringene ble lagret!</h2>
+          <img src="/images/success.png" alt="success" draggable="false"/>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-and-update-btn">FORTSETT</button>
+          </div>
+      `;
+        createModal(dynamicContent);
+      }, 2000);
+
       break;
     }
     case "confirm-add-dog-btn": {
       if (!currentUser) return;
 
       const newDog = getNewDog();
-      addDog(currentUser.id, newDog);
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+
       const dynamicContent = `
-      <h2>${newDog.name} ble lagt til i dine hunder!</h2>
-          <img src="/images/success.png" alt="success" draggable="false"/>
-          <div class="btn-container">
-            <button class="btn btn-success" id="close-btn">FORTSETT</button>
-          </div>
+      <h2>Legger til ${newDog.name}...</h2>
+          <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
       `;
       createModal(dynamicContent);
+
+      setTimeout(() => {
+        addDog(newDog);
+        const dynamicContent = `
+      <h2>${newDog.name} ble lagt til i "mine hunder"!</h2>
+          <img src="/images/success.png" alt="success" draggable="false"/>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-and-update-btn">FORTSETT</button>
+          </div>
+      `;
+        createModal(dynamicContent);
+      }, 2000);
       break;
     }
     case "confirm-delete-btn": {
@@ -271,10 +323,16 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "warning-remove-dog-btn": {
+      const selectedDog = document.querySelector(".pressed") as HTMLDivElement;
+      const dogId = Number(selectedDog.dataset.id);
+      const dog: Dog | undefined = userDog.find((dog) => dog.id === dogId);
+
+      if (!dog) return;
+
       const dynamicContent = `
-    <h2>Er du sikker på at du ønsker å fjerne NAVN?</h2>
-          <div class="remove-dog-container">
-            <img src="/images/dog1.png" alt="Bilde av hund" draggable="false"/>
+    <h2>Er du sikker på at du ønsker å fjerne ${dog.name}?</h2>
+          <div class="remove-dog-container" data-id="${dogId}">
+            <img src="${dog.image}" alt="Bilde av hund" draggable="false"/>
           </div>
           <div class="btn-container">
             <button class="btn btn-success" id="remove-dog-btn">AVBRYT</button>
@@ -285,23 +343,45 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "confirm-remove-dog-btn": {
+      const selectedDog = document.querySelector(
+        ".remove-dog-container",
+      ) as HTMLDivElement;
+
+      const dogId = Number(selectedDog.dataset.id);
+      const dog: Dog | undefined = userDog.find((dog) => dog.id === dogId);
+
+      if (!dog) return;
+
       const dynamicContent = `
-    <h2>NAVN er fjernet fra "mine hunder"</h2>
-          <div class="remove-dog-container">
-            <img src="/images/dog1.png" alt="Bilde av hund" draggable="false"/>
-          </div>
-          <div class="btn-container">
-            <button class="btn btn-success" id="close-btn">GÅ TILBAKE</button>
-          </div>
+    <h2>Forsøker å fjerne ${dog.name} fra "mine hunder"..</h2>
+          <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
     `;
       createModal(dynamicContent);
+
+      setTimeout(() => {
+        deleteDog(dogId);
+        const dynamicContent = `
+    <h2>${dog.name} er fjernet fra "mine hunder"</h2>
+          <div class="remove-dog-container">
+            <img src="${dog.image}" alt="Bilde av hund" draggable="false"/>
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-and-update-btn">GÅ TILBAKE</button>
+          </div>
+    `;
+        createModal(dynamicContent);
+      }, 2000);
       break;
     }
     case "edit-dog-btn": {
       if (!currentUser) return;
+      if (!userDog) return;
 
-      const dogId = Number((target as HTMLElement).dataset.id);
-      const dog = currentUser.dogs.find((d) => d.id === dogId);
+      const targetBtn = (target as HTMLElement).closest(
+        "#edit-dog-btn",
+      ) as HTMLButtonElement;
+      const dogId = Number(targetBtn.dataset.id);
+      const dog: Dog | undefined = userDog.find((dog) => dog.id === dogId);
 
       if (!dog) return;
 
@@ -310,6 +390,7 @@ document.addEventListener("click", (e) => {
           <div class="add-edit-modal-card">
             <div class="add-edit-img-container">
               <img src="${dog.image}" alt="Bilde av hund" draggable="false"/>
+              <input type="file" id="fileInput" accept="image/*" />
               <button class="btn btn-success">LAST OPP BILDE</button>
             </div>
             <div class="user-input-form">
@@ -324,7 +405,7 @@ document.addEventListener("click", (e) => {
             </div>
           </div>
           <div class="btn-container">
-            <button class="btn btn-success" id="confirm-edit-dog-btn" data-id="${dog.id.toString()}">BEKREFT ENDRINGER</button>
+            <button class="btn btn-success" id="confirm-edit-dog-btn" data-id="${String(dog.id)}">BEKREFT ENDRINGER</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
           </div>
   `;
@@ -332,6 +413,12 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "close-btn": {
+      closeModal();
+      break;
+    }
+    case "close-and-update-btn": {
+      alert("test")
+      location.reload();
       closeModal();
       break;
     }
@@ -356,7 +443,7 @@ document.addEventListener("click", (e) => {
 
 //PROFILKORT
 
-function createDogCard() {
+function createDogCard(userDog: Dog[]) {
   if (!currentUser) return;
   const dogContainer = document.querySelector(
     ".dog-card-container",
@@ -364,7 +451,9 @@ function createDogCard() {
 
   dogContainer.innerHTML = "";
 
-  currentUser.dogs.forEach((dog) => {
+  const userDogs = userDog.filter((dog) => dog.petOwnerId === currentUser?.id)
+
+  for (const dog of userDogs) {
     const dogCard = document.createElement("div") as HTMLDivElement;
     dogCard.classList.add("dog-card");
 
@@ -376,10 +465,10 @@ function createDogCard() {
     const dogInfo = document.createElement("div") as HTMLDivElement;
     dogInfo.classList.add("dog-info");
     dogInfo.innerHTML = `
-      <p>Navn:</p>
-      <p>Rase:</p>
-      <p>Alder:</p>
-      <p>Allergier:</p>
+      <span><p class="info-txt-bold">Navn:</p><p>${dog.name}</p></span>
+      <span><p class="info-txt-bold">Rase:</p><p>${dog.breed}</p></span>
+      <span><p class="info-txt-bold">Alder:</p><p>${dog.age} år</p></span>
+      <span><p class="info-txt-bold">Allergier:</p><p>${dog.allergies.length ? dog.allergies.join(", ") : "Ingen"}</p></span>
     `;
 
     const dogUserInfo = document.createElement("div") as HTMLDivElement;
@@ -392,11 +481,10 @@ function createDogCard() {
     editDogBtn.textContent = "REDIGER";
     editDogBtn.classList.add("btn", "btn-warning");
     editDogBtn.id = "edit-dog-btn";
-    editDogBtn.dataset.id = dog.id.toString();
+    editDogBtn.dataset.id = String(dog.id);
 
     dogCardInfo.appendChild(dogImg);
     dogCardInfo.appendChild(dogInfo);
-    dogCardInfo.appendChild(dogUserInfo);
 
     btnContainer.appendChild(editDogBtn);
 
@@ -407,14 +495,7 @@ function createDogCard() {
 
     dogImg.src = dog.image || "/images/dogicon.png";
     dogImg.draggable = false;
-
-    dogUserInfo.innerHTML = `
-    <p>${dog.name}</p>
-    <p>${dog.breed}</p>
-    <p>${dog.age} år</p>
-    <p>${dog.allergies.length ? dog.allergies.join(", ") : "Ingen"}</p>
-  `;
-  });
+  }
 }
 
 function getUserEdits(): Partial<User> {
@@ -428,7 +509,7 @@ function getUserEdits(): Partial<User> {
   const location = (
     document.getElementById("location-input") as HTMLInputElement
   ).value;
-  const description = (document.getElementById("bio-input") as HTMLInputElement)
+  const description = (document.getElementById("info-input") as HTMLInputElement)
     .value;
 
   return {
@@ -453,12 +534,21 @@ function getDogEdits(): Partial<Dog> {
     document.getElementById("dog-allergies-input") as HTMLInputElement
   ).value;
 
-  return {
-    name: dogName,
-    breed: dogBreed,
-    age: Number(dogAge),
-    allergies: [dogAllergies],
-  };
+  if (dogAllergies === "") {
+    return {
+      name: dogName,
+      breed: dogBreed,
+      age: Number(dogAge),
+      allergies: [],
+    };
+  } else {
+    return {
+      name: dogName,
+      breed: dogBreed,
+      age: Number(dogAge),
+      allergies: [dogAllergies],
+    };
+  }
 }
 
 function getNewDog(): Partial<Dog> {
@@ -474,10 +564,20 @@ function getNewDog(): Partial<Dog> {
     document.getElementById("dog-allergies-input") as HTMLInputElement
   ).value;
 
-  return {
-    name: dogName,
-    breed: dogBreed,
-    age: Number(dogAge),
-    allergies: [dogAllergies],
-  };
+  if (dogAllergies === "") {
+    return {
+      petOwnerId: currentUser?.id,
+      name: dogName,
+      breed: dogBreed,
+      age: Number(dogAge),
+      allergies: [],
+    };
+  } else
+    return {
+      petOwnerId: currentUser?.id,
+      name: dogName,
+      breed: dogBreed,
+      age: Number(dogAge),
+      allergies: [dogAllergies],
+    };
 }

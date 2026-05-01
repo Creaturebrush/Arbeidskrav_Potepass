@@ -1,3 +1,5 @@
+// FREDRIK
+
 import type { User } from "../types/user.type";
 
 const APIKey: string = "dreamTeam";
@@ -12,14 +14,14 @@ export async function editUser(userId: number, editedUser: Partial<User>) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${APIKey}`,
         },
-        body: JSON.stringify(editedUser)
+        body: JSON.stringify(editedUser),
       },
     );
 
     if (!response.ok) {
       throw new Error(`En feil har oppstått. Feilkode: ${response.status}`);
     } else {
-        const data: User = await response.json();
+      const data: User = await response.json();
       return data;
     }
   } catch (error) {
