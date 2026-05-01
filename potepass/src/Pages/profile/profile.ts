@@ -417,7 +417,6 @@ document.addEventListener("click", (e) => {
       break;
     }
     case "close-and-update-btn": {
-      alert("test")
       location.reload();
       closeModal();
       break;
