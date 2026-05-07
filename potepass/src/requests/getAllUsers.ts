@@ -1,3 +1,5 @@
+// Anette Bratvold
+
 import { type User } from "../types/user.type";
 
 export async function getAllUsers(): Promise<User[]> {

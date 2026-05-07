@@ -9,4 +9,7 @@ export type User = {
   image: string;
 };
 
-export type NewUser = Omit <User, "id" | "password" | "email" | "description" | "dogs">;
+export type NewUser = Omit<
+  User,
+  "id" | "password" | "email" | "description" | "dogs"
+>;

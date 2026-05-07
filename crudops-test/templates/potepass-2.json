@@ -130,7 +130,7 @@
     {
       "id": 101,
       "userId": 1,
-      "userDogId": 1,
+      "userDogId": [1],
       "petSitterId": 1,
       "fromDate": "2026-01-10",
       "toDate": "2026-01-12",
@@ -142,7 +142,7 @@
     {
       "id": 102,
       "userId": 1,
-      "userDogId": 2,
+      "userDogId": [2],
       "petSitterId": 1,
       "fromDate": "2026-01-10",
       "toDate": "2026-01-12",
@@ -154,7 +154,7 @@
     {
       "id": 103,
       "userId": 2,
-      "userDogId": 3,
+      "userDogId": [2],
       "petSitterId": 4,
       "fromDate": "2026-01-10",
       "toDate": "2026-01-12",
@@ -190,7 +190,7 @@
       "reviewMessage": "Kåre sverger at han ikke liker hunder, men Bella forelsket seg hvertfall i Kåre. 10/10 - han skal passe igjen!"
     },
     {
-      "id": 3,
+      "id": 4,
       "fromUserId": 1,
       "toPetSitterId": 2,
       "rating": 1,

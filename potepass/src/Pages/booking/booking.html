@@ -1,3 +1,5 @@
+<!-- Anette Bratvold -->
+
 <!doctype html>
 <html lang="no">
 
@@ -10,7 +12,7 @@
 </head>
 
 <body>
-  <site-header></site-header>
+  <header id="site-header"></header>
   <main>
     <h1>BOOK HUNDEPASSER</h1>
     <img src="/images/PawPrint_line.png" alt="" class="pawprint-line" aria-hidden="true" />
@@ -29,7 +31,7 @@
       </div>
       <div>
         <h2 class="dog-sitter-name">KARLLA</h2>
-        <p class="dog-sitter-description-txt">
+        <p class="user-description-txt">
           Hei! Jeg heter Karlla og har flere års erfaring med hundepass. Jeg
           liker å tilpasse hverdagen etter hundens behov og tilbyr trygge
           rammer, faste rutiner og gode turer. Jeg har erfaring med både små
@@ -40,20 +42,12 @@
     </div>
     <p>Velg hund(er) og send forspørselen.</p>
     <form action="">
-      <h4 class="">BOOK HUNDEPASSER</h4>
+      <h4 class="form-title">BOOK HUNDEPASSER</h4>
       <div class="form-container">
         <div class="choose-dog-container">
           <label for="dog-checkbox form-label"><span aria-hidden="true">*</span>VELG HUNDER:
           </label>
           <div class="dogs-container">
-            <div class="dog-container form-group">
-              <input type="checkbox" name="" id="dog-checkbox" />
-              <label class="fw-bold" for="dog-checkbox">Napoleon (Chihuahua)</label>
-            </div>
-            <div class="dog-container form-group">
-              <input type="checkbox" name="" id="dog-checkbox" />
-              <label class="fw-bold" for="dog-checkbox">Buddy(Golden Retriever)</label>
-            </div>
           </div>
         </div>
 
@@ -103,7 +97,7 @@
 
         <div class="btn-container">
           <button type="button" class="btn btn-danger" id="cancel-booking">AVBRYT BOOKING</button>
-          <input type="submit" value="SEND FORSPØRSEL" class="btn btn-success" id="send-booking-btn"/>
+          <input type="submit" value="SEND FORSPØRSEL" class="btn btn-success" id="send-booking-btn" />
         </div>
       </div>
     </form>
@@ -112,18 +106,18 @@
     </div>
 
     <!-- Modals -->
-     <div class="modal-overlay" id="modal1">
-  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
-    <button class="modal-close" aria-label="close dialog">&times;</button>
-    <div class="modal-body"></div>
-  </div>
-</div>
-   
+    <div class="modal-overlay" id="modal1">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
+        <button class="modal-close" aria-label="close dialog">&times;</button>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+
+    <div class="booking-sent-container hidden"></div>
+
   </main>
 
-  <site-footer>
-    <!-- footer here -->
-  </site-footer>
+  <footer id="site-footer"></footer>
 
   <script type="module" src="/src/Pages/booking/booking.ts"></script>
 </body>
