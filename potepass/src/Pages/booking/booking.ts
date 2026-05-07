@@ -593,4 +593,3 @@ form?.addEventListener("submit", (e) => {
   e.preventDefault();
   // your booking logic here
 });
-
