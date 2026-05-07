@@ -4,17 +4,28 @@ import type { User } from "../types/user.type";
 
 const APIKey: string = "dreamTeam";
 
-export async function editUser(userId: number, editedUser: Partial<User>) {
+export async function createUser(createdUser: Partial<User>) {
   try {
+    const newUser = {
+      id: "",
+      userName: createdUser.userName,
+      location: createdUser.location,
+      password: createdUser.password,
+      email: createdUser.email,
+      phone: createdUser.phone,
+      image: createdUser.image || "/images/useravatar.png",
+      description: createdUser.description,
+    };
+
     const response: Response = await fetch(
-      `http://localhost:3000/api/users/${userId}`,
+      `http://localhost:3000/api/users/`,
       {
-        method: "PATCH",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${APIKey}`,
         },
-        body: JSON.stringify(editedUser),
+        body: JSON.stringify(newUser),
       },
     );
 

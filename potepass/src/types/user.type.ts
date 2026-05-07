@@ -1,12 +1,3 @@
-export type Dog = {
-  id: number;
-  name: string;
-  breed: string;
-  age: number;
-  image: string;
-  allergies: string[];
-};
-
 export type User = {
   id: number;
   userName: string;
@@ -16,7 +7,6 @@ export type User = {
   location: string;
   description: string;
   image: string;
-  dogs: Dog[];
 };
 
 export type NewUser = Omit<

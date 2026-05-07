@@ -1,0 +1,50 @@
+.header-modal {
+  height: fit-content;
+  width: min(42rem, calc(100% - 2rem));
+  background-color: var(--primary);
+  border-radius: 2rem;
+  margin: 2rem;
+  padding: 2rem;
+  border: 12px solid var(--bg);
+
+  position: fixed;
+  z-index: 200;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-modal img {
+  margin: auto;
+}
+
+.header-modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-modal:not(.open) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.header-modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.header-spinner {
+  width: 5rem;
+
+  transform-origin: center;
+  animation: spin 2.5s linear infinite;
+}

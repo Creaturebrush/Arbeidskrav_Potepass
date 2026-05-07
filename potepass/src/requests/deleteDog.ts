@@ -2,10 +2,10 @@
 
 const APIKey: string = "dreamTeam";
 
-export async function deleteUser(userId: number) {
+export async function deleteDog(dogId: number) {
   try {
     const response: Response = await fetch(
-      `http://localhost:3000/api/users/${userId}`,
+      `http://localhost:3000/api/dogs/${dogId}`,
       {
         method: "DELETE",
         headers: {

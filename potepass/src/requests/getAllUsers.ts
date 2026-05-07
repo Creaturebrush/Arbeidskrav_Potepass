@@ -2,9 +2,6 @@
 
 import { type User } from "../types/user.type";
 
-//const APIKey: string = "dreamTeam";
-
-//READ
 export async function getAllUsers(): Promise<User[]> {
   try {
     const response: Response = await fetch("http://localhost:3000/api/users");
