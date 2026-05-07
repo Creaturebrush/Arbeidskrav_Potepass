@@ -1,3 +1,5 @@
+//FREDRIK
+
 import type { Dog } from "../types/dog.type";
 
 const APIKey: string = "dreamTeam";

@@ -37,14 +37,25 @@ h2 {
 
 /* PROFIL INFO */
 .info-container {
+  /*  */
+
+  background-color: var(--primary-card);
+  border-radius: 2rem;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  padding: 1rem;
+  
+  /*  */
+
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 90%;
-  gap: 3rem;
+  min-width: auto;
+  max-width: 95%;
+  gap: 5rem;
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
+
 }
 
 .user-img-container {
@@ -62,7 +73,7 @@ h2 {
 }
 
 .user-info {
-   display: flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -105,7 +116,7 @@ h2 {
 }
 
 .dog-info {
-   display: flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -118,13 +129,16 @@ h2 {
   font-weight: var(--fw-bold);
 }
 
-
 .dog-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+}
+
+.dog-card-container h2 {
+  font-size: 2rem;
 }
 
 /* BOOKING AND REQUEST*/
@@ -169,7 +183,7 @@ h2 {
 
 .profile-modal-backdrop {
   background: rgba(0, 0, 0, 0.5);
-  
+
   height: 100%;
   position: fixed;
   top: 0;
@@ -216,6 +230,7 @@ h2 {
 }
 
 .user-input-form {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -254,7 +269,6 @@ textarea {
   margin-bottom: 1rem;
   max-width: 90%;
   gap: 1rem;
-  
 }
 
 .remove-dog-container img {
@@ -300,13 +314,77 @@ textarea {
   display: none;
 }
 
+/* BOOKINGS MODAL */
+
+.booking {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  text-align: center;
+}
+
+.booking-container {
+  max-width: 100%;
+}
+
+.booking-card {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 25% 25% 25% 25%;
+  text-align: center;
+  background-color: var(--primary-card);
+  outline: 2px solid var(--primary-shade-2);
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+
+.booking-sitter img {
+  margin: auto;
+  width: 5rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.booking-dog img {
+  width: 5rem;
+  border-radius: 50%;
+  margin: auto;
+  border: 1px solid black;
+}
+
+.booking-status {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 0.5rem;
+}
+
+.booking-status-dot {
+  border-radius: 50%;
+  min-height: 0.8rem;
+  min-width: 0.8rem;
+}
+
 /* LOADING SPINNER */
 
 .profile-spinner {
   width: 5rem;
-  
+
   transform-origin: center;
   animation: spin 2.5s linear infinite;
+}
+
+.dog-spinner {
+  margin: auto;
+  width: 5rem;
+  height: 5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transform-origin: center;
+  animation:
+    steps 0.5s infinite,
+    spin 2s linear infinite;
 }
 
 @keyframes spin {
@@ -315,5 +393,23 @@ textarea {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes steps {
+  0% {
+    background-image: url("/images/dog-spinner-0.png");
+  }
+  25% {
+    background-image: url("/images/dog-spinner-1.png");
+  }
+  50% {
+    background-image: url("/images/dog-spinner-2.png");
+  }
+  75% {
+    background-image: url("/images/dog-spinner-3.png");
+  }
+  100% {
+    background-image: url("/images/dog-spinner-0.png");
   }
 }

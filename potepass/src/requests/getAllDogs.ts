@@ -2,9 +2,6 @@
 
 import { type Dog } from "../types/dog.type";
 
-//const APIKey: string = "dreamTeam";
-
-//READ
 export async function getAllDogs(): Promise<Dog[]> {
   try {
     const response: Response = await fetch("http://localhost:3000/api/dogs");

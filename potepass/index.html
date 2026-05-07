@@ -1,119 +1,93 @@
-<!DOCTYPE html>
-<html lang="no">
+<!-- FREDRIK -->
+
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PØTEPASS | Hjemmeside</title>
-    <link rel="stylesheet" href="/src/Pages/Homepage/index.css" />
-    <meta name="author" content="Karlla Hammerstad">
+    <link rel="stylesheet" href="/src/Pages/Homepage/homepage.css" />
+    <title>Document</title>
   </head>
-
   <body>
-    <div class="page">
+    <header id="site-header"></header>
 
-      <header id="site-header"></header>
+    <main>
+      <section class="top-section">
+        <div class="left-section">
+          <h1>
+            Trygg hundepass, <br />
+            når du trenger det
+          </h1>
+          <p>
+            Finn og book pålitelige hundepassere i ditt nærområde – enkelt og
+            oversiktlig.
+          </p>
+          <div class="btn-container">
+            <button class="btn btn-info" id="login-btn">LOGG INN</button>
+            <button class="btn btn-success" id="register-btn">
+              OPPRETT BRUKER
+            </button>
+          </div>
+        </div>
+        <img
+          src="/images/hero.jpg"
+          alt="Bilde av hund som tygger på leke."
+          class="right-section"
+        />
+      </section>
 
-      <main class="main">
-        <!-- Hero Section -->
-        <section class="home-hero" aria-label="Intro">
-          <div class="home-hero-left">
-            <h1>
-              Trygg hundepass, <br />
-              når du trenger det
-            </h1>
-
-            <p class="home-hero-sub">
-              Finn og book pålitelige hundepassere i ditt nærområde – enkelt og oversiktlig.
-            </p>
-
-            <div class="home-hero-actions">
-              <a class="btn btn-info" href="#" data-open-login>FINN HUNDEPASSER</a>
-              <a class="btn btn-success" href="#">OPPRETT BRUKER</a>
+      <section class="how-section">
+        <h2>Hvordan fungerer det?</h2>
+        <div class="how-section-grid">
+          <div class="how-card">
+            <div class="how-icon">
+              <img src="/images/pawprint(2).png" alt="Bilde av pote." />
             </div>
+            <p>1.</p>
+            <h2>opprett bruker</h2>
+            <p>Registrer og legg inn informasjon <br />om hunden(e) din(e).</p>
           </div>
 
-          <div class="home-hero-right">
-            <img src="/images/hero.jpg" alt="Hund som ligger med leker"/>
-          </div>
-        </section>
-
-        <!-- How it works -->
-        <section class="home-how" aria-labelledby="home-how-title">
-          <div>
-            <h2 class="home-how-title">Slik fungerer det</h2>
-
-            <div class="home-how-grid">
-              <article class="home-how-card">
-                <div class="home-how-icon" aria-hidden="true"> <img src="/images/pawprint(2).png" alt=""></div>
-                <p class="home-how-step" aria-hidden="true">1.</p>
-                <h4>Opprett bruker</h4>
-                <p>Registrer og legg inn informasjon om hunden(e) din(e).</p>
-              </article>
-
-              <article class="home-how-card">
-                <div class="home-how-icon" aria-hidden="true"><img src="/images/search.png" alt=""></div>
-                <p class="home-how-step" aria-hidden="true">2.</p>
-                <h4>Finn hundepasser</h4>
-                <p> Filtrer på sted, pris og tilgjengelighet, og se detaljer om hundepassere.</p>
-              </article>
-
-              <article class="home-how-card">
-                
-                <div class="home-how-icon" aria-hidden="true"><img src="/images/send.png" alt=""></div>
-                <p class="home-how-step" aria-hidden="true">3.</p>
-                <h4>Send bookingforespørsel</h4>
-                <p>Velg datoene og få statusen på forespørselen din.</p>
-              </article>
+          <div class="how-card">
+            <div class="how-icon">
+              <img
+                src="/images/search.png"
+                alt="Bilde av forstørrelsesglass."
+              />
             </div>
-          </div>
-        </section>
-
-        <!--  -->
-        <section class="home-message" aria-labelledby="home-message-title">
-          <div class="home-message-inner">
-            <h2 id="home-message-title">Trygghet for både deg og hunden din</h2>
+            <p>2.</p>
+            <h2>finn hundepasser</h2>
             <p>
-              Hos Pøtepass står oversikt og kontroll i fokus. Du velger selv hvem
-              du vil sende forespørsel til, og kan følge hele prosessen fra
-              forespørsel til avtale.
+              Filtrer på sted, pris og tilgjengelighet, <br />og se detaljer om
+              hundepassere.
             </p>
           </div>
-        </section>
 
-        <!-- CTA split -->
-        <section class="home-cta">
-          <div class="home-cta-inner">
-            <div class="home-cta-box">
-              <h2>
-                Klar for å finne <br />
-                riktig hundepasser?
-              </h2>
-              <a class="btn btn-success" href="#">FINN HUNDEPASSER NÅ</a>
+          <div class="how-card">
+            <div class="how-icon">
+              <img src="/images/send.png" alt="Bilde av papirfly." />
             </div>
-
-            <div class="home-cta-box">
-              <h2>
-                Eller klar for å bli <br />
-                hundepasser?
-              </h2>
-              <a class="btn btn-success" href="#" data-open-login>BLI HUNDEPASSER</a>
-            </div>
+            <p>3.</p>
+            <h2>Send bookingforespørsel</h2>
+            <p>Velg datoene og få statusen på forespørselen din.</p>
           </div>
-        </section>
-      </main>
-      
-      <footer id="site-footer"></footer>
-      <login-overlay></login-overlay>
-
+        </div>
+      </section>
+    </main>
+    
     </div>
     <!-- To make it easy to access dev pages/temporary -->
     <div class="dev-links"> 
       <a class="btn" href="/src/Pages/profile/profile.html">FREDRIK</a>
+      <a class="btn" href="./index2.html">F-HOME</a>
       <a class="btn" href="/src/Pages/sitters/sitters.html">STINE</a>
       <a class="btn" href="/src/Pages/booking/booking.html">ANETTE</a>
       <a class="btn" href="/src/Pages/status/status.html">KARLLA</a>
     </div>
 
-  <script type="module" src="/src/main.ts"></script>
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="/src/Pages/Homepage/homepage.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
