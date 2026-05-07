@@ -1,3 +1,5 @@
+// Anette Bratvold
+
 import { type User } from "../types/user.type";
 
 //const APIKey: string = "dreamTeam";

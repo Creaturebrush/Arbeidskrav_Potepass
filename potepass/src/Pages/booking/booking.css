@@ -1,3 +1,5 @@
+/* Anette Bratvold */
+
 * {
   margin: 0;
   padding: 0;
@@ -212,6 +214,9 @@ form {
 /* Tablet Breakpoint */
 @media (max-width: 1024px) {
 }
+
+
+
 /* Phone breakpoint around 600px*/
 @media (max-width: 700px) {
   .choose-dog-container,
@@ -244,8 +249,6 @@ form {
     justify-self: center;
   }
 }
-
-
 
 /* Modals */
 
@@ -288,4 +291,47 @@ form {
   cursor: pointer;
   padding: 4px 8px;
   line-height: 1;
+}
+
+.booking-sent-container {
+  margin: 2rem;
+  padding: 2rem;
+  border: var(--primary-shade-2) 4px solid;
+  border-radius: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-sent-container .btn-container {
+  border: var(--primary-shade-1) 4px solid;
+  border-radius: 26px;
+  max-width: 800px;
+}
+
+.hidden {
+  display: none;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.spinner-img {
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
