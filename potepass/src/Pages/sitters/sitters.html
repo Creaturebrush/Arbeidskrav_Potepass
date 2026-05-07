@@ -1,3 +1,4 @@
+<!-- Stine Hartvigsen -->
 <!Doctype html>
 <html lang="no">
   <head>
@@ -11,406 +12,329 @@
 
   <body>
     <div class="page">
-      <site-header></site-header>
+      <header id="site-header"></header>
 
       <main class="main header-page">
-        <!--Sitters header-->
-        <header class="header-top">
-          <h1 class="header-title">HUNDEPASSERE</h1>
+        <div id="mainContent">
+          <!--Sitters header-->
+          <header class="header-top">
+            <h1 class="header-title">HUNDEPASSERE</h1>
 
-            <div class="header-paws">
-              <img src="/images/PawPrint_line.png" alt=""/>
-            </div>
-
-            <!--Filter-->
-            <div class="sitters-filters">
-              <!--Location-->
-              <details class="filter-dd">
-                <summary class="filter-pill">
-                  <span class="filter-icon">
-                    <img src="/images/pin.png"/>
-                  </span>STED
-                </summary>
-
-                <div class="filter-menu">
-                  <button class="filter-item" type="button">Porsgrunn</button>
-                  <button class="filter-item" type="button">Tønsberg</button>
-                  <button class="filter-item" type="button">Oslo</button>
-                  <button class="filter-item" type="button">Bergen</button>
-                </div>
-              </details>
-              <!--Price-->
-              <details class="filter-dd">
-                <summary class="filter-pill">
-                  <span class="filter-icon" aria-hidden="true">
-                    <img src="/images/price-tag.png" alt="" />
-                  </span>PRIS
-                </summary>
-
-                <div class="filter-menu" >
-                  <div class="filter-form">
-                    <label class="filter-label" for="priceMin">Fra kr</label>
-                    <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
-
-                    <label class="filter-label" for="priceMax">Til kr</label>
-                    <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
-
-                    <button class="btn btn-success filter-apply" type="button">SØK</button>
-                  </div>
-                </div>
-              </details>
-
-              <!-- Availability-->
-              <details class="filter-dd">
-                <summary class="filter-pill">
-                  <span class="filter-icon" >
-                    <img src="/images/calendar.png" alt="" />
-                  </span>TILGJENGELIGHET           
-                </summary>
-
-                <div class="filter-menu">
-                  <div class="filter-form">
-                    <label class="filter-label" for="dateFrom">Fra</label>
-                    <input class="filter-input" id="dateFrom" type="date" />
-
-                    <label class="filter-label" for="dateTo">Til</label>
-                    <input class="filter-input" id="dateTo" type="date" />
-
-                    <button class="btn btn-success filter-apply" type="button">SØK</button>
-                  </div>
-                </div>
-              </details>
-            </div>
-            <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
-        </header>
-
-        <!-- Dogsitters and previous sitters-->
-
-          
-        <section class="sitters-shell" aria-label="Hundepassere og tidligere passere">
-          <div class="sitters-toprow">
-            <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
-              <a class="sitters-tab is-active" href="#" role="tab" aria-selected="true" data-tab="current">
-              Hundepassere
-              </a>
-              <a class="sitters-tab" href="#" role="tab" aria-selected="false" data-tab="previous">
-                Tidligere passere
-              </a>
-            </div>
-
-                  <!--CHANGES THE WHOLE PAGE TO A FORM WHEN PRESSING THE BUTTON-->
-
-              <a class="btn btn-success sitters-cta">
-                BLI HUNDEPASSER I DAG!
-              </a>
-          </div>
-
-          <div class="sitters-box">
-            <section class="sitters-panel is-active" data-panel="current">
-              <div class="sitters-list" id="sittersCurrentList">
-                <article class="sitter-card" data-sitter-card>
-                 
-                  <!-- as javaskript/ts COMPACT-->
-                  <div class="sitters-compact">
-                    <div class="sitter-profil">
-                      <img src="/images/hero.jpg" alt="" />
-                      <span class="" aria-hidden="true"></span>
-                    </div>
-                        
-                    <div class="sitter-compact-info">
-                      <div class="sitter-name">Tina</div>
-
-                      <div class="sitter-city">
-                        <span class="sitter-pin" aria-hidden="true">
-                          <img src="/images/pin.png" alt="" /></span> Porsgrunn
-                      </div>
-                      <div class="sitter-rating" aria-label="Vurdering 4 av 5">
-                        <span class="stars stars--rated">★★★★☆</span>
-                      </div>
-                    </div>
-
-                    
-                    <div class="sitter-compact-about">
-                      <div class="sitter-about-title">Litt om meg:</div>
-                      <div class="sitter-about-text">Jeg elsker å gå tur og tar gjerne med en firbeint venn! :D</div>
-                    </div>
-                    <!--DD-->
-                    <button class="sitter-toggle" type="button" aria-label="Vis mer om hundepasseren" aria-expanded="false" aria-controls="sitter-detail-1">
-                      <img class="sitter-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true" />
-                    </button> 
-                  </div>
-                          
-                  <!-- Details (replaced in js/ts)-->
-                  <div class="sitter-details" id="sitter-detail-1">
-                    <div class="sitter-detail-top">
-                      <div class="sitter-photo">
-                        <img src="/images/hero.jpg" alt="">
-                        <!--<span class="sitter-favorite"></span>-->
-                      </div>
-                          
-                      <div class="sitter-detail-content">
-                        <div class="sitter-detail-head">
-                          <div class="sitter-detail-info">
-                            <h3 class="sitter-detail-name">Tina </h3>
-                            <div class="sitter-city">
-                              <span class="sitter-pin" aria-hidden="true">
-                                  <img src="/images/pin.png" alt="" /></span> Porsgrunn
-                              </div>
-                          </div>
-                          <button class="sitter-toggle sitter-toggle-close" type="button" aria-lable="lukk detaljer for hundepassere"
-                            aria-expanded="true" aria-controls="sitter-detail-1">
-                            <img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
-                          </button>
-                        </div>
-
-                        <div class="sitter-detail-columns">
-                          <div class="sitter-detail-block">
-                            
-                            <div class="sitter-detail-title">Om meg</div>
-                            <p class="sitter-detail-text">
-                            her skal det stå litt info
-                            </p>
-                          </div>
-                          <div class="sitter-detail-block">
-                            <div class="sitter-detail-title">Detaljer</div>
-                                <p class="sitter-detail-text">
-                                  Årserfraing: 3 <br/>
-                                  Passer: små og mellomstore hundepasser<br/>
-                                  Erfaring: <br/>
-                                  Max anntall hunder samtidig: <br/>
-                                  pris:<br/>
-                                </p>
-                          </div>
-                          </div>
-
-                            
-                          <div class="sitter-detail-bottom">
-                            <div class="sitter-detail-rating">
-                              <span class="stars stars--rated" aria-label="vurdering 4 av 5">★★★★☆</span>
-                              <button class="sitter-reviews-toggle" type="button" aria-controls="sitter-reviews-1" data-reviews-toggle>
-                                <span class="sitters-review-count">3 Omtaler</span>
-                                <img class="sitter-mini-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true">
-                              </button>
-                            </div>
-                            
-                            <a class="btn btn-success sitter-book" href="/src/Pages/booking/booking.html">BOOK NÅ</a>
-                          </div>
-                      </div>
-                    </div>
-
-                    <!--REVIEWS-->
-                    <div class="sitter-reviews" id="sitter-reviews-2">
-                      <article class="review-row">
-                        <div class="review-avatar" aria-hidden="true">
-                          <img src="/images/useravatar.png" alt="" />     
-                        </div>
-                        <div class="review-info">
-                          <div class="review-name">Anette</div>
-                          <div class="sitter-city">
-                            <span class="sitter-pin" aria-hidden="true">
-                            <img src="/images/pin.png" alt="" /></span>Bergen 
-                          </div>
-                        </div>
-                        <div class="stars stars--rated" aria-label="Vurdering 5 av 5">★★★★★</div>  
-                       
-                        <div class="review-comment">
-                          <p class="review-title">Fantastisk!</p>
-                          <p class="review-text">Han kan fint passe meg neste gang!</p>
-                        </div>     
-  
-                      </article>
-
-                      <article class="review-row">
-                        <div class="review-avatar" aria-hidden="true">
-                          <img src="/images/useravatar.png" alt="" />     
-                        </div>
-                        <div class="review-info">
-                          <div class="review-name">Fredrik</div>
-                          <div class="sitter-city">
-                            <span class="sitter-pin" aria-hidden="true">
-                            <img src="/images/pin.png" alt="" /></span>Tønsberg 
-                          </div>
-                        </div>
-                        <div class="stars stars--rated" aria-label="Vurdering 5 av 5">★☆☆☆☆</div> 
-                        
-                        <div class="review-comment">
-                          <p class="review-title">Hvorfor kan jeg ikke legge til 10 stjerner?!</p>
-                          <p class="review-text">1 stjerne fordi jeg ikke har muligheten til å legge inn 10 stjerner. Veldig flink hundepasser!</p>
-                        </div>
-                       
-                         
-                      </article>
-                      
-                      <article class="review-row">
-                        <div class="review-avatar" aria-hidden="true">
-                          <img src="/images/useravatar.png" alt="" />     
-                        </div>
-                        <div class="review-info">
-                          <div class="review-name">Karlla</div>
-                          <div class="sitter-city">
-                            <span class="sitter-pin" aria-hidden="true">
-                            <img src="/images/pin.png" alt="" /></span>Oslo
-                          </div>
-                        </div>
-                        <div class="stars stars--rated" aria-label="Vurdering 5 av 5">★★★★★</div>  
-                        <div class="review-comment">
-                          <p class="review-title">FREDRIK FOR PRESIDENT!</p>
-                          <p class="review-text">Ja!</p>
-                        </div>  
-                         
-                      </article>
-                    </div>
-                  </div>
-                </article>
+              <div class="header-paws">
+                <img src="/images/PawPrint_line.png" alt=""/>
               </div>
-            </section>
-          </div>
-        </section>
 
-        <!-- My sitter profile (shows after user registers as sitter) -->
-        <section class="my-sitter" aria-labelledby="">
-          <h4 class="my-sitter-title" id="">Din hundepasserprofil</h4>
- 
-          <article class="sitter-card my-sitter-card">
-            <div class="sitter-detail my-sitter-detail">
-              <div class="sitter-detail-top">
-                <div class="sitter-photo">
-                  <img src="/images/hero.jpg" alt="Profilbilde av deg som hundepasser" />
-                </div>
- 
-                <div class="sitter-detail-content">
-                  <div class="sitter-detail-head">
-                    <h3 class="sitter-detail-name">Kari Hansen</h3>
+              <!--Filter-->
+              <div class="sitters-filters">
+                <!--Location-->
+                <details class="filter-dd">
+                  <summary class="filter-pill">
+                    <span class="filter-icon">
+                      <img src="/images/pin.png"/>
+                    </span>STED
+                  </summary>
+
+                  <div class="filter-menu">
+                    <button class="filter-item" type="button">Porsgrunn</button>
+                    <button class="filter-item" type="button">Tønsberg</button>
+                    <button class="filter-item" type="button">Oslo</button>
+                    <button class="filter-item" type="button">Bergen</button>
                   </div>
- 
-                  <div class="sitter-detail-columns">
-                    <div class="sitter-detail-block">
-                      <div class="sitter-detail-title">Litt om meg</div>
-                      <p class="sitter-detail-text">
-                        Jeg er en rolig og erfaren hundepasser som liker turer og lek. Jeg sender gjerne oppdateringer underveis.
-                      </p>
-                    </div>
- 
-                    <div class="sitter-detail-block">
-                      <div class="sitter-detail-title">Detaljer</div>
-                      <p class="sitter-detail-text">
-                        Årserfraing: 3 <br/>
-                        Passer: små og mellomstore hundepasser<br/>
-                        Erfaring: <br/>
-                        Max anntall hunder samtidig: <br/>
-                        Pris:<br/>
-                      </p>
+                </details>
+                <!--Price-->
+                <details class="filter-dd">
+                  <summary class="filter-pill">
+                    <span class="filter-icon" aria-hidden="true">
+                      <img src="/images/price-tag.png" alt="" />
+                    </span>PRIS
+                  </summary>
+
+                  <div class="filter-menu" >
+                    <div class="filter-form">
+                      <label class="filter-label" for="priceMin">Fra kr</label>
+                      <input class="filter-input" id="priceMin" type="number" min="0" step="10" placeholder="0" />
+
+                      <label class="filter-label" for="priceMax">Til kr</label>
+                      <input class="filter-input" id="priceMax" type="number" min="0" step="10" placeholder="500" />
+
+                      <button class="btn btn-success filter-apply" type="button">SØK</button>
                     </div>
                   </div>
- 
-                  <!-- bottom row -->
-                  <div class="my-sitter-bottom">
-                    <div class="my-sitter-bottom-left">
-                      <div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
-                        <span class="stars stars--rated">★★★★☆</span>
-                        <span class="my-sitter-reviews">(12 omtaler)</span>
+                </details>
+
+                <!-- Availability-->
+                <details class="filter-dd">
+                  <summary class="filter-pill">
+                    <span class="filter-icon" >
+                      <img src="/images/calendar.png" alt="" />
+                    </span>TILGJENGELIGHET           
+                  </summary>
+
+                  <div class="filter-menu">
+                    <div class="filter-form">
+                      <label class="filter-label" for="dateFrom">Fra</label>
+                      <input class="filter-input" id="dateFrom" type="date" />
+
+                      <label class="filter-label" for="dateTo">Til</label>
+                      <input class="filter-input" id="dateTo" type="date" />
+
+                      <button class="btn btn-success filter-apply" type="button">SØK</button>
+                    </div>
+                  </div>
+                </details>
+              </div>
+              <p>Se tilgjengelige hundepassere og filtrer ved behov</p>
+          </header>
+
+          <!-- Dogsitters and previous sitters-->
+
+            
+          <section class="sitters-shell" aria-label="Hundepassere og tidligere passere">
+            <div class="sitters-toprow">
+              <div class="sitters-tabs" role="tablist" aria-label="Velg visning">
+                <button class="sitters-tab sitters-tab--is-active sitters-tab-one" role="tab" data-for-tab="1">
+                Hundepassere
+                </button>
+                <button class="sitters-tab sitters-tab-two" role="tab"  data-for-tab="2">
+                  Tidligere passere
+                </button>
+              </div> 
+                    <!--CHANGES THE WHOLE PAGE TO A FORM WHEN PRESSING THE BUTTON-->
+
+                <button class="btn btn-success sitters-cta" type="button" id="openBecomeASitterForm" >
+                  BLI HUNDEPASSER I DAG!
+                </button>
+            </div>
+
+            <div class="sitters-box">
+              <section class="sitters-panel" data-tab="1">
+                  
+              </section>
+            
+              <!--PREVIOUS-->
+              
+              <section class="sitters-panel" data-tab="2">
+
+              </section>
+              
+            </div>
+          </section>
+
+          <!-- My sitter profile (shows after user registers as sitter) -->
+          <section class="my-sitter" aria-labelledby="">
+            <h4 class="my-sitter-title" id="">Din hundepasserprofil</h4>
+  
+            <article class="sitter-card my-sitter-card">
+              <div class="my-sitter-detail">
+                <div class="sitter-detail-top">
+                  <div class="sitter-photo">
+                    <img src="/images/hero.jpg" alt="Profilbilde av deg som hundepasser" />
+                  </div>
+  
+                  <div class="sitter-detail-content">
+                    <div class="sitter-detail-head">
+                      <h3 class="sitter-detail-name">Kari Hansen</h3>
+                    </div>
+  
+                    <div class="sitter-detail-columns">
+                      <div class="sitter-detail-block">
+                        <div class="sitter-detail-title">Litt om meg</div>
+                        <p class="sitter-detail-text">
+                          Jeg er en rolig og erfaren hundepasser som liker turer og lek. Jeg sender gjerne oppdateringer underveis.
+                        </p>
+                      </div>
+  
+                      <div class="sitter-detail-block">
+                        <div class="sitter-detail-title">Detaljer</div>
+                        <p class="sitter-detail-text">
+                          Årserfraing: 3 <br/>
+                          Passer: små og mellomstore hundepasser<br/>
+                          Erfaring: <br/>
+                          Max anntall hunder samtidig: <br/>
+                          Pris:<br/>
+                        </p>
                       </div>
                     </div>
- 
-                    <div class="my-sitter-actions">
-                      <button class="btn btn-warning status-btn" type="button">
-                        REDIGER
-                      </button>
-                      <button class="btn btn-danger status-btn" type="button">
-                        SLETT
-                      </button>
+  
+                    <!-- bottom row -->
+                    <div class="my-sitter-bottom">
+                      <div class="my-sitter-bottom-left">
+                        <div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
+                          <span class="stars stars--rated">★★★★☆</span>
+                          <span class="my-sitter-reviews">(12 omtaler)</span>
+                        </div>
+                      </div>
+  
+                      <div class="my-sitter-actions">
+                        <button class="btn btn-warning status-btn" id="update-sitter-profile" type="button">
+                          REDIGER
+                        </button>
+                        <button class="btn btn-danger status-btn" id="delete-registration"  type="button">
+                          SLETT
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
-        </section>
+            </article>
+          </section>
+        </div>
 
-        <!--MODALS -->
-        <section class="confirm-card" aria-labelledby="">
-          <div class="confirm-card-inner">
-            <h3 class="confirm-title" id="">
-              Er du sikker på at du vil fjerne registreringen din som hundpasser?
-            </h3>
- 
-            <div class="confirm-icon" aria-hidden="true">
-              <img src="/images/delete-button.png" alt="" />
+        <!--become a sitter form-->
+        <section class="become-shell" aria-label="Registreringsskjema hundepasser" hidden>
+          <div class="become-card">
+            <div class="become-card-head">
+              <h4 class="become-card-title">BLI HUNDEPASSER</h4>
             </div>
- 
-            <div class="confirm-actions">
-              <button class="btn btn-success" type="button">JA, SLETT REGISTRERING</button>
-              <button class="btn btn-danger" type="button">NEI, GÅ TILBAKE</button>
-            </div>
+
+            <form class="become-form" id="becomeSitterForm">
+              <p class="become-form-title"> Fornavn, etternavn og profilbilde vil bli hentet fra profilen din.</p>
+              
+
+              <div class="become-block">
+                <label class="become-label" for="experienceDescription">INTRODUSER DEG SELV</label>      
+                <textarea
+                  id="experienceDescription"
+                  name="experienceDescription"
+                  class="become-textarea"
+                  rows="6"
+                  maxlength="200"
+                  placeholder="Introduser deg selv. F.eks. kan du fortelle hvor lenge du har vært hundepasser og hvilken erfaring du har."
+                  required
+                ></textarea>
+              </div>
+   
+              <div class="become-grid-3">
+                <div class="become-field">
+                  <label class="become-label" for="yearsOfExperience">ÅRS ERFARING</label>
+                  <input
+                    class="become-input become-input--small"
+                    id="yearsOfExperience"
+                    name="yearsOfExperience"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="0"
+                  />
+                </div>
+
+                <div class="become-field">
+                  <label class="become-label" for="pricePerDay">PRIS (NOK/DAG)</label>
+                  <input
+                    class="become-input become-input--small"
+                    id="pricePerDay"
+                    name="pricePerDay"
+                    type="number"
+                    min="0"
+                    step="50"
+                    placeholder="400"
+                    required
+                  />
+                </div>
+
+                <div class="become-field">
+                  <label class="become-label" for="maxDogs">MAKS ANTALL HUNDER</label>
+                  <input
+                    class="become-input become-input--small"
+                    id="maxDogs"
+                    name="maxDogs"
+                    type="number"
+                    min="1"
+                    step="1"
+                    placeholder="2"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Experience -->
+              <div class="become-grid-2">               
+                <fieldset class="become-checkgroup">
+                  <legend class="become-legend">ERFARING MED:</legend>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="experiencePuppies" />
+                    Hundevalper
+                  </label>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="experienceAdultDogs" />
+                    Voksne hunder
+                  </label>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="experienceSeniorDogs" />
+                    Senior hunder
+                  </label>
+                </fieldset>
+
+                <!-- Sizes -->
+                <fieldset class="become-checkgroup">
+                  <legend class="become-legend">PASSER PÅ:</legend>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="sizeSmallDogs" />
+                    Små hunder
+                  </label>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="sizeMediumDogs" />
+                    Mellomstore hunder
+                  </label>
+
+                  <label class="become-check">
+                    <input type="checkbox" name="sizeLargeDogs" />
+                    Store hunder
+                  </label>
+                </fieldset>
+              </div>
+
+              <!-- AVAILABILITY -->
+              <div class="become-block">
+                <div class="become-legend">TILGJENGELIGHET</div>
+                <div class="availability-row">
+                  <div class="availability-grid">
+                    <div class="become-field">
+                      <label class="become-label" for="fromDate-1">FRA</label>
+                      <input class="become-input" id="fromDate-1" name="fromDate[]" type="date" />
+                    </div>
+
+                    <div class="become-field">
+                      <label class="become-label" for="toDate-1">TIL</label>
+                      <input class="become-input" id="toDate-1" name="toDate[]" type="date" />
+                    </div>
+
+                    <div class="become-field">
+                      <label class="become-label" for="fromTime-1">FRA KL</label>
+                      <input class="become-input" id="fromTime-1" name="fromTime[]" type="time" />
+                    </div>
+
+                    <div class="become-field">
+                      <label class="become-label" for="toTime-1">TIL KL</label>
+                      <input class="become-input" id="toTime-1" name="toTime[]" type="time" />
+                    </div>
+                  </div>
+
+                  <button class="availability-add" type="button" aria-label="Legg til flere datoer">
+                    +
+                  </button>
+                </div>
+                <p class="availability-hint">Trykk + for å legge til flere perioder.</p>
+              </div>
+
+              <!-- BUTTONS -->
+              <div class="become-actions">
+                <button class="btn btn-danger" type="button" id="cancel-become-form" >AVBRYT</button>
+                <button class="btn btn-success"  id="register-as-petsitter">REGISTRER DEG SOM HUNDEPASSER</button>
+              </div>
+            </form>
           </div>
-        </section>
-        
-        <section class="confirm-card" aria-labelledby="">
-          <div class="confirm-card-inner">
-            <h3 id="" class="confirm-title">
-              Registreringen din som hundepasser er slettet.
-            </h3>
- 
-            <div class="confirm-icon" aria-hidden="true">
-              <img src="/images/check.png" alt="" />
-            </div>
- 
-            <div class="confirm-actions">
-              <button class="btn btn-success" type="button">GÅ TILBAKE</button>
-            </div>
-          </div>
-        </section>
-  
-        <section class="confirm-card" aria-labelledby="">
-          <div class="confirm-card-inner">
-            <h3 id="" class="confirm-title">
-              Du er nå nesten registrert som hundepasser!
-            </h3>
- 
-            <p class="confirm-subtitle">Takk for at du er med på laget!</p>
- 
-            <div class="confirm-actions">
-              <button class="btn btn-danger" type="button">ANGRE REGISTRERING</button>
-              <button class="btn btn-success" type="button">FULLFØR</button>
-            </div>
-          </div>
-        </section> 
- 
-        <section class="confirm-card" aria-labelledby="">
-          <div class="confirm-card-inner">
-            <h3 id="" class="confirm-title">
-              Er du sikker på at du vil oppdatere profilen din?
-            </h3>
-            <div class="confirm-icon" aria-hidden="true">
-              <img src="/images/delete-button.png" alt="" />
-            </div>
- 
-            <div class="confirm-actions">
-              <button class="btn btn-success" type="button">JA, OPPDATER</button>
-              <button class="btn btn-danger" type="button">NEI, GÅ TILBAKE</button>
-            </div>
-          </div>
-        </section>
- 
-        <section class="confirm-card" aria-labelledby="">
-          <div class="confirm-card-inner">
-            <h3 id="" class="confirm-title">
-              Registreringen din er oppdadert.
-            </h3>
- 
-            <div class="confirm-icon" aria-hidden="true">
-              <img src="/images/check.png" alt="" />
-            </div>
- 
-            <div class="confirm-actions">
-              <button class="btn btn-success" type="button">GÅ TILBAKE</button>
-            </div>
-          </div>
-        </section>
+        </section>  
 
         
       </main>
-      <site-footer></site-footer>
+      <footer id="site-footer"></footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/Pages/sitters/sitters.ts"></script>
