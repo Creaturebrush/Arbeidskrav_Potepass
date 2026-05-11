@@ -37,7 +37,7 @@ getPetsitters();
 
 //localStorage user and petsitter som kan brukes for å koble sider senere.
 localStorage.setItem("storedUserId", "1");
-localStorage.setItem("storedPetsitterId", "3");
+localStorage.setItem("storedPetsitterId", "2");
 
 function getStoredPetsitter(petsitters: Petsitter[]): Petsitter | undefined {
   const storedPetsitterId = localStorage.getItem("storedPetsitterId");
@@ -144,6 +144,11 @@ function showPetSitterName(petsitter: Petsitter) {
     ".dog-sitter-name",
   ) as HTMLHeadingElement;
   dogSitterName.innerHTML = petsitter.name;
+
+  const chosenDogsitterTxt = document.querySelector(
+    "#chosen-dogsitter-txt",
+  ) as HTMLParagraphElement;
+  chosenDogsitterTxt.innerHTML = `Du har valgt ${petsitter.name} som hundepasser`;
 }
 
 function getPetSitterDescription(petsitters: Petsitter) {
@@ -331,6 +336,25 @@ function renderEditBookingPage() {
   formTitle.innerHTML = "REDIGER BOOKING";
 }
 
+function isAtLeastOneDogChecked(): boolean {
+  const checkedDogs = document.querySelectorAll<HTMLInputElement>(
+    'input[name="dogs"]:checked',
+  );
+
+  return checkedDogs.length > 0;
+}
+
+function focusErrorMessage(errorMsg: HTMLDivElement) {
+  errorMsg.tabIndex = -1;
+  errorMsg.focus();
+
+  errorMsg.classList.remove("blink-error");
+
+  void errorMsg.offsetWidth;
+
+  errorMsg.classList.add("blink-error");
+}
+
 //modal funksjoner
 const overlay = document.getElementById("modal1") as HTMLDivElement;
 const closeBtn = overlay.querySelector(".modal-close") as HTMLButtonElement;
@@ -363,28 +387,47 @@ document.addEventListener("click", async function (event) {
   ) as HTMLDivElement;
 
   switch (buttonId) {
-    case "send-booking-btn":
-      myContent = `
-        <h2>Er du sikker på at du ønsker å sende forespørselen?</h2>
-        <div class="btn-container">
-          <button type="button" class="btn btn-success" id="confirm-send">JA, SEND FORESPØRSEL</button>
-          <button type="button" class="btn btn-danger" id="close-modal">NEI, IKKE SEND FORESPØRSELEN</button>
-        </div>
-      `;
-      modalBody.innerHTML = myContent;
-      openModal();
-      break;
+    case "send-booking-btn": {
+      const form = document.querySelector("form") as HTMLFormElement;
+      const errorMsg = document.querySelector(".error-msg") as HTMLDivElement;
+      const errorMsgTxt = document.querySelector(
+        ".error-msg-txt",
+      ) as HTMLParagraphElement;
 
-    //Dont call it hello
-    case "hello":
-      myContent = `
-        <h2>OBS! Alle feltene må være fylt ut!</h2>
-        <img src="/images/unsucessful.png" alt="" />
-        <button type="button" class="btn btn-success" id="close-modal">FORTSETT</button>
-      `;
-      modalBody.innerHTML = myContent;
-      openModal();
+      const formIsValid = form.reportValidity();
+      const dogIsSelected = isAtLeastOneDogChecked();
+
+      if (formIsValid && dogIsSelected) {
+        errorMsg.classList.add("hidden");
+
+        myContent = `
+      <h2>Er du sikker på at du ønsker å sende forespørselen?</h2>
+      <div class="btn-container">
+        <button type="button" class="btn btn-success" id="confirm-send">
+          JA, SEND FORESPØRSEL
+        </button>
+        <button type="button" class="btn btn-danger" id="close-modal">
+          NEI, IKKE SEND FORESPØRSELEN
+        </button>
+      </div>
+    `;
+
+        modalBody.innerHTML = myContent;
+        openModal();
+      } else {
+        errorMsg.classList.remove("hidden");
+
+        if (!dogIsSelected) {
+          errorMsgTxt.innerHTML = "Du må velge minst én hund.";
+        } else if (!formIsValid) {
+          errorMsgTxt.innerHTML = "Alle påkrevde felt må fylles ut.";
+        }
+
+        focusErrorMessage(errorMsg);
+      }
+
       break;
+    }
 
     case "cancel-booking":
       bookingSentContainer.classList.add("hidden");
@@ -486,8 +529,8 @@ document.addEventListener("click", async function (event) {
       break;
 
     case "confirm-send":
-      myContent = `<div><h5>BOOKINGFORESPØRSEL SENDT!</h5>
-      <div>
+      myContent = `<div id="booking-sent" tabindex="-1"><h5>BOOKINGFORESPØRSEL SENDT!</h5>
+      <div id="booking-sent-content">
         <img src="/images/sucess-checkmark.png" alt="" />
         <p>
           DIN FORESPØRSEL ER SENDT TIL HUNDEPASSEREN. DU FINNER DETALJENE OG
@@ -505,6 +548,16 @@ document.addEventListener("click", async function (event) {
 
       bookingSentContainer.classList.remove("hidden");
       bookingSentContainer.innerHTML = myContent;
+
+      const bookingSent = document.querySelector(
+        "#booking-sent",
+      ) as HTMLDivElement;
+
+      bookingSent.focus();
+      bookingSent.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
 
       const storedPetsitterId = getStoredPetsitterId();
 
@@ -540,7 +593,7 @@ document.addEventListener("click", async function (event) {
         petSitterId: storedPetsitterId,
         fromDate: fromDate,
         toDate: toDate,
-        status: "accepted",
+        status: "pending",
         message: getFormMessage(),
         created: "",
         updated: "",
@@ -554,18 +607,39 @@ document.addEventListener("click", async function (event) {
       await editBooking();
       closeModal();
 
-      myContent = ` <h5>BOOKINGFORESPØRSEL OPPDATERT!</h5>
-      <div>
+      myContent = `
+    <div id="booking-updated" tabindex="-1">
+      <h5>BOOKINGFORESPØRSEL OPPDATERT!</h5>
+
+      <div id="booking-updated-container">
         <img src="/images/sucess-checkmark.png" alt="" />
         <p>
           DIN FORESPØRSEL ER SENDT TIL HUNDEPASSEREN. DU FINNER DETALJENE OG
           STATUS PÅ BOOKINGEN UNDER <span>MINE BOOKINGER</span>.
         </p>
       </div>
-      <button id="redirect-my-bookings" class="btn btn-success">SE MINE BOOKINGER</button>
-`;
+
+      <button id="redirect-my-bookings" class="btn btn-success">
+        SE MINE BOOKINGER
+      </button>
+    </div>
+  `;
+
       bookingSentContainer.classList.remove("hidden");
       bookingSentContainer.innerHTML = myContent;
+
+      const bookingUpdated = document.querySelector(
+        "#booking-updated",
+      ) as HTMLDivElement | null;
+
+      if (bookingUpdated) {
+        bookingUpdated.focus();
+        bookingUpdated.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+
       break;
 
     case "complete-booking-btn":
