@@ -1,8 +1,9 @@
-import { type reviews } from "../types/reviews.type"
+//stine
+import { type Reviews } from "../types/reviews.type"
 
 //const APIkey: string = "dreamTeam";
 
-export async function getAllReviews(): Promise<reviews[]> {
+export async function getAllReviews(): Promise<Reviews[]> {
 
     try {
     const response: Response = await fetch(`http://localhost:3000/api/reviews`);
@@ -11,7 +12,7 @@ export async function getAllReviews(): Promise<reviews[]> {
         throw new Error(`kunne ikke laste opp${response.status}`);
     }
 
-    const data: reviews[] = await response.json();
+    const data: Reviews[] = await response.json();
     return data;
 
     } catch (error) {

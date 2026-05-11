@@ -1,4 +1,5 @@
-export type petSitters = {
+//Stine
+export type PetSitters = {
     
     id: number,
     name: string,
@@ -12,5 +13,7 @@ export type petSitters = {
     yearsOfExperience: number,
     experienceDescription: string,
     available: boolean,
+    created: string,
+    updated: string
 
 };

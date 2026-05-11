@@ -1,4 +1,4 @@
-
+/*stine
 /* Sitters header*/
 .sitters-filters {
   width: 52rem;
@@ -60,19 +60,6 @@ list-style: none;
     box-shadow: 5px 5px 0 rgba(0, 0, 0,0,18);
 }
 
-.filter-item {
-    width:100%;
-    border:0;
-    background: rgba(255, 255, 255, 0.35);
-    cursor: pointer;
-    padding: 0.55rem 0.7rem;
-    border-radius: 10px;
-    text-align: center;
-    font-family: var(--font-body);
-    font-weight: var(--fw-semibold);
-    font-size: var(--meta);
-}
-
 .filter-item + .filter-item {
 margin-top: 0.4rem; 
 }
@@ -84,7 +71,7 @@ margin-top: 0.4rem;
 /* DD filter menu*/
 .filter-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
   gap: 0.5rem;
   align-items: end;
 }
@@ -137,8 +124,6 @@ margin-top: 0.4rem;
   align-items: flex-end;
   justify-content: space-between;
 }
-
-
  
 .sitters-tab {
   display: inline-flex;
@@ -430,7 +415,7 @@ color: #f2c94c;
 .reviews {
   padding:1rem; 
   display:grid;
-  grid-template-columns: 100px 100px 150px 1fr;
+  grid-template-columns: 100px 260px 1fr 60px;
   align-items: center;
   gap: 1rem;
   border: 1px solid var(--primary-shade-2);
@@ -521,6 +506,88 @@ color: #f2c94c;
   justify-content: flex-end;
 }
 
+/*EDIT MYSITTER PROFILE */
+.edit-my-sitter-detail{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  border-top: 2px solid var(--primary-shade-2);
+}
+
+.edit-my-sitter-profile{
+  width: min(65rem, 100%);
+  margin: 50px auto; 
+  display:block;
+}
+
+.edit-about {
+  width: 15rem;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0,0,0,0.25);
+  background: var(--white);
+  font: inherit;
+  resize: vertical;
+  min-height: 9rem;
+ 
+}
+
+.edit-my-sitter-grid {
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.15);
+  display: grid;  
+  
+}
+.my-sitter-detail-block{
+ padding: 1.6rem 1.8rem 1.8rem;
+  display: table-column;
+  
+}
+/*Details inside expanded*/
+.sitter-info-list{
+  display: grid;
+}
+.sitters-info-row{
+  display: flex;
+}
+.sitter-info-label{
+  font: var(--label);
+  font-weight: var(--fw-semibold);
+}
+
+.my-sitter-checkg{
+  display:flex;
+}
+
+.my-sitter-edit-buttons{
+  display:flex;
+  gap: 0.6rem;
+  justify-content: end;
+  margin-top: 0.6rem;
+  
+}
+.my-sitter-detail-columns{
+  display: grid;
+  grid-template-columns: 1fr 2fr ;
+  margin: 0.75rem ; 
+  gap: 1rem;
+
+}
+
+.my-sitter-grid-3{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  
+}
+.my-sitter-label{
+  font-size: var(--label);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+}
 /*Modal*/
 .confirm-card {
   width: 100%;
