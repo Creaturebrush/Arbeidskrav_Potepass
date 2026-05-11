@@ -18,7 +18,7 @@ let currentUser: User | undefined = undefined;
 let userDog: Dog[] = [];
 
 async function init() {
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem("storedUserId");
 
   if (!userId) {
     window.location.replace("./index.html");
@@ -31,7 +31,7 @@ async function init() {
   );
 
   if (!user) {
-    localStorage.removeItem("userId");
+    localStorage.removeItem("storedUserId");
     window.location.replace("./index.html");
     return;
   } else {
@@ -137,8 +137,9 @@ document.addEventListener("click", async (e) => {
             <textarea name="info" id="info-input" class="req-input" required/>${currentUser.description}</textarea>
             </form>
           </div>
+          <p class="error-txt" id="error-txt"></p>
           <div class="btn-container">
-            <button class="btn btn-success TEST" id="confirm-edit-btn">BEKREFT ENDRINGER</button>
+            <button class="btn btn-success" id="confirm-edit-btn" type="submit" form="edit-user-form">BEKREFT ENDRINGER</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
           </div>
   `;
@@ -149,17 +150,17 @@ document.addEventListener("click", async (e) => {
       const dynamicContent = `
       <h2>Hva ønsker du å redigere?</h2>
         <div class="add-edit-modal-card">
-          <form class="user-input-form">
+          <form class="user-input-form" id="edit-password-form">
             <label for="old-password-input">Tidligere passord:</label>
-              <input type="text" name="old-password-input" value="" id="old-password-input">
+              <input type="text" name="old-password-input" value="" id="old-password-input" class="req-input" required>
             <label for="new-password-input">Nytt passord:</label>
-              <input type="text" name="new-password-input" value="" id="new-password-input">
+              <input type="text" name="new-password-input" value="" id="new-password-input" class="req-input" required>
             <label for="repeat-new-password-input">Gjenta nytt passord:</label>
-              <input type="text" name="new-password-input" value="" id="repeat-new-password-input">
+              <input type="text" name="new-password-input" value="" id="repeat-new-password-input" class="req-input" required>
           </form>
         </div>
          <div class="btn-container">
-            <button class="btn btn-success" id="confirm-edit-password-btn">ENDRE PASSORD</button>
+            <button class="btn btn-success" id="confirm-edit-password-btn" type="submit" form="edit-password-form">ENDRE PASSORD</button>
             <button class="btn btn-danger" id="edit-profile-btn">AVBRYT</button>
           </div>
       `;
@@ -168,11 +169,19 @@ document.addEventListener("click", async (e) => {
     }
     case "confirm-edit-password-btn": {
       if (!currentUser) return;
-      const newPassword = changePassword();
-      editUser(currentUser.id, newPassword);
+      const editPasswordForm = document.getElementById(
+        "edit-password-form",
+      ) as HTMLFormElement;
+      const validForm = checkFormValidity(editPasswordForm);
 
-      break;
-    }
+      if (validForm === false) {
+        return;
+      } else {
+        const newPassword = changePassword();
+       await editUser(currentUser.id, newPassword);
+        }
+        break;
+      }
     case "delete-profile-btn": {
       const dynamicContent = `
           <h2>Er du sikker på at du ønsker å slette profilen din?</h2>
@@ -197,16 +206,16 @@ document.addEventListener("click", async (e) => {
             </div>
            <form class="user-input-form" id="add-dog-form">
               <label for="dog-name-input">Navn:</label>
-              <input type="text" name="dog-name" value="" id="dog-name-input" required>
+              <input type="text" name="dog-name" value="" id="dog-name-input" class="req-input" required>
               <label for="dog-breed-input">Rase:</label>
-              <input type="text" name="dog-breed" value="" id="dog-breed-input" required>
+              <input type="text" name="dog-breed" value="" id="dog-breed-input" class="req-input" required>
               <label for="dog-age-input">Alder:</label>
-              <input type="text" name="dog-age" value="" id="dog-age-input" required>
+              <input type="number" name="dog-age" value="" id="dog-age-input" class="req-input" required min="1" max="25">
               <label for="dog-allergies-input">Allergier:</label>
               <input type="text" name="dog-allergies" value="" id="dog-allergies-input">
             </form>
           </div>
-          <p id="error-txt"></p>
+          <p class="error-txt" id="error-txt"></p>
           <div class="btn-container">
             <button class="btn btn-success" id="confirm-add-dog-btn" type="submit" form="add-dog-form">LEGG TIL HUND</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT</button>
@@ -240,7 +249,7 @@ document.addEventListener("click", async (e) => {
       ) as HTMLDivElement;
 
       let updatedDogList = await getAllDogs();
-  
+
       updatedDogList = updatedDogList.filter(
         (dog) => dog.petOwnerId === currentUser?.id,
       );
@@ -287,34 +296,44 @@ document.addEventListener("click", async (e) => {
     }
     case "confirm-edit-btn": {
       if (!currentUser) return;
-      const editedUser = getUserEdits();
-      await editUser(currentUser.id, editedUser);
-      
-       const updatedUser = await getAllUsers();
-       const userId = localStorage.getItem("userId");
+      const userForm = document.getElementById(
+        "edit-user-form",
+      ) as HTMLFormElement;
+      const validForm = checkFormValidity(userForm);
 
-       currentUser = updatedUser.find((user) => user.id === Number(userId))
+      if (validForm === false) {
+        return;
+      } else {
+        const editedUser = getUserEdits();
 
-       if (!currentUser) return;
-       showUser(currentUser);
-
-      const dynamicContent = `
+        const dynamicContent = `
       <h2>Lagrer endringer...</h2>
           <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
       `;
-      createModal(dynamicContent);
+        createModal(dynamicContent);
 
-      setTimeout(() => {
-        
-        const dynamicContent = `
+        await editUser(currentUser.id, editedUser);
+
+        const updatedUser = await getAllUsers();
+        const userId = localStorage.getItem("storedUserId");
+
+        currentUser = updatedUser.find((user) => user.id === Number(userId));
+
+        if (!currentUser) return;
+        showUser(currentUser);
+
+        setTimeout(() => {
+          const dynamicContent = `
       <h2>Endringene ble lagret!</h2>
           <img src="/images/success.png" alt="success" draggable="false"/>
           <div class="btn-container">
             <button class="btn btn-success" id="close-and-update-btn">FORTSETT</button>
           </div>
       `;
-        createModal(dynamicContent);
-      }, 2000);
+          createModal(dynamicContent);
+        }, 2000);
+      }
+
       break;
     }
     case "confirm-edit-dog-btn": {
@@ -327,8 +346,6 @@ document.addEventListener("click", async (e) => {
       await editDog(dog.id, editedDog);
 
       const updatedDog = await getAllDogs();
-      
-
 
       const dynamicContent = `
       <h2>Lagrer endringer...</h2>
@@ -353,28 +370,39 @@ document.addEventListener("click", async (e) => {
     }
     case "confirm-add-dog-btn": {
       if (!currentUser) return;
-      const newDog = getNewDog();
-      const dynamicContent = `
+
+      const addDogForm = document.getElementById(
+        "add-dog-form",
+      ) as HTMLFormElement;
+      const validForm = checkFormValidity(addDogForm);
+
+      if (validForm === false) {
+        return;
+      } else {
+        const newDog = getNewDog();
+        const dynamicContent = `
       <h2>Legger til ${newDog.name}...</h2>
           <div class="dog-spinner"></div>
       `;
-      createModal(dynamicContent);
-      
-      await addDog(newDog);
-      const userDog = await getAllDogs();
+        createModal(dynamicContent);
 
-      setTimeout(() => {
-        if (!currentUser) return;
-        createDogCard(userDog, currentUser);
-        const dynamicContent = `
+        await addDog(newDog);
+        const userDog = await getAllDogs();
+
+        setTimeout(() => {
+          if (!currentUser) return;
+          createDogCard(userDog, currentUser);
+          const dynamicContent = `
       <h2>${newDog.name} ble lagt til i "mine hunder"!</h2>
           <img src="/images/success.png" alt="success" draggable="false"/>
           <div class="btn-container">
             <button class="btn btn-success" id="close-and-update-btn">FORTSETT</button>
           </div>
       `;
-        createModal(dynamicContent);
-      }, 2000);
+          createModal(dynamicContent);
+        }, 2000);
+      }
+
       break;
     }
     case "confirm-delete-btn": {
@@ -390,8 +418,10 @@ document.addEventListener("click", async (e) => {
       break;
     }
     case "warning-remove-dog-btn": {
-      const selectedDog = document.querySelector(".pressed") as HTMLDivElement;
-      const dogId = Number(selectedDog.dataset.id);
+      const selectedRadio = document.querySelector<HTMLInputElement>(
+        'input[name="choice"]:checked',
+      );
+      const dogId = Number(selectedRadio?.dataset.id);
       const dog: Dog | undefined = userDog.find((dog) => dog.id === dogId);
 
       if (!dog) return;
@@ -443,7 +473,6 @@ document.addEventListener("click", async (e) => {
           </div>
     `;
         createModal(dynamicContent);
-        
       }, 2000);
       break;
     }
@@ -475,11 +504,12 @@ document.addEventListener("click", async (e) => {
               <label for="dog-breed-input">Rase:</label>
               <input type="text" name="dog-breed"value="${dog.breed}" id="dog-breed-input">
               <label for="dog-age-input">Alder:</label>
-              <input type="text" name="dog-age" value="${dog.age}" id="dog-age-input">
+              <input type="number" name="dog-age" value="${dog.age}" id="dog-age-input" required min="1" max="25">
               <label for="dog-allergies-input">Allergi:</label>
               <input type="text" name="dog-allergy" value="${dog.allergies.length ? dog.allergies.join(", ") : ""}" id="dog-allergies-input">
             </div>
           </div>
+          <p class="error-txt" id="error-txt"></p>
           <div class="btn-container">
             <button class="btn btn-success" id="confirm-edit-dog-btn" data-id="${String(dog.id)}">BEKREFT ENDRINGER</button>
             <button class="btn btn-danger" id="close-btn">AVBRYT ENDRINGER</button>
@@ -521,7 +551,9 @@ document.addEventListener("click", async (e) => {
         const sitter = allSitters.find(
           (sitter) => sitter.id === booking.petSitterId,
         );
-        const dog = allDogs.find((dog) => dog.id === booking.userDogId);
+        const dog = allDogs.filter(
+          (dog) => dog.id === booking.userDogId[dog.id],
+        );
 
         return sitter && dog;
       });
@@ -538,9 +570,8 @@ document.addEventListener("click", async (e) => {
           (sitter) => sitter.id === booking.petSitterId,
         );
 
-        const dog = allDogs.find(
-          (dog) => Number(dog.id) === Number(booking.userDogId),
-        );
+        const dog = allDogs.find((dog) => booking.userDogId.includes(dog.id));
+
         if (!dog || !sitter) continue;
         bookingContainer.innerHTML += `
         <div class="booking-card">
@@ -627,7 +658,8 @@ function createDogCard(userDog: Dog[], currentUser: User) {
       document.getElementById("remove-dog-btn") as HTMLButtonElement
     ).style.display = "none";
   } else {
-      (document.getElementById("remove-dog-btn") as HTMLButtonElement
+    (
+      document.getElementById("remove-dog-btn") as HTMLButtonElement
     ).style.display = "block";
     for (const dog of userDogs) {
       const dogCard = document.createElement("div") as HTMLDivElement;
@@ -673,7 +705,6 @@ function createDogCard(userDog: Dog[], currentUser: User) {
 }
 
 function getUserEdits(): Partial<User> {
-
   const username = (
     document.getElementById("username-input") as HTMLInputElement
   ).value;
@@ -688,8 +719,6 @@ function getUserEdits(): Partial<User> {
     document.getElementById("info-input") as HTMLInputElement
   ).value;
 
- 
-
   return {
     userName: username,
     email: email,
@@ -697,7 +726,6 @@ function getUserEdits(): Partial<User> {
     location: location,
     description: description,
   };
-
 }
 
 function getDogEdits(): Partial<Dog> {
@@ -779,12 +807,42 @@ function changePassword(): Partial<User> {
   const oldPassword = currentUser?.password;
 
   if (oldPassword != oldPasswordInput) {
-    alert("Feil tidligere passord!");
+    const dynamicContent = `
+      <h2>Tidligere passord er ikke riktig!</h2>
+          <div class="btn-container">
+            <button class="btn btn-success" id="edit-password-btn">PRØV PÅ NYTT!</button>
+          </div>
+  `;
+    createModal(dynamicContent);
     return {};
-  } else if (newPasswordInput != repeatNewPasswordInput) {
-    alert("De nye passordene er ikke like!");
+  } else if (
+    (oldPassword === oldPasswordInput && newPasswordInput) !=
+    repeatNewPasswordInput
+  ) {
+    const dynamicContent = `
+      <h2>De nye passordene er ikke like!</h2>
+          <div class="btn-container">
+            <button class="btn btn-success" id="edit-password-btn">PRØV PÅ NYTT!</button>
+          </div>
+  `;
+    createModal(dynamicContent);
     return {};
   } else {
+    const dynamicContent = `
+      <h2>Lagrer endringer...</h2>
+     <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
+`;
+    createModal(dynamicContent);
+    
+    setTimeout(() => {
+      const dynamicContent = `
+    <h2>Passordet er endret!</h2>
+          <div class="btn-container">
+            <button class="btn btn-success" id="close-and-update-btn">FORTSETT</button>
+          </div>
+    `;
+      createModal(dynamicContent);
+    }, 2000);
     return {
       password: newPasswordInput,
     };
@@ -804,4 +862,26 @@ async function getBookings(currentUser: User) {
     allSitters,
     allDogs,
   };
+}
+
+function checkFormValidity(form: HTMLFormElement) {
+  const required = document.querySelectorAll(
+    ".req-input",
+  ) as NodeListOf<HTMLInputElement>;
+
+  const errorTxt = document.getElementById("error-txt") as HTMLParagraphElement;
+
+  if (!form.checkValidity()) {
+    required.forEach((input) => {
+      if (input.value === "") {
+        input.style.border = "2px solid #d9534f";
+      } else {
+        input.style.border = "none";
+      }
+    });
+    errorTxt.innerText = "ALLE FELTENE MÅ VÆRE FYLT UT!";
+    return false;
+  } else {
+    return true;
+  }
 }

@@ -1,10 +1,13 @@
 // FREDRIK
 
 import "./header.css"
+import "../Pages/Homepage/homepage.css"
+import { createLoginModal, createRegisterModal
+ } from "../Pages/Homepage/homepage";
 
 export function createHeader() {
   const header = document.getElementById("site-header") as HTMLElement;
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem("storedUserId");
 
   if (!userId) {
     header.innerHTML = `
@@ -19,10 +22,10 @@ export function createHeader() {
         	</a>
 
           <nav class="site-header-nav" aria-label="Hovedmeny">
-            <a href="#" data-open-login>FINN HUNDEPASSERE</a>
-            <a href="/src/Pages/registration/registration.html">BLI HUNDEPASSER</a>
-            <a href="#" data-open-login>LOGG INN</a>
-            <a href="/src/Pages/registration/registration.html">REGISTRER DEG</a>
+            <button class="btn btn-success" id="become-btn">BLI HUNDEPASSER</button>
+            <button class="btn btn-info" id="find-btn">FINN HUNDEPASSERE</button>
+            <button class="btn btn-success" id="login-btn">LOGG INN</button>
+            <button class="btn btn-info" id="register-btn">REGISTRER</button>
           </nav>
         </div>
       </header>
@@ -40,8 +43,8 @@ export function createHeader() {
         	</a>
 
           <nav class="site-header-nav" aria-label="Hovedmeny">
-            <a href="#">FINN HUNDEPASSERE</a>
-            <a href="">BLI HUNDEPASSER</a>
+            <button class="btn btn-info" id="find-btn">FINN HUNDEPASSERE</button>
+            <button class="btn btn-success" id="become-btn">BLI HUNDEPASSER</button>
             <button class="btn btn-danger" id="logout-btn">LOGG UT</button>
           </nav>
         </div>
@@ -54,6 +57,90 @@ document.addEventListener("click", async (e) => {
   const target = e.target as HTMLButtonElement;
 
   switch (target.id) {
+    case "login-btn": {
+      const dynamicContent = `
+      <h2>LOGG INN</h2>
+          <div class="">
+            <form class="user-input-form">
+            <label for="email-input">E-post:</label>
+            <input type="mail" name="email" value="" id="email-input">
+            <label for="password-input">Passord:</label>
+            <input type="text" name="password" value="" id="password-input">
+            </form>
+          </div>
+          <div class="btn-container">
+            <button class="btn btn-success" id="confirm-login-btn">LOGG INN</button>
+            <button class="btn btn-danger" id="close-btn">AVBRYT</button>
+          </div>
+  `;
+      createLoginModal(dynamicContent);
+      break;
+    }
+    case "register-btn": {
+      const dynamicContent = `
+        <div>
+          <h2>REGISTRERINGSSKJEMA</h2>
+        </div>
+        <div class="register-form-container">
+          <div class="register-user-form">
+            <p>INTRODUSER DEG SELV:</p>
+            <form class="user-form" id="registration-form">
+              <div class="form-field">
+                <label for="username-input">Fornavn:</label>
+                <input type="text" name="username" id="username-input" class="reg-input" required/>
+              </div>
+              <div class="form-field">
+                <label for="surname-input">Etternavn:</label>
+                <input type="text" name="surname" id="surname-input" class="reg-input" required/>
+              </div>
+              <div class="form-field">
+                <label for="location-input">Bosted:</label>
+                <input type="text" name="location" id="location-input" class="reg-input" required/>
+              </div>
+              <div class="form-field">
+                <label for="phone-input">Telefon:</label>
+                <input type="text" name="phone" id="phone-input" class="reg-input" required/>
+              </div>
+              <div class="form-field">
+                <label for="email-input">E-post:</label>
+                <input type="text" name="email" id="email-input" class="reg-input" required/>
+              </div>
+              <div class="form-field">
+                <label for="password-input">Passord:</label>
+                <input type="text" name="password" id="password-input" class="reg-input" required/>
+              </div>
+              <div class="form-field">
+                <label for="repeated-password-input">Gjenta passord:</label>
+                <input type="text" name="repeated-password" id="repeated-password-input" class="reg-input" required/>
+              </div>
+              <p>FORTELL KORT OM DEG SELV:</p>
+              <label for="description-input" hidden>fortell kort om deg selv:</label>
+                <textarea name="description" id="description-input" form="register-form" class="reg-input" required ></textarea>
+            </form>
+            <div class="submit-image-container">
+            <div class="icon">
+              <img src="/images/useravatar.png" alt="Profilbilde" class="icon" />
+              </div>
+              <div class="button">
+              <label class="btn btn-success">
+                    LAST OPP BILDE
+                    <input type="file" hidden />
+                  </label>
+              </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <p id="error-txt" class="error-txt"></p>
+        <div class="btn-container register-btn-container">
+          <button class="btn btn-success" id="create-user-btn" type="submit" form="register-form">OPPRETT KONTO</button>
+          <button id="close-btn"class="btn btn-danger">AVBRYT</button>
+        </div>
+      </div>
+          `;
+      createRegisterModal(dynamicContent);
+      break;
+    }
     case "logout-btn": {
       const dynamicContent = `
       <h2>Logger ut..</h2>
@@ -61,7 +148,7 @@ document.addEventListener("click", async (e) => {
       `;
       createModal(dynamicContent);
       setTimeout(() => {
-        localStorage.removeItem("userId");
+        localStorage.removeItem("storedUserId");
         window.location.replace("./index.html");
       }, 2000);
       break;

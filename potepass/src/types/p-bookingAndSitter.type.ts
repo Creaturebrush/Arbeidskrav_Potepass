@@ -3,7 +3,7 @@
 export type ProfileBooking = {
 id: number,
 userId: number,
-userDogId: number,
+userDogId: number[],
 petSitterId: number,
 fromDate: string,
 toDate: string,
