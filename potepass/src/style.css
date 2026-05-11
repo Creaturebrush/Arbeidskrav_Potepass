@@ -442,9 +442,6 @@ p {
   border-radius: 2rem;
   padding: 2rem 2rem 1.75rem;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-  /*good to know: width: min(42rem, calc(100% - 2rem));
-    same as max-width: 42rem i.e for bigger screens
-    and for smaller screens width will be 100% - 2 rem */
 }
 
 .modal-close {
@@ -456,7 +453,7 @@ p {
   color: var(--primary-shade-2);
   font-weight: var(--fw-semibold);
   border-radius: 50%;
-  border: 2px solid var(--primary-shade-2); /*do we want border? */
+  border: 2px solid var(--primary-shade-2);
   background: var(--white);
   cursor: pointer;
   display: grid;

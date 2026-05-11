@@ -26,6 +26,7 @@ h4 {
 
 p {
   padding: 1rem;
+  justify-self: center;
 }
 
 .block-txt {
@@ -43,7 +44,6 @@ p {
 
 .profile-img {
   max-width: 500px;
-  /* width: 90%;  */
 }
 
 .rating-container {
@@ -99,6 +99,11 @@ h4 {
   align-self: center;
 }
 
+.allergy-info-container p,
+.info-container p {
+  justify-self: baseline;
+}
+
 form {
   border: solid 4px var(--primary-shade-2);
   border-radius: 2rem;
@@ -110,6 +115,14 @@ form {
 
 .form-container {
   padding: 2rem;
+}
+
+input:required:invalid {
+  border: 2px solid red;
+}
+
+input:required:valid {
+  border: 2px solid green;
 }
 
 .date-container,
@@ -150,6 +163,24 @@ form {
   color: red;
 }
 
+.blink-error {
+  animation: blinkError 0.4s ease-in-out 3;
+}
+
+@keyframes blinkError {
+  0% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: #ffd6d6;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
 .date-container span,
 .choose-dog-container span {
   color: red;
@@ -164,7 +195,7 @@ form {
 /* Modals */
 .booking-modal {
   background-color: var(--primary);
-  border: var(--bg) solid 1rem;
+  border: var(--primary-card) solid 1rem;
   border-radius: 24px;
   padding: 1rem;
   display: flex;
@@ -214,8 +245,6 @@ form {
 /* Tablet Breakpoint */
 @media (max-width: 1024px) {
 }
-
-
 
 /* Phone breakpoint around 600px*/
 @media (max-width: 700px) {
@@ -270,15 +299,59 @@ form {
 }
 
 .modal-content {
-  background: #fff;
+  background: var(--primary);
+  border: var(--bg) solid 2rem;
   border-radius: 8px;
-  padding: 24px;
-  max-width: 500px;
+  font-size: var(--h2);
+  padding: 2rem;
+  max-width: 1000px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+  margin: 1rem;
+}
+
+.modal-content button {
+  display: flex;
+  justify-self: center;
+  margin: 1rem;
+}
+
+#booking-sent h5 span,
+#booking-updated h5 {
+  color: var(--primary-shade-2);
+}
+
+#booking-sent h5 {
+  position: relative;
+  left: 7rem;
+}
+
+#booking-updated h5 {
+  position: relative;
+  left: 9rem;
+}
+
+#booking-sent-content {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+#booking-updated-container {
+  display: flex;
+  gap: 4rem;
+  margin: 1rem;
+}
+
+#booking-updated button {
+  display: flex;
+  justify-self: center;
 }
 
 .modal-close {
@@ -303,10 +376,19 @@ form {
   align-items: center;
 }
 
+.booking-sent-container img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .booking-sent-container .btn-container {
-  border: var(--primary-shade-1) 4px solid;
-  border-radius: 26px;
+  border: var(--primary-shade-1) 2px solid;
+  border-radius: 10px;
   max-width: 800px;
+  justify-self: center;
+  padding: 2rem;
 }
 
 .hidden {
