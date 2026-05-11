@@ -6,7 +6,7 @@ import type { User } from "../../types/user.type";
 
 let currentModal: HTMLDivElement | null = null;
 
-function createLoginModal(dynamicContent: string) {
+export function createLoginModal(dynamicContent: string) {
   closeModal();
 
   document.body.style.overflow = "hidden";
@@ -26,7 +26,7 @@ function createLoginModal(dynamicContent: string) {
   currentModal = modalBackdrop;
 }
 
-function createRegisterModal(dynamicContent: string) {
+export function createRegisterModal(dynamicContent: string) {
   closeModal();
 
   document.body.style.overflow = "hidden";
@@ -191,7 +191,7 @@ document.addEventListener("click", async (e) => {
         createLoginModal(dynamicContent);
 
         setTimeout(() => {
-          localStorage.setItem("userId", String(user.id));
+          localStorage.setItem("storedUserId", String(user.id));
           window.location.replace("/src/Pages/profile/profile.html");
         }, 2000);
       }
@@ -209,7 +209,7 @@ document.addEventListener("click", async (e) => {
       `;
       createLoginModal(dynamicContent);
       setTimeout(() => {
-        localStorage.removeItem("userId");
+        localStorage.removeItem("storedUserId");
         window.location.replace("./index.html");
       },2000)
       break;
@@ -257,7 +257,7 @@ async function login() {
     createLoginModal(dynamicContent);
 
     setTimeout(() => {
-      localStorage.setItem("userId", String(user.id));
+      localStorage.setItem("storedUserId", String(user.id));
       window.location.replace("/src/Pages/profile/profile.html");
     }, 2000);
   }
@@ -293,47 +293,3 @@ function getNewUser(): Partial<User> {
       image: "",
     };
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  <div class="register-dog-form">
-//           <label for="description">FORTELL KORT OM DEG SELV:</label>
-//           <input type="textbox" name="description" id="description-input" required/ >
-//             <p>LEGG TIL EN HUND:</p>
-//             <form class="dog-form">
-//               <div class="form-field">
-//                 <label for="">Navn:</label>
-//                 <input type="text" />
-//               </div>
-//               <div class="form-field">
-//                 <label for="">rase:</label>
-//                 <input type="text" />
-//               </div>
-//               <div class="form-field">
-//                 <label for="">Alder:</label>
-//                 <input type="text" />
-//               </div>
-//               <div class="form-field">
-//                 <label for="">Allergier:</label>
-//                 <input type="text" />
-//               </div>
-//             </form>
-//             <div class="btn-container">
-//                 <img src="/images/dogicon.png" alt="Hundens avatar" />
-//               <label class="btn btn-success">
-//                     LAST OPP BILDE
-//                     <input type="file" hidden />
-//                   </label>
-//             </div>
-//           </div>
