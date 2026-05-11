@@ -1,4 +1,5 @@
-export type reviews = {
+//Stine
+export type Reviews = {
     id: number,
     fromUserId: number,
     toPetSitterId: number,
