@@ -6,7 +6,7 @@ import type { User } from "../../types/user.type";
 
 let currentModal: HTMLDivElement | null = null;
 
-export function createLoginModal(dynamicContent: string) {
+export function createHomepageModal(dynamicContent: string) {
   closeModal();
 
   document.body.style.overflow = "hidden";
@@ -14,40 +14,19 @@ export function createLoginModal(dynamicContent: string) {
   const modalBackdrop = document.createElement("div") as HTMLDivElement;
   const modal = document.createElement("div") as HTMLDivElement;
 
-  modal.classList.add("login-modal");
+  modal.classList.add("home-modal");
 
   modalBackdrop.appendChild(modal);
   document.body.appendChild(modalBackdrop);
 
-  modalBackdrop.classList.add("login-modal-backdrop");
+  modalBackdrop.classList.add("home-modal-backdrop");
   modal.innerHTML = dynamicContent;
   modal.classList.add("open");
 
   currentModal = modalBackdrop;
 }
 
-export function createRegisterModal(dynamicContent: string) {
-  closeModal();
-
-  document.body.style.overflow = "hidden";
-
-  const modalBackdrop = document.createElement("div") as HTMLDivElement;
-  modalBackdrop.classList.add("register-modal-backdrop");
-
-  const modal = document.createElement("div") as HTMLDivElement;
-
-  modal.classList.add("register-modal");
-
-  modalBackdrop.appendChild(modal);
-  document.body.appendChild(modalBackdrop);
-
-  modal.innerHTML = dynamicContent;
-  modal.classList.add("open");
-
-  currentModal = modalBackdrop;
-}
-
-function closeModal() {
+export function closeModal() {
   if (currentModal) {
     currentModal.remove();
     currentModal = null;
@@ -76,7 +55,7 @@ document.addEventListener("click", async (e) => {
             <button class="btn btn-danger" id="close-btn">AVBRYT</button>
           </div>
   `;
-      createLoginModal(dynamicContent);
+      createHomepageModal(dynamicContent);
       break;
     }
     case "confirm-login-btn": {
@@ -145,7 +124,7 @@ document.addEventListener("click", async (e) => {
         </div>
       </div>
           `;
-      createRegisterModal(dynamicContent);
+      createHomepageModal(dynamicContent);
       break;
     }
     case "create-user-btn": {
@@ -186,9 +165,9 @@ document.addEventListener("click", async (e) => {
 
         const dynamicContent = `
       <h2>Velkommen, ${createdUser.userName}! <br> Vi setter opp profilen din..</h2>
-          <img src="/images/paw-spinner.png" class="login-spinner" alt="Loading spinner" draggable="false"/>
+          <img src="/images/paw-spinner.png" class="homepage-spinner" alt="Loading spinner" draggable="false"/>
       `;
-        createLoginModal(dynamicContent);
+        createHomepageModal(dynamicContent);
 
         setTimeout(() => {
           localStorage.setItem("storedUserId", String(user.id));
@@ -205,9 +184,9 @@ document.addEventListener("click", async (e) => {
     case "logout-btn": {
       const dynamicContent = `
       <h2>Logger ut..</h2>
-          <img src="/images/paw-spinner.png" class="login-spinner" alt="Loading spinner" draggable="false"/>
+          <img src="/images/paw-spinner.png" class="homepage-spinner" alt="Loading spinner" draggable="false"/>
       `;
-      createLoginModal(dynamicContent);
+      createHomepageModal(dynamicContent);
       setTimeout(() => {
         localStorage.removeItem("storedUserId");
         window.location.replace("./index.html");
@@ -233,9 +212,9 @@ async function login() {
   if (!user) {
     const dynamicContent = `
       <h2>Logger inn...</h2>
-          <img src="/images/paw-spinner.png" class="login-spinner" alt="Loading spinner" draggable="false"/>
+          <img src="/images/paw-spinner.png" class="homepage-spinner" alt="Loading spinner" draggable="false"/>
       `;
-    createLoginModal(dynamicContent);
+    createHomepageModal(dynamicContent);
 
     setTimeout(() => {
       const dynamicContent = `
@@ -245,16 +224,16 @@ async function login() {
           </div>
 
       `;
-      createLoginModal(dynamicContent);
+      createHomepageModal(dynamicContent);
     }, 1000);
 
     return;
   } else {
     const dynamicContent = `
       <h2>Logger inn...</h2>
-          <img src="/images/paw-spinner.png" class="login-spinner" alt="Loading spinner" draggable="false"/>
+          <img src="/images/paw-spinner.png" class="homepage-spinner" alt="Loading spinner" draggable="false"/>
       `;
-    createLoginModal(dynamicContent);
+    createHomepageModal(dynamicContent);
 
     setTimeout(() => {
       localStorage.setItem("storedUserId", String(user.id));
