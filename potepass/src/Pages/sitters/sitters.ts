@@ -10,7 +10,7 @@ import { deletePetSitter } from "../../requests/deletePetSitter";
 import { updatePetSitterProfile } from "../../requests/patchPetSitter";
 
 
-let currentPetSitter: PetSitters | null=null;
+let currentPetSitter: PetSitters | null = null;
 
 let allSitters: PetSitters [] = [];
 let allReviews: Reviews [] = [];
@@ -29,38 +29,42 @@ let dateFromInput: HTMLInputElement;
 let dateToInput: HTMLInputElement;
 
 let mainContent: HTMLElement;
+let formShell: HTMLElement;
 let formSection: HTMLFormElement;
 let profileSection: HTMLElement;
 let editProfileSection: HTMLFormElement;
 
 let sittersModal: HTMLDivElement | null = null;
-
+const form = document.getElementById("becomeSitterForm") as HTMLFormElement;
 
 function getFilteredSitters(){
 	const locationValue = locationInput.value.toLowerCase();
 	const minPrice = Number(priceMinInput.value) ||0;
 	const maxPrice = Number(priceMaxInput.value) || 1500;
+	/* 
 	const dateFrom = dateFromInput.value;
 	const dateTo = dateToInput.value;
-
+*/
 	return allSitters.filter((sitter) =>{
 		const filterLocation = !locationValue || sitter.location.toLowerCase().includes(locationValue);
 		const filterPrice = sitter.pricePerDay >= minPrice && sitter.pricePerDay <= maxPrice;
 		
-	
+	/**
 		let sitterAvailability = true;
 		if (dateFrom && dateTo){
-		/** 	sitterAvailability = sitter.available <= dateFrom && sitter.available >= dateTo;*/
+		 	sitterAvailability = sitter.available <= dateFrom && sitter.available >= dateTo;
 		}
-
+*/
 		return (
-			filterLocation && filterPrice && sitterAvailability
+			filterLocation && filterPrice /* && sitterAvailability*/
 		);
  });
 }
 
-function renderDogExperience(sitter: PetSitters){
-	const experience = [];
+
+function acceptedDogs (sitter: PetSitters){
+	const experience:string [] = [];
+	const sizes:string [] = [];
 
 	if (sitter.acceptsPuppies){
 		experience.push("valper");
@@ -71,13 +75,6 @@ function renderDogExperience(sitter: PetSitters){
 	if (sitter.acceptsSeniorDogs){
 		experience.push("senior hunder");
 	}
-	return experience 
-		.map(item => `<span class="sitter-tag">${item}</span>`).join("");
-}
-
-function renderDogSizes(sitter: PetSitters){
-	const sizes = [];
-
 	if (sitter.acceptsSmallDogs){
 		sizes.push("små")
 	}
@@ -87,12 +84,17 @@ function renderDogSizes(sitter: PetSitters){
 	if (sitter.acceptsLargeDogs){
 		sizes.push("store")
 	}
-	return sizes 
-		.map(item => `<span class="sitter-tag">${item}</span>`).join("");
+	return { 
+		experience: experience.map(item => `<span class="sitter-tag">${item}, </span>`).join(""),
+		sizes: sizes.map(item => `<span class="sitter-tag">${item}, </span>`).join("")
+	}
+
+
 }
 
+
 function loadCurrentPetSitter(){
-//	const savedSitter = localStorage.getItem("currentPetSitter");
+const savedSitter = localStorage.getItem("currentPetSitter");   
 	
 	if (!savedSitter) return null;
 
@@ -104,12 +106,6 @@ function loadCurrentPetSitter(){
 	}
 }
 
-function getCheckBoxValue (name: string): boolean{
-	const input = document.querySelector(`input[name="${name}"]`) as HTMLInputElement;
-	
-	return input?.checked ?? false;
-}
-
 function renderSittersList(){
 	const filteredSitters = getFilteredSitters();
 	const currentTab = document.querySelector(`.sitters-panel[data-tab="1"]`) as HTMLElement;
@@ -119,10 +115,11 @@ function renderSittersList(){
 
 }
 
-
 //Render
 
 function renderReviews(reviews: Reviews[], sitterId: number, users: User[]){
+
+	
 	const sitterReviews = reviews.filter(review => review.toPetSitterId === sitterId);
 
 	if (sitterReviews.length === 0) {
@@ -132,7 +129,9 @@ function renderReviews(reviews: Reviews[], sitterId: number, users: User[]){
 return sitterReviews.map((review) => {
 	const reviewer = users.find(
 		(user) => user.id === review.fromUserId
+		
 	);
+	
 	if(!reviewer) return "";
 
 	return`
@@ -161,9 +160,12 @@ return sitterReviews.map((review) => {
 }
 
 function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]) {
+
 	return `
 	<div class="sitters-list" id="sittersCurrentList">
-				${sitters.map((sitter) => ` 
+				${sitters.map((sitter) =>{ 
+					const acceptedDogsData = acceptedDogs(sitter);
+				return	` 
 				<article class="sitter-card">
 
 					<div class="sitters-compact">
@@ -173,7 +175,7 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 						</div>
 								
 						<div class="sitter-compact-info">
-								<div class="sitter-name">${sitter.name}</div>
+								<div class="sitter-name">${sitter.name || sitter.userName}</div>
 
 								<div class="sitter-city">
 									<span class="sitter-pin" aria-hidden="true">
@@ -241,11 +243,11 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 													</div>
 													<div class="sitter-info-row">
 														<span class="sitter-info-label">Erfaring med:</span>
-														<span class="sitter-tags"></span>
+														<span class="sitter-tags">${acceptedDogsData.experience}</span>
 													</div>
 													<div class="sitter-info-row">
 														<span class="sitter-info-label">Passer:</span>
-														<span class="sitter-tags"> </span>
+														<span class="sitter-tags">${acceptedDogsData.sizes}</span>
 													</div>
 													<div class="sitter-info-row">
 														<span class="sitter-info-label">Pris;</span>
@@ -258,8 +260,8 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 
 
 										<div class="sitter-detail-bottom">
-											<div class="sitter-detail-rating">
-												<span class="stars stars--rated" aria-label="vurdering 4 av 5">${sitter.reviewCount}★★★★☆</span>
+											<div class="sitter-detail-rating">${sitter.rating}
+												<span class="stars stars--rated" aria-label="vurdering 4 av 5">★★★★☆</span>
 												<button class="sitter-reviews-toggle" type="button" >
 												<span class="sitters-review-count"> omtaler</span>
 												<img class="sitter-mini-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true">
@@ -278,9 +280,23 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 						</div>
 					</div>    
 				</article>
-				`).join("")}
+				`}).join("")}
 	</div>
 	`;
+}
+async function getCurrentUser(): Promise<User>{
+	const storedUserId = localStorage.getItem("storedUserId");
+	if (!storedUserId){
+		throw new Error ("du er ikke logget inn");
+	}
+
+	const users = await getAllUsers();
+	const currentUser = users.find((user) => String(user.id) === storedUserId);
+
+	if (!currentUser){
+		throw new Error("fant ikke bruker")
+	}
+	return currentUser;
 }
 
 function renderCurrentProfile(){
@@ -296,6 +312,7 @@ function renderCurrentProfile(){
 }
 
 function renderPetSitterProfile (sitter:PetSitters): string {
+	const dogTags = acceptedDogs(sitter);
 	return `
 		<h4 class="my-sitter-title" id="">Din hundepasserprofil</h4>
 			<article class="sitter-card my-sitter-card">
@@ -307,7 +324,7 @@ function renderPetSitterProfile (sitter:PetSitters): string {
 
 						<div class="sitter-detail-content">
 							<div class="sitter-detail-head">
-								<h3 class="sitter-detail-name">${sitter.name}</h3>
+								<h3 class="sitter-detail-name">${sitter.userName}</h3>
 							</div>
 
 							<div class="sitter-detail-columns">
@@ -331,38 +348,38 @@ function renderPetSitterProfile (sitter:PetSitters): string {
 											</div>
 											<div class="sitter-info-row">
 												<span class="sitter-info-label">Erfaring med:</span>
-												<span class="sitter-tags">  </span>
+												<span class="sitter-tags">${dogTags.experience}  </span>
 											</div>
 											<div class="sitter-info-row">
 												<span class="sitter-info-label">Passer:</span>
-												<span class="sitter-tags">  </span>
+												<span class="sitter-tags">${dogTags.sizes} </span>
 											</div>
 											<div class="sitter-info-row">
-												<span class="sitter-info-label">Pris;</span>
+												<span class="sitter-info-label">Pris:</span>
 												<span>${sitter.pricePerDay} ,-/pr dag </span>
 											</div>
 										</div>
-			
 									</div>
 								</div>
-							</div>
+							
 
-							<!-- bottom row -->
-							<div class="my-sitter-bottom">
-								<div class="my-sitter-bottom-left">
-									<div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
-										<span class="stars stars--rated">★★★★☆</span>
-										<span class="my-sitter-reviews">(12 omtaler)</span>
+								<!-- bottom row -->
+								<div class="my-sitter-bottom">
+									<div class="my-sitter-bottom-left">
+										<div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
+											<span class="stars stars--rated">★★★★☆</span>
+											<span class="my-sitter-reviews">(12 omtaler)</span>
+										</div>
 									</div>
-								</div>
 
-								<div class="my-sitter-actions">
-									<button class="btn btn-warning status-btn update-sitter-profile" type="button">
-										REDIGER
-									</button>
-									<button class="btn btn-danger status-btn delete-registration" type="button">
-										SLETT
-									</button>
+									<div class="my-sitter-actions">
+										<button class="btn btn-warning status-btn"  id="update-mysitter-profile" type="button">
+											REDIGER
+										</button>
+										<button class="btn btn-danger status-btn" id="delete-registration" type="button">
+											SLETT
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -376,7 +393,7 @@ function renderPetSitterProfile (sitter:PetSitters): string {
 
 function updateView(){
 	mainContent.hidden = currentView !== "list";
-	formSection.hidden = currentView !== "form";
+	formShell.hidden = currentView !== "form";
 	editProfileSection.hidden = currentView !== "edit";
 }
 
@@ -487,19 +504,17 @@ function sitterTabs() {
 });	
 }
 
-  // fiks dette
+  //CRUD
 document.addEventListener("click", async (e) =>{	
-	const target = e.target as HTMLButtonElement;
+	const target = (e.target as HTMLButtonElement).closest("button");
 	if(!target) return;
 
-	const deleteBtn = target.closest(".delete-registration");
-	const confirmDeleteBtn = target.closest(".confirm-delete");
-	const closeModaBtn = target.closest(".close-modal");
-	const editBtn = target.closest(".edit-my-sitter-profile");
-	const confirmEdit = target.closest(".confirm-edit")
+	
+	const confirmDeleteBtn = target.id ==="confirm-delete";
+	const confirmEdit = target.id === "confirm-edit"
 
-	switch (target.id) {
-		case "register-as-petSitter":{
+	switch ((target as HTMLElement).id) {
+		case "confirm-registration":{
 			createModal(`
 				<section class="confirm-card" aria-labelledby="">
 					<div class="confirm-card-inner">
@@ -511,7 +526,7 @@ document.addEventListener("click", async (e) =>{
 
 						<div class="confirm-actions">
 							<button class="btn btn-danger" type="button" id="close-modal">ANGRE REGISTRERING</button>
-							<button class="btn btn-success" type="submit" id="confirm-registration">FULLFØR</button>
+							<button class="btn btn-success" form="becomeSitterForm" type="button" id="really-confirm-registration">FULLFØR</button>
 						</div>
 					</div>
 				</section> 
@@ -519,19 +534,22 @@ document.addEventListener("click", async (e) =>{
 		break;
 	}
 		
-		case "confirm-registration": {
-			closeModal();
-			formSection.requestSubmit();
+		case "really-confirm-registration": {
+			await confirmRegistration();
+
+			const formSection = document.getElementById("becomeSitterForm") as HTMLFormElement;
+		    
+				
+				if(formSection){
+					formSection.requestSubmit();
+				}
+				closeModal();
+				
+
 		break;
-	}
-
-		case "close-modal":
-		case "finish-registration":
-		case "cancel-registration":
-			closeModal();
 		}
-
-	if (deleteBtn){
+		case "delete-registration": {
+			
 		createModal (`
 			 <section class="confirm-card" aria-labelledby="">
           <div class="confirm-card-inner">
@@ -544,85 +562,146 @@ document.addEventListener("click", async (e) =>{
             </div>
  
             <div class="confirm-actions">
-              <button class="btn btn-success confirm-delete" type="button">JA, SLETT REGISTRERING</button>
-              <button class="btn btn-danger close-modal"  type="button">NEI, GÅ TILBAKE</button>
+              <button class="btn btn-success" id="confirm-delete" type="button">JA, SLETT REGISTRERING</button>
+              <button class="btn btn-danger" id="close-modal"  type="button">NEI, GÅ TILBAKE</button>
             </div>
           </div>
         </section>
 			`);
-			return;
-	}
+			break;
+		}
 
-	if (confirmDeleteBtn) {
-		if (!currentPetSitter) return;
+		case "confirm-delete": {
+			if(!currentPetSitter) return;
  
-		try {
-				await deletePetSitter(currentPetSitter.id);
+				try {
+					
+						await deletePetSitter(currentPetSitter.id);
 
-				allSitters = allSitters.filter(
-					(sitter)=> sitter.id !== currentPetSitter!.id
-				);
+						allSitters = allSitters.filter(
+							(sitter)=> sitter.id !== currentPetSitter!.id
+						);
+						
+						currentPetSitter = null;
+
+						localStorage.removeItem("currentPetSitter");
+
+						renderCurrentProfile();
+						renderSittersList();
 				
-				currentPetSitter = null;
-				localStorage.removeItem("currentPetSitter");
+						closeModal(); 
 
-				renderCurrentProfile();
-				renderSittersList();
-		
-				closeModal();
+						createModal (`
+							<section class="confirm-card" aria-labelledby="">
+								<div class="confirm-card-inner">
+									<h3 id="" class="confirm-title">
+										Registreringen din som hundepasser er slettet.
+									</h3>
+
+									<div class="confirm-icon" aria-hidden="true">
+										<img src="/images/check.png" alt="" />
+									</div>
+
+									<div class="confirm-actions">
+										<button class="btn btn-success" id="close-modal" type="button">GÅ TILBAKE</button>
+									</div>
+								</div>
+							</section>`);
+
+							} catch (error) {
+								console.error(error);
+								return; 	
+								}
+
 				
-				createModal (`
-				<section class="confirm-card" aria-labelledby="">
-					<div class="confirm-card-inner">
-						<h3 id="" class="confirm-title">
-							Registreringen din som hundepasser er slettet.
-						</h3>
+						break;
+						}
 
-						<div class="confirm-icon" aria-hidden="true">
-							<img src="/images/check.png" alt="" />
-						</div>
+						case "update-mysitter-profile":{
+							if (!currentPetSitter) return;
 
-						<div class="confirm-actions">
-							<button class="btn btn-success close-modal" type="button">GÅ TILBAKE</button>
-						</div>
-					</div>
-				</section>`);
+							currentView = "edit";
+							updateView();
 
-			} catch (error) {
-					console.error(error);
-					alert("noe er galt")
-					return;
-			}
-			return; 
-	}
+							
+								break;
+
+								}
+			
+							case"update-sitter-profile":{
+							createModal( `
+							<section class="confirm-card" aria-labelledby="">
+								<div class="confirm-card-inner">
+									<h3 id="" class="confirm-title">
+										Er du sikker på at du vil oppdatere profilen din?
+									</h3>
+									<div class="confirm-icon" aria-hidden="true">
+										<img src="/images/delete-button.png" alt="" />
+									</div>
+
+									<div class="confirm-actions">
+										<button class="btn btn-success" id="confirm-edit" type="button">JA, OPPDATER</button>
+										<button class="btn btn-danger" id="close-modal" type="button">NEI, GÅ TILBAKE</button>
+									</div>
+								</div>
+							</section>
+						`);
+
+					break;	
+						}
+
+					case"confirm-edit":{
+
+							createModal(`
+							<section class="confirm-card" aria-labelledby="">
+								<div class="confirm-card-inner">
+									<h3 id="" class="confirm-title">
+										Registreringen din er oppdadert.
+									</h3>
+
+									<div class="confirm-icon" aria-hidden="true">
+										<img src="/images/check.png" alt="" />
+									</div>
+
+									<div class="confirm-actions">
+										<button class="btn btn-success" type="button" id="close-modal">GÅ TILBAKE</button>
+									</div>
+								</div>
+							</section>
+						`);
+					break;
+							}
+
+					case"close-modal":{ 
+						closeModal();
+						break;
+						
+					}
+					case "finish-registration":{
+						closeModal();
+						break;
+
+					}
+					case "cancel-registration":{
+						closeModal();
+						break;
+					}
+					default: 
+					break;
 
 
-	if (editBtn){
-		const dynamicContent =`
-			<section class="confirm-card" aria-labelledby="">
-				<div class="confirm-card-inner">
-					<h3 id="" class="confirm-title">
-						Er du sikker på at du vil oppdatere profilen din?
-					</h3>
-					<div class="confirm-icon" aria-hidden="true">
-						<img src="/images/delete-button.png" alt="" />
-					</div>
-
-					<div class="confirm-actions">
-						<button class="btn btn-success confirm-edit" type="button">JA, OPPDATER</button>
-						<button class="btn btn-danger" id="close-modal" type="button">NEI, GÅ TILBAKE</button>
-					</div>
-				</div>
-			</section>
-		`;
-
-		createModal(dynamicContent);
-		return;	
-
-//fix this!
+					}
+					
+				
 	
-	}
- 
+	
+	//DELETE
+
+
+	
+//PATCH
+
+
   if (confirmEdit){
 				if (!currentPetSitter) return;
 
@@ -633,42 +712,61 @@ document.addEventListener("click", async (e) =>{
 				(document.getElementById("edityearsOfExperience") as HTMLInputElement).value = String (currentPetSitter.yearsOfExperience);
 				(document.getElementById("editPricePerDay") as HTMLInputElement).value = String (currentPetSitter.pricePerDay);
 				(document.getElementById("editmaxDogs") as HTMLInputElement).value = String (currentPetSitter.maxDogs);
-
+				
+				closeModal();
 				return;
 			}
-
+			/** 
+			if (saveEditBtn){
+				await updatePetSitterProfile();
+			}
+*/
 });
 
-async function getSitterFormData(){
-	e.preventDefault();
 
-	const form = e.target as HTMLFormElement; 
+function getSitterFormData (formElement: HTMLFormElement){
+	const formData = new FormData(formElement);
 
+	return {
 
-	const formData = {
-		experienceDescription: String ((document.getElementById("experienceDescription") as HTMLTextAreaElement).value),
-		yearsOfExperience: Number ((document.getElementById("yearsOfExperience") as HTMLInputElement).value),
-		pricePerDay:Number ((document.getElementById("pricePerDay") as HTMLInputElement).value),
-		maxDogs:Number ((document.getElementById("maxDogs") as HTMLInputElement).value),
+		experienceDescription: String (formData.get("experienceDescription") || ""),
+		yearsOfExperience: Number (formData.get("yearsOfexperience") ||0),
+		pricePerDay:Number (formData.get("pricePerDay") ||0),
+		maxDogs:Number (formData.get("maxDogs") ||0),
 		
-		acceptsPuppies: (document.querySelector(`input[name="experiencePuppies"]`) as HTMLInputElement).checked,
-		acceptsAdultDogs: (document.querySelector(`input[name="AdultDogs"]`) as HTMLInputElement).checked,
-		acceptsSeniorDogs: (document.querySelector(`input[name="experienceSeniorDogs"]`) as HTMLInputElement).checked,
+		acceptsPuppies: formData.get("experiencePuppies") === "on",
+		acceptsAdultDogs: formData.get("experienceAdultDogs") === "on",
+		acceptsSeniorDogs: formData.get("experienceSeniorDogs") === "on",
 		
-		acceptsSmallDogs: (document.querySelector(`input[name="experienceSmallDogs"]`) as HTMLInputElement).checked,
-		acceptsMediumDogs: (document.querySelector(`input[name="experienceMediumDogs"]`) as HTMLInputElement).checked,
-		acceptsLargeDogs: (document.querySelector(`input[name="experienceLargeDogs"]`) as HTMLInputElement).checked,
-	};
+		acceptsSmallDogs: formData.get("sizeSmallDogs") === "on",
+		acceptsMediumDogs: formData.get("sizeMediumDogs") === "on",
+		acceptsLargeDogs: formData.get("sizeLargeDogs") === "on",
+	}
+};	
 
-	try {
+
+async function confirmRegistration() { 
+	
+		const users = await getAllUsers();
+		const user = await getCurrentUser();
+		
+		
+		if (!user) throw new Error ("finner ikke bruker");
+
+		const formSection = document.getElementById("becomeSitterForm") as HTMLFormElement;
+		const formData = getSitterFormData(formSection);
+
+		console.log("user", users);
+		
 		const newSitter = await createPetSitter(user, formData);
 
-		currentPetSitter = newSitter;
-		allSitters.push(newSitter);
-		localStorage.setItem(
-			"currentPetSitter",
-			JSON.stringify(newSitter)
-		);
+			currentPetSitter = newSitter;
+			allSitters.push(newSitter);
+			
+			localStorage.setItem(
+				"currentPetSitter",
+				JSON.stringify(newSitter)
+			);
 		
 		renderCurrentProfile();
 
@@ -676,46 +774,26 @@ async function getSitterFormData(){
 		updateView();
 	
 		renderSittersList();
-		form.reset();
+ 
+}
+		
 
-		createModal(`
-			<section class="confirm-card" aria-labelledby="">
-				<div class="confirm-card-inner">
-					<h3 id="" class="confirm-title">
-						Registreringen din er oppdadert.
-					</h3>
-
-					<div class="confirm-icon" aria-hidden="true">
-						<img src="/images/check.png" alt="" />
-					</div>
-
-					<div class="confirm-actions">
-						<button class="btn btn-success" type="button" id="close-modal">GÅ TILBAKE</button>
-					</div>
-				</div>
-			</section>
-		`);
 
 		
-	} catch (error) {
-		console.error(error);
-	}
 
- }
 
 //DOM
 document.addEventListener("DOMContentLoaded", async () =>{
+
 	const openBtn = document.getElementById("openBecomeASitterForm") as HTMLButtonElement | null;
 	const closeBtn = document.getElementById("cancel-become-form") as HTMLElement | null;
-	const form = document.getElementById("becomeSitterForm") as HTMLFormElement | null;
+	
 
 	const currentTab = document.querySelector(`.sitters-panel[data-tab="1"]`) as HTMLElement;
 	const previousTab = document.querySelector(`.sitters-panel[data-tab="2"]`) as HTMLElement;
 	const firstTabButton = document.querySelector(`.sitters-tab[data-for-tab="1"]`) as HTMLElement;
 	const sittersContainer = document.querySelector(".sitters-shell") as HTMLElement;
 		
-		//current User???? here??
-
 		if (!openBtn || !closeBtn || !form  ) return;
 
 		const [sitters, reviews, users] = await Promise.all([
@@ -744,17 +822,21 @@ document.addEventListener("DOMContentLoaded", async () =>{
 	
 
 	currentPetSitter = loadCurrentPetSitter();
-	console.log("init sitter:", currentPetSitter);
+	
 
 
-	formSection = document.querySelector(".become-shell") as HTMLFormElement;
+	formSection = document.getElementById("becomeSitterForm") as HTMLFormElement;
+	formShell = document.querySelector(".become-shell") as HTMLElement;
+
+
+
 	mainContent = document.getElementById("mainContent") as HTMLElement;
 	profileSection = document.querySelector(".my-sitter") as HTMLElement;
 	editProfileSection = document.querySelector(".edit-my-sitter-profile") as HTMLFormElement;
 
 	
 
-	if ( !currentTab || !previousTab || !firstTabButton || !sittersContainer || !mainContent || !formSection ) return;
+	if ( !currentTab || !previousTab || !firstTabButton || !sittersContainer || !mainContent || !formSection || !formShell ) return;
 
 		
 	
@@ -774,7 +856,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
 	initSitters(sittersContainer);
 
 	currentTab.innerHTML = renderSitters(sitters, reviews, users);
-	previousTab.innerHTML = renderSitters(sitters, reviews, users)
+	previousTab.innerHTML = renderSitters([...sitters].reverse(), reviews, users);
 
 	currentTab.classList.add("sitters-panel--is-active");
 	firstTabButton.classList.add("sitters-tab--is-active");
@@ -787,18 +869,16 @@ document.addEventListener("DOMContentLoaded", async () =>{
 	dateFromInput = document.getElementById("dateFrom") as HTMLInputElement;
 	dateToInput = document.getElementById("dateTo") as HTMLInputElement;
 
-	formSection.addEventListener("submit", handleSubmit);
+	
 
 	locationInput.addEventListener("input", renderSittersList);
 	priceMinInput.addEventListener("input", renderSittersList);
 	priceMaxInput.addEventListener("input", renderSittersList);
 	dateFromInput.addEventListener("input", renderSittersList);
 	dateToInput.addEventListener("input", renderSittersList);
-
-	formSection.addEventListener("submit", (e)=>{
-		e.preventDefault();
-		console.log("form works")
 	
-	})
- 
+
 });
+ 
+
+

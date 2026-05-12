@@ -128,138 +128,134 @@
           </section>
           <!--EDIT PETSITTER PROFILE-->
           <section class="edit-my-sitter-profile">
-             
-  
-            <article class="sitter-card my-sitter-card">
-              <div class="my-sitter-detail">
-                <div class="sitter-detail-top">
-                  <div class="sitter-photo">
-                   <img src="/images/hero.jpg" alt="Profilbilde av deg som hundepasser" />
-                  </div>
-  
-                  <div class="sitter-detail-content">
-                    <div class="sitter-detail-head">
-                      <h3 class="sitter-detail-name">${sitter.storedUserId}</h3>
-                    </div>
-  
-                    <div class="my-sitter-detail-columns">
-                      <div class="my-sitter-detail-block">
-                        <div class="sitter-detail-title">Litt om meg</div>
-                        <textarea class="edit-about"
-                          id="experienceDescription"
-                          name="experienceDescription"
-                          rows="6"
-                          maxlength="200"
-                          placeholder="Introduser deg selv. F.eks. kan du fortelle hvor lenge du har vært hundepasser og hvilken erfaring du har."
-                          required >
-                        </textarea>
-                      </div>
-                        <div class="my-sitter-detail-block">
-                          <div class="sitter-detail-title">Detaljer</div>
-                          <div class="my-sitter-grid-3">
-                            <div class="my-become-field">
-                              <label class="my-sitter-label" for="yearsOfExperience">ÅRS ERFARING</label>
-                              <input
-                                class="become-input become-input--small"
-                                id="yearsOfExperience"
-                                name="yearsOfExperience"
-                                type="number"
-                                min="0"
-                                step="1"
-                                placeholder="0"
-                              />
-                            </div>
-
-                            <div class="become-field">
-                              <label class="my-sitter-label" for="pricePerDay">PRIS (NOK/DAG)</label>
-                              <input
-                                class="become-input become-input--small"
-                                id="pricePerDay"
-                                name="pricePerDay"
-                                type="number"
-                                min="0"
-                                step="50"
-                                placeholder="400"
-                                required
-                              />
-                            </div>
-
-                            <div class="become-field">
-                              <label class="my-sitter-label" for="maxDogs">MAKS ANTALL HUNDER</label>
-                              <input
-                                class="become-input become-input--small"
-                                id="maxDogs"
-                                name="maxDogs"
-                                type="number"
-                                min="1"
-                                step="1"
-                                placeholder="2"
-                                required
-                              />
-                            </div>
-                        </div>
-
-                        <div class="my-sitter-checkg">
-                          <fieldset class="become-checkgroup">
-                            <legend class="become-legend">ERFARING MED:</legend>
-
-                            <label class="become-check">
-                              <input type="checkbox" name="experiencePuppies" />
-                              Hundevalper
-                            </label>
-
-                            <label class="become-check">
-                              <input type="checkbox" name="experienceAdultDogs" />
-                              Voksne hunder
-                            </label>
-
-                            <label class="become-check">
-                              <input type="checkbox" name="experienceSeniorDogs" />
-                              Senior hunder
-                            </label>
-                          </fieldset>
-
-                            <!-- Sizes -->
-                          <fieldset class="become-checkgroup">
-                            <legend class="become-legend">PASSER PÅ:</legend>
-
-                            <label class="become-check">
-                              <input type="checkbox" name="sizeSmallDogs" />
-                              Små hunder
-                            </label>
-
-                            <label class="become-check">
-                              <input type="checkbox" name="sizeMediumDogs" />
-                              Mellomstore hunder
-                            </label>
-
-                            <label class="become-check">
-                              <input type="checkbox" name="sizeLargeDogs" />
-                              Store hunder
-                            </label>
-                          </fieldset>
-                        </div>
-
-    
-                          <!-- bottom row -->
-                        
-                        <div class="my-sitter-edit-buttons">
-                          <button class="btn btn-success status-btn update-sitter-profile" type="button">
-                            FULLFØR
-                          </button>
-                          <button class="btn btn-danger status-btn delete-registration" type="button">
-                            SLETT
-                          </button>
-                        </div>
-                      
-                      </div>
-                    
-                  </div>
-                </div>
+      <form class="sitter-card my-sitter-card">
+          <div class="my-sitter-detail">
+            <div class="sitter-detail-top">
+              <div class="sitter-photo">
+              <img src="/images/hero.jpg" alt="Profilbilde av deg som hundepasser" />
               </div>
-              <!-- Experience -->
-            </article>
-          </section>
+
+              <div class="sitter-detail-content">
+                <div class="sitter-detail-head">
+                  <h3 class="sitter-detail-name"></h3>
+                </div>
+
+                <div class="my-sitter-detail-columns">
+                  <div class="my-sitter-detail-block">
+                    <div class="sitter-detail-title">Litt om meg</div>
+                    <textarea class="edit-about"
+                      id="experienceDescription"
+                      name="experienceDescription"
+                      rows="6"
+                      maxlength="600"
+                      placeholder="Introduser deg selv. F.eks. kan du fortelle hvor lenge du har vært hundepasser og hvilken erfaring du har."
+                      required >
+                    </textarea>
+                  </div>
+                    <div class="my-sitter-detail-block">
+                      <div class="sitter-detail-title">Detaljer</div>
+                      <div class="my-sitter-grid-3">
+                        <div class="my-become-field">
+                          <label class="my-sitter-label" for="yearsOfExperience">ÅRS ERFARING</label>
+                          <input
+                            class="become-input become-input--small"
+                            id="yearsOfExperience"
+                            name="yearsOfExperience"
+                            type="number"
+                            min="0"
+                            step="1"
+                            placeholder="0"
+                          />
+                        </div>
+
+                        <div class="become-field">
+                          <label class="my-sitter-label" for="pricePerDay">PRIS (NOK/DAG)</label>
+                          <input
+                            class="become-input become-input--small"
+                            id="pricePerDay"
+                            name="pricePerDay"
+                            type="number"
+                            min="0"
+                            step="50"
+                            placeholder="400"
+                            required
+                          />
+                        </div>
+
+                        <div class="become-field">
+                          <label class="my-sitter-label" for="maxDogs">MAKS ANTALL HUNDER</label>
+                          <input
+                            class="become-input become-input--small"
+                            id="maxDogs"
+                            name="maxDogs"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="2"
+                            required
+                          />
+                        </div>
+                    </div>
+
+                    <div class="my-sitter-checkg">
+                      <fieldset class="become-checkgroup">
+                        <legend class="become-legend">ERFARING MED:</legend>
+
+                        <label class="become-check">
+                          <input type="checkbox" name="experiencePuppies" />
+                          Hundevalper
+                        </label>
+
+                        <label class="become-check">
+                          <input type="checkbox" name="experienceAdultDogs" />
+                          Voksne hunder
+                        </label>
+
+                        <label class="become-check">
+                          <input type="checkbox" name="experienceSeniorDogs" />
+                          Senior hunder
+                        </label>
+                      </fieldset>
+
+                        <!-- Sizes -->
+                      <fieldset class="become-checkgroup">
+                        <legend class="become-legend">PASSER PÅ:</legend>
+
+                        <label class="become-check">
+                          <input type="checkbox" name="sizeSmallDogs" />
+                          Små hunder
+                        </label>
+
+                        <label class="become-check">
+                          <input type="checkbox" name="sizeMediumDogs" />
+                          Mellomstore hunder
+                        </label>
+
+                        <label class="become-check">
+                          <input type="checkbox" name="sizeLargeDogs" />
+                          Store hunder
+                        </label>
+                      </fieldset>
+                    </div>
+
+                    <div class="my-sitter-edit-buttons">
+                      <button class="btn btn-success status-btn" id="update-sitter-profile" type="button">
+                        FULLFØR
+                      </button>
+                      <button class="btn btn-danger status-btn" id="close-modal" type="button">
+                        AVBRYT
+                      </button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+  
+  
+            
+         
        </div>
 
         <!--become a sitter form-->
@@ -407,7 +403,7 @@
               <!-- BUTTONS -->
               <div class="become-actions">
                 <button class="btn btn-danger" type="button" id="cancel-become-form" >AVBRYT</button>
-                <button class="btn btn-success" type="submit"  id="confirm-registration">REGISTRER DEG SOM HUNDEPASSER</button>
+                <button class="btn btn-success" type="button"  id="confirm-registration">REGISTRER DEG SOM HUNDEPASSER</button>
               </div>
             </form>
           </div>

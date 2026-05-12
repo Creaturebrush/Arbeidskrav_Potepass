@@ -191,7 +191,7 @@
     },
     {
       "id": 4,
-      "fromUserId": 1,
+      "fromUserId": 2,
       "toPetSitterId": 2,
       "rating": 1,
       "reviewTitle": "Altså..",
