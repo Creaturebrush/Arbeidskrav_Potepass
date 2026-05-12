@@ -2,8 +2,7 @@
 
 import "./header.css"
 import "../Pages/Homepage/homepage.css"
-import { createLoginModal, createRegisterModal
- } from "../Pages/Homepage/homepage";
+import { createHomepageModal, closeModal } from "../Pages/Homepage/homepage";
 
 export function createHeader() {
   const header = document.getElementById("site-header") as HTMLElement;
@@ -11,7 +10,7 @@ export function createHeader() {
 
   if (!userId) {
     header.innerHTML = `
-  <header class="site-header">
+    <div class="site-header">
         <div class="site-header-inner">
           <a class="site-header-brand" href="/index.html" aria-label="PØTEPASS hjem">
             <h1 class="logo">
@@ -22,17 +21,17 @@ export function createHeader() {
         	</a>
 
           <nav class="site-header-nav" aria-label="Hovedmeny">
-            <button class="btn btn-success" id="become-btn">BLI HUNDEPASSER</button>
-            <button class="btn btn-info" id="find-btn">FINN HUNDEPASSERE</button>
-            <button class="btn btn-success" id="login-btn">LOGG INN</button>
-            <button class="btn btn-info" id="register-btn">REGISTRER</button>
+            <a href="/src/Pages/booking/booking.html">BOOKING</a>
+            <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
+            <a id="login-btn">LOGG INN</a>
+            <a id="register-btn">REGISTRER</a>
           </nav>
         </div>
-      </header>
+      </div>
   `;
   } else {
     header.innerHTML = `
-  <header class="site-header">
+  <div class="site-header">
         <div class="site-header-inner">
           <a class="site-header-brand" href="/index.html" aria-label="PØTEPASS hjem">
             <h1 class="logo">
@@ -43,12 +42,13 @@ export function createHeader() {
         	</a>
 
           <nav class="site-header-nav" aria-label="Hovedmeny">
-            <button class="btn btn-info" id="find-btn">FINN HUNDEPASSERE</button>
-            <button class="btn btn-success" id="become-btn">BLI HUNDEPASSER</button>
-            <button class="btn btn-danger" id="logout-btn">LOGG UT</button>
+            <a href="/src/Pages/booking/booking.html">BOOKING</a>
+            <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
+            <a href="/src/Pages/profile/profile.html">PROFIL</a>
+            <a id="logout-btn">LOGG UT</a>
           </nav>
         </div>
-      </header>
+      </div>
   `;
   }
 }
@@ -73,7 +73,7 @@ document.addEventListener("click", async (e) => {
             <button class="btn btn-danger" id="close-btn">AVBRYT</button>
           </div>
   `;
-      createLoginModal(dynamicContent);
+      createHomepageModal(dynamicContent);
       break;
     }
     case "register-btn": {
@@ -83,7 +83,7 @@ document.addEventListener("click", async (e) => {
         </div>
         <div class="register-form-container">
           <div class="register-user-form">
-            <p>INTRODUSER DEG SELV:</p>
+            
             <form class="user-form" id="registration-form">
               <div class="form-field">
                 <label for="username-input">Fornavn:</label>
@@ -138,15 +138,15 @@ document.addEventListener("click", async (e) => {
         </div>
       </div>
           `;
-      createRegisterModal(dynamicContent);
+      createHomepageModal(dynamicContent);
       break;
     }
     case "logout-btn": {
       const dynamicContent = `
-      <h2>Logger ut..</h2>
-          <img src="/images/paw-spinner.png" class="header-spinner" alt="Loading spinner" draggable="false"/>
+      <h2 class="logout-txt">Logger ut..</h2>
+          <img src="/images/paw-spinner.png" class="homepage-spinner" alt="Loading spinner" draggable="false"/>
       `;
-      createModal(dynamicContent);
+      createHomepageModal(dynamicContent);
       setTimeout(() => {
         localStorage.removeItem("storedUserId");
         window.location.replace("./index.html");
@@ -161,35 +161,3 @@ document.addEventListener("click", async (e) => {
       break;
   }
 })
-
-let currentModal: HTMLDivElement | null = null;
-
-function createModal(dynamicContent: string) {
-
-  closeModal();
-
-  document.body.style.overflow = "hidden";
-
-  const modalBackdrop = document.createElement("div") as HTMLDivElement;
-  const modal = document.createElement("div") as HTMLDivElement;
-
-  modal.classList.add("header-modal");
-
-  modalBackdrop.appendChild(modal);
-  document.body.appendChild(modalBackdrop);
-
-  modalBackdrop.classList.add("header-modal-backdrop");
-  modal.innerHTML = dynamicContent;
-  modal.classList.add("open");
-
-  currentModal = modalBackdrop;
-}
-
-function closeModal() {
-  if (currentModal) {
-    currentModal.remove();
-    currentModal = null;
-  }
-
-  document.body.style.overflow = "";
-}

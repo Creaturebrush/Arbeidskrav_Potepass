@@ -103,7 +103,7 @@ main {
 }
 
 /* LOGIN MODAL */
-.login-modal-backdrop {
+.home-modal-backdrop {
   background: rgba(0, 0, 0, 0.5);
 
   height: 100%;
@@ -116,7 +116,7 @@ main {
   z-index: 100;
 }
 
-.login-modal {
+.home-modal {
   height: fit-content;
   width: min(42rem, calc(100% - 2rem));
   background-color: var(--primary);
@@ -133,22 +133,22 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.login-modal:not(.open) {
+.home-modal:not(.open) {
   visibility: hidden;
   opacity: 0;
 }
 
-.login-modal.open {
+.home-modal.open {
   visibility: visible;
   opacity: 1;
 }
 
-.login-modal h2 {
+.home-modal h2 {
   margin: 0;
   text-align: center;
 }
 
-.login-modal-paws {
+.home-modal-paws {
   filter: contrast(3) saturate(3) brightness(0.4) grayscale(0.5);
 }
 
@@ -172,7 +172,7 @@ main {
   border: 0;
 }
 
-.login-modal .btn-container {
+.home-modal .btn-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -311,8 +311,9 @@ label {
 
 /* LOADING SPINNER */
 
-.login-spinner {
+.homepage-spinner {
   width: 5rem;
+  height: 5rem;
 
   margin: auto;
 

@@ -18,6 +18,8 @@
 .btn-container {
   display: flex;
   justify-content: center;
+  padding: 1rem;
+  gap: 5rem;
 }
 
 h1 {
@@ -30,10 +32,7 @@ h2 {
   margin: auto;
 }
 
-.btn-container {
-  padding: 1rem;
-  gap: 5rem;
-}
+
 
 /* PROFIL INFO */
 .info-container {
@@ -101,6 +100,11 @@ h2 {
   align-items: center;
 }
 
+.dog-card .btn-container {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
 .dog-card-info {
   display: flex;
   align-items: center;
@@ -111,6 +115,7 @@ h2 {
 
 .dog-card-info img {
   width: 10rem;
+  height: 10rem;
   border: 2px solid black;
   border-radius: 100%;
 }
@@ -143,30 +148,50 @@ h2 {
 
 /* BOOKING AND REQUEST*/
 .booking-request-section {
-  border: 2px solid var(--primary-shade-2);
-  border-radius: 2rem;
+  
   max-width: 50%;
   margin: auto;
-  margin-bottom: 2rem;
 }
+
 .booking-request-section .btn-container {
-  gap: 1rem;
+  margin: 0;
 }
+
 .booking-request-section .btn {
   height: 4rem;
   width: 20rem;
-  margin: 1rem;
+  
   position: relative;
+  margin-bottom: 0;
+}
+
+
+.notif {
+width: 2rem;
+height: 2rem;
+border-radius: 50%;
+background: #2196f3;
+position: absolute;
+top: -10%;
+right: -2%;
+
+display: none;
+justify-content: center;
+align-items: center;
+}
+
+.notif p {
+font-weight: 900;
 }
 
 /* MODALS */
 .profile-modal {
   height: fit-content;
-  width: min(42rem, calc(100% - 2rem));
+  min-width: min(42rem, calc(100% - 2rem));
   background-color: var(--primary);
   border-radius: 2rem;
-  margin: 2rem;
   padding: 1rem;
+  
   border: 12px solid var(--bg);
 
   position: fixed;
@@ -212,6 +237,11 @@ h2 {
   font-weight: 900;
 }
 
+.profile-modal .btn-container {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
 /* ADD/EDIT MODAL */
 .add-edit-modal-card {
   background-color: var(--primary-card);
@@ -233,11 +263,12 @@ h2 {
 
 .add-edit-img-container img {
   width: 10rem;
+  height: 10rem;
   border: 2px solid black;
   border-radius: 100%;
 }
 
-.user-input-form {
+.p-user-input-form {
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -253,7 +284,7 @@ input {
   font-size: 1.2rem;
   border-radius: 1rem;
   border: none;
-  width: 15rem;
+  width: 100%;
 }
 
 textarea {
@@ -282,7 +313,9 @@ textarea {
 .remove-dog-container img {
   border: 2px solid black;
   border-radius: 100%;
-  width: 15rem;
+  width: 10rem;
+  height: 10rem;
+  
 }
 
 .remove-dog-card {
@@ -302,7 +335,8 @@ textarea {
 }
 
 .remove-dog-card img {
-  width: 10rem;
+  width: 5rem;
+  height: 5rem;
   border: 2px solid black;
   border-radius: 100%;
 }
@@ -349,12 +383,14 @@ textarea {
 .booking-sitter img {
   margin: auto;
   width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   border: 1px solid black;
 }
 
 .booking-dog img {
   width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   margin: auto;
   border: 1px solid black;
