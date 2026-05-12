@@ -104,25 +104,25 @@ h4 {
   justify-self: baseline;
 }
 
-form {
+.form-booking {
   border: solid 4px var(--primary-shade-2);
   border-radius: 2rem;
   max-width: 90%;
   margin: auto auto 2rem auto;
   background-color: var(--primary-light);
   overflow: hidden;
-}
+} 
 
 .form-container {
   padding: 2rem;
 }
 
 input:required:invalid {
-  border: 2px solid red;
+  outline: 2px solid red;
 }
 
 input:required:valid {
-  border: 2px solid green;
+  outline: 2px solid green;
 }
 
 .date-container,

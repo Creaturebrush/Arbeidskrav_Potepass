@@ -92,7 +92,7 @@ function renderDogSizes(sitter: PetSitters){
 }
 
 function loadCurrentPetSitter(){
-//	const savedSitter = localStorage.getItem("currentPetSitter");
+	const savedSitter = localStorage.getItem("currentPetSitter");
 	
 	if (!savedSitter) return null;
 
@@ -494,12 +494,12 @@ document.addEventListener("click", async (e) =>{
 
 	const deleteBtn = target.closest(".delete-registration");
 	const confirmDeleteBtn = target.closest(".confirm-delete");
-	const closeModaBtn = target.closest(".close-modal");
+	const closeModalBtn = target.closest(".close-modal");
 	const editBtn = target.closest(".edit-my-sitter-profile");
 	const confirmEdit = target.closest(".confirm-edit")
 
 	switch (target.id) {
-		case "register-as-petSitter":{
+		case "confirm-registration":{
 			createModal(`
 				<section class="confirm-card" aria-labelledby="">
 					<div class="confirm-card-inner">
