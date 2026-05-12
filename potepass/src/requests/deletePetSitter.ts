@@ -1,10 +1,10 @@
 //Stine
 
-const  APIKey: string = "deamTeam";
+const  APIKey: string = "dreamTeam";
 
 export async function deletePetSitter(petSitterId: Number) {
   try {
-    const response: Response = await fetch(`http://localhost:3000/api/users/${petSitterId}`,
+    const response: Response = await fetch(`http://localhost:3000/api/petSitters/${petSitterId}`,
     {
         method: "DELETE",
         headers: {

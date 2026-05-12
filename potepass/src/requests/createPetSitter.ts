@@ -1,6 +1,6 @@
 //Stine
 
-import type  { petSitters } from "../types/PetSitters.type"
+import type  { PetSitters } from "../types/petSitters.type"
 import type { User} from "../types/user.type"
 
 const APIKey: string = "dreamTeam";
@@ -8,7 +8,11 @@ const APIKey: string = "dreamTeam";
 type CreatePetSitterForm = {
     pricePerDay: number,
     maxDogs: number,
-    acceptsPuppies: boolean,
+   acceptsPuppies: boolean,
+    acceptsAdultDogs: boolean,
+    acceptsSeniorDogs: boolean,
+    acceptsSmallDogs: boolean,
+    acceptsMediumDogs: boolean,
     acceptsLargeDogs: boolean,
     yearsOfExperience: number,
     experienceDescription: string,
@@ -28,6 +32,10 @@ export async function createPetSitter(user: User, form: CreatePetSitterForm) {
     reviewCount: 0,
     maxDogs: form.maxDogs,
     acceptsPuppies: form.acceptsPuppies,
+    acceptsAdultDogs: form.acceptsAdultDogs,
+    acceptsSeniorDogs: form.acceptsSeniorDogs,
+    acceptsSmallDogs: form.acceptsSmallDogs,
+    acceptsMediumDogs: form.acceptsMediumDogs,
     acceptsLargeDogs: form.acceptsLargeDogs,
     yearsOfExperience: form.yearsOfExperience,
     experienceDescription: form.experienceDescription,
@@ -52,7 +60,7 @@ export async function createPetSitter(user: User, form: CreatePetSitterForm) {
       throw new Error(`En feil har oppstått — APIet returnerte feilkode ${response.status}`);
       }
       
-    const data: petSitters = await response.json();
+    const data: PetSitters = await response.json();
 
     return data;
 
