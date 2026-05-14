@@ -1,4 +1,6 @@
-import { type Dog } from "../types/user.type";
+// Anette Bratvold
+
+import { type Dog } from "../types/dog.type";
 
 export async function getAllDogs(): Promise<Dog[]> {
   try {
