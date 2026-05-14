@@ -3,7 +3,9 @@ export type PetSitters = {
     
     id: number,
     name: string,
+    userName: string,
     location: string,
+    image:string,
     pricePerDay: number,
     rating: number,
     reviewCount: number,

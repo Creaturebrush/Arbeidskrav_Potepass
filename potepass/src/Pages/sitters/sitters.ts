@@ -16,11 +16,9 @@ let allSitters: PetSitters [] = [];
 let allReviews: Reviews [] = [];
 let allUsers: User [] = [];
 
-
 type View = "list" | "form" | "edit";
 
 let currentView: View ="list";
-
 
 let locationInput: HTMLInputElement;
 let priceMinInput: HTMLInputElement;
@@ -44,7 +42,7 @@ function getFilteredSitters(){
 	/* 
 	const dateFrom = dateFromInput.value;
 	const dateTo = dateToInput.value;
-*/
+	*/
 	return allSitters.filter((sitter) =>{
 		const filterLocation = !locationValue || sitter.location.toLowerCase().includes(locationValue);
 		const filterPrice = sitter.pricePerDay >= minPrice && sitter.pricePerDay <= maxPrice;
@@ -60,7 +58,6 @@ function getFilteredSitters(){
 		);
  });
 }
-
 
 function acceptedDogs (sitter: PetSitters){
 	const experience:string [] = [];
@@ -88,10 +85,7 @@ function acceptedDogs (sitter: PetSitters){
 		experience: experience.map(item => `<span class="sitter-tag">${item}, </span>`).join(""),
 		sizes: sizes.map(item => `<span class="sitter-tag">${item}, </span>`).join("")
 	}
-
-
 }
-
 
 function loadCurrentPetSitter(){
 const savedSitter = localStorage.getItem("currentPetSitter");   
@@ -112,14 +106,9 @@ function renderSittersList(){
 	if (!currentTab) return;
 
 	currentTab.innerHTML = renderSitters(filteredSitters, allReviews, allUsers);
-
 }
 
-//Render
-
 function renderReviews(reviews: Reviews[], sitterId: number, users: User[]){
-
-	
 	const sitterReviews = reviews.filter(review => review.toPetSitterId === sitterId);
 
 	if (sitterReviews.length === 0) {
@@ -135,7 +124,7 @@ return sitterReviews.map((review) => {
 	if(!reviewer) return "";
 
 	return`
-		<article class="reviews">
+		<article class="reviews" aria-label="omtale">
 			<div class="review-avatar" aria-hidden="true">
 					<img src="/images/useravatar.png" alt="" />     
 			</div>
@@ -160,18 +149,18 @@ return sitterReviews.map((review) => {
 }
 
 function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]) {
-
 	return `
 	<div class="sitters-list" id="sittersCurrentList">
 				${sitters.map((sitter) =>{ 
 					const acceptedDogsData = acceptedDogs(sitter);
 				return	` 
-				<article class="sitter-card">
+				<article class="sitter-card" aria-label="hundepassere">
 
 					<div class="sitters-compact">
 						<div class="sitter-profil">
-								<img src="/images/hero.jpg" alt="" />
-								<span class="" aria-hidden="true"></span>
+								<span class="" aria-hidden="true">
+                  <img src="${sitter.image || "/images/hero.jpg"}" alt="" />
+                </span>
 						</div>
 								
 						<div class="sitter-compact-info">
@@ -201,21 +190,20 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 					<div class="sitter-details" >
 						<div class="sitter-detail-top">
 								<div class="sitter-photo">
-									<img src="/images/hero.jpg" alt="">
-									<!--<span class="sitter-favorite"></span>-->
+									<img src="${sitter.image || "/images/hero.jpg"}" alt="">
+
 								</div>
 										
 								<div class="sitter-detail-content">
 									<div class="sitter-detail-head">
 										<div class="sitter-detail-info">
-										<h3 class="sitter-detail-name">${sitter.name}</h3>
+										<h3 class="sitter-detail-name">${sitter.name || sitter.userName}</h3>
 										<div class="sitter-city">
 												<span class="sitter-pin" aria-hidden="true">
 														<img src="/images/pin.png" alt="" /></span> ${sitter.location}
 												</div>
 										</div>
-										<button class="sitter-toggle" type="button" aria-label="lukk detaljer for hundepassere"
-										">
+										<button class="sitter-toggle" type="button" aria-label="lukk detaljer for hundepassere">
 										<img class="sitter-chev" src="/images/up-arrow.png" alt="" aria-hidden="true" />
 										</button>
 									</div>
@@ -228,7 +216,6 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 											${sitter.experienceDescription}
 											</p>
 										</div>
-
 
 										<div class="sitter-detail-block">
 											<div class="sitter-detail-title">Detaljer</div>
@@ -250,7 +237,7 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 														<span class="sitter-tags">${acceptedDogsData.sizes}</span>
 													</div>
 													<div class="sitter-info-row">
-														<span class="sitter-info-label">Pris;</span>
+														<span class="sitter-info-label">Pris:</span>
 														<span>${sitter.pricePerDay} ,-/pr dag </span>
 													</div>
 												</div>
@@ -258,22 +245,20 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 											</div>
 										</div>
 
-
 										<div class="sitter-detail-bottom">
 											<div class="sitter-detail-rating">${sitter.rating}
 												<span class="stars stars--rated" aria-label="vurdering 4 av 5">★★★★☆</span>
 												<button class="sitter-reviews-toggle" type="button" >
-												<span class="sitters-review-count"> omtaler</span>
+												<span class="sitters-review-count">Omtaler</span>
 												<img class="sitter-mini-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true">
 												</button>
 											</div>
-										
+
 											<a class="btn btn-success sitter-book" href="/src/Pages/booking/booking.html">BOOK NÅ</a>
 										</div>
 								</div>
 							</div>
 
-							
 						<div class="sitter-reviews">
 							${renderReviews(reviews,sitter.id, users)}
 
@@ -314,12 +299,12 @@ function renderCurrentProfile(){
 function renderPetSitterProfile (sitter:PetSitters): string {
 	const dogTags = acceptedDogs(sitter);
 	return `
-		<h4 class="my-sitter-title" id="">Din hundepasserprofil</h4>
-			<article class="sitter-card my-sitter-card">
+		<h4 class="my-sitter-title">Din hundepasserprofil</h4>
+			<article class="sitter-card my-sitter-card" aria-label="din hundepasser profil">
 				<div class="my-sitter-detail">
 					<div class="sitter-detail-top">
 						<div class="sitter-photo">
-							<img src="/images/hero.jpg" alt="Profilbilde av deg som hundepasser" />
+							<img src="${sitter.image || "/images/hero.jpg"}" alt="Profilbilde av deg som hundepasser" />
 						</div>
 
 						<div class="sitter-detail-content">
@@ -361,22 +346,20 @@ function renderPetSitterProfile (sitter:PetSitters): string {
 										</div>
 									</div>
 								</div>
-							
-
-								<!-- bottom row -->
+		
 								<div class="my-sitter-bottom">
 									<div class="my-sitter-bottom-left">
 										<div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
-											<span class="stars stars--rated">★★★★☆</span>
-											<span class="my-sitter-reviews">(12 omtaler)</span>
+                      <span class="my-sitter-reviews">${sitter.reviewCount}</span>
+											<span class="stars stars--rated">★★★★☆</span>			
 										</div>
 									</div>
 
 									<div class="my-sitter-actions">
-										<button class="btn btn-warning status-btn"  id="update-mysitter-profile" type="button">
+										<button class="btn btn-warning status-btn"  id="update-mysitter-profile" type="button" aria-label="rediger hundepasser profil">
 											REDIGER
 										</button>
-										<button class="btn btn-danger status-btn" id="delete-registration" type="button">
+										<button class="btn btn-danger status-btn" id="delete-registration" type="button" aria-label="slett hundepasser profil">
 											SLETT
 										</button>
 									</div>
@@ -386,17 +369,14 @@ function renderPetSitterProfile (sitter:PetSitters): string {
 					</div>
 				</div>
 			</article>
-	`;
-	
+	`;	
 }
-
 
 function updateView(){
 	mainContent.hidden = currentView !== "list";
 	formShell.hidden = currentView !== "form";
 	editProfileSection.hidden = currentView !== "edit";
 }
-
 
 function createModal (dynamicContent: string){
 	document.body.style.overflow = "hidden";
@@ -413,7 +393,6 @@ function createModal (dynamicContent: string){
 	document.body.appendChild(modalBackdrop);
 
 	modal.classList.add("open");
-
 	sittersModal = modalBackdrop;
 };
 
@@ -430,7 +409,6 @@ function initSitters(container: HTMLElement){
 		const target = e.target as HTMLElement;
 		if (!target) return;
 
-		//chevron
 		const chevron = target.closest(".sitter-toggle") as HTMLElement;
 		if (chevron) {
 				const sitterCard = chevron.closest(".sitter-card") as HTMLElement;
@@ -454,7 +432,6 @@ function initSitters(container: HTMLElement){
 			return;
 		}
 
-		//coments
 		const commentsBtn = target.closest<HTMLButtonElement>(".sitter-reviews-toggle");
 		if(commentsBtn) {
 			const sitterCard = commentsBtn?.closest(".sitter-card") as HTMLElement;
@@ -473,9 +450,6 @@ function initSitters(container: HTMLElement){
 		}
 	});
 }
-
-
-//tabs
 
 function sitterTabs() {
 	const buttons = document.querySelectorAll<HTMLButtonElement>(".sitters-tab");
@@ -504,56 +478,61 @@ function sitterTabs() {
 });	
 }
 
-  //CRUD
 document.addEventListener("click", async (e) =>{	
 	const target = (e.target as HTMLButtonElement).closest("button");
 	if(!target) return;
 
-	
-	const confirmDeleteBtn = target.id ==="confirm-delete";
-	const confirmEdit = target.id === "confirm-edit"
-
 	switch ((target as HTMLElement).id) {
 		case "confirm-registration":{
 			createModal(`
-				<section class="confirm-card" aria-labelledby="">
+				<section class="confirm-card" aria-labeledby="confirmTitle">
 					<div class="confirm-card-inner">
-						<h3 id="" class="confirm-title">
+						<h3 id="confirmTitle" class="confirm-title">
 							Du er nå nesten registrert som hundepasser!
 						</h3>
 
 						<p class="confirm-subtitle">Takk for at du er med på laget!</p>
 
 						<div class="confirm-actions">
-							<button class="btn btn-danger" type="button" id="close-modal">ANGRE REGISTRERING</button>
-							<button class="btn btn-success" form="becomeSitterForm" type="button" id="really-confirm-registration">FULLFØR</button>
+							<button class="btn btn-danger" type="button" id="cancel-registration" aria-lable="angre registrering">ANGRE REGISTRERING</button>
+							<button class="btn btn-success" form="becomeSitterForm" type="button" id="really-confirm-registration" aria-label="fullfør registrering">FULLFØR</button>
 						</div>
 					</div>
 				</section> 
 			`) ;
 		break;
-	}
-		
+	}	
+	
 		case "really-confirm-registration": {
+			closeModal();
+			createModal (`
+					<section class="confirm-card">
+						<div class="confirm-card-inner">
+							<h2>Regisrerer hundepasser...</h2>
+							<img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
+						</div>
+					</section>
+      		`);
+			
 			await confirmRegistration();
-
 			const formSection = document.getElementById("becomeSitterForm") as HTMLFormElement;
 		    
-				
 				if(formSection){
 					formSection.requestSubmit();
 				}
-				closeModal();
-				
+
+				setTimeout(()=>{
+					closeModal();
+				},1500);
 
 		break;
 		}
 		case "delete-registration": {
 			
 		createModal (`
-			 <section class="confirm-card" aria-labelledby="">
+			 <section class="confirm-card" aria-labelledby="confirmDeleteRegistration">
           <div class="confirm-card-inner">
-            <h3 class="confirm-title" id="">
+            <h3 class="confirm-title" id="confirmDeleteRegistration">
               Er du sikker på at du vil fjerne registreringen din som hundpasser?
             </h3>
  
@@ -562,39 +541,49 @@ document.addEventListener("click", async (e) =>{
             </div>
  
             <div class="confirm-actions">
-              <button class="btn btn-success" id="confirm-delete" type="button">JA, SLETT REGISTRERING</button>
-              <button class="btn btn-danger" id="close-modal"  type="button">NEI, GÅ TILBAKE</button>
+              <button class="btn btn-success" id="confirm-delete" type="button" aria-label="bekreft slett registrering">JA, SLETT REGISTRERING</button>
+              <button class="btn btn-danger" id="close-modal" type="button" aria-label="nei, gå tilbake">NEI, GÅ TILBAKE</button>
             </div>
           </div>
         </section>
 			`);
-			break;
+		break;
 		}
-
+		
 		case "confirm-delete": {
 			if(!currentPetSitter) return;
- 
 				try {
+					closeModal();
+					createModal (`
+					<section class="confirm-card">
+						<div class="confirm-card-inner">
+							<h2>Sletter hundepasser profilen din...</h2>
+							<img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
+						</div>
+					</section>
+      		`);
 					
-						await deletePetSitter(currentPetSitter.id);
+					await deletePetSitter(currentPetSitter.id);
 
-						allSitters = allSitters.filter(
-							(sitter)=> sitter.id !== currentPetSitter!.id
-						);
-						
-						currentPetSitter = null;
+					allSitters = allSitters.filter(
+						(sitter)=> sitter.id !== currentPetSitter!.id
+					);
+					
+					currentPetSitter = null;
 
-						localStorage.removeItem("currentPetSitter");
+					localStorage.removeItem("currentPetSitter");
 
-						renderCurrentProfile();
-						renderSittersList();
-				
-						closeModal(); 
-
+					renderCurrentProfile();
+					renderSittersList();
+			
+					
+					
+					setTimeout(() =>{
+						closeModal();
 						createModal (`
-							<section class="confirm-card" aria-labelledby="">
+							<section class="confirm-card" aria-labelledby="deleteSitterRegistration">
 								<div class="confirm-card-inner">
-									<h3 id="" class="confirm-title">
+									<h3 id="deleteSitterRegistration" class="confirm-title">
 										Registreringen din som hundepasser er slettet.
 									</h3>
 
@@ -603,132 +592,175 @@ document.addEventListener("click", async (e) =>{
 									</div>
 
 									<div class="confirm-actions">
-										<button class="btn btn-success" id="close-modal" type="button">GÅ TILBAKE</button>
+										<button class="btn btn-success" id="close-modal" type="button" aria-label="gå tilbake">GÅ TILBAKE</button>
 									</div>
 								</div>
 							</section>`);
-
-							} catch (error) {
-								console.error(error);
-								return; 	
-								}
-
-				
-						break;
-						}
-
-						case "update-mysitter-profile":{
-							if (!currentPetSitter) return;
-
-							currentView = "edit";
-							updateView();
-
-							
-								break;
-
-								}
-			
-							case"update-sitter-profile":{
-							createModal( `
-							<section class="confirm-card" aria-labelledby="">
-								<div class="confirm-card-inner">
-									<h3 id="" class="confirm-title">
-										Er du sikker på at du vil oppdatere profilen din?
-									</h3>
-									<div class="confirm-icon" aria-hidden="true">
-										<img src="/images/delete-button.png" alt="" />
-									</div>
-
-									<div class="confirm-actions">
-										<button class="btn btn-success" id="confirm-edit" type="button">JA, OPPDATER</button>
-										<button class="btn btn-danger" id="close-modal" type="button">NEI, GÅ TILBAKE</button>
-									</div>
-								</div>
-							</section>
-						`);
-
-					break;	
-						}
-
-					case"confirm-edit":{
-
-							createModal(`
-							<section class="confirm-card" aria-labelledby="">
-								<div class="confirm-card-inner">
-									<h3 id="" class="confirm-title">
-										Registreringen din er oppdadert.
-									</h3>
-
-									<div class="confirm-icon" aria-hidden="true">
-										<img src="/images/check.png" alt="" />
-									</div>
-
-									<div class="confirm-actions">
-										<button class="btn btn-success" type="button" id="close-modal">GÅ TILBAKE</button>
-									</div>
-								</div>
-							</section>
-						`);
-					break;
-							}
-
-					case"close-modal":{ 
-						closeModal();
-						break;
-						
-					}
-					case "finish-registration":{
-						closeModal();
-						break;
-
-					}
-					case "cancel-registration":{
-						closeModal();
-						break;
-					}
-					default: 
-					break;
-
-
-					}
+					},1500);
 					
-				
-	
-	
-	//DELETE
 
+		} catch (error) {
+			console.error(error);
+			return; 	
+			}
 
-	
-//PATCH
-
-
-  if (confirmEdit){
-				if (!currentPetSitter) return;
-
-				currentView = "edit";
+		break;
+		}
+ 
+		case "update-mysitter-profile":{
+			if (!currentPetSitter) return;
+			
+				currentView = "edit" ;
 				updateView();
 
-				(document.getElementById("editExperienceDescription") as HTMLTextAreaElement).value = currentPetSitter.experienceDescription;
-				(document.getElementById("edityearsOfExperience") as HTMLInputElement).value = String (currentPetSitter.yearsOfExperience);
-				(document.getElementById("editPricePerDay") as HTMLInputElement).value = String (currentPetSitter.pricePerDay);
-				(document.getElementById("editmaxDogs") as HTMLInputElement).value = String (currentPetSitter.maxDogs);
-				
-				closeModal();
-				return;
-			}
-			/** 
-			if (saveEditBtn){
-				await updatePetSitterProfile();
-			}
-*/
-});
+				setTimeout(() => { 
+					if (!currentPetSitter) return;
+					(document.getElementById("editExperienceDescription") as HTMLTextAreaElement).value = currentPetSitter.experienceDescription;
+					(document.getElementById("editYearsOfExperience") as HTMLInputElement).value = String (currentPetSitter.yearsOfExperience);
+					(document.getElementById("editPricePerDay") as HTMLInputElement).value = String (currentPetSitter.pricePerDay);
+					(document.getElementById("editMaxDogs") as HTMLInputElement).value = String (currentPetSitter.maxDogs);
 
+					(document.querySelector("input[name='experiencePuppies']") as HTMLInputElement).checked = currentPetSitter.acceptsPuppies;
+					(document.querySelector("input[name='experienceAdultDogs']") as HTMLInputElement).checked = currentPetSitter.acceptsAdultDogs;
+					(document.querySelector("input[name='experienceSeniorDogs']") as HTMLInputElement).checked = currentPetSitter.acceptsSeniorDogs;
+
+					(document.querySelector("input[name='sizeSmallDogs']") as HTMLInputElement).checked = currentPetSitter.acceptsSmallDogs;
+					(document.querySelector("input[name='sizeMediumDogs']") as HTMLInputElement).checked = currentPetSitter.acceptsMediumDogs;
+					(document.querySelector("input[name='sizeLargeDogs']") as HTMLInputElement).checked = currentPetSitter.acceptsLargeDogs;
+
+				});
+		break;
+
+		}
+
+		case"update-sitter-profile":{
+		
+			createModal( `
+				<section class="confirm-card" aria-labelledby="updateSitterProfile">
+					<div class="confirm-card-inner">
+						<h3 id="updateSitterProfile" class="confirm-title">
+							Er du sikker på at du vil oppdatere profilen din?
+						</h3>
+						<div class="confirm-icon" aria-hidden="true">
+							<img src="/images/delete-button.png" alt="" />
+						</div>
+
+						<div class="confirm-actions">
+							<button class="btn btn-success" id="confirm-edit" type="button" aria-label="oppdater">JA, OPPDATER</button>
+							<button class="btn btn-danger" id="cancel-edit-sitter" type="button" aria-label="gå tilbake">NEI, GÅ TILBAKE</button>
+						</div>
+					</div>
+				</section>
+			`);	
+		
+		break;
+		}
+
+		case"confirm-edit":{ 
+
+			if (!currentPetSitter) return;
+
+			const updated = {
+				experienceDescription: (document.getElementById("editExperienceDescription")as HTMLTextAreaElement).value,
+				yearsOfExperience: Number((document.getElementById("editYearsOfExperience")as HTMLInputElement).value),
+				pricePerDay: Number((document.getElementById("editPricePerDay")as HTMLInputElement).value),
+				maxDogs: Number ((document.getElementById("editMaxDogs")as HTMLInputElement).value),
+
+				acceptsPuppies: (document.querySelector("input[name='experiencePuppies']") as HTMLInputElement).checked,
+				acceptsAdultDogs: (document.querySelector("input[name='experienceAdultDogs']") as HTMLInputElement).checked,
+				acceptsSeniorDogs: (document.querySelector("input[name='experienceSeniorDogs']") as HTMLInputElement).checked,
+
+				acceptsSmallDogs: (document.querySelector("input[name='sizeSmallDogs']") as HTMLInputElement).checked,
+				acceptsMediumDogs: (document.querySelector("input[name='sizeMediumDogs']") as HTMLInputElement).checked,
+				acceptsLargeDogs: (document.querySelector("input[name='sizeLargeDogs']") as HTMLInputElement).checked,
+
+			}; 
+
+			try {
+          closeModal();
+        	createModal (`
+					<section class="confirm-card">
+						<div class="confirm-card-inner">
+							<h2>Oppdaterer hundepasser profilen din...</h2>
+							<img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" draggable="false"/>
+						</div>
+					</section>
+      		`);
+
+			const updatedSitter = await updatePetSitterProfile(currentPetSitter.id, updated);
+
+			currentPetSitter = updatedSitter;
+			localStorage.setItem("currentPetSitter", JSON.stringify(updatedSitter));
+
+			renderCurrentProfile();
+			renderSittersList();
+
+			currentView ="list";
+			updateView();
+			
+      setTimeout(() =>{
+        closeModal();
+        createModal(`
+          
+          <section class="confirm-card" aria-labelledby="succsessUpdate">
+            <div class="confirm-card-inner">
+              <h3 id="succsessUpdate" class="confirm-title">
+                Registreringen din er oppdadert.
+              </h3>
+
+              <div class="confirm-icon" aria-hidden="true">
+                <img src="/images/check.png" alt="" />
+              </div>
+
+              <div class="confirm-actions">
+                <button class="btn btn-success" type="button" id="close-modal" aria-label="gå tilbake">GÅ TILBAKE</button>
+              </div>
+            </div>
+          </section>
+        `);
+        },1500);
+			} catch (error){
+				console.error(error);
+			}
+
+		break;
+		}
+
+		case "cancel-edit-sitter":{
+			currentView="list";
+			updateView();
+			closeModal();
+			break;
+		}
+		
+		case "close-modal":{ 
+			
+			closeModal();
+			break;
+			
+		}
+		case "finish-registration":{
+			closeModal();
+			break;
+
+		}
+		case "cancel-registration":{
+			currentView= "list";
+			updateView();
+			closeModal();
+			break;
+		}
+		default: 
+		break;
+
+		}
+						
+});
 
 function getSitterFormData (formElement: HTMLFormElement){
 	const formData = new FormData(formElement);
 
 	return {
-
 		experienceDescription: String (formData.get("experienceDescription") || ""),
 		yearsOfExperience: Number (formData.get("yearsOfexperience") ||0),
 		pricePerDay:Number (formData.get("pricePerDay") ||0),
@@ -774,21 +806,11 @@ async function confirmRegistration() {
 		updateView();
 	
 		renderSittersList();
- 
 }
-		
 
-
-		
-
-
-//DOM
 document.addEventListener("DOMContentLoaded", async () =>{
-
 	const openBtn = document.getElementById("openBecomeASitterForm") as HTMLButtonElement | null;
-	const closeBtn = document.getElementById("cancel-become-form") as HTMLElement | null;
-	
-
+	const closeBtn = document.getElementById("cancel-become-form") as HTMLButtonElement | null;
 	const currentTab = document.querySelector(`.sitters-panel[data-tab="1"]`) as HTMLElement;
 	const previousTab = document.querySelector(`.sitters-panel[data-tab="2"]`) as HTMLElement;
 	const firstTabButton = document.querySelector(`.sitters-tab[data-for-tab="1"]`) as HTMLElement;
@@ -804,52 +826,38 @@ document.addEventListener("DOMContentLoaded", async () =>{
 
 	openBtn.addEventListener("click", () =>{
 
-			if (currentPetSitter) {
-			alert ("tullebukk! Du har jo allerede en hundepasser profil! :)");
-			return;
-			}
-		currentView ="form";
+		if (currentPetSitter) {
+		alert ("tullebukk! Du har jo allerede en hundepasser profil! :)");
+		return;
+		}
+	currentView ="form";
+	updateView();
+
+	});
+
+	closeBtn.addEventListener("click", () =>{
+		currentView ="list";
 		updateView();
-			
-
-		});
-
-		closeBtn.addEventListener("click", () =>{
-			currentView ="list";
-			updateView();
-			
-		});
-	
+		
+	});
 
 	currentPetSitter = loadCurrentPetSitter();
-	
-
 
 	formSection = document.getElementById("becomeSitterForm") as HTMLFormElement;
 	formShell = document.querySelector(".become-shell") as HTMLElement;
-
-
-
 	mainContent = document.getElementById("mainContent") as HTMLElement;
 	profileSection = document.querySelector(".my-sitter") as HTMLElement;
 	editProfileSection = document.querySelector(".edit-my-sitter-profile") as HTMLFormElement;
 
 	
-
 	if ( !currentTab || !previousTab || !firstTabButton || !sittersContainer || !mainContent || !formSection || !formShell ) return;
 
-		
-	
 	updateView();
 	profileSection.hidden = true;
-
-
 
 	allSitters = sitters;
 	allReviews= reviews;
 	allUsers = users;
-
-	
 	
 	renderCurrentProfile();	
 	sitterTabs();
@@ -860,8 +868,6 @@ document.addEventListener("DOMContentLoaded", async () =>{
 
 	currentTab.classList.add("sitters-panel--is-active");
 	firstTabButton.classList.add("sitters-tab--is-active");
-
-
 	
 	locationInput = document.getElementById("searchByLocation") as HTMLInputElement;
 	priceMinInput = document.getElementById("priceMin") as HTMLInputElement;
@@ -869,16 +875,10 @@ document.addEventListener("DOMContentLoaded", async () =>{
 	dateFromInput = document.getElementById("dateFrom") as HTMLInputElement;
 	dateToInput = document.getElementById("dateTo") as HTMLInputElement;
 
-	
-
 	locationInput.addEventListener("input", renderSittersList);
 	priceMinInput.addEventListener("input", renderSittersList);
 	priceMaxInput.addEventListener("input", renderSittersList);
 	dateFromInput.addEventListener("input", renderSittersList);
 	dateToInput.addEventListener("input", renderSittersList);
 	
-
 });
- 
-
-
