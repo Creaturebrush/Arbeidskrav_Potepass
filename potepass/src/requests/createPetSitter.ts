@@ -8,7 +8,7 @@ const APIKey: string = "dreamTeam";
 type CreatePetSitterForm = {
     pricePerDay: number,
     maxDogs: number,
-   acceptsPuppies: boolean,
+    acceptsPuppies: boolean,
     acceptsAdultDogs: boolean,
     acceptsSeniorDogs: boolean,
     acceptsSmallDogs: boolean,
@@ -26,6 +26,7 @@ export async function createPetSitter(user: User, form: CreatePetSitterForm) {
     userId:user.id,
     userName: user.userName,
     location: user.location,
+    image: user.image,
 
     pricePerDay: form.pricePerDay,
     rating: 0,
