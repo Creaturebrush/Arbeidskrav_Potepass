@@ -9,8 +9,8 @@ import { deleteBooking } from "../../requests/deleteBooking";
 import { patchBooking } from "../../requests/patchBooking";
 import { getBookingId } from "../../requests/getBookingId";
 
-localStorage.setItem("storedUserId", "1");
-localStorage.setItem("storedPetsitterId", "3");
+localStorage.getItem("storedUserId");
+localStorage.getItem("storedPetsitterId");
 
 const overlay = document.getElementById("modal1") as HTMLDivElement;
 const modalBody = overlay.querySelector(".modal-body") as HTMLDivElement;
