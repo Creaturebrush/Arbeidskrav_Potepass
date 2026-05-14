@@ -1,7 +1,7 @@
-// FREDRIK
+// FREDRIK & Anette
 
-import "./header.css"
-import "../Pages/Homepage/homepage.css"
+import "./header.css";
+import "../Pages/Homepage/homepage.css";
 import { createHomepageModal, closeModal } from "../Pages/Homepage/homepage";
 import { createUser } from "../requests/createUser";
 import { getNewUser } from "../Pages/Homepage/homepage";
@@ -12,6 +12,10 @@ const indexBtn = document.querySelectorAll(".index-btn") as NodeListOf<HTMLButto
 
 export function createHeader() {
   const header = document.getElementById("site-header") as HTMLElement;
+  if (!header) {
+    console.error("Could not find #site-header");
+    return;
+  }
   const userId = localStorage.getItem("storedUserId");
 
   if (!userId) {
@@ -29,14 +33,24 @@ export function createHeader() {
             </h1>
         	</a>
 
-          <nav class="site-header-nav" aria-label="Hovedmeny">
-            <a href="/src/Pages/booking/booking.html">BOOKING</a>
-            <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
-            <a id="login-btn">LOGG INN</a>
-            <a id="h-register-btn">REGISTRER</a>
-          </nav>
+      <button 
+          class="hamburger-btn" 
+          id="hamburger-btn"
+          aria-label="Åpne hovedmeny"
+          aria-expanded="false"
+          aria-controls="site-header-nav"
+        >
+          ☰
+       </button>
+
+      <nav class="site-header-nav" id="site-header-nav" aria-label="Hovedmeny">
+        <a href="/src/Pages/booking/booking.html">BOOKING</a>
+        <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
+        <a id="login-btn">LOGG INN</a>
+        <a id="register-btn">REGISTRER</a>
+      </nav>
+          </div>
         </div>
-      </div>
   `;
   } else {
     indexBtn.forEach((btn) => {
@@ -53,12 +67,22 @@ export function createHeader() {
             </h1>
         	</a>
 
-          <nav class="site-header-nav" aria-label="Hovedmeny">
-            <a href="/src/Pages/booking/booking.html">BOOKING</a>
-            <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
-            <a href="/src/Pages/profile/profile.html">PROFIL</a>
-            <a id="logout-btn">LOGG UT</a>
-          </nav>
+    <button 
+        class="hamburger-btn" 
+        id="hamburger-btn"
+        aria-label="Åpne hovedmeny"
+        aria-expanded="false"
+        aria-controls="site-header-nav"
+      >
+        ☰
+    </button>
+
+    <nav class="site-header-nav" id="site-header-nav" aria-label="Hovedmeny">
+      <a href="/src/Pages/booking/booking.html">BOOKING</a>
+      <a href="/src/Pages/sitters/sitters.html">FINN HUNDEPASSERE</a>
+      <a href="/src/Pages/profile/profile.html">PROFIL</a>
+      <a id="logout-btn">LOGG UT</a>
+    </nav>
         </div>
       </div>
   `;
@@ -218,7 +242,24 @@ document.addEventListener("click", async (e) => {
       closeModal();
       break;
     }
+    case "hamburger-btn":{
+        const nav = document.querySelector("#site-header-nav") as HTMLElement | null;
+        const hamburgerBtn = document.querySelector(
+          "#hamburger-btn",
+        ) as HTMLButtonElement | null;
+
+        if (!nav || !hamburgerBtn) return;
+
+        nav.classList.toggle("is-open");
+
+        const menuIsOpen = nav.classList.contains("is-open");
+        hamburgerBtn.setAttribute("aria-expanded", String(menuIsOpen));
+
+        hamburgerBtn.innerHTML = menuIsOpen ? "✕" : "☰";
+
+        break;
+    }
     default:
       break;
   }
-})
+});
