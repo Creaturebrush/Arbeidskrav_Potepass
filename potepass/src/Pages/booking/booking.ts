@@ -10,7 +10,6 @@ import { patchBooking } from "../../requests/patchBooking";
 import { getBookingId } from "../../requests/getBookingId";
 
 localStorage.getItem("storedUserId");
-
 localStorage.getItem("storedPetsitterId");
 
 const overlay = document.getElementById("modal1") as HTMLDivElement;
