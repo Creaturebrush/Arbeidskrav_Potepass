@@ -289,6 +289,12 @@ input[type="text"] {
   height: 2rem;
 }
 
+input[type="password"] {
+  border-radius: 1rem;
+  border: none;
+  height: 2rem;
+}
+
 textarea {
   border-radius: 1rem;
   text-align: start;
@@ -328,4 +334,110 @@ label {
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (max-width: 1100px) {
+
+  .top-section {
+  display: block;
+}
+
+  .how-section-grid {
+  padding: 1rem;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.how-card {
+  width: 30.75rem;
+}
+  
+}
+
+@media (max-width: 800px) {
+  main {
+  width: 100%;
+}
+
+.top-section {
+  display: block;
+}
+
+.home-btn-container {
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.home-btn-container .btn{
+  width: 100%;
+  height: 4rem;
+}
+
+.how-section {
+  padding-top: 2rem;
+  background: #3f5f3f;
+  padding-bottom: 5rem;
+}
+
+.how-section h2 {
+  text-align: center;
+  color: var(--white);
+  margin: 0;
+}
+
+.how-section-grid {
+  padding: 1rem;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.how-card {
+  width: 30.75rem;
+}
+
+.how-card h2 {
+  color: var(--text);
+}
+
+
+/* LOGIN MODAL */
+
+
+.home-modal {
+  height: fit-content;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  max-width: min(42rem, calc(100% - 2rem));
+  background-color: var(--primary);
+  border-radius: 2rem;
+  margin: 0rem;
+  padding: 1rem;
+  border: 12px solid var(--bg);
+}
+
+.home-modal .btn-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 1rem;
+  gap: 10px;
+}
+
+.home-modal .btn-container .btn {
+  width: 100%;
+  height: 4rem;
+}
 }
