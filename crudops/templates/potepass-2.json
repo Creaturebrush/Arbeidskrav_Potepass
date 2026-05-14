@@ -26,44 +26,45 @@
     }
   ],
   "dogs": [
-        {
-          "id": 1,
-          "petOwnerId": 1,
-          "name": "Bella",
-          "breed": "Golden Retriever",
-          "age": 4,
-          "image": "/images/bella.png",
-          "allergies": ["kylling"],
-          "created": "2025-12-30T12:15:00",
-          "updated": "2025-12-30T12:15:00"
-        },
-        {
-          "id": 2,
-          "petOwnerId": 1,
-          "name": "Max",
-          "breed": "Labrador",
-          "age": 2,
-          "image": "/images/max.png",
-          "allergies": [],
-          "created": "2025-12-30T12:15:00",
-          "updated": "2025-12-30T12:15:00"
-        },
-        {
-          "id": 3,
-          "petOwnerId": 2,
-          "name": "Pysa",
-          "breed": "Dachs",
-          "age": 13,
-          "image": "/images/pysa.png",
-          "allergies": ["Støv", "Andre hunder"],
-          "created": "2025-12-30T12:15:00",
-          "updated": "2025-12-30T12:15:00"
-        }
-      ],
+    {
+      "id": 1,
+      "petOwnerId": 1,
+      "name": "Bella",
+      "breed": "Golden Retriever",
+      "age": 4,
+      "image": "/images/bella.png",
+      "allergies": ["kylling"],
+      "created": "2025-12-30T12:15:00",
+      "updated": "2025-12-30T12:15:00"
+    },
+    {
+      "id": 2,
+      "petOwnerId": 1,
+      "name": "Max",
+      "breed": "Labrador",
+      "age": 2,
+      "image": "/images/max.png",
+      "allergies": [],
+      "created": "2025-12-30T12:15:00",
+      "updated": "2025-12-30T12:15:00"
+    },
+    {
+      "id": 3,
+      "petOwnerId": 2,
+      "name": "Pysa",
+      "breed": "Dachs",
+      "age": 13,
+      "image": "/images/pysa.png",
+      "allergies": ["Støv", "Andre hunder"],
+      "created": "2025-12-30T12:15:00",
+      "updated": "2025-12-30T12:15:00"
+    }
+  ],
   "petSitters": [
     {
       "id": 1,
       "name": "Mari Hansen",
+      "image": "/images/mari-hansen.png",
       "location": "Porsgrunn",
       "pricePerDay": 400,
       "rating": 4.6,
@@ -80,6 +81,7 @@
     {
       "id": 2,
       "name": "Kåre Olsen",
+      "image": "/images/kaare-olsen.png",
       "location": "Tønsberg",
       "pricePerDay": 250,
       "rating": 1.6,
@@ -96,9 +98,10 @@
     {
       "id": 3,
       "name": "Sverre Aamundsen",
+      "image": "/images/sverre-aamundsen.png",
       "location": "Bergen",
       "pricePerDay": 600,
-      "rating": 4.9,
+      "rating": 4.5,
       "reviewCount": 8,
       "maxDogs": 2,
       "acceptsPuppies": true,
@@ -112,6 +115,7 @@
     {
       "id": 4,
       "name": "Louise Blomst",
+      "image": "/images/louise-blomst.png",
       "location": "Oslo",
       "pricePerDay": 1000,
       "rating": 3.7,

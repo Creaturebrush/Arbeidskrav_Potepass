@@ -43,15 +43,42 @@ p {
 }
 
 .profile-img {
-  max-width: 500px;
+  max-width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black;
+  display: block;
 }
 
 .rating-container {
-  padding: 2rem;
+  padding: 1rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .star-rating {
-  padding: 1rem;
+  margin: 1rem; 
+  --rating-width: 0%;
+  position: relative;
+  display: inline-block;
+  font-size: 1.8rem;
+  line-height: 1;
+  width: fit-content;
+}
+
+.stars-empty {
+  color: #d9d9d9;
+}
+
+.stars-filled {
+  color: #f5c542;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--rating-width);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 h4 {
@@ -117,11 +144,11 @@ form {
   padding: 2rem;
 }
 
-input:required:invalid {
+form.was-submitted input:required:invalid {
   border: 2px solid red;
 }
 
-input:required:valid {
+form.was-submitted input:required:valid {
   border: 2px solid green;
 }
 
@@ -192,7 +219,7 @@ input:required:valid {
   outline-offset: 0.15rem;
 }
 
-/* Modals */
+
 .booking-modal {
   background-color: var(--primary);
   border: var(--primary-card) solid 1rem;
@@ -239,14 +266,7 @@ input:required:valid {
   color: var(--primary-shade-2);
 }
 
-/* Desktop breakpoint */
-@media (max-width: 1440px) {
-}
-/* Tablet Breakpoint */
-@media (max-width: 1024px) {
-}
 
-/* Phone breakpoint around 600px*/
 @media (max-width: 700px) {
   .choose-dog-container,
   .date-container,
@@ -279,7 +299,13 @@ input:required:valid {
   }
 }
 
-/* Modals */
+@media (max-width: 500px) {
+  .profile-img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
 
 .modal-overlay {
   display: none;
@@ -416,4 +442,50 @@ input:required:valid {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #d8d8d8;
+  color: transparent;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  animation: skeleton-loading 1.2s infinite;
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-title {
+  width: 180px;
+  height: 2rem;
+}
+
+.skeleton-paragraph {
+  width: 100%;
+  max-width: 520px;
+  height: 5rem;
+}
+
+.dog-skeleton {
+  width: 160px;
+  height: 2rem;
+  margin-bottom: 0.75rem;
 }

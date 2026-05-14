@@ -1,3 +1,5 @@
+// Anette Bratvold
+
 import type { Booking } from "../types/booking.type";
 
 export async function getBookingId(id: number): Promise<Booking> {
