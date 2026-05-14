@@ -126,7 +126,7 @@ return sitterReviews.map((review) => {
 	return`
 		<article class="reviews" aria-label="omtale">
 			<div class="review-avatar" aria-hidden="true">
-					<img src="/images/useravatar.png" alt="" />     
+					<img src="${reviewer.image ||"/images/useravatar.png"}" alt="" />     
 			</div>
 			
 			<div class="review-info">
@@ -247,14 +247,14 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 
 										<div class="sitter-detail-bottom">
 											<div class="sitter-detail-rating">${sitter.rating}
-												<span class="stars stars--rated" aria-label="vurdering 4 av 5">★★★★☆</span>
+												<span class="stars stars--rated" aria-label="vurdering av 5">★★★★☆</span>
 												<button class="sitter-reviews-toggle" type="button" >
 												<span class="sitters-review-count">Omtaler</span>
 												<img class="sitter-mini-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true">
 												</button>
 											</div>
 
-											<a class="btn btn-success sitter-book" href="/src/Pages/booking/booking.html">BOOK NÅ</a>
+											<a class="btn btn-success sitter-book" href="/src/Pages/booking/booking.html" data-petsitter-id="${sitter.id}">BOOK NÅ</a>
 										</div>
 								</div>
 							</div>
@@ -398,16 +398,28 @@ function createModal (dynamicContent: string){
 
 function closeModal(){
 	if (sittersModal){
-		sittersModal.remove();
+		sittersModal.remove(); 
 		sittersModal = null;
 	}
 	document.body.style.overflow = "";
 }
 
 function initSitters(container: HTMLElement){
+
+
 	container.addEventListener("click", (e) =>{
 		const target = e.target as HTMLElement;
+    const bookBtn = target.closest<HTMLAnchorElement>(".sitter-book");
 		if (!target) return;
+    
+
+    if (bookBtn) {
+    const petSitterId = bookBtn.dataset.petsitterId;
+    if (!petSitterId) return;
+    
+     localStorage.setItem("storedPetsitterId", petSitterId);
+    return;
+    }
 
 		const chevron = target.closest(".sitter-toggle") as HTMLElement;
 		if (chevron) {
