@@ -4,12 +4,17 @@ import { createUser } from "../../requests/createUser";
 import { getAllUsers } from "../../requests/getAllUsers";
 import type { User } from "../../types/user.type";
 
+
 let currentModal: HTMLDivElement | null = null;
 
 export function createHomepageModal(dynamicContent: string) {
   closeModal();
 
   document.body.style.overflow = "hidden";
+  const elementsToInert = document.querySelectorAll(".inert") as NodeListOf<HTMLElement>;
+  elementsToInert.forEach((element) => {
+    element.inert = true;
+  });
 
   const modalBackdrop = document.createElement("div") as HTMLDivElement;
   const modal = document.createElement("div") as HTMLDivElement;
@@ -33,6 +38,10 @@ export function closeModal() {
   }
 
   document.body.style.overflow = "";
+  const elementsToInert = document.querySelectorAll(".inert") as NodeListOf<HTMLElement>;
+  elementsToInert.forEach((element) => {
+    element.inert = false;
+  });
 }
 
 document.addEventListener("click", async (e) => {
@@ -47,7 +56,7 @@ document.addEventListener("click", async (e) => {
             <label for="email-input">E-post:</label>
             <input type="mail" name="email" value="" id="email-input">
             <label for="password-input">Passord:</label>
-            <input type="text" name="password" value="" id="password-input">
+            <input type="password" name="password" value="" id="password-input">
             </form>
           </div>
           <div class="btn-container">
@@ -93,15 +102,15 @@ document.addEventListener("click", async (e) => {
               </div>
               <div class="form-field">
                 <label for="password-input">Passord:</label>
-                <input type="text" name="password" id="password-input" class="reg-input" required/>
+                <input type="password" name="password" id="password-input" class="reg-input" required/>
               </div>
               <div class="form-field">
                 <label for="repeated-password-input">Gjenta passord:</label>
-                <input type="text" name="repeated-password" id="repeated-password-input" class="reg-input" required/>
+                <input type="password" name="repeated-password" id="repeated-password-input" class="reg-input" required/>
               </div>
               <p>FORTELL KORT OM DEG SELV:</p>
               <label for="description-input" hidden>fortell kort om deg selv:</label>
-                <textarea name="description" id="description-input" form="register-form" class="reg-input" required ></textarea>
+                <textarea name="description" id="description-input" class="reg-input" required></textarea>
             </form>
             <div class="submit-image-container">
             <div class="icon">
@@ -114,12 +123,9 @@ document.addEventListener("click", async (e) => {
                   </label>
               </div>
               </div>
-          </div>
-          </div>
-        </div>
         <p id="error-txt" class="error-txt"></p>
         <div class="btn-container register-btn-container">
-          <button class="btn btn-success" id="create-user-btn" type="submit" form="register-form">OPPRETT KONTO</button>
+          <button class="btn btn-success" id="create-user-btn" type="button" form="registration-form">OPPRETT KONTO</button>
           <button id="close-btn"class="btn btn-danger">AVBRYT</button>
         </div>
       </div>
@@ -133,35 +139,38 @@ document.addEventListener("click", async (e) => {
       const password = document.getElementById("password-input") as HTMLInputElement;
       const email = document.getElementById("email-input") as HTMLInputElement;
       const repeatedPassword = document.getElementById("repeated-password-input") as HTMLInputElement;
-      const required = document.querySelectorAll(
-        ".reg-input",
-      ) as NodeListOf<HTMLInputElement>;
+      const required = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+        ".reg-input")
       if (!form.checkValidity()) {
+        form.reportValidity();
         errorTxt.innerText = "ALLE FELTER MÅ VÆRE FYLT INN!"
         required.forEach(input => {
-          input.style.border = "none";
-          if (input.value === "") {
-            input.style.border = "2px solid #d9534f";
+          const field = input as HTMLInputElement | HTMLTextAreaElement;
+          field.style.border = "none";
+          if (field.value === "") {
+            field.style.border = "2px solid #d9534f";
           }
         });
-      } else if(password.value != repeatedPassword.value) {
+        return;
+      } else if(password.value.toLowerCase() != repeatedPassword.value.toLowerCase()) {
         required.forEach((input) => {
           input.style.border = "none";
         });
         errorTxt.innerText = "PASSORDENE ER IKKE LIKE!";
         password.style.border = "2px solid #d9534f";
         repeatedPassword.style.border = "2px solid #d9534f";
-      } else if (password.value === repeatedPassword.value) {
+      } else if (password.value.toLowerCase() === repeatedPassword.value.toLowerCase()) {
         const createdUser = getNewUser();
-        createUser(createdUser);
+        await createUser(createdUser);
 
         const users = await getAllUsers();
         const user: User | undefined = users.find(
           (user) =>
-            user.email === email.value && user.password === password.value,
+            user.email.toLowerCase() === email.value.toLowerCase() && user.password.toLowerCase() === password.value.toLowerCase(),
         );
 
         if (!user) return;
+
 
         const dynamicContent = `
       <h2>Velkommen, ${createdUser.userName}! <br> Vi setter opp profilen din..</h2>
@@ -174,7 +183,6 @@ document.addEventListener("click", async (e) => {
           window.location.replace("/src/Pages/profile/profile.html");
         }, 2000);
       }
-
       break;
     }
     case "close-btn": {
@@ -189,6 +197,7 @@ document.addEventListener("click", async (e) => {
       createHomepageModal(dynamicContent);
       setTimeout(() => {
         localStorage.removeItem("storedUserId");
+        localStorage.removeItem("storedPetsitterId");
         window.location.replace("./index.html");
       },2000)
       break;
@@ -200,13 +209,13 @@ async function login() {
   const users = await getAllUsers();
   const emailInput = (
     document.getElementById("email-input") as HTMLInputElement
-  ).value;
+  ).value.toLowerCase();
   const passwordInput = (
     document.getElementById("password-input") as HTMLInputElement
-  ).value;
+  ).value.toLowerCase();
 
   const user: User | undefined = users.find(
-    (user) => user.email === emailInput && user.password === passwordInput,
+    (user) => user.email.toLowerCase() === emailInput && user.password.toLowerCase() === passwordInput,
   );
 
   if (!user) {
@@ -242,7 +251,7 @@ async function login() {
   }
 }
 
-function getNewUser(): Partial<User> {
+export function getNewUser(): Partial<User> {
   const userName = (
     document.getElementById("username-input") as HTMLInputElement
   ).value;
@@ -257,9 +266,9 @@ function getNewUser(): Partial<User> {
     .value;
   const password = (
     document.getElementById("password-input") as HTMLInputElement
-  ).value;
+  ).value.toLowerCase();
   const description = (
-    document.getElementById("description-input") as HTMLInputElement
+    document.getElementById("description-input") as HTMLTextAreaElement
   ).value;
 
   return {

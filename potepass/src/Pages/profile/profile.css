@@ -32,8 +32,6 @@ h2 {
   margin: auto;
 }
 
-
-
 /* PROFIL INFO */
 .info-container {
   /*  */
@@ -42,7 +40,7 @@ h2 {
   border-radius: 2rem;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   padding: 1rem;
-  
+
   /*  */
 
   display: flex;
@@ -54,7 +52,6 @@ h2 {
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-
 }
 
 .user-img-container {
@@ -76,9 +73,15 @@ h2 {
   flex-direction: column;
 }
 
-.user-info span {
+
+
+.info-row {
   display: flex;
-  gap: 1rem;
+  gap: 5px;
+}
+
+.info-row dd, dt {
+margin: 0;
 }
 
 .info-txt-bold {
@@ -125,11 +128,6 @@ h2 {
   flex-direction: column;
 }
 
-.dog-info span {
-  display: flex;
-  gap: 1rem;
-}
-
 .info-txt-bold {
   font-weight: var(--fw-bold);
 }
@@ -148,7 +146,6 @@ h2 {
 
 /* BOOKING AND REQUEST*/
 .booking-request-section {
-  
   max-width: 50%;
   margin: auto;
 }
@@ -160,28 +157,27 @@ h2 {
 .booking-request-section .btn {
   height: 4rem;
   width: 20rem;
-  
+
   position: relative;
   margin-bottom: 0;
 }
 
-
 .notif {
-width: 2rem;
-height: 2rem;
-border-radius: 50%;
-background: #2196f3;
-position: absolute;
-top: -10%;
-right: -2%;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #2196f3;
+  position: absolute;
+  top: -10%;
+  right: -2%;
 
-display: none;
-justify-content: center;
-align-items: center;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .notif p {
-font-weight: 900;
+  font-weight: 900;
 }
 
 /* MODALS */
@@ -191,7 +187,7 @@ font-weight: 900;
   background-color: var(--primary);
   border-radius: 2rem;
   padding: 1rem;
-  
+
   border: 12px solid var(--bg);
 
   position: fixed;
@@ -315,7 +311,6 @@ textarea {
   border-radius: 100%;
   width: 10rem;
   height: 10rem;
-  
 }
 
 .remove-dog-card {
@@ -455,5 +450,348 @@ textarea {
   }
   100% {
     background-image: url("/images/dog-spinner-0.png");
+  }
+}
+@media (max-width: 950px) {
+
+   .info-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0rem;
+  }
+
+.dog-card-info {
+    flex-direction: column;
+
+    width: 100%;
+    padding: 10px;
+    gap: 0;
+  }
+
+}
+
+@media (max-width: 800px) {
+  .user-container,
+  .dog-container {
+    max-width: 90%;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    gap: 5rem;
+  }
+
+  .user-container .btn-container {
+    padding-top: 0;
+  }
+
+  .user-container .btn-container .btn {
+    width: 100%;
+    height: 5rem;
+  }
+  
+
+  .dog-container .btn-container {
+    width: 90%;
+  }
+
+  .dog-container .btn-container .btn {
+    width: 100%;
+    height: 5rem;
+  }
+  /* PROFIL INFO */
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0rem;
+  }
+
+  .user-info {
+    display: block;
+  }
+
+  .user-info p {
+    margin: 10px;
+  }
+
+  /* DOG CARD */
+  .dog-card {
+    margin: 0.5rem;
+  }
+
+  .dog-card .btn-container .btn {
+    margin: auto;
+    width: 90%;
+    padding: 0;
+  }
+
+  .dog-card-info {
+    flex-direction: column;
+
+    width: 100%;
+    padding: 10px;
+    gap: 0;
+  }
+
+  .dog-card-info img {
+    margin-top: 5px;
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .dog-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dog-card-container {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 0rem;
+  }
+
+  .dog-container .btn-container {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dog-card-container h2 {
+    font-size: 2rem;
+  }
+
+  /* BOOKING AND REQUEST*/
+  .booking-request-section {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .booking-request-section .btn-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .booking-request-section .btn {
+    width: 100%;
+    height: 5rem;
+
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .notif {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .notif p {
+    font-weight: 900;
+  }
+
+  .logout-btn-container {
+    padding-top: 2rem;
+    padding-bottom: 0;
+  }
+
+  .p-logout-btn {
+    width: 50%;
+    height: 4rem;
+  }
+
+  /* MODALS */
+  .profile-modal {
+    height: fit-content;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    max-width: min(42rem, calc(100% - 2rem));
+    background-color: var(--primary);
+    border-radius: 2rem;
+    padding: 1rem;
+
+    position: fixed;
+    z-index: 200;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .profile-modal img {
+    margin: auto;
+  }
+
+  .profile-modal-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .profile-modal:not(.open) {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .profile-modal.open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .error-txt {
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  .profile-modal .btn-container {
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+    gap: 10px;
+  }
+
+  .profile-modal .btn-container .btn {
+    height: 4rem;
+    width: 100%;
+  }
+
+  /* ADD/EDIT MODAL */
+  .add-edit-modal-card {
+    margin: 0;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .add-edit-img-container {
+    padding: 0;
+    gap: 1rem;
+    padding: 10px;
+  }
+
+  .edit-user-btns {
+    width: 100%;
+    height: 4rem;
+  }
+
+  .add-edit-img-container img {
+    width: 20rem;
+    height: 350px;
+  }
+
+  .p-user-input-form {
+    padding: 10px;
+    display: block;
+  }
+
+  textarea {
+    margin-bottom: 0rem;
+  }
+
+  .password-modal-btn-container {
+    margin-top: 10px;
+  }
+
+  /* REMOVE DOG MODAL */
+  .remove-dog-container {
+    display: block;
+    margin-top: 1rem;
+    width: 90%;
+    padding-bottom: 0rem;
+  }
+
+  .remove-dog-container img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .remove-dog-card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    padding: 10px;
+  }
+
+  .remove-dog-card img {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  /* BOOKINGS MODAL */
+
+  .booking {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    text-align: center;
+  }
+
+  .booking-container {
+    max-width: 100%;
+  }
+
+  .booking-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  .booking-sitter {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+  .booking-sitter img {
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .booking-info {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+  .booking-dog {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+  .booking-dog img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin: auto;
+    border: 1px solid black;
+  }
+
+  .booking-status {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 0.5rem;
+  }
+
+  .booking-status-dot {
+    border-radius: 50%;
+    min-height: 0.8rem;
+    min-width: 0.8rem;
   }
 }
