@@ -183,6 +183,9 @@ margin: 0;
 /* MODALS */
 .profile-modal {
   height: fit-content;
+  max-height: 90vh;
+    overflow-y: auto;
+
   min-width: min(42rem, calc(100% - 2rem));
   background-color: var(--primary);
   border-radius: 2rem;
