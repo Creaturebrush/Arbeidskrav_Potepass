@@ -1,4 +1,4 @@
-//Stine
+//Stine Hartvigsen
 
 const  APIKey: string = "dreamTeam";
 

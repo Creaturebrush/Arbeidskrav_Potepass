@@ -1,4 +1,4 @@
-//Stine
+//Stine hartvigsen
 export type Reviews = {
     id: number,
     fromUserId: number,

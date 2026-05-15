@@ -1,4 +1,4 @@
-//stine
+//stine hartvigsen
 import { type Reviews } from "../types/reviews.type"
 
 //const APIkey: string = "dreamTeam";

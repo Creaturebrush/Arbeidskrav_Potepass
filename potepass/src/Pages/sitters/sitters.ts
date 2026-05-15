@@ -171,7 +171,7 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 											<img src="/images/pin.png" alt="" /> </span> 
 								</div> ${sitter.location}
 								<div class="sitter-rating" aria-label="sitter rating ${sitter.rating}">${sitter.rating}
-									<span class="stars stars--rated">★★★★☆</span>
+									<span class="stars stars--rated">★</span>
 								</div>
 						</div>
 
@@ -247,7 +247,7 @@ function renderSitters (sitters: PetSitters[], reviews: Reviews[], users: User[]
 
 										<div class="sitter-detail-bottom">
 											<div class="sitter-detail-rating">${sitter.rating}
-												<span class="stars stars--rated" aria-label="vurdering av 5">★★★★☆</span>
+												<span class="stars stars--rated" aria-label="${sitter.rating}">★</span>
 												<button class="sitter-reviews-toggle" type="button" >
 												<span class="sitters-review-count">Omtaler</span>
 												<img class="sitter-mini-chev" src="/images/arrow-down-2.png" alt="" aria-hidden="true">
@@ -349,9 +349,9 @@ function renderPetSitterProfile (sitter:PetSitters): string {
 		
 								<div class="my-sitter-bottom">
 									<div class="my-sitter-bottom-left">
-										<div class="sitter-rating" aria-label="Vurdering 4.6 av 5">
+										<div class="sitter-rating" aria-label="V${sitter.reviewCount}">
                       <span class="my-sitter-reviews">${sitter.reviewCount}</span>
-											<span class="stars stars--rated">★★★★☆</span>			
+											<span class="stars stars--rated">★</span>			
 										</div>
 									</div>
 
@@ -405,8 +405,6 @@ function closeModal(){
 }
 
 function initSitters(container: HTMLElement){
-
-
 	container.addEventListener("click", (e) =>{
 		const target = e.target as HTMLElement;
     const bookBtn = target.closest<HTMLAnchorElement>(".sitter-book");
@@ -587,9 +585,7 @@ document.addEventListener("click", async (e) =>{
 
 					renderCurrentProfile();
 					renderSittersList();
-			
-					
-					
+
 					setTimeout(() =>{
 						closeModal();
 						createModal (`
@@ -669,6 +665,7 @@ document.addEventListener("click", async (e) =>{
 		}
 
 		case"confirm-edit":{ 
+      
 
 			if (!currentPetSitter) return;
 
@@ -700,13 +697,14 @@ document.addEventListener("click", async (e) =>{
       		`);
 
 			const updatedSitter = await updatePetSitterProfile(currentPetSitter.id, updated);
-
+      
 			currentPetSitter = updatedSitter;
 			localStorage.setItem("currentPetSitter", JSON.stringify(updatedSitter));
+     
 
 			renderCurrentProfile();
 			renderSittersList();
-
+      
 			currentView ="list";
 			updateView();
 			
@@ -787,7 +785,6 @@ function getSitterFormData (formElement: HTMLFormElement){
 		acceptsLargeDogs: formData.get("sizeLargeDogs") === "on",
 	}
 };	
-
 
 async function confirmRegistration() { 
 	
