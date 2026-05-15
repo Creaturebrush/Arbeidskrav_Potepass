@@ -1,18 +1,17 @@
-export type Dog = {
-    id: number, 
-    name: string, 
-    breed: string, 
-    age: number, 
-    allergies: string[];
-}
+// Anette Bratvold
 
 export type User = {
-    id: number, 
-    userName: string, 
-    password: string, 
-    email: string, 
-    description: string,
-    dogs: Dog[];
-}
+  id: number;
+  userName: string;
+  password: string;
+  email: string;
+  phone: number;
+  location: string;
+  description: string;
+  image: string;
+};
 
-export type NewUser = Omit <User, "id" | "password" | "email" | "description" | "dogs">;
+export type NewUser = Omit<
+  User,
+  "id" | "password" | "email" | "description" | "dogs"
+>;

@@ -1,3 +1,5 @@
+<!-- FREDRIK TEIEN -->
+
 <!doctype html>
 <html lang="no">
   <head>
@@ -8,38 +10,35 @@
   </head>
 
   <body>
-    <site-header></site-header>
+    <header id="site-header" class="inert"></header>
 
-    <main class="main">
+    <main class="main inert">
       <h1 class="">PROFIL</h1>
-      <img
-        src="/images/PawPrint_line.png"
-        alt="Bilde av potetrykk"
-        class="pawprint-line"
-      />
+      <img src="/images/PawPrint_line.png" alt="Bilde av potetrykk" class="pawprint-line" draggable="false" />
 
-      <section class="user-container"></section>
+      <section class="user-container" aria-label="Informasjon om bruker"></section>
 
-      <section class="dog-container">
+      <section class="dog-container" aria-label="Liste over hunder">
         <h2>Mine hunder</h2>
         <div class="dog-card-container"></div>
+
         <div class="btn-container">
-          <button class="btn btn-success" id="add-dog-btn">
-            LEGG TIL HUND
-          </button>
+          <button class="btn btn-success" id="add-dog-btn">LEGG TIL HUND</button>
           <button class="btn btn-danger" id="remove-dog-btn">FJERN HUND</button>
         </div>
       </section>
 
-      <section class="booking-request-section">
+      <div class="booking-request-section">
         <div class="btn-container">
-          <button class="btn">MINE BOOKINGER</button>
-          <button class="btn">MINE FORESPØRSELER</button>
+          <button class="btn" id="bookings-btn">MINE BOOKINGER<span class="notif" aria-hidden="true"></span></button>
         </div>
-      </section>
+      </div>
+      <div class="btn-container logout-btn-container">
+        <button class="btn btn-danger p-logout-btn" id="p-logout-btn">LOGG UT</button>
+      </div>
     </main>
 
-    <site-footer></site-footer>
+    <footer id="site-footer" class="inert"></footer>
     <script type="module" src="/src/Pages/profile/profile.ts"></script>
     <script type="module" src="/src/main.ts"></script>
   </body>

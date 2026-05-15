@@ -1,7 +1,16 @@
-class SiteFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <footer class="site-footer">
+// FREDRIK TEIEN
+
+import "./footer.css";
+import "../Pages/Homepage/homepage.css";
+
+export function createFooter() {
+  const footer = document.getElementById("site-footer") as HTMLElement;
+  if (!footer) {
+    console.error("Could not find #site-footer");
+    return;
+  }
+  footer.innerHTML = `
+  <footer class="site-footer">
         <div class="site-footer-inner">
           <div class="site-footer-social">
             <a href="#" class="site-footer-link">
@@ -37,10 +46,5 @@ class SiteFooter extends HTMLElement {
           </address>
         </div>
       </footer>
-    `;
-  }
-}
-
-if (!customElements.get("site-footer")) {
-  customElements.define("site-footer", SiteFooter);
+  `;
 }

@@ -1,3 +1,5 @@
+/* Anette Bratvold */
+
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +26,7 @@ h4 {
 
 p {
   padding: 1rem;
+  justify-self: center;
 }
 
 .block-txt {
@@ -40,16 +43,42 @@ p {
 }
 
 .profile-img {
-  max-width: 500px;
-  /* width: 90%;  */
+  max-width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black;
+  display: block;
 }
 
 .rating-container {
-  padding: 2rem;
+  padding: 1rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .star-rating {
-  padding: 1rem;
+  margin: 1rem;
+  --rating-width: 0%;
+  position: relative;
+  display: inline-block;
+  font-size: 1.8rem;
+  line-height: 1;
+  width: fit-content;
+}
+
+.stars-empty {
+  color: #d9d9d9;
+}
+
+.stars-filled {
+  color: #f5c542;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--rating-width);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 h4 {
@@ -97,6 +126,11 @@ h4 {
   align-self: center;
 }
 
+.allergy-info-container p,
+.info-container p {
+  justify-self: baseline;
+}
+
 form {
   border: solid 4px var(--primary-shade-2);
   border-radius: 2rem;
@@ -108,6 +142,14 @@ form {
 
 .form-container {
   padding: 2rem;
+}
+
+form.was-submitted input:required:invalid {
+  border: 2px solid red;
+}
+
+form.was-submitted input:required:valid {
+  border: 2px solid green;
 }
 
 .date-container,
@@ -148,6 +190,24 @@ form {
   color: red;
 }
 
+.blink-error {
+  animation: blinkError 0.4s ease-in-out 3;
+}
+
+@keyframes blinkError {
+  0% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: #ffd6d6;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
 .date-container span,
 .choose-dog-container span {
   color: red;
@@ -159,10 +219,9 @@ form {
   outline-offset: 0.15rem;
 }
 
-/* Modals */
 .booking-modal {
   background-color: var(--primary);
-  border: var(--bg) solid 1rem;
+  border: var(--primary-card) solid 1rem;
   border-radius: 24px;
   padding: 1rem;
   display: flex;
@@ -206,13 +265,6 @@ form {
   color: var(--primary-shade-2);
 }
 
-/* Desktop breakpoint */
-@media (max-width: 1440px) {
-}
-/* Tablet Breakpoint */
-@media (max-width: 1024px) {
-}
-/* Phone breakpoint around 600px*/
 @media (max-width: 700px) {
   .choose-dog-container,
   .date-container,
@@ -243,4 +295,197 @@ form {
   .dog-sitter-name {
     justify-self: center;
   }
+}
+
+@media (max-width: 500px) {
+  .profile-img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--primary);
+  border: var(--bg) solid 2rem;
+  border-radius: 8px;
+  font-size: var(--h2);
+  padding: 2rem;
+  max-width: 1000px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+  margin: 1rem;
+}
+
+.modal-content button {
+  display: flex;
+  justify-self: center;
+  margin: 1rem;
+}
+
+#booking-sent h5 span,
+#booking-updated h5 {
+  color: var(--primary-shade-2);
+}
+
+#booking-sent h5 {
+  position: relative;
+  left: 7rem;
+}
+
+#booking-updated h5 {
+  position: relative;
+  left: 9rem;
+}
+
+#booking-sent-content {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+#booking-updated-container {
+  display: flex;
+  gap: 4rem;
+  margin: 1rem;
+}
+
+#booking-updated button {
+  display: flex;
+  justify-self: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.booking-sent-container {
+  margin: 2rem;
+  padding: 2rem;
+  border: var(--primary-shade-2) 4px solid;
+  border-radius: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-sent-container img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.booking-sent-container .btn-container {
+  border: var(--primary-shade-1) 2px solid;
+  border-radius: 10px;
+  max-width: 800px;
+  justify-self: center;
+  padding: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+}
+
+.spinner-img {
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #d8d8d8;
+  color: transparent;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  animation: skeleton-loading 1.2s infinite;
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-title {
+  width: 180px;
+  height: 2rem;
+}
+
+.skeleton-paragraph {
+  width: 100%;
+  max-width: 520px;
+  height: 5rem;
+}
+
+.dog-skeleton {
+  width: 160px;
+  height: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.register-user-form form {
+  padding: 2rem;
 }

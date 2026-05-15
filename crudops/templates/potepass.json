@@ -5,22 +5,25 @@
       "userName": "Ola Nordmann",
       "password": "abc123",
       "email": "ola@example.com",
+      "phone": 12345678,
+      "location": "Oslo",
       "description": "Trenger hundepass i helger og ferier",
+      "image": "/images/useravatar.png",
       "dogs": [
         {
           "id": 1,
           "name": "Bella",
           "breed": "Golden Retriever",
           "age": 4,
-          "allergies": [
-            "kylling"
-          ]
+          "image": "/images/dogicon.png",
+          "allergies": ["kylling"]
         },
         {
           "id": 2,
           "name": "Max",
           "breed": "Labrador",
           "age": 2,
+          "image": "/images/dogicon.png",
           "allergies": []
         }
       ],
