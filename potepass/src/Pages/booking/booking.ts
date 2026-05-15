@@ -163,7 +163,7 @@ async function getDogs() {
     const usersDogs = getStoredUsersDogs(dogs);
 
     if (!usersDogs) {
-      showDogsMessage("Ingen hunder funnet.");
+      showDogsMessage("Ingen hunder funnet. Sjekk at du er logget inn.");
       return;
     }
 
@@ -250,7 +250,7 @@ function showPetsitterError() {
 
   if (userDescription) {
     userDescription.classList.remove("skeleton", "skeleton-paragraph");
-    userDescription.textContent = "Prøv å laste siden på nytt.";
+    userDescription.textContent = "Gå til Finn Hundepassere for å booke hundepasser.";
   }
 }
 
