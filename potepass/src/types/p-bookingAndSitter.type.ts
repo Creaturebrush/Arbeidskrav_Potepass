@@ -1,4 +1,4 @@
-//FREDRIK
+//FREDRIK TEIEN
 
 export type ProfileBooking = {
 id: number,

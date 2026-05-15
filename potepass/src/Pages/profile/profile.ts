@@ -1,4 +1,4 @@
-// FREDRIK
+// FREDRIK TEIEN
 
 import { type User } from "../../types/user.type";
 import { type Dog } from "../../types/dog.type";
@@ -50,6 +50,7 @@ document.addEventListener("click", async (event) => {
       if (!currentUser) return;
       createModal(createRemoveDogModalHTML());
       await selectDog(currentUser);
+      await init();
       break;
     }
     case "confirm-edit-btn": {
@@ -66,7 +67,8 @@ document.addEventListener("click", async (event) => {
       break;
     }
     case "confirm-delete-btn": {
-      await removeUser();
+      if (!currentUser) return;
+      await removeUser(currentUser);
       break;
     }
     case "warning-remove-dog-btn": {
@@ -105,6 +107,7 @@ document.addEventListener("click", async (event) => {
       setTimeout(() => {
         localStorage.removeItem("storedUserId");
         localStorage.removeItem("storedPetsitterId");
+        localStorage.removeItem("currentPetSitter");
         window.location.replace("./index.html");
       }, 2000);
       break;
@@ -318,9 +321,17 @@ function createChangePasswordModalHTML() {
       `;
 }
 
-async function removeUser() {
+async function removeUser(currentUser: User) {
   if (!currentUser) return;
   await deleteUser(currentUser.id);
+  
+  const userDogs = userDog.filter((dog) => dog.petOwnerId === currentUser.id);
+  userDogs.forEach(dog => {
+  deleteDog(dog.id);
+  });
+
+
+
   const dynamicContent = `
       <h2 id="title">Sletter profil...</h2>
           <img src="/images/paw-spinner.png" class="profile-spinner" alt="Loading spinner" aria-hidden="true" draggable="false"/>
@@ -328,11 +339,8 @@ async function removeUser() {
   createModal(dynamicContent);
   localStorage.removeItem("storedUserId");
   localStorage.removeItem("storedPetsitterId");
+  localStorage.removeItem("currentPetSitter");
   setTimeout(() => {
-    const dynamicContent = `
-      <h2 id="title">Profilen din ble slettet!</h2>
-      `;
-    createModal(dynamicContent);
     window.location.replace("./index.html");
   }, 2000);
 }
@@ -533,7 +541,7 @@ async function addNewDogInfo() {
   } else {
     const newDog = getNewDog();
     const dynamicContent = `
-      <h2 id="title>Legger til ${newDog.name}...</h2>
+      <h2 id="title">Legger til ${newDog.name}...</h2>
           <div class="dog-spinner"></div>
       `;
     createModal(dynamicContent);
@@ -545,7 +553,7 @@ async function addNewDogInfo() {
       if (!currentUser) return;
       createDogCard(userDog, currentUser);
       const dynamicContent = `
-      <h2 id="title">${newDog.name} ble lagt til i "mine hunder"!</h2>
+      <h2 id="title">${newDog.name} ble lagt til!</h2>
           <img src="/images/success.png" alt="success" draggable="false"/>
           <div class="btn-container">
             <button class="btn btn-success" id="close-btn">FORTSETT</button>
@@ -596,7 +604,7 @@ async function removeDog(target: HTMLDivElement) {
   if (!dog) return;
 
   const dynamicContent = `
-    <h2 id="title">Forsøker å fjerne ${dog.name} fra "mine hunder"..</h2>
+    <h2 id="title">Forsøker å fjerne ${dog.name}..</h2>
           <div class="dog-spinner" aria-hidden="true"></div>
     `;
   createModal(dynamicContent);
@@ -609,7 +617,7 @@ async function removeDog(target: HTMLDivElement) {
     if (!currentUser) return;
     createDogCard(updatedDogs, currentUser);
     const dynamicContent = `
-    <h2 id="title">${dog.name} er fjernet fra "mine hunder"</h2>
+    <h2 id="title">${dog.name} er fjernet!</h2>
           <div class="remove-dog-container">
             <img src="${dog.image || "/images/dogicon.png"}" alt="Bilde av hund" draggable="false"/>
           </div>
@@ -853,6 +861,7 @@ async function init() {
   if (!user) {
     localStorage.removeItem("storedUserId");
     localStorage.removeItem("storedPetsitterId");
+    localStorage.removeItem("currentPetSitter");
     window.location.replace("./index.html");
     return;
   } else {

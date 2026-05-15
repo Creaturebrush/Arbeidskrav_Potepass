@@ -1,4 +1,4 @@
-// FREDRIK
+// FREDRIK TEIEN
 
 import { createUser } from "../../requests/createUser";
 import { getAllUsers } from "../../requests/getAllUsers";
@@ -45,8 +45,8 @@ export function closeModal() {
 }
 
 document.addEventListener("click", async (e) => {
-  const target = e.target as HTMLElement;
-
+  const target = e.target as HTMLElement
+  
   switch (target.id) {
     case "login-btn": {
       const dynamicContent = `
@@ -68,7 +68,7 @@ document.addEventListener("click", async (e) => {
       break;
     }
     case "confirm-login-btn": {
-      login();
+    login();
       break;
     }
     case "register-btn": {
@@ -198,6 +198,7 @@ document.addEventListener("click", async (e) => {
       setTimeout(() => {
         localStorage.removeItem("storedUserId");
         localStorage.removeItem("storedPetsitterId");
+        localStorage.removeItem("currentPetSitter");
         window.location.replace("./index.html");
       },2000)
       break;
