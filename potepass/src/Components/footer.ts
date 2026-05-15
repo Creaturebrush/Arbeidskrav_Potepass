@@ -1,4 +1,4 @@
-// FREDRIK
+// FREDRIK TEIEN
 
 import "./footer.css";
 import "../Pages/Homepage/homepage.css";

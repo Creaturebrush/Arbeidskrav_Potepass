@@ -1,4 +1,4 @@
-// FREDRIK & Anette
+// FREDRIK TEIEN & Anette
 
 import "./header.css";
 import "../Pages/Homepage/homepage.css";
