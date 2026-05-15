@@ -58,7 +58,7 @@ p {
 }
 
 .star-rating {
-  margin: 1rem; 
+  margin: 1rem;
   --rating-width: 0%;
   position: relative;
   display: inline-block;
@@ -219,7 +219,6 @@ form.was-submitted input:required:valid {
   outline-offset: 0.15rem;
 }
 
-
 .booking-modal {
   background-color: var(--primary);
   border: var(--primary-card) solid 1rem;
@@ -266,7 +265,6 @@ form.was-submitted input:required:valid {
   color: var(--primary-shade-2);
 }
 
-
 @media (max-width: 700px) {
   .choose-dog-container,
   .date-container,
@@ -305,7 +303,6 @@ form.was-submitted input:required:valid {
     max-height: 120px;
   }
 }
-
 
 .modal-overlay {
   display: none;
@@ -444,7 +441,6 @@ form.was-submitted input:required:valid {
   }
 }
 
-
 .skeleton {
   position: relative;
   overflow: hidden;
@@ -488,4 +484,8 @@ form.was-submitted input:required:valid {
   width: 160px;
   height: 2rem;
   margin-bottom: 0.75rem;
+}
+
+.register-user-form form {
+  padding: 2rem;
 }
