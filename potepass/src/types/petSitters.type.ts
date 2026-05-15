@@ -1,4 +1,4 @@
-//Stine husk å fjerne "accepts" hvis de andre ikke er enige
+//Stine Hartvigsen
 export type PetSitters = {
     
     id: number,

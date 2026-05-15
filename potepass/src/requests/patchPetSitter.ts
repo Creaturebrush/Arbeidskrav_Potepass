@@ -1,4 +1,4 @@
-//Stine
+//Stine Hartvigsen
 import { type PetSitters } from "../types/petSitters.type";
 
 const APIKey: String = "dreamTeam";
